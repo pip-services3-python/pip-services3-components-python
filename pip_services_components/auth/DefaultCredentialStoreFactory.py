@@ -15,11 +15,11 @@ from pip_services_commons.refer.Descriptor import Descriptor
 from ..build.Factory import Factory
 
 DefaultCredentialStoreFactoryDescriptor = Descriptor(
-    "pip-services-commons", "factory", "credential-store", "default", "1.0"
+    "pip-services", "factory", "credential-store", "default", "1.0"
 )
 
 MemoryCredentialStoreDescriptor = Descriptor(
-    "pip-services-commons", "credential-store", "memory", "*", "1.0"
+    "pip-services", "credential-store", "memory", "*", "1.0"
 )
 
 class DefaultCredentialStoreFactory(Factory):

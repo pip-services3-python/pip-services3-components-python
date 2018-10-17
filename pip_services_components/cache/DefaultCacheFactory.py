@@ -16,15 +16,15 @@ from pip_services_commons.refer.Descriptor import Descriptor
 from ..build.Factory import Factory
 
 DefaultCacheFactoryDescriptor = Descriptor(
-    "pip-services-commons", "factory", "cache", "default", "1.0"
+    "pip-services", "factory", "cache", "default", "1.0"
 )
 
 NullCacheDescriptor = Descriptor(
-    "pip-services-commons", "cache", "null", "*", "1.0"
+    "pip-services", "cache", "null", "*", "1.0"
 )
 
 MemoryCacheDescriptor = Descriptor(
-    "pip-services-commons", "cache", "memory", "*", "1.0"
+    "pip-services", "cache", "memory", "*", "1.0"
 )
 
 class DefaultCacheFactory(Factory):

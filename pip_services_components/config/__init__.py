@@ -10,21 +10,15 @@
 """
 
 __all__ = [
-    'IConfigurable', 'IReconfigurable', 'ConfigParams',
     'IConfigReader', 'ConfigReader', 'MemoryConfigReader',
     'FileConfigReader', 'JsonConfigReader', 'YamlConfigReader',
-    'NameResolver', 'OptionsResolver', 'DefaultConfigReaderFactory'
+    'DefaultConfigReaderFactory'
 ]
 
-from .IConfigurable import IConfigurable
-from .IReconfigurable import IReconfigurable
-from .ConfigParams import ConfigParams
 from .IConfigReader import IConfigReader
 from .ConfigReader import ConfigReader
 from .MemoryConfigReader import MemoryConfigReader
 from .FileConfigReader import FileConfigReader
 from .JsonConfigReader import JsonConfigReader
 from .YamlConfigReader import YamlConfigReader
-from .NameResolver import NameResolver
-from .OptionsResolver import OptionsResolver
 from .DefaultConfigReaderFactory import DefaultConfigReaderFactory

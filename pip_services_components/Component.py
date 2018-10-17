@@ -15,7 +15,7 @@ from pip_services_components.count import CompositeCounters
 from pip_services_commons.refer import IReferenceable
 from pip_services_commons.refer import DependencyResolver
 
-class Component(object, IConfigurable, IReferenceable):
+class Component(IConfigurable, IReferenceable):
     _logger = None
     _counters = None
     _dependency_resolver = None

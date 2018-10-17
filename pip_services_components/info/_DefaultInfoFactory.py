@@ -13,9 +13,10 @@ from pip_services_commons.refer.Descriptor import Descriptor
 from ..build.Factory import Factory
 from .ContextInfo import ContextInfo
 
-Descriptor = Descriptor("pip-services", "factory", "info", "default", "1.0");
-ContextInfoDescriptor = Descriptor("pip-services", "context-info", "default", "*", "1.0");
-ContainerInfoDescriptor =  Descriptor("pip-services", "container-info", "default", "*", "1.0");
+
+ContextInfoDescriptor = Descriptor("pip-services", "context-info", "default", "*", "1.0")
+
+ContainerInfoDescriptor = Descriptor("pip-services", "container-info", "default", "*", "1.0")
 
 class DefaultInfoFactory(Factory):
 

@@ -17,19 +17,19 @@ from pip_services_commons.refer.Descriptor import Descriptor
 from ..build.Factory import Factory
 
 DefaultLoggerFactoryDescriptor = Descriptor(
-    "pip-services-commons", "factory", "logger", "default", "1.0"
+    "pip-services", "factory", "logger", "default", "1.0"
 )
 
 NullLoggerDescriptor = Descriptor(
-    "pip-services-commons", "logger", "null", "*", "1.0"
+    "pip-services", "logger", "null", "*", "1.0"
 )
 
 ConsoleLoggerDescriptor = Descriptor(
-    "pip-services-commons", "logger", "console", "*", "1.0"
+    "pip-services", "logger", "console", "*", "1.0"
 )
 
 CompositeLoggerDescriptor = Descriptor(
-    "pip-services-commons", "logger", "composite", "*", "1.0"
+    "pip-services", "logger", "composite", "*", "1.0"
 )
 
 class DefaultLoggerFactory(Factory):

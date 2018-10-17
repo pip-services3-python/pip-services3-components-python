@@ -17,19 +17,19 @@ from pip_services_commons.refer.Descriptor import Descriptor
 from ..build.Factory import Factory
 
 DefaultDiscoveryFactoryDescriptor = Descriptor(
-    "pip-services-commons", "factory", "config-reader", "default", "1.0"
+    "pip-services", "factory", "config-reader", "default", "1.0"
 )
 
 MemoryConfigReaderDescriptor = Descriptor(
-    "pip-services-commons", "config-reader", "memory", "*", "1.0"
+    "pip-services", "config-reader", "memory", "*", "1.0"
 )
 
 JsonConfigReaderDescriptor = Descriptor(
-    "pip-services-commons", "config-reader", "json", "*", "1.0"
+    "pip-services", "config-reader", "json", "*", "1.0"
 )
 
 YamlConfigReaderDescriptor = Descriptor(
-    "pip-services-commons", "config-reader", "yaml", "*", "1.0"
+    "pip-services", "config-reader", "yaml", "*", "1.0"
 )
 
 class DefaultConfigReaderFactory(Factory):

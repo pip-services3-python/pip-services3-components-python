@@ -9,20 +9,21 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import time
+import datetime
+from pytz import timezone
 
 from pip_services_commons.config.IReconfigurable import IReconfigurable
 
 class ContextInfo(IReconfigurable):
     _name = "unknown"
     _properties = None
-    _description = ""
-    context_id = ""
-    start_time = None
+    _description = None
+    context_id = None
+    start_time = datetime.datetime.now()
     uptime = 0
 
     def __init__(self, name = None, description = None):
-        self._name = name
+        self._name = name or "unknown"
         self._description = description
 
     def configure(self, config):

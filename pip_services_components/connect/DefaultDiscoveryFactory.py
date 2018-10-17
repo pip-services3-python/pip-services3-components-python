@@ -15,11 +15,11 @@ from pip_services_commons.refer.Descriptor import Descriptor
 from ..build.Factory import Factory
 
 DefaultDiscoveryFactoryDescriptor = Descriptor(
-    "pip-services-commons", "factory", "discovery", "default", "1.0"
+    "pip-services", "factory", "discovery", "default", "1.0"
 )
 
 MemoryDiscoveryDescriptor = Descriptor(
-    "pip-services-commons", "discovery", "memory", "*", "1.0"
+    "pip-services", "discovery", "memory", "*", "1.0"
 )
 
 class DefaultDiscoveryFactory(Factory):
