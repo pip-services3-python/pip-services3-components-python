@@ -9,7 +9,7 @@ Links
 `````
 
 * `website <http://github.com/pip-services-python/pip-services-components-python>`
-* `development version <http://github.com/pip-services/pip-services-components-python>`
+* `development version <http://github.com/pip-services-python/pip-services-components-python>`
 
 """
 
@@ -30,7 +30,7 @@ setup(
     zip_safe=True,
     platforms='any',
     install_requires=[
-        'iso8601', 'PyYAML', 'pystache'
+        'iso8601', 'PyYAML', 'pystache', 'pip_services_commons'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
