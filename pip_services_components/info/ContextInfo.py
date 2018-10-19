@@ -35,6 +35,42 @@ class ContextInfo(IReconfigurable):
 
         self._properties = config.getSection("properties")
 
+    def get_name(self):
+        return self._name
+
+    def set_name(self, name):
+        self._name = name if name != None else "unknown"
+
+    def get_description(self):
+        return self._description
+
+    def set_description(self, description):
+        self._description = description
+
+    def get_context_id(self):
+        return self.context_id
+
+    def set_context_id(self, context_id):
+        self.context_id = context_id
+
+    def get_start_time(self):
+        return self.start_time
+
+    def set_start_time(self, start_time):
+        self.start_time = start_time
+
+    def get_uptime(self):
+        return self.uptime
+
+    def set_uptime(self, uptime):
+        self.uptime = uptime
+
+    def get_properties(self):
+        return self._properties
+
+    def set_properties(self, properties):
+        self._properties = properties
+
     def from_config(self, config):
         value = ContextInfo()
         value.configure(config)
