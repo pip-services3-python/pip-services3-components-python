@@ -24,8 +24,9 @@ class CompositeLogger(Logger, IReferenceable):
             self.set_references(references)
             
     def set_references(self, references):
-        descriptor = Descriptor(None, "logger", None, None, None)
-        loggers = references.get_optional(descriptor)
+        super(CompositeLogger, self).set_references(references)
+        # descriptor = Descriptor(None, "logger", None, None, None)
+        loggers = references.get_optional(Descriptor(None, "logger", None, None, None))
         for logger in loggers:
             if isinstance(logger, ILogger):
                 self._loggers.append(logger)

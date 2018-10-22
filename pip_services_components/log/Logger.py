@@ -8,18 +8,26 @@
     :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from pip_services_commons.refer import IReferenceable, Descriptor
 
 from .LogLevel import LogLevel
 from .ILogger import ILogger
 from .LogLevelConverter import LogLevelConverter
 from pip_services_commons.config.IReconfigurable import IReconfigurable
 
-class Logger(ILogger, IReconfigurable):
+class Logger(ILogger, IReconfigurable, IReferenceable):
 
     _level = LogLevel.Info
+    _source = None
 
     def configure(self, config):
         self._level = LogLevelConverter.to_log_level(config.get_as_object("level"))
+        self._source = config.get_as_string_with_default("source", self._source)
+
+    def set_references(self, references):
+        context_info = references.get_one_optional(Descriptor("pip-services", "context-info", "*", "*", "1.0"))
+        if context_info != None and self._source == None:
+            self._source = context_info.get_name()
 
     def get_level(self):
         return self._level
