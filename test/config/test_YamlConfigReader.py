@@ -19,7 +19,7 @@ class TestYamlConfigReader:
             "param1", "Test Param 1",
             "param2", "Test Param 2"
         )
-        config = YamlConfigReader.read_config(None, "./data/config.yml", parameters)
+        config = YamlConfigReader.read_config(None, "../../data/config.yml", parameters)
         
         assert 9 == len(config)
         assert 123 == config.get_as_integer("field1.field11")

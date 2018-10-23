@@ -53,7 +53,6 @@ class TestContextInfo:
         assert context_info.start_time.month == 4
         assert context_info.start_time.day == 8
 
-    # todo
     def test_from_config(self):
         config = ConfigParams.from_tuples("name", "new name",
                                           "description", "new description",

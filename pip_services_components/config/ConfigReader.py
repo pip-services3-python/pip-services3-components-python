@@ -29,6 +29,7 @@ class ConfigReader(IConfigReader, IConfigurable):
     def read_config(self, correlation_id, parameters):
         raise NotImplementedError('Method is abstract and must be overriden')
 
+    @staticmethod
     def _parameterize(self, config, parameters):
         parameters = self._parameters.override(parameters)
         return pystache.render(config, parameters)

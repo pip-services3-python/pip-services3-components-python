@@ -134,6 +134,11 @@ class CredentialParams(ConfigParams):
         return CredentialParams(map)
 
     @staticmethod
+    def from_tuples(*tuples):
+        map = StringValueMap.from_tuples_array(tuples)
+        return CredentialParams(map)
+
+    @staticmethod
     def many_from_config(config):
         result = []
 

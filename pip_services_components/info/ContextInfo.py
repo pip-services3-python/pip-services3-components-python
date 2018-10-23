@@ -33,7 +33,7 @@ class ContextInfo(IReconfigurable):
         self._description = config.get_as_string_with_default("description", self._description)
         self._description = config.get_as_string_with_default("info.description", self._description)
 
-        self._properties = config.getSection("properties")
+        self._properties = config.get_section("properties")
 
     def get_name(self):
         return self._name
