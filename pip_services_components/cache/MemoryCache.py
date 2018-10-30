@@ -5,7 +5,7 @@
     
     Memory cache component implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -19,9 +19,19 @@ from pip_services_commons.run.ICleanable import ICleanable
 
 class MemoryCache(ICache, IReconfigurable, ICleanable):
     """
-    Local in-memory cache that can be used in non-scaled deployments or for testing.
-    
-    Todo: Track access time for cached entries to optimize cache shrinking logic
+    Cache that stores values in the process memory.
+
+    Remember: This implementation is not suitable for synchronization of distributed processes.
+
+    ### Configuration parameters ###
+
+    options:
+        - timeout:               default caching timeout in milliseconds (default: 1 minute)
+        - max_size:              maximum number of values stored in this cache (default: 1000)
+
+    Example:
+        cache = MemoryCache()
+        cache.store("123", "key1", "ABC", 0)
     """
 
     _default_timeout = 60000
@@ -34,6 +44,9 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
     _lock = None
 
     def __init__(self):
+        """
+        Creates a new instance of the cache.
+        """
         self._cache = {}
         self._count = 0
         self._max_size = self._default_max_size
@@ -41,6 +54,11 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
         self._lock = threading.Lock()
 
     def configure(self, config):
+        """
+        Configures component by passing configuration parameters.
+
+        :param config: configuration parameters to be set.
+        """
         self._timeout = config.get_as_long_with_default("options.timeout", self._default_timeout)
         self._max_size = config.get_as_long_with_default("options.max_size", self._default_max_size)
 
@@ -65,6 +83,16 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
             self._count -= 1
 
     def retrieve(self, correlation_id, key):
+        """
+        Retrieves cached value from the cache using its key.
+        If value is missing in the cache or expired it returns None.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param key: a unique value key.
+
+        :return: a cached value or None if value wasn't found or timeout expired.
+        """
         self._lock.acquire()
         try:
             # Cache has nothing
@@ -86,6 +114,19 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
             self._lock.release()
 
     def store(self, correlation_id, key, value, timeout):
+        """
+        Stores value in the cache with expiration time.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param key: a unique value key.
+
+        :param value: a value to store.
+
+        :param timeout: expiration timeout in milliseconds.
+
+        :return: a cached value stored in the cache.
+        """
         timeout = timeout if timeout > 0 else self._default_timeout
 
         self._lock.acquire()
@@ -119,6 +160,13 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
             self._lock.release()
     
     def remove(self, correlation_id, key):
+        """
+        Removes a value from the cache by its key.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param key: a unique value key.
+        """
         self._lock.acquire()
         try:
             # Get the entry
@@ -131,6 +179,11 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
             self._lock.release()
     
     def clear(self, correlation_id):
+        """
+        Clears component state.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+        """
         self._lock.acquire()
         try:
             self._cache = {}

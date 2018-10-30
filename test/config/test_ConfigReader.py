@@ -18,5 +18,6 @@ from pip_services_components.config import ConfigReader
 #                                         "B", "XYZ")
 #         parameters = ConfigParams()
 #         parameters.append(values)
+#         reader = ConfigReader()
 #
-#         assert "XYZ" == ConfigReader._parameterize(config, parameters)
+#         assert "XYZ" == reader._parameterize(config, parameters)

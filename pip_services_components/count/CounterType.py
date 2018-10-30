@@ -5,11 +5,14 @@
     
     Counter type enumeration
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
 class CounterType(object):
+    """
+    Types of counters that measure different types of metrics
+    """
     Interval = 0
     LastValue = 1
     Statistics = 2

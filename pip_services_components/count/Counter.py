@@ -5,11 +5,15 @@
     
     Counter object implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
 class Counter(object):
+    """
+    Data object to store measurement for a performance counter.
+    This object is used by [[CachedCounters]] to store counters.
+    """
     name = None
     type = None
     last = None
@@ -20,5 +24,12 @@ class Counter(object):
     time = None
 
     def __init__(self, name= None, tipe = None):
+        """
+        Creates a instance of the data obejct
+
+        :param name: a counter name.
+
+        :param tipe: a counter type.
+        """
         self.name = name
         self.type = tipe

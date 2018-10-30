@@ -1,0 +1,238 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pip_services_components.log.NullLogger module &#8212; Pip.Services Components for Python API</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Pip.Services Components for Python API</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pip_services_components.log.NullLogger">
+<span id="pip-services-components-log-nulllogger-module"></span><h1>pip_services_components.log.NullLogger module<a class="headerlink" href="#module-pip_services_components.log.NullLogger" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pip-services-commons-log-nulllogger">
+<h2>pip_services_commons.log.NullLogger<a class="headerlink" href="#pip-services-commons-log-nulllogger" title="Permalink to this headline">¶</a></h2>
+<p>Null logger implementation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT, see LICENSE for more details.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="pip_services_components.log.NullLogger.NullLogger">
+<em class="property">class </em><code class="descclassname">pip_services_components.log.NullLogger.</code><code class="descname">NullLogger</code><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pip_services_components.log.ILogger.html#pip_services_components.log.ILogger.ILogger" title="pip_services_components.log.ILogger.ILogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services_components.log.ILogger.ILogger</span></code></a></p>
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.debug">
+<code class="descname">debug</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs high-level debugging messages</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>correlation_id: a unique id to identify distributed transaction
+message: a message objects
+args: a list of positional arguments
+kwargs: a list of named arguments</dd>
+</dl>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.error">
+<code class="descname">error</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>error</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs recoverable error</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>correlation_id: a unique id to identify distributed transaction
+error: error object
+message: a message objects
+args: a list of positional arguments
+kwargs: a list of named arguments</dd>
+</dl>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.fatal">
+<code class="descname">fatal</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>error</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.fatal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs fatal error that causes microservice to shutdown</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>correlation_id: a unique id to identify distributed transaction
+error: error object
+message: a message objects
+args: a list of positional arguments
+kwargs: a list of named arguments</dd>
+</dl>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.get_level">
+<code class="descname">get_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.get_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current level of details</p>
+<p>Returns: the current log level</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.info">
+<code class="descname">info</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs important information message</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>correlation_id: a unique id to identify distributed transaction
+message: a message objects
+args: a list of positional arguments
+kwargs: a list of named arguments</dd>
+</dl>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.log">
+<code class="descname">log</code><span class="sig-paren">(</span><em>level</em>, <em>correlation_id</em>, <em>error</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes message to log</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>level: a message logging level
+correlation_id: a unique id to identify distributed transaction
+error: error object
+message: a message objects
+args: a list of positional arguments
+kwargs: a list of named arguments</dd>
+</dl>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.set_level">
+<code class="descname">set_level</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.set_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the current level of details</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>level: new logging level</dd>
+</dl>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.trace">
+<code class="descname">trace</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs fine-granular debugging message</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>correlation_id: a unique id to identify distributed transaction
+message: a message objects
+args: a list of positional arguments
+kwargs: a list of named arguments</dd>
+</dl>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services_components.log.NullLogger.NullLogger.warn">
+<code class="descname">warn</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.NullLogger.NullLogger.warn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs warning messages</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>correlation_id: a unique id to identify distributed transaction
+message: a message objects
+args: a list of positional arguments
+kwargs: a list of named arguments</dd>
+</dl>
+<p>Returns: None</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pip_services_components.log.NullLogger module</a><ul>
+<li><a class="reference internal" href="#pip-services-commons-log-nulllogger">pip_services_commons.log.NullLogger</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pip_services_components.log.NullLogger.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Pip.Services Components for Python API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Conceptual Vision Consulting LLC.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+    </div>
+  </body>
+</html>

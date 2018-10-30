@@ -5,7 +5,7 @@
     
     Cached counters implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -21,6 +21,16 @@ from .Timing import Timing
 from pip_services_commons.config.IReconfigurable import IReconfigurable
 
 class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
+    """
+    Abstract implementation of performance counters that measures and stores counters in memory.
+    Child classes implement saving of the counters into various destinations.
+
+    ### Configuration parameters ###
+
+        - options:
+            - interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
+            - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+    """
     _default_interval = 300000
 
     _cache = None
@@ -31,6 +41,9 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
 
     def __init__(self):
+        """
+        Creates a new CachedCounters object.
+        """
         self._cache = {}
         self._updated = False
         self._last_dump_time = time.clock()
@@ -38,15 +51,30 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
         self._lock = threading.Lock()
 
 
-    def _save(counters):
+    def _save(self, counters):
+        """
+        Saves the current counters measurements.
+
+        :param counters: current counters measurements to be saves.
+        """
         raise NotImplementedError('Method from abstract implementation')
 
 
     def configure(self, config):
+        """
+        Configures component by passing configuration parameters.
+
+        :param config: configuration parameters to be set.
+        """
         self._interval = config.get_as_float_with_default("interval", self._interval)
 
 
     def clear(self, name):
+        """
+        Clears (resets) a counter specified by its name.
+
+        :param name: a counter name to clear.
+        """
         self._lock.acquire()
         try:
             del self._cache[name]
@@ -55,6 +83,9 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
 
     def clear_all(self):
+        """
+        Clears (resets) all counters.
+        """
         self._lock.acquire()
         try:
             self._cache = {}
@@ -64,6 +95,9 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
 
     def dump(self):
+        """
+        Dumps (saves) the current values of counters.
+        """
         if self._updated:
             messages = self.get_all()
             self._save(messages)
@@ -78,6 +112,9 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
 
     def _update(self):
+        """
+        Makes counter measurements as updated and dumps them when timeout expires.
+        """
         self._updated = True
         
         current_time = time.clock() * 1000
@@ -90,6 +127,11 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
 
     def get_all(self):
+        """
+        Gets all captured counters.
+
+        :return: a list with counters.
+        """
         self._lock.acquire()
         try:
             return list(self._cache.values())
@@ -98,6 +140,17 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
 
     def get(self, name, typ):
+        """
+        Gets a counter specified by its name.
+        It counter does not exist or its type doesn't match the specified type
+        it creates a new one.
+
+        :param name: a counter name to retrieve.
+
+        :param typ: a counter type.
+
+        :return: an existing or newly created counter of the specified type.
+        """
         if name == None or len(name) == 0:
             raise Exception("Counter name was not set")
 
@@ -127,42 +180,96 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
 
     def begin_timing(self, name):
+        """
+        Begins measurement of execution time interval.
+        It returns [[Timing]] object which has to be called at
+        [[Timing.endTiming]] to end the measurement and update the counter.
+
+        :param name: a counter name of Interval type.
+
+        :return: a [[Timing]] callback object to end timing.
+        """
         return Timing(name, self)
 
-
     def end_timing(self, name, elapsed):
+        """
+        Ends measurement of execution elapsed time and updates specified counter.
+
+        :param name: a counter name
+
+        :param elapsed: execution elapsed time in milliseconds to update the counter.
+        """
         counter = self.get(name, CounterType.Interval)
         self._calculate_stats(counter, elapsed)
         self._update()
 
 
     def stats(self, name, value):
+        """
+        Calculates min/average/max statistics based on the current and previous values.
+
+        :param name: a counter name of Statistics type
+
+        :param value: a value to update statistics
+        """
         counter = self.get(name, CounterType.Statistics)
         self._calculate_stats(counter, value)
         self._update()
 
 
     def last(self, name, value):
+        """
+        Records the last calculated measurement value.
+        Usually this method is used by metrics calculated externally.
+
+        :param name: a counter name of Last type.
+
+        :param value: a last value to record.
+        """
         counter = self.get(name, CounterType.LastValue)
         counter.last = value
         self._update()
 
 
     def timestamp_now(self, name):
+        """
+        Records the current time as a timestamp.
+
+        :param name: a counter name of Timestamp type.
+        """
         self.timestamp(name, datetime.datetime.utcnow())
 
 
     def timestamp(self, name, value):
+        """
+        Records the given timestamp.
+
+        :param name: a counter name of Timestamp type.
+
+        :param value: a timestamp to record.
+        """
         counter = self.get(name, CounterType.Timestamp)
         counter.time = value if value != None else datetime.datetime.utcnow()
         self._update()
 
 
     def increment_one(self, name):
+        """
+        Increments counter by 1.
+
+        :param name: a counter name of Increment type.
+        """
         self.increment(name, 1)
 
 
     def increment(self, name, value):
+        """
+        Increments counter by given value.
+
+        :param name: a counter name of Increment type.
+
+        :param value: a value to add to the counter.
+        """
         counter = self.get(name, CounterType.Increment)
         counter.count = counter.count + value if counter.count != None else value
         self._update()

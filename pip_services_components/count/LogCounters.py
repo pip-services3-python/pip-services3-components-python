@@ -5,7 +5,7 @@
     
     Log counters implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -16,18 +16,49 @@ from pip_services_commons.convert.StringConverter import StringConverter
 from pip_services_commons.refer.IReferenceable import IReferenceable
 
 class LogCounters(CachedCounters, IReferenceable):
+    """
+    Performance counters that periodically dumps counters measurements to logger.
+
+    ### Configuration parameters ###
+
+        - options:
+            - interval:          interval in milliseconds to save current counters measurements (default: 5 mins)
+            - reset_timeout:     timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+
+    ### References ###
+        - *:logger:*:*:1.0           [[ILogger]] components to dump the captured counters
+        - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+
+    Example:
+        counters = LogCounters()
+        counters.set_references(References.from_tuples(
+                    Descriptor("pip-services", "logger", "console", "default", "1.0"), ConsoleLogger()))
+
+        counters.increment("mycomponent.mymethod.calls")
+        timing = counters.begin_timing("mycomponent.mymethod.exec_time")
+        ...
+        timing.endTiming()
+    """
     _logger = None
 
     def __init__(self):
+        """
+        Creates a new instance of the counters.
+        """
         super(LogCounters, self).__init__()
         self._logger = CompositeLogger() 
 
-
-    def get_descriptor(self):
-        return LogCountersDescriptor
+    #
+    # def get_descriptor(self):
+    #     return LogCountersDescriptor
 
 
     def set_references(self, references):
+        """
+        Sets references to dependent components.
+
+        :param references: references to locate the component dependencies.
+        """
         self._logger.set_references(references)
 
 
@@ -54,6 +85,11 @@ class LogCounters(CachedCounters, IReferenceable):
         return counter.name
 
     def _save(self, counters):
+        """
+        Saves the current counters measurements.
+
+        :param counters: current counters measurements to be saves.
+        """
         if self._logger == None:
             return
         if len(counters) == 0:

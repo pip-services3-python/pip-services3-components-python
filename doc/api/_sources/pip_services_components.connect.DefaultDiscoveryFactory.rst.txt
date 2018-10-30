@@ -1,0 +1,7 @@
+pip\_services\_components.connect.DefaultDiscoveryFactory module
+================================================================
+
+.. automodule:: pip_services_components.connect.DefaultDiscoveryFactory
+    :members:
+    :undoc-members:
+    :show-inheritance:

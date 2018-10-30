@@ -5,7 +5,7 @@
     
     Credential store interface
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -13,28 +13,29 @@ from .CredentialParams import CredentialParams
 
 class ICredentialStore:
     """
-    Store that keeps and located client credentials.
+    Interface for credential stores which are used to store and lookup credentials
+    to authenticate against external services.
     """
-
     def store(self, correlation_id, key, credential):
         """
-        Stores credential in the store
+        Stores credential parameters into the store.
 
-        Args:
-            correlation_id: a unique transaction id to trace calls across components
-            key: the key to lookup credential
-            credential: a credential parameters
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param key: a key to uniquely identify the credential.
+
+        :param credential: a credential to be stored.
         """
         raise NotImplementedError('Method from interface definition')
 
     def lookup(self, correlation_id, key):
         """
-        Looks up credential from the store
+        Lookups credential parameters by its key.
 
-        Args:
-            correlation_id: a unique transaction id to trace calls across components
-            key: a key to lookup credential
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
 
-        Returns: found credential parameters or None if nothing was found
+        :param key: a key to uniquely identify the credential.
+
+        :return: found credential parameters or None if nothing was found
         """
         raise NotImplementedError('Method from interface definition')

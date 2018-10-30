@@ -5,7 +5,7 @@
     
     Credential parameters implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -15,51 +15,72 @@ from pip_services_commons.data import StringValueMap
 
 class CredentialParams(ConfigParams):
     """
-    Credentials such as login and password, client id and key,
-    certificates, etc. Separating credentials from connection parameters
-    allow to store them in secure location and share among multiple connections.
+    Contains credentials to authenticate against external services.
+    They are used together with connection parameters, but usually stored
+    in a separate store, protected from unauthorized access.
+
+    ### Configuration parameters ###
+
+        - store_key:     key to retrieve parameters from credential store
+        - username:      user name
+        - user:          alternative to username
+        - password:      user password
+        - pass:          alternative to password
+        - access_id:     application access id
+        - client_id:     alternative to access_id
+        - access_key:    application secret key
+        - client_key:    alternative to access_key
+        - secret_key:    alternative to access_key
+
+    In addition to standard parameters CredentialParams may contain any number of custom parameters
+
+    Example:
+        credential = CredentialParams.from_tuples("user", "jdoe", "pass", "pass123", "pin", "321")
+
+        username = credential.get_username()             // Result: "jdoe"
+        password = credential.get_password()             // Result: "pass123"
+        pin = credential.get_as_nullable_string("pin")     // Result: 321
     """
 
     def __init__(self, map = None):
         """
-        Creates an empty instance of credential parameters.
+        Creates a new credential parameters and fills it with values.
 
-        Args:
-            map: content a map with the credentials. 
+        :param map: (optional) an object to be converted into key-value pairs to initialize these credentials.
         """
         super(CredentialParams, self).__init__(map)
 
     def use_credential_store(self):
         """
-        Checks if credential lookup shall be performed.
-        The credentials are requested when 'store_key' parameter contains
-        a non-empty string that represents the name in credential store.
+        Checks if these credential parameters shall be retrieved from [[CredentialStore]].
+        The credential parameters are redirected to [[CredentialStore]] when store_key parameter is set.
 
-        Returns: True if the credentials shall be resolved by credential store
-                 and false when all credential parameters are defined statically.
+        :return: true if credentials shall be retrieved from [[CredentialStore]]
         """
         return "store_key" in self
 
     def get_store_key(self):
         """
-        Gets a key under which the connection shall be looked up in credential store.
-        Returns: a credential key 
+        Gets the key to retrieve these credentials from [[CredentialStore]].
+        If this key is null, than all parameters are already present.
+
+        :return: the store key to retrieve credentials.
         """
         return self.get_as_nullable_string("store_key")
 
     def set_store_key(self, value):
         """
-        Sets the key under which the credentials shall be looked up in credential store
+        Sets the key to retrieve these parameters from [[CredentialStore]].
 
-        Args:
-            value: a new credential key
+        :param value: a new key to retrieve credentials.
         """
         self.put("store_key", value)
 
     def get_username(self):
         """
-        Gets the user name / login.
-        Returns: the user name
+        Gets the user name. The value can be stored in parameters "username" or "user".
+
+        :return: the user name.
         """
         username = self.get_as_nullable_string("username")
         username = username if username != None else self.get_as_nullable_string("user")
@@ -67,17 +88,17 @@ class CredentialParams(ConfigParams):
 
     def set_username(self, value):
         """
-        Sets the service user name.
+        Sets the user name.
 
-        Args:
-            value: the user name
+        :param value: a new user name.
         """
         self.put("username", value)
 
     def get_password(self):
         """
-        Gets the service user password.
-        Returns: the user password
+        Get the user password. The value can be stored in parameters "password" or "pass".
+
+        :return: the user password.
         """
         password = self.get_as_nullable_string("password")
         password = password if password != None else self.get_as_nullable_string("pass")
@@ -85,17 +106,17 @@ class CredentialParams(ConfigParams):
 
     def set_password(self, password):
         """
-        Sets the service user password.
+        Sets the user password.
 
-        Args:
-            password: the user password
+        :param password: a new user password.
         """
         self.put("password", password)
 
     def get_access_id(self):
         """
-        Gets the client or access id
-        Returns: the client or access id
+        Gets the application access id. The value can be stored in parameters "access_id" pr "client_id"
+
+        :return: the application access id.
         """
         access_id = self.get_as_nullable_string("access_id")
         access_id = access_id if access_id != None else self.get_as_nullable_string("client_id")
@@ -103,17 +124,18 @@ class CredentialParams(ConfigParams):
 
     def set_access_id(self, value):
         """
-        Sets a new client or access id
+        Sets the application access id.
 
-        Args:
-            value: the client or access id
+        :param value: a new application access id.
         """
         self.put("access_id", value)
 
     def get_access_key(self):
         """
-        Gets the client or access key
-        Returns: the client or access key
+        Gets the application secret key.
+        The value can be stored in parameters "access_key", "client_key" or "secret_key".
+
+        :return: the application secret key.
         """
         access_key = self.get_as_nullable_string("access_key")
         access_key = access_key if access_key != None else self.get_as_nullable_string("access_key")
@@ -121,25 +143,49 @@ class CredentialParams(ConfigParams):
 
     def set_access_key(self, value):
         """
-        Sets a new client or access key
+        Sets the application secret key.
 
-        Args:
-            value: the client or access id
+        :param value: a new application secret key.
         """
         self.put("access_key", value)
 
     @staticmethod
     def from_string(line):
+        """
+        Creates a new CredentialParams object filled with key-value pairs serialized as a string.
+
+        :param line: a string with serialized key-value pairs as "key1=value1;key2=value2;..."
+                     Example: "Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"
+
+        :return: a new CredentialParams object.
+        """
         map = StringValueMap.from_string(line)
         return CredentialParams(map)
 
     @staticmethod
     def from_tuples(*tuples):
+        """
+        Creates a new CredentialParams object filled with provided key-value pairs called tuples.
+        Tuples parameters contain a sequence of key1, value1, key2, value2, ... pairs.
+
+        :param tuples: the tuples to fill a new CredentialParams object.
+
+        :return: a new CredentialParams object.
+        """
         map = StringValueMap.from_tuples_array(tuples)
         return CredentialParams(map)
 
     @staticmethod
     def many_from_config(config):
+        """
+        Retrieves all CredentialParams from configuration parameters
+        from "credentials" section. If "credential" section is present instead,
+        than it returns a list with only one CredentialParams.
+
+        :param config: a configuration parameters to retrieve credentials
+
+        :return: a list of retrieved CredentialParams
+        """
         result = []
 
         # Try to get multiple credentials first
@@ -158,5 +204,14 @@ class CredentialParams(ConfigParams):
 
     @staticmethod
     def from_config(config):
+        """
+        Retrieves a single CredentialParams from configuration parameters
+        from "credential" section. If "credentials" section is present instead,
+        then is returns only the first credential element.
+
+        :param config: ConfigParams, containing a section named "credential(s)".
+
+        :return: the generated CredentialParams object.
+        """
         credentials = CredentialParams.many_from_config(config)
         return credentials[0] if len(credentials) > 0 else None

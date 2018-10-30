@@ -5,7 +5,7 @@
     
     Timing implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -13,7 +13,13 @@ import time
 
 class Timing:
     """
-    Provides callback to end measuring execution time interface and update interval counter.
+    Callback object returned by ICounters.beginTiming to end timing
+    of execution block and update the associated counter.
+
+    Example:
+        timing = counters.begin_timing("mymethod.exec_time")
+        ...
+        timing.endTiming()
     """
 
     _start = None
@@ -22,12 +28,11 @@ class Timing:
 
     def __init__(self, counter = None, callback = None):
         """
-        Creates instance of timing object that calculates elapsed time
-        and stores it to specified performance counters component under specified name.
+        Creates a new instance of the timing callback object.
 
-        Args:
-            counter: a name of the counter to record elapsed time interval.
-            callback: a performance counters component to store calculated value.
+        :param counter: an associated counter name
+
+        :param callback: a callback that shall be called when endTiming is called.
         """
 
         self._counter = counter
@@ -36,7 +41,7 @@ class Timing:
 
     def end_timing(self):
         """
-        Completes measuring time interval and updates counter.
+        Ends timing of an execution block, calculates elapsed time and updates the associated counter.
         """
 
         if self._callback != None:

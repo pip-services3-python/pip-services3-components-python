@@ -3,9 +3,11 @@
     pip_services_commons.count.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    Performance counters module initialization
+    Performance counters. They show non-functional characteristics about how the code works,
+    like: times called, response time, objects saved/processed. Using these numbers, we can
+    show how the code works in the system – how stable, fast, expandable it is.
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 

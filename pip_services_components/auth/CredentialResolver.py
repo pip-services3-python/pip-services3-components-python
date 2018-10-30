@@ -5,7 +5,7 @@
     
     Credential resolver implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -18,10 +18,50 @@ from pip_services_commons.refer.ReferenceException import ReferenceException
 from pip_services_commons.errors.ApplicationException import ApplicationException
 
 class CredentialResolver(IConfigurable, IReferenceable):
+    """
+    Helper class to retrieve component credentials.
+
+    If credentials are configured to be retrieved from [[ICredentialStore]],
+    it automatically locates [[ICredentialStore]] in component references
+    and retrieve credentials from there using store_key parameter.
+
+    ### Configuration parameters ###
+
+    credential:
+        - store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
+        - ...                          other credential parameters
+
+    credentials:                   alternative to credential
+        - [credential params 1]:       first credential parameters
+        - ...                      credential parameters for key 1
+        - ...
+        - [credential params N]:       Nth credential parameters
+        - ...                      credential parameters for key N
+
+    ### References ###
+        - *:credential-store:*:*:1.0  (optional) Credential stores to resolve credentials
+
+    Example:
+          config = ConfigParams.from_tuples("credential.user", "jdoe",
+                                            "credential.pass",  "pass123")
+
+          credentialResolver = CredentialResolver()
+          credentialResolver.configure(config)
+          credentialResolver.set_references(references)
+          credentialResolver.lookup("123")
+
+    """
     _credentials = None
     _references = None
 
     def __init__(self, config = None, references = None):
+        """
+        Creates a new instance of credentials resolver.
+
+        :param config: (optional) component configuration parameters
+
+        :param references: (optional) component references
+        """
         self._credentials = []
         if config != None:
             self.configure(config)
@@ -29,18 +69,41 @@ class CredentialResolver(IConfigurable, IReferenceable):
             self.set_references(references)
 
     def set_references(self, references):
+        """
+        Sets references to dependent components.
+
+        :param references: references to locate the component dependencies.
+        """
         self._references = references
 
     def configure(self, config):
+        """
+        Configures component by passing configuration parameters.
+
+        :param config: configuration parameters to be set.
+        """
         credentials = CredentialParams.many_from_config(config)
         for credential in credentials:
             self._credentials.append(credential)
 
     def get_all(self):
+        """
+        Gets all credentials configured in component configuration.
+
+        Redirect to CredentialStores is not done at this point.
+        If you need fully fleshed credential use [[lookup]] method instead.
+
+        :return: a list with credential parameters
+        """
         return list(self._credentials)
 
     def add(self, connection):
-        self._credentials.append(connection);
+        """
+        Adds a new credential to component credentials
+
+        :param connection: new credential parameters to be added
+        """
+        self._credentials.append(connection)
 
     def _lookup_in_stores(self, correlation_id, credential):
         if credential.use_credential_store() == False: return None
@@ -63,6 +126,14 @@ class CredentialResolver(IConfigurable, IReferenceable):
         return None
 
     def lookup(self, correlation_id):
+        """
+        Looks up component credential parameters. If credentials are configured to be retrieved
+        from Credential store it finds a [[ICredentialStore]] and lookups credentials there.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :return: resolved credential parameters or None if nothing was found.
+        """
         if len(self._credentials) == 0: return None
         
         # Return connection that doesn't require discovery

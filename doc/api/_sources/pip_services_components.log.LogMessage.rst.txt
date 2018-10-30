@@ -1,0 +1,7 @@
+pip\_services\_components.log.LogMessage module
+===============================================
+
+.. automodule:: pip_services_components.log.LogMessage
+    :members:
+    :undoc-members:
+    :show-inheritance:

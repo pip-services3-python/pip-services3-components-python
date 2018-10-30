@@ -5,7 +5,7 @@
     
     Factory implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -22,9 +22,26 @@ class Registration:
 
 
 class Factory(IFactory):
+    """
+    Basic component factory that creates components using registered types and factory functions.
+
+    Example:
+        factory = Factory()
+
+        factory.registerAsType(Descriptor("mygroup", "mycomponent1", "default", "*", "1.0"), MyComponent1)
+
+        factory.create(Descriptor("mygroup", "mycomponent1", "default", "name1", "1.0"))
+    """
     _registrations = []
 
     def register(self, locator, factory):
+        """
+        Registers a component using a factory method.
+
+        :param locator: a locator to identify component to be created.
+
+        :param factory: a factory function that receives a locator and returns a created component.
+        """
         if locator == None:
             raise Exception("Locator cannot be null")
         if factory == None:
@@ -33,6 +50,13 @@ class Factory(IFactory):
         self._registrations.append(Registration(locator, factory))
 
     def register_as_type(self, locator, object_factory):
+        """
+        Registers a component using its type (a constructor function).
+
+        :param locator: a locator to identify component to be created.
+
+        :param object_factory: a component type.
+        """
         if locator == None:
             raise Exception("Locator cannot be null")
         if object_factory == None:
@@ -44,6 +68,17 @@ class Factory(IFactory):
         self._registrations.append(Registration(locator, factory))
 
     def can_create(self, locator):
+        """
+        Checks if this factory is able to create component by given locator.
+
+        This method searches for all registered components and returns
+        a locator for component it is able to create that matches the given locator.
+        If the factory is not able to create a requested component is returns null.
+
+        :param locator: a locator to identify component to be created.
+
+        :return: a locator for a component that the factory is able to create.
+        """
         for registration in self._registrations:
             this_locator = registration.locator
             if this_locator == locator:
@@ -51,6 +86,13 @@ class Factory(IFactory):
         return None
 
     def create(self, locator):
+        """
+        Creates a component identified by given locator.
+
+        :param locator: a locator to identify component to be created.
+
+        :return: the created component.
+        """
         for registration in self._registrations:
             this_locator = registration.locator
 

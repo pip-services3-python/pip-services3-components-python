@@ -3,9 +3,10 @@
     pip_services_commons.cache.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    Cache module initialization
+    Abstract implementation of various distributed caches. We can save an object
+    to cache and retrieve it object by its key, using various implementations.
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 

@@ -5,7 +5,7 @@
     
     JSON config reader implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -18,11 +18,44 @@ from pip_services_commons.config.ConfigParams import ConfigParams
 from .FileConfigReader import FileConfigReader
 
 class JsonConfigReader(FileConfigReader):
-    
+    """
+    Config reader that reads configuration from JSON file.
+
+    The reader supports parameterization using Handlebar template engine.
+
+    ### Configuration parameters ###
+
+        - path:          path to configuration file
+        - parameters:    this entire section is used as template parameters
+        - ...
+
+    Example:
+        ======== config.json ======
+        { "key1": "{{KEY1_VALUE}}", "key2": "{{KEY2_VALUE}}" }
+        ===========================
+
+        configReader = JsonConfigReader("config.json")
+        parameters = ConfigParams.from_tuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC")
+        configReader.read_config("123", parameters)
+    """
     def __init__(self, path):
+        """
+        Creates a new instance of the config reader.
+
+        :param path: (optional) a path to configuration file.
+        """
         super(JsonConfigReader, self).__init__(path)
 
     def _read_object(self, correlation_id, parameters):
+        """
+        Reads configuration file, parameterizes its content and converts it into JSON object.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param parameters: values to parameters the configuration.
+
+        :return: a JSON object with configuration.
+        """
         path = self.get_path()
         if path == None:
             raise ConfigException(correlation_id, "NO_PATH", "Missing config file path")
@@ -42,15 +75,46 @@ class JsonConfigReader(FileConfigReader):
                 "Failed reading configuration " + path + ": " + str(ex)
             ).with_details("path", path).with_cause(ex)
 
-    def read_config(correlation_id, parameters):
+    def read_config(self, correlation_id, parameters):
+        """
+        Reads configuration and parameterize it with given values.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param parameters: values to parameters the configuration or null to skip parameterization.
+
+        :return: ConfigParams configuration.
+        """
         value = self._read_object(correlation_id, parameters)
         return ConfigParams.from_value(value)
 
     @staticmethod
     def read_object(correlation_id, path, parameters):
+        """
+        Reads configuration file, parameterizes its content and converts it into JSON object.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param path: a path to configuration file.
+
+        :param parameters: values to parameters the configuration.
+
+        :return: a JSON object with configuration.
+        """
         return JsonConfigReader(path)._read_object(correlation_id, parameters)
 
     @staticmethod
-    def read_config(correlation_id, path, parameters):
+    def _read_config(correlation_id, path, parameters):
+        """
+        Reads configuration from a file, parameterize it with given values and returns a new ConfigParams object.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param path: a path to configuration file.
+
+        :param parameters: values to parameters the configuration.
+
+        :return: ConfigParams configuration.
+        """
         value = JsonConfigReader(path)._read_object(correlation_id, parameters)
         return ConfigParams.from_value(value)

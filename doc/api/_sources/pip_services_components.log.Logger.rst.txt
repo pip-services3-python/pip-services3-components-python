@@ -1,0 +1,7 @@
+pip\_services\_components.log.Logger module
+===========================================
+
+.. automodule:: pip_services_components.log.Logger
+    :members:
+    :undoc-members:
+    :show-inheritance:

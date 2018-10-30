@@ -1,0 +1,7 @@
+pip\_services\_components.count.ICounters module
+================================================
+
+.. automodule:: pip_services_components.count.ICounters
+    :members:
+    :undoc-members:
+    :show-inheritance:

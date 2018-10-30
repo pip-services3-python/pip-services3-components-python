@@ -5,7 +5,7 @@
     
     Cache entry implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -13,21 +13,21 @@ import time
 
 class CacheEntry(object):
     """
-    Holds cached value for in-memory cache.
+    Data object to store cached values with their keys used by [[MemoryCache]]
     """
-
     expiration = None
     key = None
     value = None
 
     def __init__(self, key, value, timeout):
         """
-        Creates instance of the cache entry.
-        
-        Args:
-            key: the unique key used to identify and locate the value.
-            value: the cached value.
-            timeout: time to live for the object in milliseconds
+        Creates a new instance of the cache entry and assigns its values.
+
+        :param key: a unique key to locate the value.
+
+        :param value: a value to be stored.
+
+        :param timeout: expiration timeout in milliseconds.
         """
         self.key = key
         self.value = value
@@ -35,21 +35,19 @@ class CacheEntry(object):
 
     def set_value(self, value, timeout):
         """
-        Changes the cached value and updates creation time.
-        
-        Args:
-            value: the new cached value.
-            timeout: time to live for the object in milliseconds
+        Sets a new value and extends its expiration.
 
-        Returns: None
+        :param value: a new cached value.
+
+        :param timeout: a expiration timeout in milliseconds.
         """
         self.value = value
         self.expiration = time.clock() * 1000 + timeout
 
     def is_expired(self):
         """
-        Checks if the object expired
+        Checks if this value already expired.
 
-        Returns: True if object expired
+        :return: true if the value already expires and false otherwise.
         """
         return self.expiration < time.clock() * 1000

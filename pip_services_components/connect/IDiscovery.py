@@ -5,7 +5,7 @@
     
     Discovery service interface
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -13,41 +13,41 @@ from .ConnectionParams import ConnectionParams
 
 class IDiscovery:
     """
-    Service discovery component used to register connections of the services
-    or to resolve connections to external services called by clients.
+    Interface for discovery services which are used to store and resolve connection parameters
+    to connect to external services.
     """
-
     def register(self, correlation_id, key, connection):
         """
-        Registers connection where API service binds to.
+        Registers connection parameters into the discovery service.
 
-        Args:
-            correlation_id: a unique transaction id to trace calls across components
-            key: a key to identify the connection
-            connection: the connection to be registered.
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param key: a key to uniquely identify the connection parameters.
+
+        :param connection: a connection to be registered.
         """
         raise NotImplementedError('Method from interface definition')
 
     def resolve_one(self, correlation_id, key):
         """
-        Resolves one connection from the list of service connections.
-        
-        Args:
-            correlation_id: a unique transaction id to trace calls across components
-            key: a key locate a connection
+        Resolves a single connection parameters by its key.
 
-        Returns: a resolved connection.
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param key: a key to uniquely identify the connection.
+
+        :return: a resolved connection.
         """
         raise NotImplementedError('Method from interface definition')
 
     def resolve_all(self, correlation_id, key):
         """
-        Resolves a list of connections from to be called by a client.
+        Resolves all connection parameters by their key.
 
-        Args:
-            correlation_id: a unique transaction id to trace calls across components
-            key: a key locate connections
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
 
-        Returns: a list with resolved connections.
+        :param key: a key to uniquely identify the connections.
+
+        :return: a list with resolved connections.
         """
         raise NotImplementedError('Method from interface definition')

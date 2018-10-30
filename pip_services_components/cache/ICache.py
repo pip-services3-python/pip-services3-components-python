@@ -5,51 +5,50 @@
     
     Interface for caching components.
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
 class ICache:
     """
-    Transient cache which is used to bypass persistence to increase overall system performance.
+    Interface for caches that are used to cache values to improve performance.
     """
 
     def retrieve(self, correlation_id, key):
         """
-        Retrieves a value from the cache by unique key.
-        It is recommended to use either string GUIDs like '123456789abc'
-        or unique natural keys prefixed with the functional group
-        like 'pip-services-storage:block-123'.
+        Retrieves cached value from the cache using its key.
+        If value is missing in the cache or expired it returns None.
 
-        Args:
-            correlation_id: a unique transaction id to trace calls across components
-            key: a unique key to locate value in the cache.
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
 
-        Returns: a cached value or None if value wasn't found or timeout expired.
+        :param key: a unique value key.
+
+        :return: a cached value or None if value wasn't found or timeout expired.
         """
         raise NotImplementedError('Method from interface definition')
 
     def store(self, correlation_id, key, value, timeout):
         """
-        Stores value identified by unique key in the cache.
-        Stale timeout is configured in the component options.
+        Stores value in the cache with expiration time.
 
-        Args:
-            correlation_id: a unique transaction id to trace calls across components
-            key: a unique key to locate value in the cache.
-            value: a value to store.
-            timeout: time for value to live in milliseconds
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
 
-        Returns: a cached value stored in the cache.
+        :param key: a unique value key.
+
+        :param value: a value to store.
+
+        :param timeout: expiration timeout in milliseconds.
+
+        :return: a cached value stored in the cache.
         """
         raise NotImplementedError('Method from interface definition')
 
     def remove(self, correlation_id, key):
         """
-        Removes value stored in the cache.
+        Removes a value from the cache by its key.
 
-        Args:
-            correlation_id: a unique transaction id to trace calls across components
-            key: a unique key to locate value in the cache.
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param key: a unique value key.
         """
         raise NotImplementedError('Method from interface definition')

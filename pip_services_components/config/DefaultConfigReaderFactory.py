@@ -5,7 +5,7 @@
     
     Default discovery factory implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
@@ -33,8 +33,13 @@ YamlConfigReaderDescriptor = Descriptor(
 )
 
 class DefaultConfigReaderFactory(Factory):
-
+    """
+    Creates [[IConfigReader]] components by their descriptors.
+    """
     def __init__(self):
+        """
+        Create a new instance of the factory.
+        """
         self.register_as_type(MemoryConfigReaderDescriptor, MemoryConfigReader)
         self.register_as_type(JsonConfigReaderDescriptor, JsonConfigReader)
         self.register_as_type(YamlConfigReaderDescriptor, YamlConfigReader)

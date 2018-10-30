@@ -4,9 +4,9 @@ init:
 clean:
 	rm -rf .cache
 	rm -rf build
-	rm -rf pip_services_commonds.egg-info
-	rm -f pip_services_commons/*.pyc
-	rm -f pip_services_commons/**/*.pyc
+	rm -rf pip_services_components.egg-info
+	rm -f pip_services_components/*.pyc
+	rm -f pip_services_components/**/*.pyc
 	rm -rf test/__pycache__
 	rm -rf test/**/__pycache__
 	
@@ -19,7 +19,7 @@ test:
 
 docgen:
 	rm -rf build/doc
-	sphinx-apidoc -f -e -o build/doc pip_services_commons
+	sphinx-apidoc -f -e -o build/doc pip_services_components
 	mv build/doc/modules.rst build/doc/index.rst
 	rm -rf doc/api
 	sphinx-build -b html build/doc doc/api -c .
