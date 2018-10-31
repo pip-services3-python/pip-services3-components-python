@@ -46,7 +46,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.</td>
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT, see LICENSE for more details.</td>
 </tr>
@@ -56,6 +56,31 @@
 <dt id="pip_services_components.log.CompositeLogger.CompositeLogger">
 <em class="property">class </em><code class="descclassname">pip_services_components.log.CompositeLogger.</code><code class="descname">CompositeLogger</code><span class="sig-paren">(</span><em>references=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.CompositeLogger.CompositeLogger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services_components.log.Logger.html#pip_services_components.log.Logger.Logger" title="pip_services_components.log.Logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services_components.log.Logger.Logger</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services_commons.refer.IReferenceable.IReferenceable</span></code></p>
+<p>Aggregates all loggers from component references under a single component.</p>
+<p>It allows to log messages and conveniently send them to multiple destinations.</p>
+<dl class="docutils">
+<dt>### References ###</dt>
+<dd><ul class="first last simple">
+<li><em>:logger:</em>:<a href="#id1"><span class="problematic" id="id2">*</span></a>:1.0      (optional) [[ILogger]] components to pass log messages</li>
+</ul>
+</dd>
+<dt>Example:</dt>
+<dd><dl class="first last docutils">
+<dt>class MyComponent(IConfigurable, IReferenceable):</dt>
+<dd><p class="first">_logger = CompositeLogger()</p>
+<dl class="docutils">
+<dt>def configure(self, config):</dt>
+<dd>self._logger.configure(config)</dd>
+<dt>def set_references(self, references):</dt>
+<dd>self._logger.set_references(references)</dd>
+<dt>def my_method(self, correlation_id):</dt>
+<dd>self._logger.debug(correlationId, “Called method mycomponent.mymethod”)</dd>
+</dl>
+<p class="last">…</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="pip_services_components.log.CompositeLogger.CompositeLogger.set_references">
 <code class="descname">set_references</code><span class="sig-paren">(</span><em>references</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.CompositeLogger.CompositeLogger.set_references" title="Permalink to this definition">¶</a></dt>

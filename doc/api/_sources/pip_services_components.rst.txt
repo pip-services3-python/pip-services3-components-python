@@ -12,6 +12,7 @@ Subpackages
     pip_services_components.config
     pip_services_components.connect
     pip_services_components.count
+    pip_services_components.info
     pip_services_components.log
 
 Submodules

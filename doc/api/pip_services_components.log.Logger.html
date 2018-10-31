@@ -46,7 +46,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.</td>
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT, see LICENSE for more details.</td>
 </tr>
@@ -56,10 +56,26 @@
 <dt id="pip_services_components.log.Logger.Logger">
 <em class="property">class </em><code class="descclassname">pip_services_components.log.Logger.</code><code class="descname">Logger</code><a class="headerlink" href="#pip_services_components.log.Logger.Logger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services_components.log.ILogger.html#pip_services_components.log.ILogger.ILogger" title="pip_services_components.log.ILogger.ILogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services_components.log.ILogger.ILogger</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services_commons.config.IReconfigurable.IReconfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services_commons.refer.IReferenceable.IReferenceable</span></code></p>
+<p>Abstract logger that captures and formats log messages.
+Child classes take the captured messages and write them to their specific destinations.</p>
+<p>### Configuration parameters ###</p>
+<dl class="docutils">
+<dt>Parameters to pass to the [[configure]] method for component configuration:</dt>
+<dd><ul class="first last simple">
+<li>level:             maximum log level to capture</li>
+<li>source:            source (context) name</li>
+</ul>
+</dd>
+<dt>### References ###</dt>
+<dd><ul class="first last simple">
+<li><em>:context-info:</em>:<a href="#id1"><span class="problematic" id="id2">*</span></a>:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source</li>
+</ul>
+</dd>
+</dl>
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.configure">
 <code class="descname">configure</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.configure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configures object by passing configuration parameters.</p>
+<dd><p>Configures component by passing configuration parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -73,93 +89,133 @@
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.debug">
 <code class="descname">debug</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.debug" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs high-level debugging messages</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>correlation_id: a unique id to identify distributed transaction
-message: a message objects
-args: a list of positional arguments
-kwargs: a list of named arguments</dd>
-</dl>
-<p>Returns: None</p>
+<dd><p>Logs a high-level debug information for troubleshooting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>message</strong> – a human-readable message to log.</li>
+<li><strong>args</strong> – arguments to parameterize the message.</li>
+<li><strong>kwargs</strong> – arguments to parameterize the message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.error">
 <code class="descname">error</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>error</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.error" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs recoverable error</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>correlation_id: a unique id to identify distributed transaction
-error: error object
-message: a message objects
-args: a list of positional arguments
-kwargs: a list of named arguments</dd>
-</dl>
-<p>Returns: None</p>
+<dd><p>Logs recoverable application error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>error</strong> – an error object associated with this message.</li>
+<li><strong>message</strong> – a human-readable message to log.</li>
+<li><strong>args</strong> – arguments to parameterize the message.</li>
+<li><strong>kwargs</strong> – arguments to parameterize the message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.fatal">
 <code class="descname">fatal</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>error</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.fatal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs fatal error that causes microservice to shutdown</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>correlation_id: a unique id to identify distributed transaction
-error: error object
-message: a message objects
-args: a list of positional arguments
-kwargs: a list of named arguments</dd>
-</dl>
-<p>Returns: None</p>
+<dd><p>Logs fatal (unrecoverable) message that caused the process to crash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>error</strong> – an error object associated with this message.</li>
+<li><strong>message</strong> – a human-readable message to log.</li>
+<li><strong>args</strong> – arguments to parameterize the message.</li>
+<li><strong>kwargs</strong> – arguments to parameterize the message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.get_level">
 <code class="descname">get_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.get_level" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the current level of details</p>
-<p>Returns: the current log level</p>
+<dd><p>Gets the maximum log level. Messages with higher log level are filtered out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the maximum log level.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.info">
 <code class="descname">info</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs important information message</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>correlation_id: a unique id to identify distributed transaction
-message: a message objects
-args: a list of positional arguments
-kwargs: a list of named arguments</dd>
-</dl>
-<p>Returns: None</p>
+<dd><p>Logs an important information message</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>message</strong> – a human-readable message to log.</li>
+<li><strong>args</strong> – arguments to parameterize the message.</li>
+<li><strong>kwargs</strong> – arguments to parameterize the message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.log">
 <code class="descname">log</code><span class="sig-paren">(</span><em>level</em>, <em>correlation_id</em>, <em>error</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.log" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes message to log</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>level: a message logging level
-correlation_id: a unique id to identify distributed transaction
-error: error object
-message: a message objects
-args: a list of positional arguments
-kwargs: a list of named arguments</dd>
-</dl>
-<p>Returns: None</p>
+<dd><p>Logs a message at specified log level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>level</strong> – a log level.</li>
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>error</strong> – an error object associated with this message.</li>
+<li><strong>message</strong> – a human-readable message to log.</li>
+<li><strong>args</strong> – arguments to parameterize the message.</li>
+<li><strong>kwargs</strong> – arguments to parameterize the message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.set_level">
 <code class="descname">set_level</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.set_level" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the current level of details</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>level: new logging level</dd>
-</dl>
-<p>Returns: None</p>
+<dd><p>Set the maximum log level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>level</strong> – a new maximum log level.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -179,29 +235,41 @@ kwargs: a list of named arguments</dd>
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.trace">
 <code class="descname">trace</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.trace" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs fine-granular debugging message</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>correlation_id: a unique id to identify distributed transaction
-message: a message objects
-args: a list of positional arguments
-kwargs: a list of named arguments</dd>
-</dl>
-<p>Returns: None</p>
+<dd><p>Logs a low-level debug information for troubleshooting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>message</strong> – a human-readable message to log.</li>
+<li><strong>args</strong> – arguments to parameterize the message.</li>
+<li><strong>kwargs</strong> – arguments to parameterize the message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pip_services_components.log.Logger.Logger.warn">
 <code class="descname">warn</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>message</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.Logger.Logger.warn" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs warning messages</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>correlation_id: a unique id to identify distributed transaction
-message: a message objects
-args: a list of positional arguments
-kwargs: a list of named arguments</dd>
-</dl>
-<p>Returns: None</p>
+<dd><p>Logs a warning that may or may not have a negative impact.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>message</strong> – a human-readable message to log.</li>
+<li><strong>args</strong> – arguments to parameterize the message.</li>
+<li><strong>kwargs</strong> – arguments to parameterize the message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

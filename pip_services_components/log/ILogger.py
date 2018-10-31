@@ -5,133 +5,134 @@
     
     Interface for logging components.
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
 class ILogger:
     """
-    Logger that logs messages from other microservice components.
+    Interface for logger components that capture execution log messages.
     """
 
     def get_level(self):
         """
-        Get the current level of details
+        Gets the maximum log level. Messages with higher log level are filtered out.
 
-        Returns: the current log level
+        :return: the maximum log level.
         """
         raise NotImplementedError('Method from interface definition')
 
     def set_level(self, level):
         """
-        Set the current level of details
+        Set the maximum log level.
 
-        Args:
-            level: new logging level
-
-        Returns: None
+        :param level: a new maximum log level.
         """
         raise NotImplementedError('Method from interface definition')
 
     def log(self, level, correlation_id, error, message, *args, **kwargs):
         """
-        Writes message to log
+        Logs a message at specified log level.
 
-        Args:
-            level: a message logging level
-            correlation_id: a unique id to identify distributed transaction
-            error: error object
-            message: a message objects
-            args: a list of positional arguments
-            kwargs: a list of named arguments
+        :param level: a log level.
 
-        Returns: None
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param error: an error object associated with this message.
+
+        :param message: a human-readable message to log.
+
+        :param args: arguments to parameterize the message.
+
+        :param kwargs: arguments to parameterize the message.
         """
         raise NotImplementedError('Method from interface definition')
 
     def fatal(self, correlation_id, error, message, *args, **kwargs):
         """
-        Logs fatal error that causes microservice to shutdown
-        
-        Args:
-            correlation_id: a unique id to identify distributed transaction
-            error: error object
-            message: a message objects
-            args: a list of positional arguments
-            kwargs: a list of named arguments
+        Logs fatal (unrecoverable) message that caused the process to crash.
 
-        Returns: None
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param error: an error object associated with this message.
+
+        :param message: a human-readable message to log.
+
+        :param args: arguments to parameterize the message.
+
+        :param kwargs: arguments to parameterize the message.
         """
         raise NotImplementedError('Method from interface definition')
 
     def error(self, correlation_id, error, message, *args, **kwargs):
         """
-        Logs recoverable error
-        
-        Args:
-            correlation_id: a unique id to identify distributed transaction
-            error: error object
-            message: a message objects
-            args: a list of positional arguments
-            kwargs: a list of named arguments
+        Logs recoverable application error.
 
-        Returns: None
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param error: an error object associated with this message.
+
+        :param message: a human-readable message to log.
+
+        :param args: arguments to parameterize the message.
+
+        :param kwargs: arguments to parameterize the message.
         """
         raise NotImplementedError('Method from interface definition')
 
     def warn(self, correlation_id, message, *args, **kwargs):
         """
-        Logs warning messages
+        Logs a warning that may or may not have a negative impact.
 
-        Args:
-            correlation_id: a unique id to identify distributed transaction
-            message: a message objects
-            args: a list of positional arguments
-            kwargs: a list of named arguments
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
 
-        Returns: None
+        :param message: a human-readable message to log.
+
+        :param args: arguments to parameterize the message.
+
+        :param kwargs: arguments to parameterize the message.
         """
         raise NotImplementedError('Method from interface definition')
 
     def info(self, correlation_id, message, *args, **kwargs):
         """
-        Logs important information message
-        
-        Args:
-            correlation_id: a unique id to identify distributed transaction
-            message: a message objects
-            args: a list of positional arguments
-            kwargs: a list of named arguments
+        Logs an important information message
 
-        Returns: None
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param message: a human-readable message to log.
+
+        :param args: arguments to parameterize the message.
+
+        :param kwargs: arguments to parameterize the message.
         """
         raise NotImplementedError('Method from interface definition')
 
     def debug(self, correlation_id, message, *args, **kwargs):
         """
-        Logs high-level debugging messages
-        
-        Args:
-            correlation_id: a unique id to identify distributed transaction
-            message: a message objects
-            args: a list of positional arguments
-            kwargs: a list of named arguments
+        Logs a high-level debug information for troubleshooting.
 
-        Returns: None
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param message: a human-readable message to log.
+
+        :param args: arguments to parameterize the message.
+
+        :param kwargs: arguments to parameterize the message.
         """
         raise NotImplementedError('Method from interface definition')
 
     def trace(self, correlation_id, message, *args, **kwargs):
         """
-        Logs fine-granular debugging message
-        
-        Args:
-            correlation_id: a unique id to identify distributed transaction
-            message: a message objects
-            args: a list of positional arguments
-            kwargs: a list of named arguments
+        Logs a low-level debug information for troubleshooting.
 
-        Returns: None
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+
+        :param message: a human-readable message to log.
+
+        :param args: arguments to parameterize the message.
+
+        :param kwargs: arguments to parameterize the message.
         """
         raise NotImplementedError('Method from interface definition')
 

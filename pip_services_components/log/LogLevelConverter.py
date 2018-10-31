@@ -5,23 +5,24 @@
     
     Log level converter implementation
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
 from .LogLevel import LogLevel
 
 class LogLevelConverter(object):
-    
+    """
+    Helper class to convert log level values.
+    """
     @staticmethod
     def to_log_level(value):
         """
-        Converts object to log level
+        Converts numbers and strings to standard log level values.
 
-        Args:
-            value: an object to be converted
+        :param value: a value to be converted
 
-        Returns: log level
+        :return: converted log level
         """
         if value == None:
             return LogLevel.Info
@@ -47,12 +48,11 @@ class LogLevelConverter(object):
     @staticmethod
     def to_string(level):
         """
-        Converts log level into string representation
+        Converts log level to a string.
 
-        Args:
-            level: level to be converted
+        :param level: a log level to convert
 
-        Returns: a string representation of the log level
+        :return: log level name string.
         """
         if level == LogLevel.Fatal:
             return "FATAL" 
@@ -71,12 +71,11 @@ class LogLevelConverter(object):
     @staticmethod
     def to_integer(level):
         """
-        Converts log level into integer representation
+        Converts log level to a number.
 
-        Args:
-            level: level to be converted
+        :param level: a log level to convert.
 
-        Returns: an integer representation of the log level
+        :return: log level number value.
         """
         if level == LogLevel.Fatal:
             return 1 

@@ -46,7 +46,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.</td>
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT, see LICENSE for more details.</td>
 </tr>
@@ -56,15 +56,41 @@
 <dt id="pip_services_components.log.CachedLogger.CachedLogger">
 <em class="property">class </em><code class="descclassname">pip_services_components.log.CachedLogger.</code><code class="descname">CachedLogger</code><a class="headerlink" href="#pip_services_components.log.CachedLogger.CachedLogger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services_components.log.Logger.html#pip_services_components.log.Logger.Logger" title="pip_services_components.log.Logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services_components.log.Logger.Logger</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services_commons.config.IReconfigurable.IReconfigurable</span></code></p>
+<p>Abstract logger that caches captured log messages in memory and periodically dumps them.
+Child classes implement saving cached messages to their specified destinations.</p>
+<p>### Configuration parameters ###</p>
+<blockquote>
+<div><ul class="simple">
+<li>level:             maximum log level to capture</li>
+<li>source:            source (context) name</li>
+<li><dl class="first docutils">
+<dt>options:</dt>
+<dd><ul class="first last">
+<li>interval:        interval in milliseconds to save log messages (default: 10 seconds)</li>
+<li>max_cache_size:  maximum number of messages stored in this cache (default: 100)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>### References ###</dt>
+<dd><ul class="first last simple">
+<li><em>:context-info:</em>:<a href="#id1"><span class="problematic" id="id2">*</span></a>:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source</li>
+</ul>
+</dd>
+</dl>
 <dl class="method">
 <dt id="pip_services_components.log.CachedLogger.CachedLogger.clear">
 <code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.CachedLogger.CachedLogger.clear" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Clears (removes) all cached log messages.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="pip_services_components.log.CachedLogger.CachedLogger.configure">
 <code class="descname">configure</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.CachedLogger.CachedLogger.configure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configures object by passing configuration parameters.</p>
+<dd><p>Configures component by passing configuration parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -78,7 +104,8 @@
 <dl class="method">
 <dt id="pip_services_components.log.CachedLogger.CachedLogger.dump">
 <code class="descname">dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services_components.log.CachedLogger.CachedLogger.dump" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Dumps (writes) the currently cached log messages.</p>
+</dd></dl>
 
 </dd></dl>
 

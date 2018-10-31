@@ -5,13 +5,16 @@
     
     Log level enumeration
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
 class LogLevel(object):
     """
-    Logging levels to determine details of logged messages
+    Standard log levels.
+
+    Logs at debug and trace levels are usually captured only locally for troubleshooting
+    and never sent to consolidated log services.
     """
 
     Nothing = 0

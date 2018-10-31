@@ -3,9 +3,11 @@
     pip_services_commons.log.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    Logging module initialization
+    Logger implementations. There exist many different loggers, but all of them are implemented
+    differently in various languages. We needed portable classes, that would allow to quickly
+    transfer code from one language to another. We can wrap existing loggers into/around our ILogger class.
     
-    :copyright: Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
+    :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
 
