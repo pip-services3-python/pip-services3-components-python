@@ -1,4 +1,19 @@
-# Basic portable abstractions for Pip.Services in Python Changelog
+# Component definitions for Pip.Services in Python Changelog
+
+## <a name="3.0.0"></a> 3.0.0 (2018-10-30)
+
+### New release
+* Restructuring package
+
+### Features
+- **Auth** - authentication credential stores
+- **Build** - component factories framework
+- **Cache** - distributed cache
+- **Config** - configuration framework
+- **Connect** - connection discovery services
+- **Count** - performance counters components
+- **Info** - context info
+- **Log** - logging components
 
 ## <a name="2.4.0"></a> 2.4.0 (2017-04-20)
 

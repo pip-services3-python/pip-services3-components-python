@@ -8,7 +8,7 @@ pip_services_components package provides basic abstractions portable across vari
 Links
 `````
 
-* `website <http://github.com/pip-services-python/pip-services-components-python>`
+* `website <http://github.com/pip-services/pip-services>`
 * `development version <http://github.com/pip-services-python/pip-services-components-python>`
 
 """
@@ -21,7 +21,7 @@ setup(
     version='3.0.0',
     url='http://github.com/pip-services-python/pip-services-components-python',
     license='MIT',
-    description='Basic portable abstractions for Pip.Services in Python',
+    description='Component definitions for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',
     author_email='seroukhov@gmail.com',
     long_description=__doc__,

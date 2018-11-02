@@ -1,4 +1,4 @@
-# <img src="https://github.com/pip-services/pip-services/raw/master/design/Logo.png" alt="Pip.Services Logo" style="max-width:30%"> <br/> Basic portable abstractions for Python
+# <img src="https://github.com/pip-services/pip-services/raw/master/design/Logo.png" alt="Pip.Services Logo" style="max-width:30%"> <br/> Component definitions for Python
 
 This framework is a part of [Pip.Services](https://github.com/pip-services/pip-services) project.
 It provides basic building blocks that can be used to implement non-trivial business logic in applications and services.
@@ -9,25 +9,21 @@ over most fundamental functions and delivers symmetric implementation that can b
 
 All functionality is decomposed into several packages:
 
+- **Auth** - authentication credential stores
 - **Build** - component factories framework
-- **Commands** - Commanding and Eventing patterns
+- **Cache** - distributed cache
 - **Config** - configuration framework
-- **Convert** - portable soft value converters
+- **Connect** - connection discovery services
 - **Count** - performance counters components
-- **Data** - data value objects and random value generators
-- **Errors** - portable application errors
+- **Info** - context info
 - **Log** - logging components
-- **Refer** - component referencing framework
-- **Reflect** - portable reflection helpers
-- **Run** - execution framework
-- **Validate** - data validators
 
 Quick Links:
 
-* [Downloads](https://github.com/pip-services/pip-services-commons-python/blob/master/doc/Downloads.md)
-* [API Reference](http://htmlpreview.github.io/?https://github.com/pip-services/pip-services-commons-python/blob/master/doc/api/index.html)
-* [Building and Testing](https://github.com/pip-services/pip-services-commons-python/blob/master/doc/Development.md)
-* [Contributing](https://github.com/pip-services/pip-services-commons-python/blob/master/doc/Development.md/#contrib)
+* [Downloads](https://github.com/pip-services-python/pip-services-components-python/blob/master/doc/Downloads.md)
+* [API Reference](http://htmlpreview.github.io/?https://github.com/pip-services-python/pip-services-components-python/blob/master/doc/api/index.html)
+* [Building and Testing](https://github.com/pip-services-python/pip-services-components-python/blob/master/doc/Development.md)
+* [Contributing](https://github.com/pip-services-python/pip-services-components-python/blob/master/doc/Development.md/#contrib)
 
 ## Acknowledgements
 
