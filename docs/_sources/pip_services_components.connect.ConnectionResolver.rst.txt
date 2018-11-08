@@ -1,0 +1,7 @@
+pip\_services\_components.connect.ConnectionResolver module
+===========================================================
+
+.. automodule:: pip_services_components.connect.ConnectionResolver
+    :members:
+    :undoc-members:
+    :show-inheritance:

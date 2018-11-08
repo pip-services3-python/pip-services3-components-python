@@ -1,0 +1,7 @@
+pip\_services\_components.log.NullLogger module
+===============================================
+
+.. automodule:: pip_services_components.log.NullLogger
+    :members:
+    :undoc-members:
+    :show-inheritance:

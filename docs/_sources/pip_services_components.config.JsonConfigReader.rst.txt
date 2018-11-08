@@ -1,0 +1,7 @@
+pip\_services\_components.config.JsonConfigReader module
+========================================================
+
+.. automodule:: pip_services_components.config.JsonConfigReader
+    :members:
+    :undoc-members:
+    :show-inheritance:

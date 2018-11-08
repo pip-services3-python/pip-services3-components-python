@@ -1,0 +1,7 @@
+pip\_services\_components.log.CachedLogger module
+=================================================
+
+.. automodule:: pip_services_components.log.CachedLogger
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,20 @@
+pip\_services\_components.build package
+=======================================
+
+Submodules
+----------
+
+.. toctree::
+
+   pip_services_components.build.CompositeFactory
+   pip_services_components.build.CreateException
+   pip_services_components.build.Factory
+   pip_services_components.build.IFactory
+
+Module contents
+---------------
+
+.. automodule:: pip_services_components.build
+    :members:
+    :undoc-members:
+    :show-inheritance:

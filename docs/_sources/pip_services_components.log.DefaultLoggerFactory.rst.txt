@@ -1,0 +1,7 @@
+pip\_services\_components.log.DefaultLoggerFactory module
+=========================================================
+
+.. automodule:: pip_services_components.log.DefaultLoggerFactory
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,7 @@
+pip\_services\_components.count.CachedCounters module
+=====================================================
+
+.. automodule:: pip_services_components.count.CachedCounters
+    :members:
+    :undoc-members:
+    :show-inheritance:

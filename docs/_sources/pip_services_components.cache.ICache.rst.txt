@@ -1,0 +1,7 @@
+pip\_services\_components.cache.ICache module
+=============================================
+
+.. automodule:: pip_services_components.cache.ICache
+    :members:
+    :undoc-members:
+    :show-inheritance:

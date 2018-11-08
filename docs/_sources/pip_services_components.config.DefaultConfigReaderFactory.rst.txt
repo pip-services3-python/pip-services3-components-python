@@ -1,0 +1,7 @@
+pip\_services\_components.config.DefaultConfigReaderFactory module
+==================================================================
+
+.. automodule:: pip_services_components.config.DefaultConfigReaderFactory
+    :members:
+    :undoc-members:
+    :show-inheritance:

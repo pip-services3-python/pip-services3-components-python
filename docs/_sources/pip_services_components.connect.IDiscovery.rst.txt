@@ -1,0 +1,7 @@
+pip\_services\_components.connect.IDiscovery module
+===================================================
+
+.. automodule:: pip_services_components.connect.IDiscovery
+    :members:
+    :undoc-members:
+    :show-inheritance:
