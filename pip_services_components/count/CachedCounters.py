@@ -46,7 +46,7 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
         """
         self._cache = {}
         self._updated = False
-        self._last_dump_time = time.clock()
+        self._last_dump_time = time.perf_counter()
         self._interval = self._default_interval
         self._lock = threading.Lock()
 
@@ -105,7 +105,7 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
             self._lock.acquire()
             try:
                 self._updated = False
-                current_time = time.clock() * 1000
+                current_time = time.perf_counter() * 1000
                 self._last_dump_time = current_time
             finally:
                 self._lock.release()
@@ -117,7 +117,7 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
         """
         self._updated = True
         
-        current_time = time.clock() * 1000
+        current_time = time.perf_counter() * 1000
         if current_time > self._last_dump_time + self._interval:
             try:
                 self.dump()

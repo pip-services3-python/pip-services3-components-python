@@ -37,7 +37,7 @@ class Timing:
 
         self._counter = counter
         self._callback = callback
-        self._start = time.clock() * 1000
+        self._start = time.perf_counter() * 1000
 
     def end_timing(self):
         """
@@ -45,5 +45,5 @@ class Timing:
         """
 
         if self._callback != None:
-            elapsed = time.clock() * 1000 - self._start
+            elapsed = time.perf_counter() * 1000 - self._start
             self._callback.end_timing(self._counter, elapsed)

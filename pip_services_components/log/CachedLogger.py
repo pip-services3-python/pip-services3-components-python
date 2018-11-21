@@ -48,7 +48,7 @@ class CachedLogger(Logger, IReconfigurable):
         """
         self._cache = []
         self._updated = False
-        self._last_dump_time = time.clock() * 1000
+        self._last_dump_time = time.perf_counter() * 1000
         self._lock = threading.Lock()
 
 
@@ -123,7 +123,7 @@ class CachedLogger(Logger, IReconfigurable):
                 self._save(messages)
 
                 self._updated = False
-                self._last_dump_time = time.clock() * 1000
+                self._last_dump_time = time.perf_counter() * 1000
             finally:
                 self._lock.release()
 
@@ -134,7 +134,7 @@ class CachedLogger(Logger, IReconfigurable):
         """
         self._updated = True
         
-        if time.clock() * 1000 > self._last_dump_time + self._interval:
+        if time.perf_counter() * 1000 > self._last_dump_time + self._interval:
             try:
                 self.dump()
             except:

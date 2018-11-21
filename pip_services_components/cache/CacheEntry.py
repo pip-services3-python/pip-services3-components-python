@@ -31,7 +31,7 @@ class CacheEntry(object):
         """
         self.key = key
         self.value = value
-        self.expiration = time.clock() * 1000 + timeout
+        self.expiration = time.perf_counter() * 1000 + timeout
 
     def set_value(self, value, timeout):
         """
@@ -42,7 +42,7 @@ class CacheEntry(object):
         :param timeout: a expiration timeout in milliseconds.
         """
         self.value = value
-        self.expiration = time.clock() * 1000 + timeout
+        self.expiration = time.perf_counter() * 1000 + timeout
 
     def is_expired(self):
         """
@@ -50,4 +50,4 @@ class CacheEntry(object):
 
         :return: true if the value already expires and false otherwise.
         """
-        return self.expiration < time.clock() * 1000
+        return self.expiration < time.perf_counter() * 1000
