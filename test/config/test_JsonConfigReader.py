@@ -8,6 +8,7 @@
 """
 
 import pytest
+import sys, os
 
 from pip_services_components.config import JsonConfigReader
 from pip_services_commons.config import ConfigParams
@@ -19,7 +20,7 @@ class TestJsonConfigReader:
             "param1", "Test Param 1",
             "param2", "Test Param 2"
         )
-        config = JsonConfigReader._read_config(None, "../../data/config.json", parameters)
+        config = JsonConfigReader._read_config(None, "./data/config.json", parameters)
         
         assert 9 == len(config)
         assert 123 == config.get_as_integer("field1.field11")
