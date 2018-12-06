@@ -9,7 +9,7 @@
 
 import pytest
 
-from pip_services_components.count import NullCounters
+from pip_services3_components.count import NullCounters
 
 class TestNullCounters:
 

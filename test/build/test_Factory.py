@@ -9,9 +9,9 @@
 
 import pytest
 
-from pip_services_components.log import DefaultLoggerFactory
-from pip_services_components.log import LogLevel
-from pip_services_commons.refer import Descriptor
+from pip_services3_components.log import DefaultLoggerFactory
+from pip_services3_components.log import LogLevel
+from pip_services3_commons.refer import Descriptor
 
 class TestFactory:
 

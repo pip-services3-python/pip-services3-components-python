@@ -9,7 +9,7 @@
 
 import pytest
 
-from pip_services_components.build import CompositeFactory
+from pip_services3_components.build import CompositeFactory
 
 class TestCompositeFactory:
 

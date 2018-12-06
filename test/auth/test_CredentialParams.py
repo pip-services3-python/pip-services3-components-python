@@ -9,7 +9,7 @@
 
 import pytest
 
-from pip_services_components.auth.CredentialParams import CredentialParams
+from pip_services3_components.auth.CredentialParams import CredentialParams
 
 class TestCredentialParams:
 

@@ -9,8 +9,8 @@
 
 import pytest
 
-from pip_services_components.connect import ConnectionParams
-from pip_services_components.auth import CredentialParams
+from pip_services3_components.connect import ConnectionParams
+from pip_services3_components.auth import CredentialParams
 
 class TestConnectionParams:
 

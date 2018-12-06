@@ -9,10 +9,10 @@
 
 import pytest
 
-from pip_services_commons.config import ConfigParams
-from pip_services_components.auth.CredentialParams import CredentialParams
-from pip_services_components.auth.CredentialResolver import CredentialResolver
-from pip_services_commons.refer import References
+from pip_services3_commons.config import ConfigParams
+from pip_services3_components.auth.CredentialParams import CredentialParams
+from pip_services3_components.auth.CredentialResolver import CredentialResolver
+from pip_services3_commons.refer import References
 
 RestConfig = ConfigParams.from_tuples(
     "credential.username", "Negrienko",

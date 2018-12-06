@@ -9,8 +9,8 @@
 
 import pytest
 
-from pip_services_components.log import LogLevel
-from pip_services_components.log import LogLevelConverter
+from pip_services3_components.log import LogLevel
+from pip_services3_components.log import LogLevelConverter
 
 class TestLogLevel:
 

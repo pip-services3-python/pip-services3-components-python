@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services_commons.connect.DefaultDiscoveryFactory
+    pip_services3_commons.connect.DefaultDiscoveryFactory
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Default discovery factory implementation
@@ -12,10 +12,10 @@
 import pytest
 import datetime
 
-from pip_services_commons.config import ConfigParams
+from pip_services3_commons.config import ConfigParams
 from pytz import timezone
 
-from pip_services_components.info.ContextInfo import ContextInfo
+from pip_services3_components.info.ContextInfo import ContextInfo
 
 class TestContextInfo:
     def test_name(self):

@@ -10,8 +10,8 @@
 import pytest
 import sys, os
 
-from pip_services_components.config import JsonConfigReader
-from pip_services_commons.config import ConfigParams
+from pip_services3_components.config import JsonConfigReader
+from pip_services3_commons.config import ConfigParams
 
 class TestJsonConfigReader:
 

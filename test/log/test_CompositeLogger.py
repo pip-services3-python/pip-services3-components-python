@@ -9,11 +9,11 @@
 
 import pytest
 
-from pip_services_components.log import ConsoleLogger
-from pip_services_components.log import NullLogger
-from pip_services_components.log import CompositeLogger
-from pip_services_commons.refer.Descriptor import Descriptor
-from pip_services_commons.refer.References import References
+from pip_services3_components.log import ConsoleLogger
+from pip_services3_components.log import NullLogger
+from pip_services3_components.log import CompositeLogger
+from pip_services3_commons.refer.Descriptor import Descriptor
+from pip_services3_commons.refer.References import References
 from .LoggerFixture import LoggerFixture
 
 class TestCompositeLogger:

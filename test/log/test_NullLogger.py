@@ -9,7 +9,7 @@
 
 import pytest
 
-from pip_services_components.log import NullLogger
+from pip_services3_components.log import NullLogger
 from .LoggerFixture import LoggerFixture
 
 class TestNullLogger:

@@ -3,7 +3,7 @@ Pip.Services Components
 --------------------
 
 Pip.Services is an open-source library of basic microservices.
-pip_services_components package provides basic abstractions portable across variety of languages.
+pip_services3_components package provides basic abstractions portable across variety of languages.
 
 Links
 `````
@@ -17,9 +17,9 @@ from setuptools import setup
 from setuptools import find_packages
 
 setup(
-    name='pip_services_components',
+    name='pip_services3_components',
     version='3.0.0',
-    url='http://github.com/pip-services-python/pip-services-components-python',
+    url='http://github.com/pip-services3-python/pip-services3-components-python',
     license='MIT',
     description='Component definitions for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',
@@ -30,7 +30,7 @@ setup(
     zip_safe=True,
     platforms='any',
     install_requires=[
-        'iso8601', 'PyYAML', 'pystache', 'pip_services_commons'
+        'iso8601', 'PyYAML', 'pystache', 'pip_services3_commons'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

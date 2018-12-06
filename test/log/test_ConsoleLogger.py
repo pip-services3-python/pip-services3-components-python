@@ -9,7 +9,7 @@
 
 import pytest
 
-from pip_services_components.log import ConsoleLogger
+from pip_services3_components.log import ConsoleLogger
 from .LoggerFixture import LoggerFixture
 
 class TestConsoleLogger:

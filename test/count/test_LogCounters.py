@@ -9,10 +9,10 @@
 
 import pytest
 
-from pip_services_commons.refer import Descriptor
-from pip_services_commons.refer import References
-from pip_services_components.log import ConsoleLogger
-from pip_services_components.count import LogCounters
+from pip_services3_commons.refer import Descriptor
+from pip_services3_commons.refer import References
+from pip_services3_components.log import ConsoleLogger
+from pip_services3_components.count import LogCounters
 from .CountersFixture import CountersFixture
 
 class TestLogCounters:

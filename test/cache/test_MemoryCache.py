@@ -9,8 +9,8 @@
 
 import pytest
 
-from pip_services_commons.config import ConfigParams
-from pip_services_components.cache import MemoryCache
+from pip_services3_commons.config import ConfigParams
+from pip_services3_components.cache import MemoryCache
 from .CacheFixture import CacheFixture
 
 class TestMemoryCache:
