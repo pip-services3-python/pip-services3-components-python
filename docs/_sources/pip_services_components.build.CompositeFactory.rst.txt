@@ -1,7 +1,0 @@
-pip\_services\_components.build.CompositeFactory module
-=======================================================
-
-.. automodule:: pip_services_components.build.CompositeFactory
-    :members:
-    :undoc-members:
-    :show-inheritance:

@@ -1,7 +1,0 @@
-pip\_services\_components.count.CounterType module
-==================================================
-
-.. automodule:: pip_services_components.count.CounterType
-    :members:
-    :undoc-members:
-    :show-inheritance:

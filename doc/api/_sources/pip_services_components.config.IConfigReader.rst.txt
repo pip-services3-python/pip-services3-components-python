@@ -1,7 +1,0 @@
-pip\_services\_components.config.IConfigReader module
-=====================================================
-
-.. automodule:: pip_services_components.config.IConfigReader
-    :members:
-    :undoc-members:
-    :show-inheritance:

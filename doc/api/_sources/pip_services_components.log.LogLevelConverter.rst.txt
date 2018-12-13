@@ -1,7 +1,0 @@
-pip\_services\_components.log.LogLevelConverter module
-======================================================
-
-.. automodule:: pip_services_components.log.LogLevelConverter
-    :members:
-    :undoc-members:
-    :show-inheritance:

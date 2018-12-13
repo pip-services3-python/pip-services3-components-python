@@ -1,7 +1,0 @@
-pip\_services\_components.cache.CacheEntry module
-=================================================
-
-.. automodule:: pip_services_components.cache.CacheEntry
-    :members:
-    :undoc-members:
-    :show-inheritance:

@@ -1,0 +1,7 @@
+pip\_services3\_components.Component module
+===========================================
+
+.. automodule:: pip_services3_components.Component
+    :members:
+    :undoc-members:
+    :show-inheritance:

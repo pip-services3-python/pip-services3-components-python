@@ -1,7 +1,0 @@
-pip\_services\_components.cache.DefaultCacheFactory module
-==========================================================
-
-.. automodule:: pip_services_components.cache.DefaultCacheFactory
-    :members:
-    :undoc-members:
-    :show-inheritance:

@@ -1,7 +1,0 @@
-pip\_services\_components.cache.MemoryCache module
-==================================================
-
-.. automodule:: pip_services_components.cache.MemoryCache
-    :members:
-    :undoc-members:
-    :show-inheritance:

@@ -1,7 +1,0 @@
-pip\_services\_components.count.DefaultCountersFactory module
-=============================================================
-
-.. automodule:: pip_services_components.count.DefaultCountersFactory
-    :members:
-    :undoc-members:
-    :show-inheritance:

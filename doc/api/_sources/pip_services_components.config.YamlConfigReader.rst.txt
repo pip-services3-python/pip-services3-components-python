@@ -1,7 +1,0 @@
-pip\_services\_components.config.YamlConfigReader module
-========================================================
-
-.. automodule:: pip_services_components.config.YamlConfigReader
-    :members:
-    :undoc-members:
-    :show-inheritance:

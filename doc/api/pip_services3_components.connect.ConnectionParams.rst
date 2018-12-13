@@ -1,0 +1,7 @@
+pip\_services3\_components.connect.ConnectionParams module
+==========================================================
+
+.. automodule:: pip_services3_components.connect.ConnectionParams
+    :members:
+    :undoc-members:
+    :show-inheritance:

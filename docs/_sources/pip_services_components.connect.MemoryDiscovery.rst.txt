@@ -1,7 +1,0 @@
-pip\_services\_components.connect.MemoryDiscovery module
-========================================================
-
-.. automodule:: pip_services_components.connect.MemoryDiscovery
-    :members:
-    :undoc-members:
-    :show-inheritance:

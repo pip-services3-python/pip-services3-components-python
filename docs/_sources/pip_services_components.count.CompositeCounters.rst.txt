@@ -1,7 +1,0 @@
-pip\_services\_components.count.CompositeCounters module
-========================================================
-
-.. automodule:: pip_services_components.count.CompositeCounters
-    :members:
-    :undoc-members:
-    :show-inheritance:
