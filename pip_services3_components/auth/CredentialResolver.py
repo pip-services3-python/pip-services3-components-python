@@ -19,7 +19,9 @@ from pip_services3_commons.errors.ApplicationException import ApplicationExcepti
 
 class CredentialResolver(IConfigurable, IReferenceable):
     """
-    Helper class to retrieve component credentials. If credentials are configured to be retrieved from [[ICredentialStore]], it automatically locates [[ICredentialStore]] in component references and retrieve credentials from there using store_key parameter.
+    Helper class to retrieve component credentials.
+
+    If credentials are configured to be retrieved from [[ICredentialStore]], it automatically locates [[ICredentialStore]] in component references and retrieve credentials from there using store_key parameter.
 
     ### Configuration parameters ###
 

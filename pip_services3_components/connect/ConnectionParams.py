@@ -16,6 +16,7 @@ from pip_services3_commons.data import StringValueMap
 class ConnectionParams(ConfigParams):
     """
     Contains connection parameters to connect to external services.
+
     They are used together with credential parameters, but usually stored
     separately from more protected sensitive values.
 

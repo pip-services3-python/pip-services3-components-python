@@ -123,8 +123,8 @@ heartbeats must be used – lots of problems and challenges. One service can hav
 <dt id="pip_services3_components.connect.ConnectionParams">
 <em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">ConnectionParams</code><span class="sig-paren">(</span><em>map=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.ConfigParams.ConfigParams</span></code></p>
-<p>Contains connection parameters to connect to external services.
-They are used together with credential parameters, but usually stored
+<p>Contains connection parameters to connect to external services.</p>
+<p>They are used together with credential parameters, but usually stored
 separately from more protected sensitive values.</p>
 <p>### Configuration parameters ###</p>
 <blockquote>
@@ -384,8 +384,7 @@ The connection parameters are redirected to [[DiscoveryService]] when discovery_
 <dt id="pip_services3_components.connect.IDiscovery">
 <em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">IDiscovery</code><a class="headerlink" href="#pip_services3_components.connect.IDiscovery" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Interface for discovery services which are used to store and resolve connection parameters
-to connect to external services.</p>
+<p>Interface for discovery services which are used to store and resolve connection parameters to connect to external services.</p>
 <dl class="method">
 <dt id="pip_services3_components.connect.IDiscovery.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em>, <em>connection</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.IDiscovery.register" title="Permalink to this definition">¶</a></dt>
@@ -453,8 +452,8 @@ to connect to external services.</p>
 <dt id="pip_services3_components.connect.ConnectionResolver">
 <em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">ConnectionResolver</code><span class="sig-paren">(</span><em>config=None</em>, <em>references=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
-<p>Helper class to retrieve component connections.
-If connections are configured to be retrieved from [[IDiscovery]],
+<p>Helper class to retrieve component connections.</p>
+<p>If connections are configured to be retrieved from [[IDiscovery]],
 it automatically locates [[IDiscovery]] in component references
 and retrieve connections from there using discovery_key parameter.</p>
 <p>### Configuration parameters ###</p>

@@ -80,10 +80,10 @@
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pip_services3_components.auth" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pip-services3-components-auth-init">
 <h3>pip_services3_components.auth.__init__<a class="headerlink" href="#pip-services3-components-auth-init" title="Permalink to this headline">¶</a></h3>
-<p>Contains credentials implementation.</p>
-<p>Credentials – passwords, logins, application keys, secrets. This information is usually linked
-with connection parameters. Connection parameters separate from authentication, because auth
-is saved as a secret, and stored separately from configuration parameters (host name, ip addresses).
+<p>Contains credentials implementation. Credentials – passwords, logins,
+application keys, secrets. This information is usually linked with connection parameters.
+Connection parameters separate from authentication, because auth is saved as a secret,
+and stored separately from configuration parameters (host name, ip addresses).
 They need added security and protection, so they were separated.</p>
 <p>Credential parameters include various credentials.</p>
 <p>Interfaces and abstract classes for credential stores, which can save or retrieve various credential parameters.</p>
@@ -101,9 +101,8 @@ They need added security and protection, so they were separated.</p>
 <dt id="pip_services3_components.auth.CredentialParams">
 <em class="property">class </em><code class="descclassname">pip_services3_components.auth.</code><code class="descname">CredentialParams</code><span class="sig-paren">(</span><em>map=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.ConfigParams.ConfigParams</span></code></p>
-<p>Contains credentials to authenticate against external services.
-They are used together with connection parameters, but usually stored
-in a separate store, protected from unauthorized access.</p>
+<p>Contains credentials to authenticate against external services.</p>
+<p>They are used together with connection parameters, but usually stored in a separate store, protected from unauthorized access.</p>
 <p>### Configuration parameters ###</p>
 <blockquote>
 <div><ul class="simple">
@@ -410,9 +409,7 @@ to authenticate against external services.</p>
 <em class="property">class </em><code class="descclassname">pip_services3_components.auth.</code><code class="descname">CredentialResolver</code><span class="sig-paren">(</span><em>config=None</em>, <em>references=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialResolver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
 <p>Helper class to retrieve component credentials.</p>
-<p>If credentials are configured to be retrieved from [[ICredentialStore]],
-it automatically locates [[ICredentialStore]] in component references
-and retrieve credentials from there using store_key parameter.</p>
+<p>If credentials are configured to be retrieved from [[ICredentialStore]], it automatically locates [[ICredentialStore]] in component references and retrieve credentials from there using store_key parameter.</p>
 <p>### Configuration parameters ###</p>
 <dl class="docutils">
 <dt>credential:</dt>

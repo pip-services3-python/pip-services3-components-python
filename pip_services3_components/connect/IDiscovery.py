@@ -13,8 +13,7 @@ from .ConnectionParams import ConnectionParams
 
 class IDiscovery:
     """
-    Interface for discovery services which are used to store and resolve connection parameters
-    to connect to external services.
+    Interface for discovery services which are used to store and resolve connection parameters to connect to external services.
     """
     def register(self, correlation_id, key, connection):
         """

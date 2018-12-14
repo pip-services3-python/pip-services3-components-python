@@ -10,13 +10,15 @@
 """
 
 from pip_services3_commons.config import IConfigurable
-from pip_services_components.log import CompositeLogger
+from .log.CompositeLogger import CompositeLogger
 from .count.CompositeCounters import CompositeCounters
 from pip_services3_commons.refer import IReferenceable
 from pip_services3_commons.refer import DependencyResolver
 
 class Component(IConfigurable, IReferenceable):
     """
+    Component class implementation.
+
     Abstract component that supportes configurable dependencies, logging and performance counters.
 
     ### Configuration parameters ###

@@ -20,6 +20,7 @@ from pip_services3_commons.errors.ConfigException import ConfigException
 class ConnectionResolver(IConfigurable, IReferenceable):
     """
     Helper class to retrieve component connections.
+
     If connections are configured to be retrieved from [[IDiscovery]],
     it automatically locates [[IDiscovery]] in component references
     and retrieve connections from there using discovery_key parameter.
