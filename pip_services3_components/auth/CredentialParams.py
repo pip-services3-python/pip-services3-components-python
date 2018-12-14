@@ -15,9 +15,7 @@ from pip_services3_commons.data import StringValueMap
 
 class CredentialParams(ConfigParams):
     """
-    Contains credentials to authenticate against external services.
-    They are used together with connection parameters, but usually stored
-    in a separate store, protected from unauthorized access.
+    Contains credentials to authenticate against external services. They are used together with connection parameters, but usually stored in a separate store, protected from unauthorized access.
 
     ### Configuration parameters ###
 

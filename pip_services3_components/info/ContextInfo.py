@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_components.counters.CachedCounters
+    pip_services3_components.info.ContextInfo
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Cached counters implementation
+    Context info implementation
 
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.

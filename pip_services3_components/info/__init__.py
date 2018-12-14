@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_components.count.__init__
+    pip_services3_components.info.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Contains a simple object that defines the context of execution. For various

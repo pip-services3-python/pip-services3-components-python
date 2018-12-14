@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_components.connect.DefaultDiscoveryFactory
+    pip_services3_components.info.DefaultInfoFactory
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Default discovery factory implementation
+    Default info factory implementation
 
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
