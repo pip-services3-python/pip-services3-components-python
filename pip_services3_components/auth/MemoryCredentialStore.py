@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     pip_services3_components.auth.MemoryCredentialStore
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Memory credential store implementation
     

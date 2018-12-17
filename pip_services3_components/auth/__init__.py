@@ -3,7 +3,9 @@
     pip_services3_components.auth.__init__
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    Contains credentials implementation. Credentials – passwords, logins,
+    Contains credentials implementation.
+
+    Credentials – passwords, logins,
     application keys, secrets. This information is usually linked with connection parameters.
     Connection parameters separate from authentication, because auth is saved as a secret,
     and stored separately from configuration parameters (host name, ip addresses).

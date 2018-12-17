@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     pip_services3_components.auth.DefaultCredentialStoreFactory
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Default credential store factory implementation
     

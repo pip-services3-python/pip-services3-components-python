@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     pip_services3_components.auth.ICredentialStore
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Credential store interface
     
@@ -13,8 +13,8 @@ from .CredentialParams import CredentialParams
 
 class ICredentialStore:
     """
-    Interface for credential stores which are used to store and lookup credentials
-    to authenticate against external services.
+    Interface for credential stores which are used to store
+    and lookup credentials to authenticate against external services.
     """
     def store(self, correlation_id, key, credential):
         """

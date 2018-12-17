@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     pip_services3_components.auth.CredentialParams
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Credential parameters implementation
     
@@ -17,7 +17,8 @@ class CredentialParams(ConfigParams):
     """
     Contains credentials to authenticate against external services.
 
-    They are used together with connection parameters, but usually stored in a separate store, protected from unauthorized access.
+    They are used together with connection parameters,
+    but usually stored in a separate store, protected from unauthorized access.
 
     ### Configuration parameters ###
 
@@ -32,14 +33,16 @@ class CredentialParams(ConfigParams):
         - client_key:    alternative to access_key
         - secret_key:    alternative to access_key
 
-    In addition to standard parameters CredentialParams may contain any number of custom parameters
+    In addition to standard parameters CredentialParams
+    may contain any number of custom parameters
 
     Example:
-        credential = CredentialParams.from_tuples("user", "jdoe", "pass", "pass123", "pin", "321")
+        credential = CredentialParams.from_tuples
+        ("user", "jdoe", "pass", "pass123", "pin", "321")
 
-        username = credential.get_username()             // Result: "jdoe"
-        password = credential.get_password()             // Result: "pass123"
-        pin = credential.get_as_nullable_string("pin")     // Result: 321
+        username = credential.get_username()       // Result: "jdoe"
+        password = credential.get_password()       // Result: "pass123"
+        pin = credential.get_as_nullable_string("pin")// Result: 321
     """
 
     def __init__(self, map = None):
