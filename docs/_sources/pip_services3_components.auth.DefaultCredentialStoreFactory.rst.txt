@@ -1,0 +1,7 @@
+pip\_services3\_components.auth.DefaultCredentialStoreFactory module
+====================================================================
+
+.. automodule:: pip_services3_components.auth.DefaultCredentialStoreFactory
+    :members:
+    :undoc-members:
+    :show-inheritance:

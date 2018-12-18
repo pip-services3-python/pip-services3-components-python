@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
     pip_services3_components.Component
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     Component implementation
     
@@ -18,8 +18,8 @@ from pip_services3_commons.refer import DependencyResolver
 class Component(IConfigurable, IReferenceable):
     """
     Component class implementation.
-
-    Abstract component that supportes configurable dependencies, logging and performance counters.
+    Abstract component that supportes configurable dependencies,
+    logging and performance counters.
 
     ### Configuration parameters ###
 

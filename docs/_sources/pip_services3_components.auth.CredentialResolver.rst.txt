@@ -1,0 +1,7 @@
+pip\_services3\_components.auth.CredentialResolver module
+=========================================================
+
+.. automodule:: pip_services3_components.auth.CredentialResolver
+    :members:
+    :undoc-members:
+    :show-inheritance:

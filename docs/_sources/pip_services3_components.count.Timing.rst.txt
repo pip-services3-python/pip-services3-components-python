@@ -1,0 +1,7 @@
+pip\_services3\_components.count.Timing module
+==============================================
+
+.. automodule:: pip_services3_components.count.Timing
+    :members:
+    :undoc-members:
+    :show-inheritance:

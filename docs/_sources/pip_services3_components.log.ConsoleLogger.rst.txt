@@ -1,0 +1,7 @@
+pip\_services3\_components.log.ConsoleLogger module
+===================================================
+
+.. automodule:: pip_services3_components.log.ConsoleLogger
+    :members:
+    :undoc-members:
+    :show-inheritance:

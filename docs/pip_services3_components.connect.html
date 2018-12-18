@@ -1,0 +1,812 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pip_services3_components.connect package &#8212; Pip.Services Components for Python API</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pip_services3_components.connect.ConnectionParams module" href="pip_services3_components.connect.ConnectionParams.html" />
+    <link rel="prev" title="pip_services3_components.config.YamlConfigReader module" href="pip_services3_components.config.YamlConfigReader.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pip_services3_components.connect.ConnectionParams.html" title="pip_services3_components.connect.ConnectionParams module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pip_services3_components.config.YamlConfigReader.html" title="pip_services3_components.config.YamlConfigReader module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Pip.Services Components for Python API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >pip_services3_components</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="pip_services3_components.html" accesskey="U">pip_services3_components package</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pip-services3-components-connect-package">
+<h1>pip_services3_components.connect package<a class="headerlink" href="#pip-services3-components-connect-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.connect.ConnectionParams.html">pip_services3_components.connect.ConnectionParams module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pip_services3_components.connect.ConnectionParams.html#pip-services3-components-connect-connectionparams">pip_services3_components.connect.ConnectionParams</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.connect.ConnectionResolver.html">pip_services3_components.connect.ConnectionResolver module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pip_services3_components.connect.ConnectionResolver.html#pip-services3-components-connect-connectionresolver">pip_services3_components.connect.ConnectionResolver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.connect.DefaultDiscoveryFactory.html">pip_services3_components.connect.DefaultDiscoveryFactory module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pip_services3_components.connect.DefaultDiscoveryFactory.html#pip-services3-components-connect-defaultdiscoveryfactory">pip_services3_components.connect.DefaultDiscoveryFactory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.connect.IDiscovery.html">pip_services3_components.connect.IDiscovery module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip-services3-components-connect-idicovery">pip_services3_components.connect.IDicovery</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.connect.MemoryDiscovery.html">pip_services3_components.connect.MemoryDiscovery module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pip_services3_components.connect.MemoryDiscovery.html#pip-services3-components-connect-memorydiscovery">pip_services3_components.connect.MemoryDiscovery</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-pip_services3_components.connect">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pip_services3_components.connect" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pip-services3-components-connect-init">
+<h3>pip_services3_components.connect.__init__<a class="headerlink" href="#pip-services3-components-connect-init" title="Permalink to this headline">¶</a></h3>
+<p>Contains implementation of connection parameters, using various connection strings,
+which are stripped of all credentials. If we need to configure a service, the port,
+ip address, protocol, and other parameters – we use the ConnectionParams object, and
+relevant helper classes (like [[ConnectionResolver]]), for acquiring these parameters,
+and for discovery of objects, components (which store and retrieve connection parameters).</p>
+<p>### Discovery ###</p>
+<p>Service that store a registry of various end-points (what services are where, and how to
+connect to them). It knows the end-points, but doesn’t have the credentials to connect to them.
+Separated for security reasons. IDiscovery – interface for creating registries.
+MemoryDiscovery – registry that is stored in memory.</p>
+<dl class="docutils">
+<dt>There exist 2 types of discovery:</dt>
+<dd><ul class="first simple">
+<li>Static discovery: all services have static IP addresses (like DNS, which also works using static</li>
+</ul>
+<p class="last">discovery) that are configured from the start and don’t change along the way. As of lately, used
+more often than dynamic, because it is simpler to use and more reliable.
+- Proxy (or reverse proxy) is created with a dns name, and all the dynamics of
+starting/restarting/switching from one host to another – everything is nice and clear for the clients.
+Infrastructure does all the hard work out of the box.
+- Configure sets the static registry.
+- Dynamic discovery: every time a service starts, it registers its address in the discovery service
+(“Service name” at the following address “IP”). Clients then ask to resolve the address
+by which the requested service can be reached. The service has a general name, by which other
+services can resolve it.
+- If a service stops working, you need to refresh its address, clean stale addresses,
+heartbeats must be used – lots of problems and challenges. One service can have more than one address.</p>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT, see LICENSE for more details.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="pip_services3_components.connect.ConnectionParams">
+<em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">ConnectionParams</code><span class="sig-paren">(</span><em>map=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.ConfigParams.ConfigParams</span></code></p>
+<p>Contains connection parameters to connect to external services.</p>
+<p>They are used together with credential parameters, but usually stored
+separately from more protected sensitive values.</p>
+<p>### Configuration parameters ###</p>
+<blockquote>
+<div><ul class="simple">
+<li>discovery_key: key to retrieve parameters from discovery service</li>
+<li>protocol:      connection protocol like http, https, tcp, udp</li>
+<li>host:          host name or IP address</li>
+<li>port:          port number</li>
+<li>uri:           resource URI or connection string with all parameters in it</li>
+</ul>
+</div></blockquote>
+<p>In addition to standard parameters ConnectionParams may contain any number of custom parameters</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><dl class="first docutils">
+<dt>connection = ConnectionParams.from_tuples(“protocol”, “http”,</dt>
+<dd>“host”, “10.1.1.100”,
+“port”, “8080”,
+“cluster”, “mycluster”)</dd>
+</dl>
+<p class="last">host = connection.get_host()                             // Result: “10.1.1.100”
+port = connection.get_port()                             // Result: 8080
+cluster = connection.get_as_nullable_string(“cluster”)     // Result: “mycluster”</p>
+</dd>
+</dl>
+<dl class="staticmethod">
+<dt id="pip_services3_components.connect.ConnectionParams.from_config">
+<em class="property">static </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a single ConnectionParams from configuration parameters
+from “connection” section. If “connections” section is present instead,
+then is returns only the first connection element.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> – ConnectionParams, containing a section named “connection(s)”.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the generated ConnectionParams object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pip_services3_components.connect.ConnectionParams.from_string">
+<em class="property">static </em><code class="descname">from_string</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new ConnectionParams object filled with key-value pairs serialized as a string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> – a string with serialized key-value pairs as “key1=value1;key2=value2;…”
+Example: “Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z”</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a new ConnectionParams object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pip_services3_components.connect.ConnectionParams.from_tuples">
+<em class="property">static </em><code class="descname">from_tuples</code><span class="sig-paren">(</span><em>*tuples</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.from_tuples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new ConnectionParams object filled with provided key-value pairs called tuples.
+Tuples parameters contain a sequence of key1, value1, key2, value2, … pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tuples</strong> – the tuples to fill a new ConnectionParams object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a new ConnectionParams object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.get_discovery_key">
+<code class="descname">get_discovery_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.get_discovery_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the key to retrieve this connection from [[DiscoveryService]].
+If this key is null, than all parameters are already present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the discovery key to retrieve connection.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.get_host">
+<code class="descname">get_host</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.get_host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the host name or IP address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the host name or IP address.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.get_port">
+<code class="descname">get_port</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.get_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the port number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the port number.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.get_protocol">
+<code class="descname">get_protocol</code><span class="sig-paren">(</span><em>default_value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.get_protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the connection protocol.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>default_value</strong> – (optional) the default protocol</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the connection protocol or the default value if it’s not set.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.get_uri">
+<code class="descname">get_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.get_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the resource URI or connection string. Usually it includes all connection parameters in it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the resource URI or connection string.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pip_services3_components.connect.ConnectionParams.many_from_config">
+<em class="property">static </em><code class="descname">many_from_config</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.many_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves all ConnectionParams from configuration parameters
+from “connections” section. If “connection” section is present instead,
+than it returns a list with only one ConnectionParams.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> – a configuration parameters to retrieve connections</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of retrieved ConnectionParams</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.set_discovery_key">
+<code class="descname">set_discovery_key</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.set_discovery_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the key to retrieve these parameters from [[DiscoveryService]].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a new key to retrieve connection.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.set_host">
+<code class="descname">set_host</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.set_host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the host name or IP address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a new host name or IP address.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.set_port">
+<code class="descname">set_port</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.set_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the port number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a new port number.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.set_protocol">
+<code class="descname">set_protocol</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.set_protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the connection protocol.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a new connection protocol.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.set_uri">
+<code class="descname">set_uri</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.set_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the resource URI or connection string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> – a new resource URI or connection string.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionParams.use_discovery">
+<code class="descname">use_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.use_discovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if these connection parameters shall be retrieved from [[DiscoveryService]].
+The connection parameters are redirected to [[DiscoveryService]] when discovery_key parameter is set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if connection shall be retrieved from [[DiscoveryService]]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pip_services3_components.connect.IDiscovery">
+<em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">IDiscovery</code><a class="headerlink" href="#pip_services3_components.connect.IDiscovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Interface for discovery services which are used to store and resolve connection parameters to connect to external services.</p>
+<dl class="method">
+<dt id="pip_services3_components.connect.IDiscovery.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em>, <em>connection</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.IDiscovery.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers connection parameters into the discovery service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connection parameters.</li>
+<li><strong>connection</strong> – a connection to be registered.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.IDiscovery.resolve_all">
+<code class="descname">resolve_all</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.IDiscovery.resolve_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves all connection parameters by their key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connections.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list with resolved connections.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.IDiscovery.resolve_one">
+<code class="descname">resolve_one</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.IDiscovery.resolve_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves a single connection parameters by its key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connection.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a resolved connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pip_services3_components.connect.ConnectionResolver">
+<em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">ConnectionResolver</code><span class="sig-paren">(</span><em>config=None</em>, <em>references=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
+<p>Helper class to retrieve component connections.</p>
+<p>If connections are configured to be retrieved from [[IDiscovery]],
+it automatically locates [[IDiscovery]] in component references
+and retrieve connections from there using discovery_key parameter.</p>
+<p>### Configuration parameters ###</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>connection:</dt>
+<dd><ul class="first last">
+<li>discovery_key:               (optional) a key to retrieve the connection from IDiscovery</li>
+<li>…                          other connection parameters</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>connections:                  alternative to connection</dt>
+<dd><ul class="first last">
+<li>[connection params 1]:       first connection parameters</li>
+<li>…                      connection parameters for key 1</li>
+<li>[connection params N]:       Nth connection parameters</li>
+<li>…                      connection parameters for key N</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>### References ###</dt>
+<dd><ul class="first last simple">
+<li><em>:discovery:</em>:<a href="#id1"><span class="problematic" id="id2">*</span></a>:1.0    (optional) IDiscovery services to resolve connections</li>
+</ul>
+</dd>
+<dt>Example:</dt>
+<dd><p class="first">config = ConfigParams.from_tuples(“connection.host”, “10.1.1.100”, “connection.port”, 8080)</p>
+<p class="last">connectionResolver = ConnectionResolver()
+connectionResolver.configure(config)
+connectionResolver.setReferences(references)
+connectionResolver.resolve(“123”)</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionResolver.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>connection</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new connection to component connections</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>connection</strong> – new connection parameters to be added</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionResolver.configure">
+<code class="descname">configure</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures component by passing configuration parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> – configuration parameters to be set.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionResolver.get_all">
+<code class="descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.get_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all connections configured in component configuration.
+Redirect to Discovery services is not done at this point.
+If you need fully fleshed connection use [[resolve]] method instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list with connection parameters</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionResolver.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>connection</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers the given connection in all referenced discovery services.
+This method can be used for dynamic service discovery.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>connection</strong> – a connection to register.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionResolver.resolve">
+<code class="descname">resolve</code><span class="sig-paren">(</span><em>correlation_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves a single component connection. If connections are configured to be retrieved
+from Discovery service it finds a [[IDiscovery]] and resolves the connection there.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">resolved connection parameters or null if nothing was found.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionResolver.resolve_all">
+<code class="descname">resolve_all</code><span class="sig-paren">(</span><em>correlation_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.resolve_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves all component connection. If connections are configured to be retrieved
+from Discovery service it finds a [[IDiscovery]] and resolves the connection there.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of resolved connections.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.ConnectionResolver.set_references">
+<code class="descname">set_references</code><span class="sig-paren">(</span><em>references</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.set_references" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets references to dependent components.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>references</strong> – references to locate the component dependencies.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pip_services3_components.connect.MemoryDiscovery">
+<em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">MemoryDiscovery</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.MemoryDiscovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.connect.IDiscovery.IDiscovery</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></p>
+<p>Discovery service that keeps connections in memory.</p>
+<p>### Configuration parameters ###</p>
+<blockquote>
+<div><ul class="simple">
+<li>[connection key 1]:</li>
+<li>…                          connection parameters for key 1</li>
+<li>[connection key 2]:</li>
+<li>…                          connection parameters for key N</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><p class="first">config = ConfigParams.from_tuples(
+“key1.host”, “10.1.1.100”,
+“key1.port”, “8080”,
+“key2.host”, “10.1.1.100”,
+“key2.port”, “8082”)</p>
+<p>discovery = MemoryDiscovery()
+discovery.read_connections(config)</p>
+<p class="last">discovery.resolve(“123”, “key1”)</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pip_services3_components.connect.MemoryDiscovery.configure">
+<code class="descname">configure</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.MemoryDiscovery.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures component by passing configuration parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> – configuration parameters to be set.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.MemoryDiscovery.read_connections">
+<code class="descname">read_connections</code><span class="sig-paren">(</span><em>connections</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.MemoryDiscovery.read_connections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads connections from configuration parameters.
+Each section represents an individual Connectionparams</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>connections</strong> – configuration parameters to be read</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.MemoryDiscovery.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em>, <em>connection</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.MemoryDiscovery.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers connection parameters into the discovery service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connection parameters.</li>
+<li><strong>connection</strong> – a connection to be registered.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.MemoryDiscovery.resolve_all">
+<code class="descname">resolve_all</code><span class="sig-paren">(</span><em>correlationId</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.MemoryDiscovery.resolve_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves all connection parameters by their key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connections.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list with resolved connections.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.MemoryDiscovery.resolve_one">
+<code class="descname">resolve_one</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.MemoryDiscovery.resolve_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves a single connection parameters by its key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connection.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a resolved connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pip_services3_components.connect.DefaultDiscoveryFactory">
+<em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">DefaultDiscoveryFactory</code><a class="headerlink" href="#pip_services3_components.connect.DefaultDiscoveryFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.build.Factory.Factory</span></code></a></p>
+<p>Creates IDiscovery components by their descriptors.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pip_services3_components.connect package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pip_services3_components.connect">Module contents</a><ul>
+<li><a class="reference internal" href="#pip-services3-components-connect-init">pip_services3_components.connect.__init__</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pip_services3_components.config.YamlConfigReader.html"
+                        title="previous chapter">pip_services3_components.config.YamlConfigReader module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pip_services3_components.connect.ConnectionParams.html"
+                        title="next chapter">pip_services3_components.connect.ConnectionParams module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pip_services3_components.connect.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pip_services3_components.connect.ConnectionParams.html" title="pip_services3_components.connect.ConnectionParams module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pip_services3_components.config.YamlConfigReader.html" title="pip_services3_components.config.YamlConfigReader module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Pip.Services Components for Python API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >pip_services3_components</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="pip_services3_components.html" >pip_services3_components package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Conceptual Vision Consulting LLC.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+    </div>
+  </body>
+</html>

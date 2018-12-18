@@ -1,0 +1,206 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pip_services3_components.connect.IDiscovery module &#8212; Pip.Services Components for Python API</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pip_services3_components.connect.MemoryDiscovery module" href="pip_services3_components.connect.MemoryDiscovery.html" />
+    <link rel="prev" title="pip_services3_components.connect.DefaultDiscoveryFactory module" href="pip_services3_components.connect.DefaultDiscoveryFactory.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pip_services3_components.connect.MemoryDiscovery.html" title="pip_services3_components.connect.MemoryDiscovery module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pip_services3_components.connect.DefaultDiscoveryFactory.html" title="pip_services3_components.connect.DefaultDiscoveryFactory module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Pip.Services Components for Python API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >pip_services3_components</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="pip_services3_components.html" >pip_services3_components package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="pip_services3_components.connect.html" accesskey="U">pip_services3_components.connect package</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pip_services3_components.connect.IDiscovery">
+<span id="pip-services3-components-connect-idiscovery-module"></span><h1>pip_services3_components.connect.IDiscovery module<a class="headerlink" href="#module-pip_services3_components.connect.IDiscovery" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pip-services3-components-connect-idicovery">
+<h2>pip_services3_components.connect.IDicovery<a class="headerlink" href="#pip-services3-components-connect-idicovery" title="Permalink to this headline">¶</a></h2>
+<p>Discovery service interface</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT, see LICENSE for more details.</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="pip_services3_components.connect.IDiscovery.IDiscovery">
+<em class="property">class </em><code class="descclassname">pip_services3_components.connect.IDiscovery.</code><code class="descname">IDiscovery</code><a class="headerlink" href="#pip_services3_components.connect.IDiscovery.IDiscovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Interface for discovery services which are used to store and resolve connection parameters to connect to external services.</p>
+<dl class="method">
+<dt id="pip_services3_components.connect.IDiscovery.IDiscovery.register">
+<code class="descname">register</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em>, <em>connection</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.IDiscovery.IDiscovery.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers connection parameters into the discovery service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connection parameters.</li>
+<li><strong>connection</strong> – a connection to be registered.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.IDiscovery.IDiscovery.resolve_all">
+<code class="descname">resolve_all</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.IDiscovery.IDiscovery.resolve_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves all connection parameters by their key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connections.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list with resolved connections.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pip_services3_components.connect.IDiscovery.IDiscovery.resolve_one">
+<code class="descname">resolve_one</code><span class="sig-paren">(</span><em>correlation_id</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.IDiscovery.IDiscovery.resolve_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves a single connection parameters by its key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</li>
+<li><strong>key</strong> – a key to uniquely identify the connection.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a resolved connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pip_services3_components.connect.IDiscovery module</a><ul>
+<li><a class="reference internal" href="#pip-services3-components-connect-idicovery">pip_services3_components.connect.IDicovery</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pip_services3_components.connect.DefaultDiscoveryFactory.html"
+                        title="previous chapter">pip_services3_components.connect.DefaultDiscoveryFactory module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pip_services3_components.connect.MemoryDiscovery.html"
+                        title="next chapter">pip_services3_components.connect.MemoryDiscovery module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pip_services3_components.connect.IDiscovery.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pip_services3_components.connect.MemoryDiscovery.html" title="pip_services3_components.connect.MemoryDiscovery module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pip_services3_components.connect.DefaultDiscoveryFactory.html" title="pip_services3_components.connect.DefaultDiscoveryFactory module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Pip.Services Components for Python API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >pip_services3_components</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="pip_services3_components.html" >pip_services3_components package</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="pip_services3_components.connect.html" >pip_services3_components.connect package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Conceptual Vision Consulting LLC.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+    </div>
+  </body>
+</html>
