@@ -199,10 +199,10 @@ The values may come from application command like arguments or environment varia
 <dt>config = ConfigParams.from_tuples(“connection.host”, “{{SERVICE_HOST}}”,</dt>
 <dd>“connection.port”, “{{SERVICE_PORT}}{{^SERVICE_PORT}}8080{{/SERVICE_PORT}}”)</dd>
 </dl>
-<p>configReader = MemoryConfigReader()
-configReader.configure(config)</p>
-<p class="last">parameters = ConfigParams.fromValue(os.get_env())
-configReader.readConfig(“123”, parameters)</p>
+<dd>configReader = MemoryConfigReader()
+<dd>configReader.configure(config)</p>
+<dd>parameters = ConfigParams.fromValue(os.get_env())
+<dd>configReader.readConfig(“123”, parameters)</p>
 </dd>
 </dl>
 <dl class="method">
@@ -322,12 +322,12 @@ like JSON, YAML or property files.</p>
 </div></blockquote>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">======== config.json ======
-{ “key1”: “{{KEY1_VALUE}}”, “key2”: “{{KEY2_VALUE}}” }
-===========================</p>
-<p class="last">configReader = JsonConfigReader(“config.json”)
-parameters = ConfigParams.from_tuples(“KEY1_VALUE”, 123, “KEY2_VALUE”, “ABC”)
-configReader.read_config(“123”, parameters)</p>
+<dd>======== config.json ======
+<dd>{ “key1”: “{{KEY1_VALUE}}”, “key2”: “{{KEY2_VALUE}}” }
+<dd>===========================
+<dd>configReader = JsonConfigReader(“config.json”)
+<dd>parameters = ConfigParams.from_tuples(“KEY1_VALUE”, 123, “KEY2_VALUE”, “ABC”)
+<dd>configReader.read_config(“123”, parameters)
 </dd>
 </dl>
 <dl class="method">
@@ -390,13 +390,13 @@ configReader.read_config(“123”, parameters)</p>
 </div></blockquote>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">======== config.yml ======
-key1: “{{KEY1_VALUE}}”
-key2: “{{KEY2_VALUE}}”
-===========================</p>
-<p class="last">configReader = YamlConfigReader(“config.yml”)
-parameters = ConfigParams.from_tuples(“KEY1_VALUE”, 123, “KEY2_VALUE”, “ABC”)
-configReader.read_config(“123”, parameters)</p>
+<dd>======== config.yml ======
+<dd>key1: “{{KEY1_VALUE}}”
+<dd>key2: “{{KEY2_VALUE}}”
+<dd>===========================
+<dd>configReader = YamlConfigReader(“config.yml”)
+<dd>parameters = ConfigParams.from_tuples(“KEY1_VALUE”, 123, “KEY2_VALUE”, “ABC”)
+<dd>configReader.read_config(“123”, parameters)
 </dd>
 </dl>
 <dl class="method">
@@ -448,7 +448,7 @@ configReader.read_config(“123”, parameters)</p>
 <dt id="pip_services3_components.config.DefaultConfigReaderFactory">
 <em class="property">class </em><code class="descclassname">pip_services3_components.config.</code><code class="descname">DefaultConfigReaderFactory</code><a class="headerlink" href="#pip_services3_components.config.DefaultConfigReaderFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.build.Factory.Factory</span></code></a></p>
-<p>Creates [[IConfigReader]] components by their descriptors.</p>
+<p>Creates IConfigReader components by their descriptors.</p>
 </dd></dl>
 
 </div>

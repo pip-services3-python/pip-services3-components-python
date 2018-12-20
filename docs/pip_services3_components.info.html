@@ -96,15 +96,14 @@ to identify source of the collected logs and metrics.</p>
 </div></blockquote>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">contextInfo = ContextInfo()
-contextInfo.configure(ConfigParams.from_tuples(</p>
-<blockquote>
-<div>“name”, “MyMicroservice”,
-“description”, “My first microservice”))</div></blockquote>
-<p class="last">context.name                    // Result: “MyMicroservice”
-context.contextId               // Possible result: “mylaptop”
-context.startTime               // Possible result: 2018-01-01:22:12:23.45Z
-context.uptime                  // Possible result: 3454345</p>
+<dd>contextInfo = ContextInfo()
+<dd>contextInfo.configure(ConfigParams.from_tuples(
+<br>“name”, “MyMicroservice”,
+<br>“description”, “My first microservice”))
+<dd>context.get_name()                    // Result: “MyMicroservice”
+<dd>context.get_context_id()               // Possible result: “mylaptop”
+<dd>context.get_start_time()               // Possible result: 2018-01-01:22:12:23.45Z
+<dd>context.get_uptime()                  // Possible result: 3454345
 </dd>
 </dl>
 <dl class="method">

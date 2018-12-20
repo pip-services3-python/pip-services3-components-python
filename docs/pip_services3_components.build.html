@@ -76,7 +76,7 @@
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pip_services3_components.build" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pip-services3-components-build-init">
 <h3>pip_services3_components.build.__init__<a class="headerlink" href="#pip-services3-components-build-init" title="Permalink to this headline">¶</a></h3>
-<p>Contains the “factory design pattern”. There are various factory types,
+<p>Contains the <i>“factory design pattern”</i>. There are various factory types,
 which are also implemented in a portable manner.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -96,7 +96,7 @@ which are also implemented in a portable manner.</p>
 <p>Factories use locators to identify components to be created.</p>
 <p>The locators are similar to those used to locate components in references.
 They can be of any type like strings or integers. However Pip.Services toolkit
-most often uses Descriptor objects as component locators.</p>
+most often uses <a href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.refer.Descriptor.html">Descriptor</a> objects as component locators.</p>
 <dl class="method">
 <dt id="pip_services3_components.build.IFactory.can_create">
 <code class="descname">can_create</code><span class="sig-paren">(</span><em>locator</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.build.IFactory.can_create" title="Permalink to this definition">¶</a></dt>
@@ -151,12 +151,12 @@ factories to locate the one able to create the requested component.</p>
 <p>This component is used to conveniently keep all supported factories in a single place.</p>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">factory = CompositeFactory()
-factory.add(new DefaultLoggerFactory())
-factory.add(new DefaultCountersFactory())</p>
-<p class="last">loggerLocator = Descriptor(“*”, “logger”, “*”, “*”, “1.0”)
-factory.can_create(loggerLocator)  // Result: Descriptor(“pip-service”, “logger”, “null”, “default”, “1.0”)
-factory.create(loggerLocator)     // Result: created NullLogger</p>
+<dd>factory = CompositeFactory()
+<dd>factory.add(new DefaultLoggerFactory())
+<dd>factory.add(new DefaultCountersFactory())
+<dd>loggerLocator = Descriptor(“*”, “logger”, “*”, “*”, “1.0”)
+<dd>factory.can_create(loggerLocator)  // Result: Descriptor(“pip-service”, “logger”, “null”, “default”, “1.0”)
+<dd>factory.create(loggerLocator)     // Result: created NullLogger
 </dd>
 </dl>
 <dl class="method">

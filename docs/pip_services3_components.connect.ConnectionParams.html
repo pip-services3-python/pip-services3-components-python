@@ -82,16 +82,16 @@ separately from more protected sensitive values.</p>
 </div></blockquote>
 <p>In addition to standard parameters ConnectionParams may contain any number of custom parameters</p>
 <dl class="docutils">
-<dt>Example:</dt>
-<dd><dl class="first docutils">
-<dt>connection = ConnectionParams.from_tuples(“protocol”, “http”,</dt>
-<dd>“host”, “10.1.1.100”,
-“port”, “8080”,
-“cluster”, “mycluster”)</dd>
-</dl>
-<p class="last">host = connection.get_host()                             // Result: “10.1.1.100”
-port = connection.get_port()                             // Result: 8080
-cluster = connection.get_as_nullable_string(“cluster”)     // Result: “mycluster”</p>
+    <dt>Example:</dt>
+    <dd><dl class="first docutils">
+    <dt>connection = ConnectionParams.from_tuples(“protocol”, “http”,</dt>
+    <br>“host”, “10.1.1.100”,
+    <br>“port”, “8080”,
+    <br>“cluster”, “mycluster”)</dd>
+    </dl>
+    <dd>host = connection.get_host()                             // Result: “10.1.1.100”
+    <dd>port = connection.get_port()                             // Result: 8080
+    <dd>cluster = connection.get_as_nullable_string(“cluster”)     // Result: “mycluster”
 </dd>
 </dl>
 <dl class="staticmethod">
@@ -149,7 +149,7 @@ Tuples parameters contain a sequence of key1, value1, key2, value2, … pairs.</
 <dl class="method">
 <dt id="pip_services3_components.connect.ConnectionParams.ConnectionParams.get_discovery_key">
 <code class="descname">get_discovery_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.ConnectionParams.get_discovery_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the key to retrieve this connection from [[DiscoveryService]].
+<dd><p>Gets the key to retrieve this connection from <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.IDiscovery.html">DiscoveryService</a>.
 If this key is null, than all parameters are already present.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -240,7 +240,7 @@ than it returns a list with only one ConnectionParams.</p>
 <dl class="method">
 <dt id="pip_services3_components.connect.ConnectionParams.ConnectionParams.set_discovery_key">
 <code class="descname">set_discovery_key</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.ConnectionParams.set_discovery_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the key to retrieve these parameters from [[DiscoveryService]].</p>
+<dd><p>Sets the key to retrieve these parameters from <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.IDiscovery.html">DiscoveryService</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -310,13 +310,13 @@ than it returns a list with only one ConnectionParams.</p>
 <dl class="method">
 <dt id="pip_services3_components.connect.ConnectionParams.ConnectionParams.use_discovery">
 <code class="descname">use_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.ConnectionParams.use_discovery" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if these connection parameters shall be retrieved from [[DiscoveryService]].
-The connection parameters are redirected to [[DiscoveryService]] when discovery_key parameter is set.</p>
+<dd><p>Checks if these connection parameters shall be retrieved from <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.IDiscovery.html">DiscoveryService</a>.
+The connection parameters are redirected to <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.IDiscovery.html">DiscoveryService</a> when discovery_key parameter is set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if connection shall be retrieved from [[DiscoveryService]]</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if connection shall be retrieved from <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.IDiscovery.html">DiscoveryService</a></td>
 </tr>
 </tbody>
 </table>

@@ -188,15 +188,15 @@ are stored, what was the latest transaction time and so on.</p>
 <dt id="pip_services3_components.count.ICounters.begin_timing">
 <code class="descname">begin_timing</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.ICounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns [[Timing]] object which has to be called at
-[[Timing.endTiming]] to end the measurement and update the counter.</p>
+It returns Timing object which has to be called at
+Timing.endTiming to end the measurement and update the counter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – a counter name of Interval type.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a [[Timing]] callback object to end timing.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a Timing callback object to end timing.</td>
 </tr>
 </tbody>
 </table>
@@ -310,7 +310,7 @@ Usually this method is used by metrics calculated externally.</p>
 <em class="property">class </em><code class="descclassname">pip_services3_components.count.</code><code class="descname">Counter</code><span class="sig-paren">(</span><em>name=None</em>, <em>tipe=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.Counter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Data object to store measurement for a performance counter.
-This object is used by [[CachedCounters]] to store counters.</p>
+This object is used by CachedCounters to store counters.</p>
 <dl class="attribute">
 <dt id="pip_services3_components.count.Counter.average">
 <code class="descname">average</code><em class="property"> = None</em><a class="headerlink" href="#pip_services3_components.count.Counter.average" title="Permalink to this definition">¶</a></dt>
@@ -362,8 +362,8 @@ of execution block and update the associated counter.</p>
 <dl class="docutils">
 <dt>Example:</dt>
 <dd>timing = counters.begin_timing(“mymethod.exec_time”)
-…
-timing.endTiming()</dd>
+<dd>…
+<dd>timing.endTiming()</dd>
 </dl>
 <dl class="method">
 <dt id="pip_services3_components.count.Timing.end_timing">
@@ -397,15 +397,15 @@ Child classes implement saving of the counters into various destinations.</p>
 <dt id="pip_services3_components.count.CachedCounters.begin_timing">
 <code class="descname">begin_timing</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CachedCounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns [[Timing]] object which has to be called at
-[[Timing.endTiming]] to end the measurement and update the counter.</p>
+It returns Timing object which has to be called at
+Timing.endTiming to end the measurement and update the counter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – a counter name of Interval type.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a [[Timing]] callback object to end timing.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a Timing callback object to end timing.</td>
 </tr>
 </tbody>
 </table>
@@ -619,15 +619,15 @@ It can be used in testing or in situations when counters is required but shall b
 <dt id="pip_services3_components.count.NullCounters.begin_timing">
 <code class="descname">begin_timing</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.NullCounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns [[Timing]] object which has to be called at
-[[Timing.endTiming]] to end the measurement and update the counter.</p>
+It returns Timing object which has to be called at
+Timing.endTiming to end the measurement and update the counter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – a counter name of Interval type.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a [[Timing]] callback object to end timing.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a Timing callback object to end timing.</td>
 </tr>
 </tbody>
 </table>
@@ -756,10 +756,10 @@ Usually this method is used by metrics calculated externally.</p>
 <dt>def set_references(self, references):</dt>
 <dd>self._counters.set_references(references)</dd>
 <dt>def my_method(self):</dt>
-<dd><p class="first">self._counters.increment(“mycomponent.mymethod.calls”)
-timing = this._counters.beginTiming(“mycomponent.mymethod.exec_time”)
-…</p>
-<p class="last">timing.endTiming()</p>
+<dd>self._counters.increment(“mycomponent.mymethod.calls”)
+<dd>timing = this._counters.beginTiming(“mycomponent.mymethod.exec_time”)
+<dd>…</p>
+<dd>timing.endTiming()</p>
 </dd>
 </dl>
 </dd>
@@ -768,15 +768,15 @@ timing = this._counters.beginTiming(“mycomponent.mymethod.exec_time”)
 <dt id="pip_services3_components.count.CompositeCounters.begin_timing">
 <code class="descname">begin_timing</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns [[Timing]] object which has to be called at
-[[Timing.endTiming]] to end the measurement and update the counter.</p>
+It returns Timing object which has to be called at
+Timing.endTiming to end the measurement and update the counter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – a counter name of Interval type.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a [[Timing]] callback object to end timing.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a Timing callback object to end timing.</td>
 </tr>
 </tbody>
 </table>
@@ -939,19 +939,18 @@ Usually this method is used by metrics calculated externally.</p>
 <dl class="docutils">
 <dt>### References ###</dt>
 <dd><ul class="first last simple">
-<li><em>:logger:</em>:<a href="#id3"><span class="problematic" id="id4">*</span></a>:1.0           [[ILogger]] components to dump the captured counters</li>
-<li><em>:context-info:</em>:<a href="#id5"><span class="problematic" id="id6">*</span></a>:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source</li>
+<li><em>:logger:</em>:<a href="#id3"><span class="problematic" id="id4">*</span></a>:1.0           ILogger components to dump the captured counters</li>
+<li><em>:context-info:</em>:<a href="#id5"><span class="problematic" id="id6">*</span></a>:1.0     (optional) ContextInfo to detect the context id and specify counters source</li>
 </ul>
 </dd>
 <dt>Example:</dt>
-<dd><p class="first">counters = LogCounters()
-counters.set_references(References.from_tuples(</p>
-<blockquote>
-<div>Descriptor(“pip-services”, “logger”, “console”, “default”, “1.0”), ConsoleLogger()))</div></blockquote>
-<p class="last">counters.increment(“mycomponent.mymethod.calls”)
+<dd>counters = LogCounters()
+<dd>counters.set_references(References.from_tuples(
+<br>Descriptor(“pip-services”, “logger”, “console”, “default”, “1.0”), ConsoleLogger()))
+<dd>counters.increment(“mycomponent.mymethod.calls”)
 timing = counters.begin_timing(“mycomponent.mymethod.exec_time”)
-…
-timing.endTiming()</p>
+<dd>…
+<dd>timing.endTiming()</p>
 </dd>
 </dl>
 <dl class="method">
@@ -974,7 +973,7 @@ timing.endTiming()</p>
 <dt id="pip_services3_components.count.DefaultCountersFactory">
 <em class="property">class </em><code class="descclassname">pip_services3_components.count.</code><code class="descname">DefaultCountersFactory</code><a class="headerlink" href="#pip_services3_components.count.DefaultCountersFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.build.Factory.Factory</span></code></a></p>
-<p>Creates [[ICounters]] components by their descriptors.</p>
+<p>Creates ICounters components by their descriptors.</p>
 </dd></dl>
 
 </div>

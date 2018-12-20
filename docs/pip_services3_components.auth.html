@@ -124,11 +124,10 @@ but usually stored in a separate store, protected from unauthorized access.</p>
 may contain any number of custom parameters</p>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">credential = CredentialParams.from_tuples
-(“user”, “jdoe”, “pass”, “pass123”, “pin”, “321”)</p>
-<p class="last">username = credential.get_username()       // Result: “jdoe”
-password = credential.get_password()       // Result: “pass123”
-pin = credential.get_as_nullable_string(“pin”)// Result: 321</p>
+<dd>credential = CredentialParams.from_tuples(“user”, “jdoe”, “pass”, “pass123”, “pin”, “321”)
+<dd>username = credential.get_username()       // Result: “jdoe”
+<dd>password = credential.get_password()       // Result: “pass123”
+<dd>pin = credential.get_as_nullable_string(“pin”)// Result: 321
 </dd>
 </dl>
 <dl class="staticmethod">
@@ -229,7 +228,7 @@ The value can be stored in parameters “access_key”, “client_key” or “s
 <dl class="method">
 <dt id="pip_services3_components.auth.CredentialParams.get_store_key">
 <code class="descname">get_store_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialParams.get_store_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the key to retrieve these credentials from [[CredentialStore]].
+<dd><p>Gets the key to retrieve these credentials from CredentialStore.
 If this key is null, than all parameters are already present.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -318,7 +317,7 @@ than it returns a list with only one CredentialParams.</p>
 <dl class="method">
 <dt id="pip_services3_components.auth.CredentialParams.set_store_key">
 <code class="descname">set_store_key</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialParams.set_store_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the key to retrieve these parameters from [[CredentialStore]].</p>
+<dd><p>Sets the key to retrieve these parameters from CredentialStore.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -346,13 +345,13 @@ than it returns a list with only one CredentialParams.</p>
 <dl class="method">
 <dt id="pip_services3_components.auth.CredentialParams.use_credential_store">
 <code class="descname">use_credential_store</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialParams.use_credential_store" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if these credential parameters shall be retrieved from [[CredentialStore]].
-The credential parameters are redirected to [[CredentialStore]] when store_key parameter is set.</p>
+<dd><p>Checks if these credential parameters shall be retrieved from CredentialStore.
+The credential parameters are redirected to CredentialStore when store_key parameter is set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if credentials shall be retrieved from [[CredentialStore]]</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if credentials shall be retrieved from CredentialStore</td>
 </tr>
 </tbody>
 </table>
@@ -414,13 +413,13 @@ and lookup credentials to authenticate against external services.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
 <p>Helper class to retrieve component credentials.</p>
 <p>If credentials are configured to be retrieved from
-[[ICredentialStore]], it automatically locates [[ICredentialStore]]
+ICredentialStore, it automatically locates ICredentialStore
 in component references and retrieve credentials from there using store_key parameter.</p>
 <p>### Configuration parameters ###</p>
 <dl class="docutils">
 <dt>credential:</dt>
 <dd><ul class="first last simple">
-<li>store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]</li>
+<li>store_key:                   (optional) a key to retrieve the credentials from ICredentialStore</li>
 <li>…                          other credential parameters</li>
 </ul>
 </dd>
@@ -443,10 +442,10 @@ in component references and retrieve credentials from there using store_key para
 <dt>config = ConfigParams.from_tuples(“credential.user”, “jdoe”,</dt>
 <dd>“credential.pass”,  “pass123”)</dd>
 </dl>
-<p class="last">credentialResolver = CredentialResolver()
-credentialResolver.configure(config)
-credentialResolver.set_references(references)
-credentialResolver.lookup(“123”)</p>
+<dd>credentialResolver = CredentialResolver()
+<dd>credentialResolver.configure(config)
+<dd>credentialResolver.set_references(references)
+<dd>credentialResolver.lookup(“123”)
 </dd>
 </dl>
 <dl class="method">
@@ -482,7 +481,7 @@ credentialResolver.lookup(“123”)</p>
 <code class="descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialResolver.get_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all credentials configured in component configuration.</p>
 <p>Redirect to CredentialStores is not done at this point.
-If you need fully fleshed credential use [[lookup]] method instead.</p>
+If you need fully fleshed credential use lookup method instead.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -497,7 +496,7 @@ If you need fully fleshed credential use [[lookup]] method instead.</p>
 <dt id="pip_services3_components.auth.CredentialResolver.lookup">
 <code class="descname">lookup</code><span class="sig-paren">(</span><em>correlation_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialResolver.lookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Looks up component credential parameters. If credentials are configured to be retrieved
-from Credential store it finds a [[ICredentialStore]] and lookups credentials there.</p>
+from Credential store it finds a ICredentialStore and lookups credentials there.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -549,9 +548,9 @@ from Credential store it finds a [[ICredentialStore]] and lookups credentials th
 “key2.user”, “bsmith”,
 “key2.pass”, “mypass”)</dd>
 </dl>
-<p class="last">credentialStore = MemoryCredentialStore()
-credentialStore.read_credentials(config)
-credentialStore.lookup(“123”, “key1”)</p>
+<dd>credentialStore = MemoryCredentialStore()
+<dd>credentialStore.read_credentials(config)
+<dd>credentialStore.lookup(“123”, “key1”)
 </dd>
 </dl>
 <dl class="method">

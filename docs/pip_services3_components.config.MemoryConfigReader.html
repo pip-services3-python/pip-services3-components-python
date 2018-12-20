@@ -66,7 +66,7 @@
 <dl class="class">
 <dt id="pip_services3_components.config.MemoryConfigReader.MemoryConfigReader">
 <em class="property">class </em><code class="descclassname">pip_services3_components.config.MemoryConfigReader.</code><code class="descname">MemoryConfigReader</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.config.MemoryConfigReader.MemoryConfigReader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.config.IConfigReader.html#pip_services3_components.config.IConfigReader.IConfigReader" title="pip_services3_components.config.IConfigReader.IConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.config.IConfigReader.IConfigReader</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></p>
+<dd><p>Bases:<a class="reference internal" href="pip_services3_components.config.IConfigReader.html#pip_services3_components.config.IConfigReader.IConfigReader" title="pip_services3_components.config.IConfigReader.IConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.config.IConfigReader.IConfigReader</span></code></a>, <a class="reference internal" href="pip_services3_commons.config.IReconfigurable.html#pip_services3_commons.config.IReconfigurable.IReconfigurable" title="pip_services3_commons.config.IReconfigurable.IReconfigurable"></a><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></p>
 <p>Config reader that stores configuration in memory.</p>
 <p>### Configuration parameters ###</p>
 <blockquote>
@@ -77,10 +77,10 @@
 <dt>config = ConfigParams.from_tuples(“connection.host”, “{{SERVICE_HOST}}”,</dt>
 <dd>“connection.port”, “{{SERVICE_PORT}}{{^SERVICE_PORT}}8080{{/SERVICE_PORT}}”)</dd>
 </dl>
-<p>configReader = MemoryConfigReader()
-configReader.configure(config)</p>
-<p class="last">parameters = ConfigParams.fromValue(os.get_env())
-configReader.readConfig(“123”, parameters)</p>
+<dd>configReader = MemoryConfigReader()
+<dd>configReader.configure(config)
+<dd>parameters = ConfigParams.fromValue(os.get_env())
+<dd>configReader.readConfig(“123”, parameters)
 </dd>
 </dl>
 <dl class="method">

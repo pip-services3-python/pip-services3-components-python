@@ -166,7 +166,7 @@ If value is missing in the cache or expired it returns None.</p>
 <dt id="pip_services3_components.cache.CacheEntry">
 <em class="property">class </em><code class="descclassname">pip_services3_components.cache.</code><code class="descname">CacheEntry</code><span class="sig-paren">(</span><em>key</em>, <em>value</em>, <em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.cache.CacheEntry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Data object to store cached values with their keys used by [[MemoryCache]]</p>
+<p>Data object to store cached values with their keys used by MemoryCache</p>
 <dl class="attribute">
 <dt id="pip_services3_components.cache.CacheEntry.expiration">
 <code class="descname">expiration</code><em class="property"> = None</em><a class="headerlink" href="#pip_services3_components.cache.CacheEntry.expiration" title="Permalink to this definition">¶</a></dt>
@@ -303,7 +303,7 @@ If value is missing in the cache or expired it returns None.</p>
 </dd>
 <dt>Example:</dt>
 <dd>cache = MemoryCache()
-cache.store(“123”, “key1”, “ABC”, 0)</dd>
+<dd>cache.store(“123”, “key1”, “ABC”, 0)</dd>
 </dl>
 <dl class="method">
 <dt id="pip_services3_components.cache.MemoryCache.clear">
@@ -402,7 +402,7 @@ If value is missing in the cache or expired it returns None.</p>
 <dt id="pip_services3_components.cache.DefaultCacheFactory">
 <em class="property">class </em><code class="descclassname">pip_services3_components.cache.</code><code class="descname">DefaultCacheFactory</code><a class="headerlink" href="#pip_services3_components.cache.DefaultCacheFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.build.Factory.Factory</span></code></a></p>
-<p>Creates [[ICache]] components by their descriptors.</p>
+<p>Creates ICache components by their descriptors.</p>
 </dd></dl>
 
 </div>

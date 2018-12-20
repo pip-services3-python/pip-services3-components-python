@@ -73,12 +73,12 @@ factories to locate the one able to create the requested component.</p>
 <p>This component is used to conveniently keep all supported factories in a single place.</p>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">factory = CompositeFactory()
-factory.add(new DefaultLoggerFactory())
-factory.add(new DefaultCountersFactory())</p>
-<p class="last">loggerLocator = Descriptor(“*”, “logger”, “*”, “*”, “1.0”)
-factory.can_create(loggerLocator)  // Result: Descriptor(“pip-service”, “logger”, “null”, “default”, “1.0”)
-factory.create(loggerLocator)     // Result: created NullLogger</p>
+<dd>factory = CompositeFactory()
+<dd>factory.add(new DefaultLoggerFactory())
+<dd>factory.add(new DefaultCountersFactory())
+<dd>loggerLocator = Descriptor(“*”, “logger”, “*”, “*”, “1.0”)
+<dd>factory.can_create(loggerLocator)  // Result: Descriptor(“pip-service”, “logger”, “null”, “default”, “1.0”)
+<dd>factory.create(loggerLocator)     // Result: created NullLogger
 </dd>
 </dl>
 <dl class="method">

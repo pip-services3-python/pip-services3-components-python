@@ -102,7 +102,7 @@
 <h3>pip_services3_components.log.__init__<a class="headerlink" href="#pip-services3-components-log-init" title="Permalink to this headline">¶</a></h3>
 <p>Logger implementations. There exist many different loggers, but all of them are implemented
 differently in various languages. We needed portable classes, that would allow to quickly
-transfer code from one language to another. We can wrap existing loggers into/around our ILogger class.</p>
+transfer code from one language to another. We can wrap existing loggers into/around our <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.log.ILogger.html#pip-services3-components-log-ilogger">ILogger</a> class.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -406,7 +406,7 @@ and never sent to consolidated log services.</p>
 Child classes take the captured messages and write them to their specific destinations.</p>
 <p>### Configuration parameters ###</p>
 <dl class="docutils">
-<dt>Parameters to pass to the [[configure]] method for component configuration:</dt>
+<dt>Parameters to pass to the <i>configure<i> method for component configuration:</dt>
 <dd><ul class="first last simple">
 <li>level:             maximum log level to capture</li>
 <li>source:            source (context) name</li>
@@ -414,7 +414,7 @@ Child classes take the captured messages and write them to their specific destin
 </dd>
 <dt>### References ###</dt>
 <dd><ul class="first last simple">
-<li><em>:context-info:</em>:<a href="#id1"><span class="problematic" id="id2">*</span></a>:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source</li>
+<li><em>:context-info:</em>:<a href="#id1"><span class="problematic" id="id2">*</span></a>:1.0     (optional) ContextInfo to detect the context id and specify counters source</li>
 </ul>
 </dd>
 </dl>
@@ -816,14 +816,14 @@ It can be used in testing or in situations when logger is required but shall be 
 <dl class="docutils">
 <dt>### References ###</dt>
 <dd><ul class="first last simple">
-<li><em>:context-info:</em>:<a href="#id3"><span class="problematic" id="id4">*</span></a>:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source</li>
+<li><em>:context-info:</em>:<a href="#id3"><span class="problematic" id="id4">*</span></a>:1.0     (optional) ContextInfo to detect the context id and specify counters source</li>
 </ul>
 </dd>
 <dt>Example:</dt>
-<dd><p class="first">logger = ConsoleLogger()
-logger.set_level(LogLevel.debug)</p>
-<p class="last">logger.error(“123”, ex, “Error occured: %s”, ex.message)
-logger.debug(“123”, “Everything is OK.”)</p>
+<dd>logger = ConsoleLogger()
+<dd>logger.set_level(LogLevel.debug)</p>
+<dd>logger.error(“123”, ex, “Error occured: %s”, ex.message)
+<dd>logger.debug(“123”, “Everything is OK.”)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -837,7 +837,7 @@ logger.debug(“123”, “Everything is OK.”)</p>
 <dl class="docutils">
 <dt>### References ###</dt>
 <dd><ul class="first last simple">
-<li><em>:logger:</em>:<a href="#id5"><span class="problematic" id="id6">*</span></a>:1.0      (optional) [[ILogger]] components to pass log messages</li>
+<li><em>:logger:</em>:<a href="#id5"><span class="problematic" id="id6">*</span></a>:1.0      (optional) ILogger components to pass log messages</li>
 </ul>
 </dd>
 <dt>Example:</dt>
@@ -877,7 +877,7 @@ logger.debug(“123”, “Everything is OK.”)</p>
 <dt id="pip_services3_components.log.LogMessage">
 <em class="property">class </em><code class="descclassname">pip_services3_components.log.</code><code class="descname">LogMessage</code><span class="sig-paren">(</span><em>level=None</em>, <em>source=None</em>, <em>correlation_id=None</em>, <em>error=None</em>, <em>message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.log.LogMessage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Data object to store captured log messages. This object is used by [[CachedLogger]].</p>
+<p>Data object to store captured log messages. This object is used by CachedLogger.</p>
 <dl class="attribute">
 <dt id="pip_services3_components.log.LogMessage.correlation_id">
 <code class="descname">correlation_id</code><em class="property"> = None</em><a class="headerlink" href="#pip_services3_components.log.LogMessage.correlation_id" title="Permalink to this definition">¶</a></dt>
@@ -935,7 +935,7 @@ Child classes implement saving cached messages to their specified destinations.<
 <dl class="docutils">
 <dt>### References ###</dt>
 <dd><ul class="first last simple">
-<li><em>:context-info:</em>:<a href="#id7"><span class="problematic" id="id8">*</span></a>:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source</li>
+<li><em>:context-info:</em>:<a href="#id7"><span class="problematic" id="id8">*</span></a>:1.0     (optional) ContextInfo to detect the context id and specify counters source</li>
 </ul>
 </dd>
 </dl>

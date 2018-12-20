@@ -79,12 +79,12 @@
 </div></blockquote>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">======== config.json ======
-{ “key1”: “{{KEY1_VALUE}}”, “key2”: “{{KEY2_VALUE}}” }
-===========================</p>
-<p class="last">configReader = JsonConfigReader(“config.json”)
-parameters = ConfigParams.from_tuples(“KEY1_VALUE”, 123, “KEY2_VALUE”, “ABC”)
-configReader.read_config(“123”, parameters)</p>
+<dd>======== config.json ======
+<dd>{ “key1”: “{{KEY1_VALUE}}”, “key2”: “{{KEY2_VALUE}}” }
+<dd>===========================
+<dd>configReader = JsonConfigReader(“config.json”)
+<dd>parameters = ConfigParams.from_tuples(“KEY1_VALUE”, 123, “KEY2_VALUE”, “ABC”)
+<dd>configReader.read_config(“123”, parameters)
 </dd>
 </dl>
 <dl class="method">

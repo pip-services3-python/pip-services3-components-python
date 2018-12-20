@@ -82,31 +82,31 @@
 <h3>pip_services3_components.connect.__init__<a class="headerlink" href="#pip-services3-components-connect-init" title="Permalink to this headline">¶</a></h3>
 <p>Contains implementation of connection parameters, using various connection strings,
 which are stripped of all credentials. If we need to configure a service, the port,
-ip address, protocol, and other parameters – we use the ConnectionParams object, and
-relevant helper classes (like [[ConnectionResolver]]), for acquiring these parameters,
+ip address, protocol, and other parameters – we use the <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.ConnectionParams.html">ConnectionParams</a> object, and
+relevant helper classes (like <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.ConnectionResolver.html">ConnectionResolver</a>), for acquiring these parameters,
 and for discovery of objects, components (which store and retrieve connection parameters).</p>
 <p>### Discovery ###</p>
 <p>Service that store a registry of various end-points (what services are where, and how to
 connect to them). It knows the end-points, but doesn’t have the credentials to connect to them.
-Separated for security reasons. IDiscovery – interface for creating registries.
-MemoryDiscovery – registry that is stored in memory.</p>
+Separated for security reasons. <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.IDiscovery.html">IDiscovery</a> – interface for creating registries.
+<a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.connect.MemoryDiscovery.html">MemoryDiscovery</a> – registry that is stored in memory.</p>
 <dl class="docutils">
 <dt>There exist 2 types of discovery:</dt>
 <dd><ul class="first simple">
-<li>Static discovery: all services have static IP addresses (like DNS, which also works using static</li>
-</ul>
-<p class="last">discovery) that are configured from the start and don’t change along the way. As of lately, used
-more often than dynamic, because it is simpler to use and more reliable.
-- Proxy (or reverse proxy) is created with a dns name, and all the dynamics of
+<li>Static discovery: <ul><li>all services have static IP addresses (like DNS, which also works using static
+discovery) that are configured from the start and don’t change along the way. As of lately, used
+more often than dynamic, because it is simpler to use and more reliable.</li>
+<li>Proxy (or reverse proxy) is created with a dns name, and all the dynamics of
 starting/restarting/switching from one host to another – everything is nice and clear for the clients.
-Infrastructure does all the hard work out of the box.
-- Configure sets the static registry.
-- Dynamic discovery: every time a service starts, it registers its address in the discovery service
+Infrastructure does all the hard work out of the box.</li>
+<li>Configure sets the static registry.</li></ul></li>
+<li>Dynamic discovery: <ul><li>every time a service starts, it registers its address in the discovery service
 (“Service name” at the following address “IP”). Clients then ask to resolve the address
 by which the requested service can be reached. The service has a general name, by which other
-services can resolve it.
-- If a service stops working, you need to refresh its address, clean stale addresses,
-heartbeats must be used – lots of problems and challenges. One service can have more than one address.</p>
+services can resolve it.</li>
+<li>If a service stops working, you need to refresh its address, clean stale addresses,
+heartbeats must be used – lots of problems and challenges. One service can have more than one address.
+</li></li></ul>
 </dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
@@ -141,13 +141,13 @@ separately from more protected sensitive values.</p>
 <dt>Example:</dt>
 <dd><dl class="first docutils">
 <dt>connection = ConnectionParams.from_tuples(“protocol”, “http”,</dt>
-<dd>“host”, “10.1.1.100”,
-“port”, “8080”,
-“cluster”, “mycluster”)</dd>
+<br>“host”, “10.1.1.100”,
+<br>“port”, “8080”,
+<br>“cluster”, “mycluster”)</dd>
 </dl>
-<p class="last">host = connection.get_host()                             // Result: “10.1.1.100”
-port = connection.get_port()                             // Result: 8080
-cluster = connection.get_as_nullable_string(“cluster”)     // Result: “mycluster”</p>
+<dd>host = connection.get_host()                             // Result: “10.1.1.100”
+<dd>port = connection.get_port()                             // Result: 8080
+<dd>cluster = connection.get_as_nullable_string(“cluster”)     // Result: “mycluster”
 </dd>
 </dl>
 <dl class="staticmethod">
@@ -205,7 +205,7 @@ Tuples parameters contain a sequence of key1, value1, key2, value2, … pairs.</
 <dl class="method">
 <dt id="pip_services3_components.connect.ConnectionParams.get_discovery_key">
 <code class="descname">get_discovery_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.get_discovery_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the key to retrieve this connection from [[DiscoveryService]].
+<dd><p>Gets the key to retrieve this connection from DiscoveryService.
 If this key is null, than all parameters are already present.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -296,7 +296,7 @@ than it returns a list with only one ConnectionParams.</p>
 <dl class="method">
 <dt id="pip_services3_components.connect.ConnectionParams.set_discovery_key">
 <code class="descname">set_discovery_key</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.set_discovery_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the key to retrieve these parameters from [[DiscoveryService]].</p>
+<dd><p>Sets the key to retrieve these parameters from DiscoveryService.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -366,13 +366,13 @@ than it returns a list with only one ConnectionParams.</p>
 <dl class="method">
 <dt id="pip_services3_components.connect.ConnectionParams.use_discovery">
 <code class="descname">use_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.use_discovery" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if these connection parameters shall be retrieved from [[DiscoveryService]].
-The connection parameters are redirected to [[DiscoveryService]] when discovery_key parameter is set.</p>
+<dd><p>Checks if these connection parameters shall be retrieved from DiscoveryService.
+The connection parameters are redirected to DiscoveryService when discovery_key parameter is set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if connection shall be retrieved from [[DiscoveryService]]</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if connection shall be retrieved from DiscoveryService</td>
 </tr>
 </tbody>
 </table>
@@ -453,8 +453,8 @@ The connection parameters are redirected to [[DiscoveryService]] when discovery_
 <em class="property">class </em><code class="descclassname">pip_services3_components.connect.</code><code class="descname">ConnectionResolver</code><span class="sig-paren">(</span><em>config=None</em>, <em>references=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
 <p>Helper class to retrieve component connections.</p>
-<p>If connections are configured to be retrieved from [[IDiscovery]],
-it automatically locates [[IDiscovery]] in component references
+<p>If connections are configured to be retrieved from IDiscovery,
+it automatically locates IDiscovery in component references
 and retrieve connections from there using discovery_key parameter.</p>
 <p>### Configuration parameters ###</p>
 <blockquote>
@@ -488,11 +488,11 @@ and retrieve connections from there using discovery_key parameter.</p>
 </ul>
 </dd>
 <dt>Example:</dt>
-<dd><p class="first">config = ConfigParams.from_tuples(“connection.host”, “10.1.1.100”, “connection.port”, 8080)</p>
-<p class="last">connectionResolver = ConnectionResolver()
-connectionResolver.configure(config)
-connectionResolver.setReferences(references)
-connectionResolver.resolve(“123”)</p>
+<dd>config = ConfigParams.from_tuples(“connection.host”, “10.1.1.100”, “connection.port”, 8080)
+<dd>connectionResolver = ConnectionResolver()
+<dd>connectionResolver.configure(config)
+<dd>connectionResolver.setReferences(references)
+<dd>connectionResolver.resolve(“123”)
 </dd>
 </dl>
 <dl class="method">
@@ -528,7 +528,7 @@ connectionResolver.resolve(“123”)</p>
 <code class="descname">get_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.get_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all connections configured in component configuration.
 Redirect to Discovery services is not done at this point.
-If you need fully fleshed connection use [[resolve]] method instead.</p>
+If you need fully fleshed connection use <i>resolve</i> method instead.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -562,7 +562,7 @@ This method can be used for dynamic service discovery.</p>
 <dt id="pip_services3_components.connect.ConnectionResolver.resolve">
 <code class="descname">resolve</code><span class="sig-paren">(</span><em>correlation_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.resolve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves a single component connection. If connections are configured to be retrieved
-from Discovery service it finds a [[IDiscovery]] and resolves the connection there.</p>
+from Discovery service it finds a IDiscovery and resolves the connection there.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -579,7 +579,7 @@ from Discovery service it finds a [[IDiscovery]] and resolves the connection the
 <dt id="pip_services3_components.connect.ConnectionResolver.resolve_all">
 <code class="descname">resolve_all</code><span class="sig-paren">(</span><em>correlation_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.resolve_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves all component connection. If connections are configured to be retrieved
-from Discovery service it finds a [[IDiscovery]] and resolves the connection there.</p>
+from Discovery service it finds a IDiscovery and resolves the connection there.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -624,14 +624,14 @@ from Discovery service it finds a [[IDiscovery]] and resolves the connection the
 </div></blockquote>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">config = ConfigParams.from_tuples(
-“key1.host”, “10.1.1.100”,
-“key1.port”, “8080”,
-“key2.host”, “10.1.1.100”,
-“key2.port”, “8082”)</p>
-<p>discovery = MemoryDiscovery()
-discovery.read_connections(config)</p>
-<p class="last">discovery.resolve(“123”, “key1”)</p>
+<dd>config = ConfigParams.from_tuples(
+<br>“key1.host”, “10.1.1.100”,
+<br>“key1.port”, “8080”,
+<br>“key2.host”, “10.1.1.100”,
+<br>“key2.port”, “8082”)
+<dd>discovery = MemoryDiscovery()
+<dd>discovery.read_connections(config)
+<dd>discovery.resolve(“123”, “key1”)
 </dd>
 </dl>
 <dl class="method">

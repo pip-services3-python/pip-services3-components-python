@@ -96,14 +96,14 @@
 </div></blockquote>
 <dl class="docutils">
 <dt>Example:</dt>
-<dd><p class="first">config = ConfigParams.from_tuples(
-“key1.host”, “10.1.1.100”,
-“key1.port”, “8080”,
-“key2.host”, “10.1.1.100”,
-“key2.port”, “8082”)</p>
-<p>discovery = MemoryDiscovery()
-discovery.read_connections(config)</p>
-<p class="last">discovery.resolve(“123”, “key1”)</p>
+<dd>config = ConfigParams.from_tuples(
+<br>“key1.host”, “10.1.1.100”,
+<br>“key1.port”, “8080”,
+<br>“key2.host”, “10.1.1.100”,
+<br>“key2.port”, “8082”)
+<dd>discovery = MemoryDiscovery()
+<dd>discovery.read_connections(config)
+<dd>discovery.resolve(“123”, “key1”)
 </dd>
 </dl>
 <dl class="method">
