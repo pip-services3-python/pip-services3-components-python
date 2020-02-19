@@ -43,9 +43,9 @@ class ContextInfo(IReconfigurable):
     _name = "unknown"
     _properties = None
     _description = None
-    context_id = None
-    start_time = datetime.datetime.now()
-    uptime = 0
+    _contextId = None
+    _startTime = datetime.datetime.now()
+    _uptime = 0
 
     def __init__(self, name = None, description = None):
         """
@@ -110,7 +110,7 @@ class ContextInfo(IReconfigurable):
 
         :return: the unique context id.
         """
-        return self.context_id
+        return self._contextId
 
     def set_context_id(self, context_id):
         """
@@ -118,7 +118,7 @@ class ContextInfo(IReconfigurable):
 
         :param context_id: a new unique context id.
         """
-        self.context_id = context_id
+        self._contextId = context_id
 
     def get_start_time(self):
         """
@@ -126,7 +126,7 @@ class ContextInfo(IReconfigurable):
 
         :return: the context start time.
         """
-        return self.start_time
+        return self._startTime
 
     def set_start_time(self, start_time):
         """
@@ -134,7 +134,7 @@ class ContextInfo(IReconfigurable):
 
         :param start_time: a new context start time.
         """
-        self.start_time = start_time
+        self._startTime = start_time
 
     def get_uptime(self):
         """
@@ -142,10 +142,10 @@ class ContextInfo(IReconfigurable):
 
         :return: number of milliseconds from the context start time.
         """
-        return self.uptime
+        return self._uptime
 
     def set_uptime(self, uptime):
-        self.uptime = uptime
+        self._uptime = uptime
 
     def get_properties(self):
         """
@@ -175,3 +175,11 @@ class ContextInfo(IReconfigurable):
         value = ContextInfo()
         value.configure(config)
         return value
+    
+    name = property(get_name, set_name)
+    description = property(get_description, set_description)
+    properties = property(get_properties, set_properties)
+    uptime = property(get_uptime, set_uptime)
+    startTime = property(get_start_time, set_start_time)
+    contextId = property(get_context_id, set_context_id)
+

@@ -104,7 +104,7 @@ class JsonConfigReader(FileConfigReader):
         return JsonConfigReader(path)._read_object(correlation_id, parameters)
 
     @staticmethod
-    def _read_config(correlation_id, path, parameters):
+    def read_config(correlation_id, path, parameters):
         """
         Reads configuration from a file, parameterize it with given values and returns a new ConfigParams object.
 
