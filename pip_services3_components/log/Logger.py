@@ -8,6 +8,8 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from abc import ABC, abstractmethod
+
 from pip_services3_commons.refer import IReferenceable, Descriptor
 
 from .LogLevel import LogLevel
@@ -15,7 +17,8 @@ from .ILogger import ILogger
 from .LogLevelConverter import LogLevelConverter
 from pip_services3_commons.config.IReconfigurable import IReconfigurable
 
-class Logger(ILogger, IReconfigurable, IReferenceable):
+
+class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
     """
     Abstract logger that captures and formats log messages.
     Child classes take the captured messages and write them to their specific destinations.
@@ -67,6 +70,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable):
         """
         self._level = level
 
+    @abstractmethod
     def _write(self, level, correlation_id, error, message):
         """
         Writes a log message to the logger destination.
@@ -207,3 +211,24 @@ class Logger(ILogger, IReconfigurable, IReferenceable):
         """
         self._format_and_write(LogLevel.Trace, correlation_id, None, message, args, kwargs)
 
+    def _compose_error(self, error):
+        """
+        Composes an human-readable error description
+
+        :param error: an error to format.
+        :return: a human-reable error description.
+        """
+        builder = ''
+
+        builder += error.message
+
+        app_error = error
+        if app_error.cause:
+            builder += ' Cause by: '
+            builder += app_error.cause
+
+        if error.stack:
+            builder += ' Stack trace '
+            builder += error.stack
+
+        return builder

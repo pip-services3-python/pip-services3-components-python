@@ -18,6 +18,7 @@ from .ILogger import ILogger
 from .LogLevelConverter import LogLevelConverter
 from .Logger import Logger
 
+
 class ConsoleLogger(Logger):
     """
     Logger that writes log messages to console.
@@ -39,25 +40,9 @@ class ConsoleLogger(Logger):
         logger.error("123", ex, "Error occured: %s", ex.message)
         logger.debug("123", "Everything is OK.")
     """
-    def _compose_error(self, error):
-        result = ""
-        while error != None:
-            if len(result) > 0:
-                result += " Cause by error: "
 
-            result += result + str(error)
-            
-            if hasattr(error, 'stack_trace'):
-                result += " StackTrace: " + error.stack_trace
-
-            if hasattr(error, 'cause'):
-                error = error.cause
-            elif hasattr(error, '__traceback__'):
-                error = error.__traceback__
-            else:
-                error = None
-
-        return result
+    def __init__(self):
+        super().__init__()
 
     def _write(self, level, correlation_id, error, message):
         """
@@ -71,11 +56,11 @@ class ConsoleLogger(Logger):
 
         :param message: a human-readable message to log.
         """
-        if (self._level < level):
+        if self._level < level:
             return
 
         output = "["
-        output += correlation_id if correlation_id != None else "---"
+        output += correlation_id if correlation_id is not None else "---"
         output += ":"
         output += LogLevelConverter.to_string(level)
         output += ":"
@@ -84,7 +69,7 @@ class ConsoleLogger(Logger):
 
         output += message
 
-        if error != None:
+        if error is not None:
             if len(message) == 0:
                 output += "Error: "
             else:
@@ -94,7 +79,7 @@ class ConsoleLogger(Logger):
 
         output += "\n"
 
-        if level >= LogLevel.Fatal and level <= LogLevel.Warn:
+        if LogLevel.Fatal <= level <= LogLevel.Warn:
             sys.stderr.write(output)
         else:
             sys.stdout.write(output)
