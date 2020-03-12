@@ -30,7 +30,7 @@ setup(
     zip_safe=True,
     platforms='any',
     install_requires=[
-        'iso8601', 'PyYAML', 'pystache', 'pip_services3_commons'
+        'iso8601', 'PyYAML', 'pybars', 'pip_services3_commons'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
