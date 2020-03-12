@@ -8,14 +8,16 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from abc import ABC, abstractmethod
 
-import pystache
+from pybars import Compiler
 
 from pip_services3_commons.config import IConfigurable
 from pip_services3_commons.config import ConfigParams
 from .IConfigReader import IConfigReader
 
-class ConfigReader(IConfigReader, IConfigurable):
+
+class ConfigReader(IConfigReader, IConfigurable, ABC):
     """
     Abstract config reader that supports configuration parameterization.
 
@@ -42,6 +44,7 @@ class ConfigReader(IConfigReader, IConfigurable):
         if len(parameters) > 0:
             self._parameters = parameters
 
+    @abstractmethod
     def read_config(self, correlation_id, parameters):
         """
         Reads configuration and parameterize it with given values.
@@ -54,7 +57,6 @@ class ConfigReader(IConfigReader, IConfigurable):
         """
         raise NotImplementedError('Method is abstract and must be overriden')
 
-    #@staticmethod
     def _parameterize(self, config, parameters):
         """
         Parameterized configuration template given as string with dynamic parameters.
@@ -65,5 +67,7 @@ class ConfigReader(IConfigReader, IConfigurable):
 
         :return: a parameterized configuration string.
         """
+        compiler = Compiler()
+        template = compiler.compile(config)
         parameters = self._parameters.override(parameters)
-        return pystache.render(config, parameters)
+        return template(parameters)

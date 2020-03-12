@@ -1,3 +1,4 @@
+pybars
 iso8601
 PyYAML
 pystache
