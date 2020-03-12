@@ -10,12 +10,13 @@
 """
 
 import os.path
-import yaml 
+import yaml
 
 from pip_services3_commons.errors.FileException import FileException
 from pip_services3_commons.errors.ConfigException import ConfigException
 from pip_services3_commons.config.ConfigParams import ConfigParams
 from .FileConfigReader import FileConfigReader
+
 
 class YamlConfigReader(FileConfigReader):
     """
@@ -37,6 +38,7 @@ class YamlConfigReader(FileConfigReader):
         parameters = ConfigParams.from_tuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC")
         configReader.read_config("123", parameters)
     """
+
     def __init__(self, path):
         """
         Creates a new instance of the config reader.
@@ -44,7 +46,7 @@ class YamlConfigReader(FileConfigReader):
         :param path: (optional) a path to configuration file.
         """
         super(YamlConfigReader, self).__init__(path)
-    
+
     def _read_object(self, correlation_id, parameters):
         """
         Reads configuration file, parameterizes its content and converts it into JSON object.
@@ -59,15 +61,15 @@ class YamlConfigReader(FileConfigReader):
 
         if path == None:
             raise ConfigException(correlation_id, "NO_PATH", "Missing config file path")
-        
+
         if not os.path.isfile(path):
             raise FileException(correlation_id, 'FILE_NOT_FOUND', 'Config file was not found at ' + path)
-        
+
         try:
             with open(path, 'r') as file:
                 config = file.read()
                 config = self._parameterize(config, parameters)
-                return yaml.load(config)
+                return yaml.load(config, Loader=yaml.FullLoader)
         except Exception as ex:
             raise FileException(
                 correlation_id,
