@@ -70,5 +70,4 @@ class TestConnectionResolver:
         try:
             connection_params = connection_resolver.resolve("correlation_id")
         except Exception as ex:
-            pass
-            #assert "Discovery wasn't found to make resolution" == ex.message
+            assert "Discovery wasn't found to make resolution" == ex.message

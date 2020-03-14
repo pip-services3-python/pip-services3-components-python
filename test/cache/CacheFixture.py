@@ -9,8 +9,8 @@
 
 import time
 
+
 class CacheFixture:
-    
     _cache = None
 
     def __init__(self, cache):
@@ -20,7 +20,7 @@ class CacheFixture:
         # Set the first value
         value = self._cache.store(None, "test", 123, 0)
         assert 123 == value
-        
+
         value = self._cache.retrieve(None, "test")
         assert 123 == value
 
@@ -30,11 +30,11 @@ class CacheFixture:
 
         value = self._cache.retrieve(None, "test")
         assert value == None
-        
+
         # Set the second value
         value = self._cache.store(None, "test", "ABC", 0)
         assert "ABC" == value
-        
+
         value = self._cache.retrieve(None, "test")
         assert "ABC" == value
 
@@ -48,16 +48,15 @@ class CacheFixture:
         # Set value
         value = self._cache.store(None, "test", 123, 50)
         assert 123 == value
-        
+
         # Read the value
         value = self._cache.retrieve(None, "test")
         assert 123 == value
-        
+
         # Wait
         t = timeout / 1000
         time.sleep(t)
-        
+
         # Read the value again
         value = self._cache.retrieve(None, "test")
-        # Todo: Something is wrong with timing
-        #assert value == None
+        assert value is None

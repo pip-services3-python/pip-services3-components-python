@@ -61,8 +61,8 @@ class CountersFixture:
         counter = self._counters.get("Test.Elapsed", CounterType.Interval)
         assert counter != None
         # Something is wrong with timing
-        #assert counter.last > 50
-        #assert counter.last < 5000
+        assert counter.last > 50
+        assert counter.last < 5000
 
         self._counters.dump()
 

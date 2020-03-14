@@ -9,15 +9,15 @@
 from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.run import Parameters
 from pip_services3_components.config import ConfigReader
+from pybars import Compiler
 
-#todo
-# class TestConfigReader():
-#     def test_parameterize(self):
-#         config = "{{#if A}}{{B}}{{/if}}"
-#         values = Parameters.from_tuples("A", "true",
-#                                         "B", "XYZ")
-#         parameters = ConfigParams()
-#         parameters.append(values)
-#         reader = ConfigReader()
-#
-#         assert "XYZ" == reader._parameterize(config, parameters)
+
+class TestConfigReader:
+    def test_process_templates(self):
+        config = "{{#if A}}{{B}}{{/if}}"
+        values = {"A": "true", "B": "XYZ"}
+
+        compiler = Compiler()
+        template = compiler.compile(config)
+
+        assert "XYZ" == template(values)
