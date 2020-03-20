@@ -225,10 +225,10 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
         app_error = error
         if app_error.cause:
             builder += ' Cause by: '
-            builder += app_error.cause
+            builder += str(app_error.cause)
 
-        if error.stack:
+        if error.stack_trace:
             builder += ' Stack trace '
-            builder += error.stack
+            builder += error.stack_trace
 
         return builder
