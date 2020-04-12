@@ -51,8 +51,8 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
         :param references: references to locate the component dependencies.
         """
         context_info = references.get_one_optional(Descriptor("pip-services", "context-info", "*", "*", "1.0"))
-        if context_info != None and self._source == None:
-            self._source = context_info.get_name()
+        if context_info is not None and self._source is None:
+            self._source = context_info.name
 
     def get_level(self):
         """
