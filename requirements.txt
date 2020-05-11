@@ -1,5 +1,9 @@
-pybars
+wheel
+pybars3
 iso8601
 PyYAML
+numpy
+pytz
+pystache
 pytest
-#Sphinx
+pip_services3_commons
