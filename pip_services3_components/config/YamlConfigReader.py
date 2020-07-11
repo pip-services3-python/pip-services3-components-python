@@ -59,7 +59,7 @@ class YamlConfigReader(FileConfigReader):
         """
         path = self.get_path()
 
-        if path == None:
+        if path is None:
             raise ConfigException(correlation_id, "NO_PATH", "Missing config file path")
 
         if not os.path.isfile(path):

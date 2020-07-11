@@ -49,7 +49,7 @@ class CompositeCounters(ICounters, ITimingCallback, IReferenceable):
         """
         self._counters = []
 
-        if references != None:
+        if not (references is None):
             self.set_references(references)
             
     def set_references(self, references):

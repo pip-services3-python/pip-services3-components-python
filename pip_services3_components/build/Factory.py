@@ -42,9 +42,9 @@ class Factory(IFactory):
 
         :param factory: a factory function that receives a locator and returns a created component.
         """
-        if locator == None:
+        if locator is None:
             raise Exception("Locator cannot be null")
-        if factory == None:
+        if factory is None:
             raise Exception("Factory cannot be null")
 
         self._registrations.append(Registration(locator, factory))
@@ -57,9 +57,9 @@ class Factory(IFactory):
 
         :param object_factory: a component type.
         """
-        if locator == None:
+        if locator is None:
             raise Exception("Locator cannot be null")
-        if object_factory == None:
+        if object_factory is None:
             raise Exception("Factory cannot be null")
 
         def factory(locator):

@@ -48,7 +48,7 @@ class CompositeLogger(Logger, IReferenceable):
         """
         self._loggers = []
 
-        if references != None:
+        if not (references is None):
             self.set_references(references)
             
     def set_references(self, references):

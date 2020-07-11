@@ -64,7 +64,7 @@ class CachedLogger(Logger, IReconfigurable):
 
         :param message: a human-readable message to log.
         """
-        error = ErrorDescriptionFactory.create(ex) if ex != None else None
+        error = ErrorDescriptionFactory.create(ex) if not (ex is None) else None
         source = socket.gethostname() # Todo: add process/module name
         log_message = LogMessage(level, source, correlation_id, error, message)
         

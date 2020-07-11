@@ -47,7 +47,7 @@ class CompositeFactory(IFactory):
 
         :param factory: a factory to be added.
         """
-        if factory == None:
+        if factory is None:
             raise Exception("Factory cannot be null")
         
         self._factories.append(factory)
@@ -74,13 +74,13 @@ class CompositeFactory(IFactory):
 
         :return: a locator for a component that the factory is able to create.
         """
-        if locator == None:
+        if locator is None:
             raise Exception("Locator cannot be null")
         
         # Iterate from the latest factories
         for factory in reversed(self._factories):
             locator = factory.can_create(locator)
-            if locator != None:
+            if not (locator is None):
                 return locator
         
         return None
@@ -93,7 +93,7 @@ class CompositeFactory(IFactory):
 
         :return: the created component.
         """
-        if locator == None:
+        if locator is None:
             raise Exception("Locator cannot be null")
 
         # Iterate from the latest factories

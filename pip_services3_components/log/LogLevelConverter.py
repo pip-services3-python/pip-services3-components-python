@@ -24,7 +24,7 @@ class LogLevelConverter(object):
 
         :return: converted log level
         """
-        if value == None:
+        if value is None:
             return LogLevel.Info
 
         value = str(value).upper()

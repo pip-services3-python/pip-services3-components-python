@@ -74,11 +74,11 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
             # Count the remaining entry 
             else:
                 self._count += 1
-                if oldest == None or oldest.expiration > entry.expiration:
+                if oldest is None or oldest.expiration > entry.expiration:
                     oldest = entry
         
         # Remove the oldest if cache size exceeded maximum
-        if self._count > self._max_size and oldest != None:
+        if self._count > self._max_size and not (oldest is None):
             self._cache.pop(oldest.key, None)
             self._count -= 1
 
@@ -136,14 +136,14 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
                 entry = self._cache[key]
 
             # Shortcut to remove entry from the cache
-            if value == None:
-                if entry != None:
+            if value is None:
+                if not (entry is None):
                     self._cache.pop(key, None)
                     self._count -= 1
                 return None
             
             # Update the entry
-            if entry != None:
+            if not (entry is None):
                 entry.set_value(value, timeout)
             # Or create a new entry 
             else:
@@ -173,7 +173,7 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
             entry = self._cache.pop(key, None)
 
             # Remove entry from the cache
-            if entry != None:
+            if not (entry is None):
                 self._count -= 1
         finally:
             self._lock.release()

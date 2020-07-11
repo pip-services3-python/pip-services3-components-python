@@ -53,7 +53,7 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
         :param config: (optional) configuration with connection parameters.
         """
         self._items = []
-        if config != None:
+        if not (config is None):
             self.configure(config)
 
     def configure(self, config):
@@ -106,7 +106,7 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
         """
         connection = None
         for item in self._items:
-            if item.key == key and item.connection != None:
+            if item.key == key and not (item.connection is None):
                 connection = item.connection
                 break
         return connection
@@ -123,6 +123,6 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
         """
         connections = []
         for item in self._items:
-            if item.key == key and item.connection != None:
+            if item.key == key and not (item.connection is None):
                 connections.append(item.connection)
         return connections

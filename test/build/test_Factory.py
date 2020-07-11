@@ -28,7 +28,7 @@ class TestFactory:
         descriptor = Descriptor('*', 'logger', 'console', '*', '*')
         logger = factory.create(descriptor)
 
-        assert None != logger
+        assert not (logger is None)
 
         logger.set_level(LogLevel.Error)
         logger.trace(None, 'Hello world!')

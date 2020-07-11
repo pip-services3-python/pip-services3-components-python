@@ -151,14 +151,14 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
         :return: an existing or newly created counter of the specified type.
         """
-        if name == None or len(name) == 0:
+        if name is None or len(name) == 0:
             raise Exception("Counter name was not set")
 
         self._lock.acquire()
         try:
             counter = self._cache[name] if name in self._cache else None
 
-            if counter == None or counter.type != typ:
+            if counter is None or counter.type != typ:
                 counter = Counter(name, typ)
                 self._cache[name] = counter
 
@@ -168,15 +168,15 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
 
 
     def _calculate_stats(self, counter, value):
-        if counter == None:
+        if counter is None:
             raise Exception("Missing counter")
 
         counter.last = value
-        counter.count = counter.count + 1 if counter.count != None else 1
-        counter.max = max(counter.max, value) if counter.max != None else value
-        counter.min = min(counter.min, value) if counter.min != None else value
+        counter.count = counter.count + 1 if not (counter.count is None) else 1
+        counter.max = max(counter.max, value) if not (counter.max is None) else value
+        counter.min = min(counter.min, value) if not (counter.min is None) else value
         counter.average = (float(counter.average * (counter.count - 1)) + value) / counter.count \
-            if counter.average != None and counter.count > 0 else value
+            if not (counter.average is None) and counter.count > 0 else value
 
 
     def begin_timing(self, name):
@@ -249,7 +249,7 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
         :param value: a timestamp to record.
         """
         counter = self.get(name, CounterType.Timestamp)
-        counter.time = value if value != None else datetime.datetime.utcnow()
+        counter.time = value if not (value is None) else datetime.datetime.utcnow()
         self._update()
 
 
@@ -271,5 +271,5 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
         :param value: a value to add to the counter.
         """
         counter = self.get(name, CounterType.Increment)
-        counter.count = counter.count + value if counter.count != None else value
+        counter.count = counter.count + value if not (counter.count is None) else value
         self._update()

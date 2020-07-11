@@ -46,7 +46,7 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
         :param credentials: (optional) configuration with credential parameters.
         """
         self._items = StringValueMap()
-        if credentials != None:
+        if not (credentials is None):
             self.configure(credentials)
 
     def configure(self, config):
@@ -79,7 +79,7 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
 
         :param credential: a credential parameters to be stored.
         """
-        if credential != None:
+        if not (credential is None):
             self._items.put(key, credential)
         else:
             self._items.remove(key)

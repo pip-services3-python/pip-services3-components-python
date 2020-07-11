@@ -63,5 +63,5 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
         return ConfigParams(self._config)
 
     def read_config_section(self, section):
-        config = self._config.get_section(section) if self._config != None else None
+        config = self._config.get_section(section) if self._not (config is None) else None
         return config

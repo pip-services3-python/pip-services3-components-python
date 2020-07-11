@@ -44,6 +44,6 @@ class Timing:
         Ends timing of an execution block, calculates elapsed time and updates the associated counter.
         """
 
-        if self._callback != None:
+        if not (self._callback is None):
             elapsed = time.perf_counter() * 1000 - self._start
             self._callback.end_timing(self._counter, elapsed)

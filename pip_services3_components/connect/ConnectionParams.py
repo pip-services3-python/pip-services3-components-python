@@ -107,7 +107,7 @@ class ConnectionParams(ConfigParams):
         :return: the host name or IP address.
         """
         host = self.get_as_nullable_string("host")
-        host = host if host != None else self.get_as_nullable_string("ip")
+        host = host if not (host is None) else self.get_as_nullable_string("ip")
         return host
 
     def set_host(self, value):

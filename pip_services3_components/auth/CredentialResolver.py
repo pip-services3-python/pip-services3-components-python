@@ -63,9 +63,9 @@ class CredentialResolver(IConfigurable, IReferenceable):
         :param references: (optional) component references
         """
         self._credentials = []
-        if config != None:
+        if not (config is None):
             self.configure(config)
-        if references != None:
+        if not (references is None):
             self.set_references(references)
 
     def set_references(self, references):
@@ -109,7 +109,7 @@ class CredentialResolver(IConfigurable, IReferenceable):
         if credential.use_credential_store() == False: return None
         
         key = credential.get_store_key()
-        if self._references == None:
+        if self._references is None:
             return None
         
         descriptor = Descriptor("*", "credential_store", "*", "*", "*")
@@ -120,7 +120,7 @@ class CredentialResolver(IConfigurable, IReferenceable):
         for component in components:
             if isinstance(component, ICredentialStore):
                 resolved_credential = component.lookup(correlation_id, key)
-                if resolved_credential != None:
+                if not (resolved_credential is None):
                     return resolved_credential
 
         return None
@@ -145,7 +145,7 @@ class CredentialResolver(IConfigurable, IReferenceable):
         for credential in self._credentials:
             if credential.use_credential_store():
                 resolved_connection = self._lookup_in_stores(correlation_id, credential)
-                if resolved_connection != None:
+                if not (resolved_connection is None):
                     return resolved_connection
         
         return None

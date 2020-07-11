@@ -86,7 +86,7 @@ class CredentialParams(ConfigParams):
         :return: the user name.
         """
         username = self.get_as_nullable_string("username")
-        username = username if username != None else self.get_as_nullable_string("user")
+        username = username if not (username is None) else self.get_as_nullable_string("user")
         return username
 
     def set_username(self, value):
@@ -104,7 +104,7 @@ class CredentialParams(ConfigParams):
         :return: the user password.
         """
         password = self.get_as_nullable_string("password")
-        password = password if password != None else self.get_as_nullable_string("pass")
+        password = password if not (password is None) else self.get_as_nullable_string("pass")
         return password
 
     def set_password(self, password):
@@ -122,7 +122,7 @@ class CredentialParams(ConfigParams):
         :return: the application access id.
         """
         access_id = self.get_as_nullable_string("access_id")
-        access_id = access_id if access_id != None else self.get_as_nullable_string("client_id")
+        access_id = access_id if not (access_id is None) else self.get_as_nullable_string("client_id")
         return access_id
 
     def set_access_id(self, value):
@@ -141,7 +141,7 @@ class CredentialParams(ConfigParams):
         :return: the application secret key.
         """
         access_key = self.get_as_nullable_string("access_key")
-        access_key = access_key if access_key != None else self.get_as_nullable_string("access_key")
+        access_key = access_key if not (access_key is None) else self.get_as_nullable_string("access_key")
         return access_key
 
     def set_access_key(self, value):

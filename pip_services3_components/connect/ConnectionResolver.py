@@ -60,9 +60,9 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         :param references: (optional) component references
         """
         self._connections = []
-        if config != None:
+        if not (config is None):
             self.configure(config)
-        if references != None:
+        if not (references is None):
             self.set_references(references)
 
     def set_references(self, references):
@@ -105,12 +105,12 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         if connection.use_discovery() == False: return False
         
         key = connection.get_discovery_key()
-        if self._references == None:
+        if self._references is None:
             return False
         
         descriptor = Descriptor("*", "discovery", "*", "*", "*")
         components = self._references.get_optional(descriptor)
-        if components == None:
+        if components is None:
             return False
         
         for component in components:
@@ -145,7 +145,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         for component in components:
             if isinstance(component, IDiscovery):
                 resolved_connection = component.resolve_one(correlation_id, key)
-                if resolved_connection != None:
+                if not (resolved_connection is None):
                     return resolved_connection
         
         return None
@@ -170,7 +170,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         for connection in self._connections:
             if connection.use_discovery():
                 resolved_connection = self._resolve_in_discovery(correlation_id, connection)
-                if resolved_connection != None:
+                if not (resolved_connection is None):
                     # Merge configured and new parameters
                     resolved_connection = ConnectionParams(ConfigParams.merge_configs(connection, resolved_connection))
                     return resolved_connection
@@ -191,7 +191,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         for component in components:
             if isinstance(component, IDiscovery):
                 resolved_connections = component.resolve_all(correlation_id, key)
-                if resolved_connections != None:
+                if not (resolved_connections is None):
                     for connection in resolved_connections:
                         result.append(connection)
         

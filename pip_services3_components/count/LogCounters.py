@@ -65,17 +65,17 @@ class LogCounters(CachedCounters, IReferenceable):
     def _counter_to_string(self, counter):
         result = "Counter " + counter.name + " { "
         result += "\"type\": " + str(counter.type)
-        if counter.last != None:
+        if not (counter.last is None):
             result += ", \"last\": " + StringConverter.to_string(counter.last)
-        if counter.count != None:
+        if not (counter.count is None):
             result += ", \"count\": " + StringConverter.to_string(counter.count)
-        if counter.min != None:
+        if not (counter.min is None):
             result += ", \"min\": " + StringConverter.to_string(counter.min)
-        if counter.max != None:
+        if not (counter.max is None):
             result += ", \"max\": " + StringConverter.to_string(counter.max)
-        if counter.average != None:
+        if not (counter.average is None):
             result += ", \"avg\": " + StringConverter.to_string(counter.average)
-        if counter.time != None:
+        if not (counter.time is None):
             result += ", \"time\": " + StringConverter.to_string(counter.time)
         result += " }"
         return result
@@ -90,7 +90,7 @@ class LogCounters(CachedCounters, IReferenceable):
 
         :param counters: current counters measurements to be saves.
         """
-        if self._logger == None:
+        if self._logger is None:
             return
         if len(counters) == 0:
             return
