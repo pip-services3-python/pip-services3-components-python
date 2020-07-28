@@ -45,13 +45,13 @@ class CredentialParams(ConfigParams):
         pin = credential.get_as_nullable_string("pin")// Result: 321
     """
 
-    def __init__(self, map = None):
+    def __init__(self, values = None):
         """
         Creates a new credential parameters and fills it with values.
 
-        :param map: (optional) an object to be converted into key-value pairs to initialize these credentials.
+        :param values: (optional) an object to be converted into key-value pairs to initialize these credentials.
         """
-        super(CredentialParams, self).__init__(map)
+        super(CredentialParams, self).__init__(values)
 
     def use_credential_store(self):
         """

@@ -116,7 +116,8 @@ class CredentialResolver(IConfigurable, IReferenceable):
         components = self._references.get_optional(descriptor)
         if len(components) == 0:
             raise ReferenceException(correlation_id, "Credential store wasn't found to make lookup")
-
+        
+        # TODO: create assync 
         for component in components:
             if isinstance(component, ICredentialStore):
                 resolved_credential = component.lookup(correlation_id, key)
