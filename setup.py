@@ -22,7 +22,7 @@ with open('component.json') as json_file:
 
 setup(
     name='pip_services3_components',
-    version=config['version'],
+    version='3.0.2',
     url='http://github.com/pip-services3-python/pip-services3-components-python',
     license='MIT',
     description='Component definitions for Pip.Services in Python',
