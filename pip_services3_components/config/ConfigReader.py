@@ -2,13 +2,12 @@
 """
     pip_services3_components.config.CachedConfigReader
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+
     Cached config reader implementation
-    
+
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
-from abc import ABC, abstractmethod
 
 from pybars import Compiler
 
@@ -17,7 +16,7 @@ from pip_services3_commons.config import ConfigParams
 from .IConfigReader import IConfigReader
 
 
-class ConfigReader(IConfigReader, IConfigurable, ABC):
+class ConfigReader(IConfigReader, IConfigurable):
     """
     Abstract config reader that supports configuration parameterization.
 
@@ -44,7 +43,6 @@ class ConfigReader(IConfigReader, IConfigurable, ABC):
         if len(parameters) > 0:
             self._parameters = parameters
 
-    @abstractmethod
     def read_config(self, correlation_id, parameters):
         """
         Reads configuration and parameterize it with given values.
@@ -57,6 +55,7 @@ class ConfigReader(IConfigReader, IConfigurable, ABC):
         """
         raise NotImplementedError('Method is abstract and must be overriden')
 
+    # @staticmethod
     def _parameterize(self, config, parameters):
         """
         Parameterized configuration template given as string with dynamic parameters.
@@ -67,7 +66,7 @@ class ConfigReader(IConfigReader, IConfigurable, ABC):
 
         :return: a parameterized configuration string.
         """
-        compiler = Compiler()
-        template = compiler.compile(config)
         parameters = self._parameters.override(parameters)
-        return template(parameters)
+        compiler = Compiler().compile(config)
+
+        return compiler(parameters)
