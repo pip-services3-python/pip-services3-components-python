@@ -18,19 +18,19 @@ from setuptools import find_packages
 
 setup(
     name='pip_services3_components',
-    version='3.1.0',
+    version='3.1.1',
     url='http://github.com/pip-services3-python/pip-services3-components-python',
     license='MIT',
     description='Component definitions for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',
     author_email='seroukhov@gmail.com',
-    long_description=__doc__,
+    # long_description=__doc__,
     packages=find_packages(exclude=['config', 'data', 'test']),
     include_package_data=True,
     zip_safe=True,
     platforms='any',
     install_requires=[
-        'iso8601', 'PyYAML', 'pybars', 'pip_services3_commons'
+        'iso8601', 'PyYAML', 'pybars3', 'wheel', 'numpy', 'pytz', 'pystache', 'pytest', 'pip_services3_commons'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
