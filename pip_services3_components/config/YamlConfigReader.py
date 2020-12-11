@@ -77,7 +77,7 @@ class YamlConfigReader(FileConfigReader):
                 "Failed reading configuration " + path + ": " + str(ex)
             ).with_details("path", path).with_cause(ex)
 
-    def read_config(self, correlation_id, parameters):
+    def _read_config(self, correlation_id, parameters):
         """
         Reads configuration and parameterize it with given values.
 

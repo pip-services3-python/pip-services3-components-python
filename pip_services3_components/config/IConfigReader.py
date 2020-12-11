@@ -18,7 +18,7 @@ class IConfigReader:
     The parameterization allows to use configuration as a template and inject there dynamic values.
     The values may come from application command like arguments or environment variables.
     """
-    def read_config(self, correlation_id, parameters):
+    def _read_config(self, correlation_id, parameters):
         """
         Reads configuration and parameterize it with given values.
 

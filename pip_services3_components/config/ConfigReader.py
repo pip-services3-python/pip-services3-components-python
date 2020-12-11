@@ -43,7 +43,7 @@ class ConfigReader(IConfigReader, IConfigurable):
         if len(parameters) > 0:
             self._parameters = parameters
 
-    def read_config(self, correlation_id, parameters):
+    def _read_config(self, correlation_id, parameters):
         """
         Reads configuration and parameterize it with given values.
 
