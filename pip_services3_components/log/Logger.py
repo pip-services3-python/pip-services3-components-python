@@ -101,7 +101,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
 
         :param kwargs: arguments to parameterize the message.
         """
-        if not (message is None) and len(message) > 0 and len(kwargs) > 0:
+        if not (message is None) and len(message) > 0 and (len(args) or len(kwargs)) > 0:
             message = message.format(*args, **kwargs)
         self._write(level, correlation_id, error, message)
 
@@ -121,7 +121,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
 
         :param kwargs: arguments to parameterize the message.
         """
-        self._format_and_write(level, correlation_id, error, message, args, kwargs)
+        self._format_and_write(level, correlation_id, error, message, *args, **kwargs)
 
     def fatal(self, correlation_id, error, message, *args, **kwargs):
         """
@@ -137,7 +137,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
 
         :param kwargs: arguments to parameterize the message.
         """
-        self._format_and_write(LogLevel.Fatal, correlation_id, error, message, args, kwargs)
+        self._format_and_write(LogLevel.Fatal, correlation_id, error, message, *args, **kwargs)
 
     def error(self, correlation_id, error, message, *args, **kwargs):
         """
@@ -153,7 +153,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
 
         :param kwargs: arguments to parameterize the message.
         """
-        self._format_and_write(LogLevel.Error, correlation_id, error, message, args, kwargs)
+        self._format_and_write(LogLevel.Error, correlation_id, error, message, *args, **kwargs)
 
     def warn(self, correlation_id, message, *args, **kwargs):
         """
@@ -167,7 +167,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
 
         :param kwargs: arguments to parameterize the message.
         """
-        self._format_and_write(LogLevel.Warn, correlation_id, None, message, args, kwargs)
+        self._format_and_write(LogLevel.Warn, correlation_id, None, message, *args, **kwargs)
 
     def info(self, correlation_id, message, *args, **kwargs):
         """
@@ -181,7 +181,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
 
         :param kwargs: arguments to parameterize the message.
         """
-        self._format_and_write(LogLevel.Info, correlation_id, None, message, args, kwargs)
+        self._format_and_write(LogLevel.Info, correlation_id, None, message, *args, **kwargs)
 
     def debug(self, correlation_id, message, *args, **kwargs):
         """
@@ -195,7 +195,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
 
         :param kwargs: arguments to parameterize the message.
         """
-        self._format_and_write(LogLevel.Debug, correlation_id, None, message, args, kwargs)
+        self._format_and_write(LogLevel.Debug, correlation_id, None, message, *args, **kwargs)
 
     def trace(self, correlation_id, message, *args, **kwargs):
         """
@@ -209,7 +209,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
 
         :param kwargs: arguments to parameterize the message.
         """
-        self._format_and_write(LogLevel.Trace, correlation_id, None, message, args, kwargs)
+        self._format_and_write(LogLevel.Trace, correlation_id, None, message, *args, **kwargs)
 
     def _compose_error(self, error):
         """
