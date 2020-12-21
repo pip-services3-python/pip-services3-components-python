@@ -18,7 +18,7 @@ from setuptools import find_packages
 
 setup(
     name='pip_services3_components',
-    version='3.1.1',
+    version='3.2.0',
     url='http://github.com/pip-services3-python/pip-services3-components-python',
     license='MIT',
     description='Component definitions for Pip.Services in Python',
