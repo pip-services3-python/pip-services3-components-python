@@ -22,15 +22,13 @@ class CredentialResolver(IConfigurable, IReferenceable):
     Helper class to retrieve component credentials.
 
     If credentials are configured to be retrieved from
-    [[ICredentialStore]], it automatically locates [[ICredentialStore]]
+    :class:`ICredentialStore`, it automatically locates :class:`ICredentialStore`
     in component references and retrieve credentials from there using store_key parameter.
 
     ### Configuration parameters ###
-
     credential:
         - store_key:                   (optional) a key to retrieve the credentials from [[ICredentialStore]]
         - ...                          other credential parameters
-
     credentials:                   alternative to credential
         - [credential params 1]:       first credential parameters
         - ...                      credential parameters for key 1
@@ -42,6 +40,9 @@ class CredentialResolver(IConfigurable, IReferenceable):
         - *:credential-store:*:*:1.0  (optional) Credential stores to resolve credentials
 
     Example:
+
+    .. code-block:: python
+
           config = ConfigParams.from_tuples("credential.user", "jdoe",
                                             "credential.pass",  "pass123")
 
@@ -91,7 +92,7 @@ class CredentialResolver(IConfigurable, IReferenceable):
         Gets all credentials configured in component configuration.
 
         Redirect to CredentialStores is not done at this point.
-        If you need fully fleshed credential use [[lookup]] method instead.
+        If you need fully fleshed credential use :func:`lookup` method instead.
 
         :return: a list with credential parameters
         """
@@ -129,7 +130,7 @@ class CredentialResolver(IConfigurable, IReferenceable):
     def lookup(self, correlation_id):
         """
         Looks up component credential parameters. If credentials are configured to be retrieved
-        from Credential store it finds a [[ICredentialStore]] and lookups credentials there.
+        from Credential store it finds a :class:`ICredentialStore` and lookups credentials there.
 
         :param correlation_id: (optional) transaction id to trace execution through call chain.
 

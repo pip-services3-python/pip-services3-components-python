@@ -29,11 +29,16 @@ class YamlConfigReader(FileConfigReader):
         - ...
 
     Example:
+
+    .. code-block:: yml
+    
         ======== config.yml ======
         key1: "{{KEY1_VALUE}}"
         key2: "{{KEY2_VALUE}}"
         ===========================
 
+    .. code-block:: python
+    
         configReader = YamlConfigReader("config.yml")
         parameters = ConfigParams.from_tuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC")
         configReader.read_config("123", parameters)

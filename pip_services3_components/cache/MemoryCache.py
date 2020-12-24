@@ -24,12 +24,14 @@ class MemoryCache(ICache, IReconfigurable, ICleanable):
     Remember: This implementation is not suitable for synchronization of distributed processes.
 
     ### Configuration parameters ###
-
     options:
         - timeout:               default caching timeout in milliseconds (default: 1 minute)
         - max_size:              maximum number of values stored in this cache (default: 1000)
 
     Example:
+
+    .. code-block:: python
+    
         cache = MemoryCache()
         cache.store("123", "key1", "ABC", 0)
     """

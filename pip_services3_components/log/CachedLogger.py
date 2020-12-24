@@ -25,7 +25,6 @@ class CachedLogger(Logger, IReconfigurable):
     Child classes implement saving cached messages to their specified destinations.
 
     ### Configuration parameters ###
-
         - level:             maximum log level to capture
         - source:            source (context) name
         - options:
@@ -33,7 +32,7 @@ class CachedLogger(Logger, IReconfigurable):
             - max_cache_size:  maximum number of messages stored in this cache (default: 100)
 
     ### References ###
-        - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+        - *:context-info:*:*:1.0     (optional) :class:`ContextInfo` to detect the context id and specify counters source
     """
     _cache = None
     _updated = None

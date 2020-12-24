@@ -20,7 +20,6 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
     Credential store that keeps credentials in memory.
 
     ### Configuration parameters ###
-
         - [credential key 1]:
         - ...                          credential parameters for key 1
         - [credential key 2]:
@@ -28,6 +27,9 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
         - ...
 
     Example:
+
+    .. code-block:: python
+    
         config = ConfigParams.from_tuples("key1.user", "jdoe",
                                           "key1.pass", "pass123",
                                           "key2.user", "bsmith",

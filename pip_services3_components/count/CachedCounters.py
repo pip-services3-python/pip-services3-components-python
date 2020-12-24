@@ -26,7 +26,6 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
     Child classes implement saving of the counters into various destinations.
 
     ### Configuration parameters ###
-
         - options:
             - interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
             - reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
@@ -182,12 +181,12 @@ class CachedCounters(ICounters, IReconfigurable, ITimingCallback):
     def begin_timing(self, name):
         """
         Begins measurement of execution time interval.
-        It returns [[Timing]] object which has to be called at
-        [[Timing.endTiming]] to end the measurement and update the counter.
+        It returns :class:`Timing` object which has to be called at
+        :func:`Timing.end_timing` to end the measurement and update the counter.
 
         :param name: a counter name of Interval type.
 
-        :return: a [[Timing]] callback object to end timing.
+        :return: a :class:`Timing` callback object to end timing.
         """
         return Timing(name, self)
 

@@ -21,7 +21,6 @@ class ConnectionParams(ConfigParams):
     separately from more protected sensitive values.
 
     ### Configuration parameters ###
-
         - discovery_key: key to retrieve parameters from discovery service
         - protocol:      connection protocol like http, https, tcp, udp
         - host:          host name or IP address
@@ -31,6 +30,9 @@ class ConnectionParams(ConfigParams):
     In addition to standard parameters ConnectionParams may contain any number of custom parameters
 
     Example:
+
+    .. code-block:: python
+
         connection = ConnectionParams.from_tuples("protocol", "http",
                                                   "host", "10.1.1.100",
                                                   "port", "8080",
@@ -51,16 +53,16 @@ class ConnectionParams(ConfigParams):
 
     def use_discovery(self):
         """
-        Checks if these connection parameters shall be retrieved from [[DiscoveryService]].
-        The connection parameters are redirected to [[DiscoveryService]] when discovery_key parameter is set.
+        Checks if these connection parameters shall be retrieved from :class:DiscoveryService.
+        The connection parameters are redirected to :class:`DiscoveryService` when discovery_key parameter is set.
 
-        :return: true if connection shall be retrieved from [[DiscoveryService]]
+        :return: true if connection shall be retrieved from :class:`DiscoveryService`
         """
         return "discovery_key" in self
 
     def get_discovery_key(self):
         """
-        Gets the key to retrieve this connection from [[DiscoveryService]].
+        Gets the key to retrieve this connection from :class:`DiscoveryService`.
         If this key is null, than all parameters are already present.
 
         :return: the discovery key to retrieve connection.
@@ -69,7 +71,7 @@ class ConnectionParams(ConfigParams):
 
     def set_discovery_key(self, value):
         """
-        Sets the key to retrieve these parameters from [[DiscoveryService]].
+        Sets the key to retrieve these parameters from :class:`DiscoveryService`.
 
         :param value: a new key to retrieve connection.
         """
@@ -155,8 +157,8 @@ class ConnectionParams(ConfigParams):
         """
         Creates a new ConnectionParams object filled with key-value pairs serialized as a string.
 
-        :param line: a string with serialized key-value pairs as "key1=value1;key2=value2;..."
-                     Example: "Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"
+        :param line: a string with serialized key-value pairs as **"key1=value1;key2=value2;..."**
+                     Example: **"Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"**
 
         :return: a new ConnectionParams object.
         """

@@ -21,7 +21,6 @@ class CredentialParams(ConfigParams):
     but usually stored in a separate store, protected from unauthorized access.
 
     ### Configuration parameters ###
-
         - store_key:     key to retrieve parameters from credential store
         - username:      user name
         - user:          alternative to username
@@ -37,12 +36,15 @@ class CredentialParams(ConfigParams):
     may contain any number of custom parameters
 
     Example:
+
+    .. code-block:: python
+
         credential = CredentialParams.from_tuples
         ("user", "jdoe", "pass", "pass123", "pin", "321")
 
-        username = credential.get_username()       // Result: "jdoe"
-        password = credential.get_password()       // Result: "pass123"
-        pin = credential.get_as_nullable_string("pin")// Result: 321
+        username = credential.get_username()           # Result: "jdoe"
+        password = credential.get_password()           # Result: "pass123"
+        pin = credential.get_as_nullable_string("pin") # Result: 321
     """
 
     def __init__(self, values = None):
@@ -55,16 +57,16 @@ class CredentialParams(ConfigParams):
 
     def use_credential_store(self):
         """
-        Checks if these credential parameters shall be retrieved from [[CredentialStore]].
-        The credential parameters are redirected to [[CredentialStore]] when store_key parameter is set.
+        Checks if these credential parameters shall be retrieved from :class:`CredentialStore`.
+        The credential parameters are redirected to :class:`CredentialStore` when store_key parameter is set.
 
-        :return: true if credentials shall be retrieved from [[CredentialStore]]
+        :return: true if credentials shall be retrieved from :class:`CredentialStore`
         """
         return "store_key" in self
 
     def get_store_key(self):
         """
-        Gets the key to retrieve these credentials from [[CredentialStore]].
+        Gets the key to retrieve these credentials from :class:`CredentialStore`.
         If this key is null, than all parameters are already present.
 
         :return: the store key to retrieve credentials.
@@ -73,7 +75,7 @@ class CredentialParams(ConfigParams):
 
     def set_store_key(self, value):
         """
-        Sets the key to retrieve these parameters from [[CredentialStore]].
+        Sets the key to retrieve these parameters from :class:`CredentialStore`.
 
         :param value: a new key to retrieve credentials.
         """
@@ -157,8 +159,8 @@ class CredentialParams(ConfigParams):
         """
         Creates a new CredentialParams object filled with key-value pairs serialized as a string.
 
-        :param line: a string with serialized key-value pairs as "key1=value1;key2=value2;..."
-                     Example: "Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"
+        :param line: a string with serialized key-value pairs as **"key1=value1;key2=value2;..."**
+                     Example: **"Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"**
 
         :return: a new CredentialParams object.
         """

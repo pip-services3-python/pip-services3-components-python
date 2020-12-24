@@ -16,6 +16,9 @@ class MemoryLock(Lock):
         - retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
 
     Example:
+    
+    .. code-block:: python
+
         lock = MemoryLock()
         lock.acquire_lock("123", "key1", None, None)
         # processing

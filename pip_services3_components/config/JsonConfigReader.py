@@ -30,10 +30,15 @@ class JsonConfigReader(FileConfigReader):
         - ...
 
     Example:
+
+    .. code-block:: json
+
         ======== config.json ======
         { "key1": "{{KEY1_VALUE}}", "key2": "{{KEY2_VALUE}}" }
         ===========================
 
+    .. code-block:: python
+    
         configReader = JsonConfigReader("config.json")
         parameters = ConfigParams.from_tuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC")
         configReader.read_config("123", parameters)

@@ -21,7 +21,6 @@ class ConfigReader(IConfigReader, IConfigurable):
     Abstract config reader that supports configuration parameterization.
 
     ### Configuration parameters ###
-
     parameters:            this entire section is used as template parameters
         - ...
     """

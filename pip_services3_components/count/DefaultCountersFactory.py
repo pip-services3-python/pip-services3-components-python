@@ -34,7 +34,7 @@ CompositeCountersDescriptor = Descriptor(
 
 class DefaultCountersFactory(Factory):
     """
-    Creates [[ICounters]] components by their descriptors.
+    Creates :class:`ICounters` components by their descriptors.
     """
     def __init__(self):
         """

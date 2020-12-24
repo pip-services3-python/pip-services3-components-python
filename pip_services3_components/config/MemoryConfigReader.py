@@ -22,6 +22,9 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
         The configuration parameters are the configuration template
 
     Example:
+
+    .. code-block:: python
+    
         config = ConfigParams.from_tuples("connection.host", "{{SERVICE_HOST}}",
                                          "connection.port", "{{SERVICE_PORT}}{{^SERVICE_PORT}}8080{{/SERVICE_PORT}}")
 

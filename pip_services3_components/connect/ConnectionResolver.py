@@ -21,16 +21,14 @@ class ConnectionResolver(IConfigurable, IReferenceable):
     """
     Helper class to retrieve component connections.
 
-    If connections are configured to be retrieved from [[IDiscovery]],
-    it automatically locates [[IDiscovery]] in component references
+    If connections are configured to be retrieved from :class:`IDiscovery`,
+    it automatically locates :class:`IDiscovery` in component references
     and retrieve connections from there using discovery_key parameter.
 
     ### Configuration parameters ###
-
         - connection:
             - discovery_key:               (optional) a key to retrieve the connection from IDiscovery
             - ...                          other connection parameters
-
         - connections:                  alternative to connection
             - [connection params 1]:       first connection parameters
             - ...                      connection parameters for key 1
@@ -41,6 +39,9 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         - *:discovery:*:*:1.0    (optional) IDiscovery services to resolve connections
 
     Example:
+
+    .. code-block:: python
+
         config = ConfigParams.from_tuples("connection.host", "10.1.1.100", "connection.port", 8080)
 
         connectionResolver = ConnectionResolver()
@@ -87,7 +88,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         """
         Gets all connections configured in component configuration.
         Redirect to Discovery services is not done at this point.
-        If you need fully fleshed connection use [[resolve]] method instead.
+        If you need fully fleshed connection use :func:`resolve` method instead.
 
         :return: a list with connection parameters
         """
@@ -153,7 +154,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
     def resolve(self, correlation_id):
         """
         Resolves a single component connection. If connections are configured to be retrieved
-        from Discovery service it finds a [[IDiscovery]] and resolves the connection there.
+        from Discovery service it finds a :class:`IDiscovery` and resolves the connection there.
 
         :param correlation_id: (optional) transaction id to trace execution through call chain.
 
@@ -200,7 +201,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
     def resolve_all(self, correlation_id):
         """
         Resolves all component connection. If connections are configured to be retrieved
-        from Discovery service it finds a [[IDiscovery]] and resolves the connection there.
+        from Discovery service it finds a :class:`IDiscovery` and resolves the connection there.
 
         :param correlation_id: (optional) transaction id to trace execution through call chain.
 

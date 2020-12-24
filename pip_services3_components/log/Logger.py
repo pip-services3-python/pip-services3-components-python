@@ -24,13 +24,12 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
     Child classes take the captured messages and write them to their specific destinations.
 
     ### Configuration parameters ###
-
-    Parameters to pass to the [[configure]] method for component configuration:
+    Parameters to pass to the :func:`configure` method for component configuration:
         - level:             maximum log level to capture
         - source:            source (context) name
 
     ### References ###
-        - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+        - *:context-info:*:*:1.0     (optional) :class:`ContextInfo` to detect the context id and specify counters source
     """
     _level = LogLevel.Info
     _source = None

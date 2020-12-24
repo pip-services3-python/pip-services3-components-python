@@ -26,13 +26,15 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
     Discovery service that keeps connections in memory.
 
     ### Configuration parameters ###
-
         - [connection key 1]:
         - ...                          connection parameters for key 1
         - [connection key 2]:
         - ...                          connection parameters for key N
 
     Example:
+
+    .. code-block:: python
+    
         config = ConfigParams.from_tuples(
         "key1.host", "10.1.1.100",
         "key1.port", "8080",

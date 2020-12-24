@@ -34,7 +34,7 @@ CompositeLoggerDescriptor = Descriptor(
 
 class DefaultLoggerFactory(Factory):
     """
-    Creates [[ILogger]] components by their descriptors.
+    Creates :class:`ILogger` components by their descriptors.
     """
     def __init__(self):
         """

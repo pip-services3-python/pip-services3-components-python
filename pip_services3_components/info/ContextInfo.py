@@ -25,22 +25,24 @@ class ContextInfo(IReconfigurable):
     to identify source of the collected logs and metrics.
 
     ### Configuration parameters ###
-
-        - name: 					the context (container or process) name
-        - description: 		   	human-readable description of the context
-        - properties: 			entire section of additional descriptive properties
+        - name:                 the context (container or process) name
+        - description:          human-readable description of the context
+        - properties:           entire section of additional descriptive properties
         - ...
 
     Example:
+
+    .. code-block:: python
+
         contextInfo = ContextInfo()
         contextInfo.configure(ConfigParams.from_tuples(
                                 "name", "MyMicroservice",
                                 "description", "My first microservice"))
 
-        context.name			// Result: "MyMicroservice"
-        context.contextId		// Possible result: "mylaptop"
-        context.startTime		// Possible result: 2018-01-01:22:12:23.45Z
-        context.uptime			// Possible result: 3454345
+        context.name			# Result: "MyMicroservice"
+        context.contextId		# Possible result: "mylaptop"
+        context.startTime		# Possible result: 2018-01-01:22:12:23.45Z
+        context.uptime			# Possible result: 3454345
     """
     __name = "unknown"
     __properties = None

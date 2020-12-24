@@ -20,7 +20,6 @@ class LogCounters(CachedCounters, IReferenceable):
     Performance counters that periodically dumps counters measurements to logger.
 
     ### Configuration parameters ###
-
         - options:
             - interval:          interval in milliseconds to save current counters measurements (default: 5 mins)
             - reset_timeout:     timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
@@ -30,14 +29,17 @@ class LogCounters(CachedCounters, IReferenceable):
         - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
 
     Example:
+
+    .. code-block:: python
+
         counters = LogCounters()
         counters.set_references(References.from_tuples(
                     Descriptor("pip-services", "logger", "console", "default", "1.0"), ConsoleLogger()))
 
         counters.increment("mycomponent.mymethod.calls")
         timing = counters.begin_timing("mycomponent.mymethod.exec_time")
-        ...
-        timing.endTiming()
+        # do something
+        timing.end_timing()
     """
     _logger = None
 

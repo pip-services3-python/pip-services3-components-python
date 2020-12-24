@@ -34,7 +34,7 @@ YamlConfigReaderDescriptor = Descriptor(
 
 class DefaultConfigReaderFactory(Factory):
     """
-    Creates [[IConfigReader]] components by their descriptors.
+    Creates :class:`IConfigReader` components by their descriptors.
     """
     def __init__(self):
         """

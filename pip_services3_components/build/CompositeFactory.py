@@ -20,13 +20,16 @@ class CompositeFactory(IFactory):
     This component is used to conveniently keep all supported factories in a single place.
 
     Example:
+
+    .. code-block:: python
+    
         factory = CompositeFactory()
         factory.add(new DefaultLoggerFactory())
         factory.add(new DefaultCountersFactory())
 
         loggerLocator = Descriptor("*", "logger", "*", "*", "1.0")
-        factory.can_create(loggerLocator)  // Result: Descriptor("pip-service", "logger", "null", "default", "1.0")
-        factory.create(loggerLocator)     // Result: created NullLogger
+        factory.can_create(loggerLocator)  # Result: Descriptor("pip-service", "logger", "null", "default", "1.0")
+        factory.create(loggerLocator)      # Result: created NullLogger
     """
     _factories = None
 

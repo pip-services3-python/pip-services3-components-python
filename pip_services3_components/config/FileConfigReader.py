@@ -19,7 +19,6 @@ class FileConfigReader(ConfigReader):
     like JSON, YAML or property files.
 
     ### Configuration parameters ###
-
         - path:          path to configuration file
         - parameters:    this entire section is used as template parameters
         - ...

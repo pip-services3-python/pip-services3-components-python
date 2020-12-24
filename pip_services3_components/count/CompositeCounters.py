@@ -22,10 +22,12 @@ class CompositeCounters(ICounters, ITimingCallback, IReferenceable):
     It allows to capture metrics and conveniently send them to multiple destinations.
 
     ### References ###
-
         - *:counters:*:*:1.0     (optional) ICounters components to pass collected measurements
 
     Example:
+
+    .. code-block:: python
+
         class MyComponent(IReferenceable):
             _counters = CompositeCounters()
 
@@ -34,10 +36,10 @@ class CompositeCounters(ICounters, ITimingCallback, IReferenceable):
 
         def my_method(self):
             self._counters.increment("mycomponent.mymethod.calls")
-            timing = this._counters.beginTiming("mycomponent.mymethod.exec_time")
-            ...
+            timing = this._counters.begin_timing("mycomponent.mymethod.exec_time")
+            # do something
 
-            timing.endTiming()
+            timing.end_timing()
     """
     _counters = None
 
@@ -67,12 +69,12 @@ class CompositeCounters(ICounters, ITimingCallback, IReferenceable):
     def begin_timing(self, name):
         """
         Begins measurement of execution time interval.
-        It returns [[Timing]] object which has to be called at
-        [[Timing.endTiming]] to end the measurement and update the counter.
+        It returns :class:`Timing` object which has to be called at
+        :func:`Timing.end_timing` to end the measurement and update the counter.
 
         :param name: a counter name of Interval type.
 
-        :return: a [[Timing]] callback object to end timing.
+        :return: a :class:`Timing` callback object to end timing.
         """
         return Timing(name, self)
 

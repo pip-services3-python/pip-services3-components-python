@@ -26,14 +26,16 @@ class ConsoleLogger(Logger):
     Errors are written to standard err stream and all other messages to standard out stream.
 
     ### Configuration parameters ###
-
         - level:             maximum log level to capture
         - source:            source (context) name
 
     ### References ###
-        - *:context-info:*:*:1.0     (optional) [[ContextInfo]] to detect the context id and specify counters source
+        - *:context-info:*:*:1.0     (optional) :class:`ContextInfo` to detect the context id and specify counters source
 
     Example:
+
+    .. code-block:: python
+
         logger = ConsoleLogger()
         logger.set_level(LogLevel.debug)
 

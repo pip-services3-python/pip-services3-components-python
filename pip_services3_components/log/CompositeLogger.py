@@ -21,9 +21,12 @@ class CompositeLogger(Logger, IReferenceable):
     It allows to log messages and conveniently send them to multiple destinations.
 
     ### References ###
-        - *:logger:*:*:1.0 	(optional) [[ILogger]] components to pass log messages
+        - *:logger:*:*:1.0 	(optional) :class:`ILogger` components to pass log messages
 
     Example:
+
+    .. code-block:: python
+
         class MyComponent(IConfigurable, IReferenceable):
             _logger = CompositeLogger()
 
@@ -36,7 +39,6 @@ class CompositeLogger(Logger, IReferenceable):
             def my_method(self, correlation_id):
                 self._logger.debug(correlationId, "Called method mycomponent.mymethod")
 
-            ...
     """
     _loggers = None
 

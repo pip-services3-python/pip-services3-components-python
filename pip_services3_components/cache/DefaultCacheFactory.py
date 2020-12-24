@@ -29,7 +29,7 @@ MemoryCacheDescriptor = Descriptor(
 
 class DefaultCacheFactory(Factory):
     """
-    Creates [[ICache]] components by their descriptors.
+    Creates :class:`ICache` components by their descriptors.
     """
     def __init__(self):
         """

@@ -26,6 +26,9 @@ class Factory(IFactory):
     Basic component factory that creates components using registered types and factory functions.
 
     Example:
+
+    .. code-block:: python
+    
         factory = Factory()
 
         factory.registerAsType(Descriptor("mygroup", "mycomponent1", "default", "*", "1.0"), MyComponent1)

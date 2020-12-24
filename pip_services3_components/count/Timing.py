@@ -13,13 +13,13 @@ import time
 
 class Timing:
     """
-    Callback object returned by ICounters.beginTiming to end timing
+    Callback object returned by :func:`ICounters.begin_timing` to end timing
     of execution block and update the associated counter.
 
     Example:
         timing = counters.begin_timing("mymethod.exec_time")
-        ...
-        timing.endTiming()
+        # do something
+        timing.end_timing()
     """
 
     _start = None
@@ -32,7 +32,7 @@ class Timing:
 
         :param counter: an associated counter name
 
-        :param callback: a callback that shall be called when endTiming is called.
+        :param callback: a callback that shall be called when end_timing is called.
         """
 
         self._counter = counter
