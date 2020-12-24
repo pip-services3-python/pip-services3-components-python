@@ -1,7 +1,0 @@
-pip\_services3\_components.log.NullLogger module
-================================================
-
-.. automodule:: pip_services3_components.log.NullLogger
-    :members:
-    :undoc-members:
-    :show-inheritance:

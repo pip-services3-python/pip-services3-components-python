@@ -1,7 +1,0 @@
-pip\_services3\_components.build.Factory module
-===============================================
-
-.. automodule:: pip_services3_components.build.Factory
-    :members:
-    :undoc-members:
-    :show-inheritance:

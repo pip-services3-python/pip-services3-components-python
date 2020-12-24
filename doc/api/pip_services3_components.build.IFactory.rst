@@ -1,7 +1,0 @@
-pip\_services3\_components.build.IFactory module
-================================================
-
-.. automodule:: pip_services3_components.build.IFactory
-    :members:
-    :undoc-members:
-    :show-inheritance:

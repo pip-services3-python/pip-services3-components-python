@@ -1,7 +1,0 @@
-pip\_services3\_components.config.FileConfigReader module
-=========================================================
-
-.. automodule:: pip_services3_components.config.FileConfigReader
-    :members:
-    :undoc-members:
-    :show-inheritance:

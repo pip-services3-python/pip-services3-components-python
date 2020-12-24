@@ -1,7 +1,0 @@
-pip\_services3\_components.config.MemoryConfigReader module
-===========================================================
-
-.. automodule:: pip_services3_components.config.MemoryConfigReader
-    :members:
-    :undoc-members:
-    :show-inheritance:
