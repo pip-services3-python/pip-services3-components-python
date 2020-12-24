@@ -182,13 +182,18 @@
 <dd><p>Bases: <a class="reference internal" href="pip_services3_components.lock.Lock.html#pip_services3_components.lock.Lock.Lock" title="pip_services3_components.lock.Lock.Lock"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.lock.Lock.Lock</span></code></a></p>
 <p>Lock that is used to synchronize execution within one process using shared memory.</p>
 <p>Remember: This implementation is not suitable for synchronization of distributed processes.</p>
-<p>### Configuration parameters ###
-- options:</p>
-<blockquote>
-<div><ul class="simple">
+<dl class="simple">
+<dt>### Configuration parameters ###</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>options:</dt><dd><ul>
 <li><p>retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)</p></li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lock</span> <span class="o">=</span> <span class="n">MemoryLock</span><span class="p">()</span>
 <span class="n">lock</span><span class="o">.</span><span class="n">acquire_lock</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>

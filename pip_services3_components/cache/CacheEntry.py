@@ -13,7 +13,7 @@ import time
 
 class CacheEntry(object):
     """
-    Data object to store cached values with their keys used by [[MemoryCache]]
+    Data object to store cached values with their keys used by :class:`MemoryCache`
     """
     expiration = None
     key = None

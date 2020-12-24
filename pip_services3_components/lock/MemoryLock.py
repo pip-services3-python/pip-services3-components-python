@@ -12,8 +12,8 @@ class MemoryLock(Lock):
     Remember: This implementation is not suitable for synchronization of distributed processes.
 
     ### Configuration parameters ###
-    - options:
-        - retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
+        - options:
+            - retry_timeout:   timeout in milliseconds to retry lock acquisition. (Default: 100)
 
     Example:
     
