@@ -1,0 +1,7 @@
+pip\_services3\_components.test.DefaultTestFactory module
+=========================================================
+
+.. automodule:: pip_services3_components.test.DefaultTestFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:

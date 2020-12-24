@@ -1,0 +1,7 @@
+pip\_services3\_components.lock.DefaultLockFactory module
+=========================================================
+
+.. automodule:: pip_services3_components.lock.DefaultLockFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:

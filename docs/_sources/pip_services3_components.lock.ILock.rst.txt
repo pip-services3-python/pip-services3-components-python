@@ -1,0 +1,7 @@
+pip\_services3\_components.lock.ILock module
+============================================
+
+.. automodule:: pip_services3_components.lock.ILock
+   :members:
+   :undoc-members:
+   :show-inheritance:

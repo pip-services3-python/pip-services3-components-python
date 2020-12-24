@@ -5,6 +5,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    pip_services3_components.log.CachedLogger
    pip_services3_components.log.CompositeLogger
@@ -21,6 +22,6 @@ Module contents
 ---------------
 
 .. automodule:: pip_services3_components.log
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

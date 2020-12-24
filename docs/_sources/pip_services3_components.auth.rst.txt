@@ -5,6 +5,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    pip_services3_components.auth.CredentialParams
    pip_services3_components.auth.CredentialResolver
@@ -16,6 +17,6 @@ Module contents
 ---------------
 
 .. automodule:: pip_services3_components.auth
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

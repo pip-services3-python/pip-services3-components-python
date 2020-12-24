@@ -1,0 +1,7 @@
+pip\_services3\_components.lock.MemoryLock module
+=================================================
+
+.. automodule:: pip_services3_components.lock.MemoryLock
+   :members:
+   :undoc-members:
+   :show-inheritance:

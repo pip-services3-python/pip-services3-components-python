@@ -1,0 +1,7 @@
+pip\_services3\_components.test.SetInterval module
+==================================================
+
+.. automodule:: pip_services3_components.test.SetInterval
+   :members:
+   :undoc-members:
+   :show-inheritance:

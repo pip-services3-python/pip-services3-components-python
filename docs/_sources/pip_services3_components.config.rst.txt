@@ -5,6 +5,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    pip_services3_components.config.ConfigReader
    pip_services3_components.config.DefaultConfigReaderFactory
@@ -18,6 +19,6 @@ Module contents
 ---------------
 
 .. automodule:: pip_services3_components.config
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

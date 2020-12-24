@@ -1,245 +1,337 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>pip_services3_components.count.CompositeCounters module &#8212; Pip.Services Components for Python API</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pip_services3_components.count.CompositeCounters module &mdash; pip-services3-components  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pip_services3_components.count.Counter module" href="pip_services3_components.count.Counter.html" />
     <link rel="prev" title="pip_services3_components.count.CachedCounters module" href="pip_services3_components.count.CachedCounters.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="pip_services3_components.count.Counter.html" title="pip_services3_components.count.Counter module"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="pip_services3_components.count.CachedCounters.html" title="pip_services3_components.count.CachedCounters module"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Pip.Services Components for Python API</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" >pip_services3_components</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="pip_services3_components.html" >pip_services3_components package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="pip_services3_components.count.html" accesskey="U">pip_services3_components.count package</a> &#187;</li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> pip-services3-components
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pip_services3_components</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pip_services3_components.html">pip_services3_components package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pip_services3_components.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.auth.html">pip_services3_components.auth package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.build.html">pip_services3_components.build package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.cache.html">pip_services3_components.cache package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.config.html">pip_services3_components.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.connect.html">pip_services3_components.connect package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="pip_services3_components.count.html">pip_services3_components.count package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.info.html">pip_services3_components.info package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.lock.html">pip_services3_components.lock package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.log.html">pip_services3_components.log package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.test.html">pip_services3_components.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.html#module-pip_services3_components">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pip-services3-components</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">pip_services3_components</a> &raquo;</li>
+        
+          <li><a href="pip_services3_components.html">pip_services3_components package</a> &raquo;</li>
+        
+          <li><a href="pip_services3_components.count.html">pip_services3_components.count package</a> &raquo;</li>
+        
+      <li>pip_services3_components.count.CompositeCounters module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pip_services3_components.count.CompositeCounters.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="module-pip_services3_components.count.CompositeCounters">
 <span id="pip-services3-components-count-compositecounters-module"></span><h1>pip_services3_components.count.CompositeCounters module<a class="headerlink" href="#module-pip_services3_components.count.CompositeCounters" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="pip-services3-components-log-compositecounters">
 <h2>pip_services3_components.log.CompositeCounters<a class="headerlink" href="#pip-services3-components-log-compositecounters" title="Permalink to this headline">¶</a></h2>
 <p>Composite counters implementation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT, see LICENSE for more details.</td>
-</tr>
-</tbody>
-</table>
-<dl class="class">
+<dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</p>
+</dd>
+<dt class="field-even">license</dt>
+<dd class="field-even"><p>MIT, see LICENSE for more details.</p>
+</dd>
+</dl>
+<dl class="py class">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters">
-<em class="property">class </em><code class="descclassname">pip_services3_components.count.CompositeCounters.</code><code class="descname">CompositeCounters</code><span class="sig-paren">(</span><em>references=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.CompositeCounters.</code><code class="sig-name descname">CompositeCounters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">references</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services3_components.count.ICounters.html#pip_services3_components.count.ICounters.ICounters" title="pip_services3_components.count.ICounters.ICounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ICounters.ICounters</span></code></a>, <a class="reference internal" href="pip_services3_components.count.ITimingCallback.html#pip_services3_components.count.ITimingCallback.ITimingCallback" title="pip_services3_components.count.ITimingCallback.ITimingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ITimingCallback.ITimingCallback</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
 <p>Aggregates all counters from component references under a single component.</p>
 <p>It allows to capture metrics and conveniently send them to multiple destinations.</p>
-<p>### References ###</p>
-<blockquote>
-<div><ul class="simple">
-<li><em>:counters:</em>:<a href="#id1"><span class="problematic" id="id2">*</span></a>:1.0     (optional) <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.count.ICounters.html">ICounters</a> components to pass collected measurements</li>
+<dl class="simple">
+<dt>### References ###</dt><dd><ul class="simple">
+<li><p><em>:counters:</em>:<a href="#id1"><span class="problematic" id="id2">*</span></a>:1.0     (optional) ICounters components to pass collected measurements</p></li>
 </ul>
-</div></blockquote>
-<dl class="docutils">
-<dt>Example:</dt>
-<dd><dl class="first last docutils">
-<dt>class MyComponent(IReferenceable):</dt>
-<dd>_counters = CompositeCounters()</dd>
-<dt>def set_references(self, references):</dt>
-<dd>self._counters.set_references(references)</dd>
-<dt>def my_method(self):</dt>
-<dd>self._counters.increment(“mycomponent.mymethod.calls”)
-<dd>timing = this._counters.begin_timing(“mycomponent.mymethod.exec_time”)
-<dd>…
-<dd>timing.end_timing()
 </dd>
 </dl>
-</dd>
-</dl>
-<dl class="method">
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyComponent</span><span class="p">(</span><span class="n">IReferenceable</span><span class="p">):</span>
+    <span class="n">_counters</span> <span class="o">=</span> <span class="n">CompositeCounters</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">set_references</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">references</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_counters</span><span class="o">.</span><span class="n">set_references</span><span class="p">(</span><span class="n">references</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_counters</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s2">&quot;mycomponent.mymethod.calls&quot;</span><span class="p">)</span>
+    <span class="n">timing</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">_counters</span><span class="o">.</span><span class="n">begin_timing</span><span class="p">(</span><span class="s2">&quot;mycomponent.mymethod.exec_time&quot;</span><span class="p">)</span>
+    <span class="c1"># do something</span>
+
+    <span class="n">timing</span><span class="o">.</span><span class="n">end_timing</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.begin_timing">
-<code class="descname">begin_timing</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.begin_timing" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">begin_timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.count.Timing.html">Timing</a> object which has to be called at
-<a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing.end_timing">Timing.endTiming</a> to end the measurement and update the counter.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – a counter name of Interval type.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <a href="https://pip-services3-python.github.io/pip-services3-components-python/pip_services3_components.count.ITimingCallback.html">Timing callback</a> object to end timing.</td>
-</tr>
-</tbody>
-</table>
+It returns <code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code> object which has to be called at
+<code class="xref py py-func docutils literal notranslate"><span class="pre">Timing.end_timing()</span></code> to end the measurement and update the counter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a counter name of Interval type.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code> callback object to end timing.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.end_timing">
-<code class="descname">end_timing</code><span class="sig-paren">(</span><em>name</em>, <em>elapsed</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.end_timing" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">end_timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">elapsed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.end_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ends measurement of execution elapsed time and updates specified counter.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> – a counter name</li>
-<li><strong>elapsed</strong> – execution elapsed time in milliseconds to update the counter.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – a counter name</p></li>
+<li><p><strong>elapsed</strong> – execution elapsed time in milliseconds to update the counter.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.increment">
-<code class="descname">increment</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.increment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">increment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.increment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Increments counter by given value.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> – a counter name of Increment type.</li>
-<li><strong>value</strong> – a value to add to the counter.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – a counter name of Increment type.</p></li>
+<li><p><strong>value</strong> – a value to add to the counter.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.increment_one">
-<code class="descname">increment_one</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.increment_one" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">increment_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.increment_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Increments counter by 1.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – a counter name of Increment type.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a counter name of Increment type.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.last">
-<code class="descname">last</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.last" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">last</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.last" title="Permalink to this definition">¶</a></dt>
 <dd><p>Records the last calculated measurement value.
 Usually this method is used by metrics calculated externally.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> – a counter name of Last type.</li>
-<li><strong>value</strong> – a last value to record.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – a counter name of Last type.</p></li>
+<li><p><strong>value</strong> – a last value to record.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.set_references">
-<code class="descname">set_references</code><span class="sig-paren">(</span><em>references</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.set_references" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_references</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">references</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.set_references" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets references to dependent components.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>references</strong> – references to locate the component dependencies.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>references</strong> – references to locate the component dependencies.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.stats">
-<code class="descname">stats</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.stats" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stats</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.stats" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates min/average/max statistics based on the current and previous values.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> – a counter name of Statistics type</li>
-<li><strong>value</strong> – a value to update statistics</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – a counter name of Statistics type</p></li>
+<li><p><strong>value</strong> – a value to update statistics</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.timestamp">
-<code class="descname">timestamp</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.timestamp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timestamp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.timestamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Records the given timestamp.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> – a counter name of Timestamp type.</li>
-<li><strong>value</strong> – a timestamp to record.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – a counter name of Timestamp type.</p></li>
+<li><p><strong>value</strong> – a timestamp to record.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="pip_services3_components.count.CompositeCounters.CompositeCounters.timestamp_now">
-<code class="descname">timestamp_now</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.timestamp_now" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timestamp_now</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.CompositeCounters.timestamp_now" title="Permalink to this definition">¶</a></dt>
 <dd><p>Records the current time as a timestamp.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – a counter name of Timestamp type.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – a counter name of Timestamp type.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -248,72 +340,59 @@ Usually this method is used by metrics calculated externally.</p>
 </div>
 
 
+           </div>
+           
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">pip_services3_components.count.CompositeCounters module</a><ul>
-<li><a class="reference internal" href="#pip-services3-components-log-compositecounters">pip_services3_components.log.CompositeCounters</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pip_services3_components.count.Counter.html" class="btn btn-neutral float-right" title="pip_services3_components.count.Counter module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pip_services3_components.count.CachedCounters.html" class="btn btn-neutral float-left" title="pip_services3_components.count.CachedCounters module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="pip_services3_components.count.CachedCounters.html"
-                        title="previous chapter">pip_services3_components.count.CachedCounters module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="pip_services3_components.count.Counter.html"
-                        title="next chapter">pip_services3_components.count.Counter module</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/pip_services3_components.count.CompositeCounters.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sergey Seroukhov
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="pip_services3_components.count.Counter.html" title="pip_services3_components.count.Counter module"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="pip_services3_components.count.CachedCounters.html" title="pip_services3_components.count.CachedCounters module"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Pip.Services Components for Python API</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" >pip_services3_components</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="pip_services3_components.html" >pip_services3_components package</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="pip_services3_components.count.html" >pip_services3_components.count package</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Conceptual Vision Consulting LLC.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
 </html>

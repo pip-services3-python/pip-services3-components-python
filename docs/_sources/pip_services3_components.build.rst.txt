@@ -5,6 +5,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    pip_services3_components.build.CompositeFactory
    pip_services3_components.build.CreateException
@@ -15,6 +16,6 @@ Module contents
 ---------------
 
 .. automodule:: pip_services3_components.build
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

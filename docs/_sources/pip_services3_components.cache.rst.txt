@@ -5,6 +5,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    pip_services3_components.cache.CacheEntry
    pip_services3_components.cache.DefaultCacheFactory
@@ -16,6 +17,6 @@ Module contents
 ---------------
 
 .. automodule:: pip_services3_components.cache
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

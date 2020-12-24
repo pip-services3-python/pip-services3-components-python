@@ -1,0 +1,22 @@
+pip\_services3\_components.lock package
+=======================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pip_services3_components.lock.DefaultLockFactory
+   pip_services3_components.lock.ILock
+   pip_services3_components.lock.Lock
+   pip_services3_components.lock.MemoryLock
+   pip_services3_components.lock.NullLock
+
+Module contents
+---------------
+
+.. automodule:: pip_services3_components.lock
+   :members:
+   :undoc-members:
+   :show-inheritance:
