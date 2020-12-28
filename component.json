@@ -2,5 +2,5 @@
     "name": "pip_services3_components",
     "registry": "pipdevs",
     "version": "3.2.1",
-    "build": "0"
+    "build": 0
 }
