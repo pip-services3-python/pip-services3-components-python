@@ -13,7 +13,7 @@ import datetime
 
 class LogMessage(object):
     """
-    Data object to store captured log messages. This object is used by :class:`CachedLogger`.
+    Data object to store captured log messages. This object is used by :class:`CachedLogger <pip_services3_components.log.CachedLogger.CachedLogger>`.
     """
     time = None
     source = None

@@ -21,7 +21,7 @@ class CompositeLogger(Logger, IReferenceable):
     It allows to log messages and conveniently send them to multiple destinations.
 
     ### References ###
-        - *:logger:*:*:1.0 	(optional) :class:`ILogger` components to pass log messages
+        - `*:logger:*:*:1.0` 	(optional) :class:`ILogger <pip_services3_components.log.ILogger.ILogger>` components to pass log messages
 
     Example:
 

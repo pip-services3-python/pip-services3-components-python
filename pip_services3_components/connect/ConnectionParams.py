@@ -53,16 +53,16 @@ class ConnectionParams(ConfigParams):
 
     def use_discovery(self):
         """
-        Checks if these connection parameters shall be retrieved from :class:DiscoveryService.
-        The connection parameters are redirected to :class:`DiscoveryService` when discovery_key parameter is set.
+        Checks if these connection parameters shall be retrieved from DiscoveryService.
+        The connection parameters are redirected to DiscoveryService when discovery_key parameter is set.
 
-        :return: true if connection shall be retrieved from :class:`DiscoveryService`
+        :return: true if connection shall be retrieved from DiscoveryService
         """
         return "discovery_key" in self
 
     def get_discovery_key(self):
         """
-        Gets the key to retrieve this connection from :class:`DiscoveryService`.
+        Gets the key to retrieve this connection from DiscoveryService.
         If this key is null, than all parameters are already present.
 
         :return: the discovery key to retrieve connection.
@@ -71,7 +71,7 @@ class ConnectionParams(ConfigParams):
 
     def set_discovery_key(self, value):
         """
-        Sets the key to retrieve these parameters from :class:`DiscoveryService`.
+        Sets the key to retrieve these parameters from DiscoveryService.
 
         :param value: a new key to retrieve connection.
         """

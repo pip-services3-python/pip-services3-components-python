@@ -13,7 +13,7 @@ import time
 
 class Timing:
     """
-    Callback object returned by :func:`ICounters.begin_timing` to end timing
+    Callback object returned by :func:`pip_services3_components.count.ICounters.ICounters.begin_timing` to end timing
     of execution block and update the associated counter.
 
     Example:

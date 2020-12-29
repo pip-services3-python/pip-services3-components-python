@@ -21,8 +21,8 @@ class ConnectionResolver(IConfigurable, IReferenceable):
     """
     Helper class to retrieve component connections.
 
-    If connections are configured to be retrieved from :class:`IDiscovery`,
-    it automatically locates :class:`IDiscovery` in component references
+    If connections are configured to be retrieved from :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>`,
+    it automatically locates :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` in component references
     and retrieve connections from there using discovery_key parameter.
 
     ### Configuration parameters ###
@@ -36,7 +36,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
             - ...                      connection parameters for key N
 
     ### References ###
-        - *:discovery:*:*:1.0    (optional) IDiscovery services to resolve connections
+        - `*:discovery:*:*:1.0`    (optional) IDiscovery services to resolve connections
 
     Example:
 
@@ -154,7 +154,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
     def resolve(self, correlation_id):
         """
         Resolves a single component connection. If connections are configured to be retrieved
-        from Discovery service it finds a :class:`IDiscovery` and resolves the connection there.
+        from Discovery service it finds a :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` and resolves the connection there.
 
         :param correlation_id: (optional) transaction id to trace execution through call chain.
 
@@ -201,7 +201,7 @@ class ConnectionResolver(IConfigurable, IReferenceable):
     def resolve_all(self, correlation_id):
         """
         Resolves all component connection. If connections are configured to be retrieved
-        from Discovery service it finds a :class:`IDiscovery` and resolves the connection there.
+        from Discovery service it finds a :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` and resolves the connection there.
 
         :param correlation_id: (optional) transaction id to trace execution through call chain.
 

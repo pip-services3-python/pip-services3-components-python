@@ -13,7 +13,7 @@ import time
 
 class CacheEntry(object):
     """
-    Data object to store cached values with their keys used by :class:`MemoryCache`
+    Data object to store cached values with their keys used by :class:`MemoryCache <pip_services3_components.cache.MemoryCache.MemoryCache>`
     """
     expiration = None
     key = None

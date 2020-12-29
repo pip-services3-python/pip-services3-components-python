@@ -28,9 +28,9 @@ class Component(IConfigurable, IReferenceable):
             - [dependency name N]: Dependency N locator (descriptor)
 
     ### References ###
-        - *:counters:*:*:1.0     (optional) :class:`ICounters` components to pass collected measurements
-        - *:logger:*:*:1.0       (optional) :class:`ILogger` components to pass log messages
-        - ...                                    References must match configured dependencies.
+        - `*:counters:*:*:1.0`     (optional) :class:`ICounters <pip_services3_components.count.ICounters.ICounters>` components to pass collected measurements
+        - `*:logger:*:*:1.0`       (optional) :class:`ILogger <pip_services3_components.log.ILogger.ILogger>` components to pass log messages
+        - `...`                                    References must match configured dependencies.
     """
     _logger = None
     _counters = None

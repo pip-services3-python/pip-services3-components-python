@@ -8,9 +8,9 @@ from .MemoryLock import MemoryLock
 
 class DefaultLockFactory(Factory):
     """
-    Creates :class:`ILock` components by their descriptors.
+    Creates :class:`ILock <pip_services3_components.lock.ILock.ILock>` components by their descriptors.
 
-    See :class:`Factory`, :class:`ILock`, :class:`MemoryLock`, :class:`NullLock`
+    See :class:`Factory <pip_services3_components.build.Factory.Factory>`, :class:`ILock <pip_services3_components.lock.ILock.ILock>`, :class:`MemoryLock <pip_services3_components.lock.MemoryLock.MemoryLock>`, :class:`NullLock <pip_services3_components.lock.NullLock.NullLock>`
     """
     descriptor = Descriptor("pip-services", "factory", "lock", "default", "1.0")
     null_lock_descriptor = Descriptor("pip-services", "lock", "null", "*", "1.0")

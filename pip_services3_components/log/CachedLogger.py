@@ -32,7 +32,7 @@ class CachedLogger(Logger, IReconfigurable):
             - max_cache_size:  maximum number of messages stored in this cache (default: 100)
 
     ### References ###
-        - *:context-info:*:*:1.0     (optional) :class:`ContextInfo` to detect the context id and specify counters source
+        - `*:context-info:*:*:1.0`     (optional) :class:`ContextInfo <pip_services3_components.info.ContextInfo.ContextInfo>` to detect the context id and specify counters source
     """
     _cache = None
     _updated = None

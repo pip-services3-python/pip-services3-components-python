@@ -8,7 +8,7 @@ from .Shutdown import Shutdown
 class DefaultTestFactory(Factory):
     """
     Creates test components by their descriptors.
-    See :class:`Factory`, :class:`Shutdown`
+    See :class:`Factory <pip_services3_components.build.Factory.Factory>`, :class:`Shutdown <pip_services3_components.test.Shutdown.Shutdown>`
     """
     descriptor = Descriptor("pip-services", "factory", "test", "default", "1.0")
     shutdown_descriptor = Descriptor("pip-services", "shutdown", "*", "*", "1.0")

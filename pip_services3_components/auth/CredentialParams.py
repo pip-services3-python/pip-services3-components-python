@@ -57,16 +57,16 @@ class CredentialParams(ConfigParams):
 
     def use_credential_store(self):
         """
-        Checks if these credential parameters shall be retrieved from :class:`CredentialStore`.
-        The credential parameters are redirected to :class:`CredentialStore` when store_key parameter is set.
+        Checks if these credential parameters shall be retrieved from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`.
+        The credential parameters are redirected to :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>` when store_key parameter is set.
 
-        :return: true if credentials shall be retrieved from :class:`CredentialStore`
+        :return: true if credentials shall be retrieved from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`
         """
         return "store_key" in self
 
     def get_store_key(self):
         """
-        Gets the key to retrieve these credentials from :class:`CredentialStore`.
+        Gets the key to retrieve these credentials from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`.
         If this key is null, than all parameters are already present.
 
         :return: the store key to retrieve credentials.
@@ -75,7 +75,7 @@ class CredentialParams(ConfigParams):
 
     def set_store_key(self, value):
         """
-        Sets the key to retrieve these parameters from :class:`CredentialStore`.
+        Sets the key to retrieve these parameters from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`.
 
         :param value: a new key to retrieve credentials.
         """

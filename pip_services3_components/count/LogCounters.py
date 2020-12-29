@@ -25,8 +25,8 @@ class LogCounters(CachedCounters, IReferenceable):
             - reset_timeout:     timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
 
     ### References ###
-        - *:logger:*:*:1.0           :class:`ILogger` components to dump the captured counters
-        - *:context-info:*:*:1.0     (optional) :class:`ContextInfo` to detect the context id and specify counters source
+        - `*:logger:*:*:1.0`           :class:`ILogger <pip_services3_components.log.ILogger.ILogger>` components to dump the captured counters
+        - `*:context-info:*:*:1.0`     (optional) :class:`ContextInfo <pip_services3_components.info.ContextInfo.ContextInfo>` to detect the context id and specify counters source
 
     Example:
 

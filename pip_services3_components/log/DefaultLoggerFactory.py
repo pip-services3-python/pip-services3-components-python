@@ -34,7 +34,7 @@ CompositeLoggerDescriptor = Descriptor(
 
 class DefaultLoggerFactory(Factory):
     """
-    Creates :class:`ILogger` components by their descriptors.
+    Creates :class:`ILogger <pip_services3_components.log.ILogger.ILogger>` components by their descriptors.
     """
     def __init__(self):
         """
