@@ -29,7 +29,7 @@ MemoryCacheDescriptor = Descriptor(
 
 class DefaultCacheFactory(Factory):
     """
-    Creates :class:`ICache` components by their descriptors.
+    Creates :class:`ICache <pip_services3_components.cache.ICache.ICache>` components by their descriptors.
     """
     def __init__(self):
         """

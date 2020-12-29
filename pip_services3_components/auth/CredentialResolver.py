@@ -22,12 +22,12 @@ class CredentialResolver(IConfigurable, IReferenceable):
     Helper class to retrieve component credentials.
 
     If credentials are configured to be retrieved from
-    :class:`ICredentialStore`, it automatically locates :class:`ICredentialStore`
+    :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`, it automatically locates :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`
     in component references and retrieve credentials from there using store_key parameter.
 
     ### Configuration parameters ###
     credential:
-        - store_key:                   (optional) a key to retrieve the credentials from :class:`ICredentialStore`
+        - store_key:                   (optional) a key to retrieve the credentials from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`
         - ...                          other credential parameters
     credentials:                   alternative to credential
         - [credential params 1]:       first credential parameters
@@ -130,7 +130,7 @@ class CredentialResolver(IConfigurable, IReferenceable):
     def lookup(self, correlation_id):
         """
         Looks up component credential parameters. If credentials are configured to be retrieved
-        from Credential store it finds a :class:`ICredentialStore` and lookups credentials there.
+        from Credential store it finds a :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>` and lookups credentials there.
 
         :param correlation_id: (optional) transaction id to trace execution through call chain.
 

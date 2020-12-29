@@ -29,6 +29,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -229,7 +230,7 @@ it to the system, dynamically add addresses, ports, etc.</p>
 <dl class="py class">
 <dt id="pip_services3_components.config.ConfigReader">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.config.</code><code class="sig-name descname">ConfigReader</code><a class="headerlink" href="#pip_services3_components.config.ConfigReader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.config.IConfigReader.html#pip_services3_components.config.IConfigReader.IConfigReader" title="pip_services3_components.config.IConfigReader.IConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.config.IConfigReader.IConfigReader</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.config.IConfigReader.html#pip_services3_components.config.IConfigReader.IConfigReader" title="pip_services3_components.config.IConfigReader.IConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.config.IConfigReader.IConfigReader</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IConfigurable.html#pip_services3_commons.config.IConfigurable.IConfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code></a></p>
 <p>Abstract config reader that supports configuration parameterization.</p>
 <p>### Configuration parameters ###
 parameters:            this entire section is used as template parameters</p>
@@ -255,7 +256,7 @@ parameters:            this entire section is used as template parameters</p>
 <dt id="pip_services3_components.config.DefaultConfigReaderFactory">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.config.</code><code class="sig-name descname">DefaultConfigReaderFactory</code><a class="headerlink" href="#pip_services3_components.config.DefaultConfigReaderFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.build.Factory.Factory</span></code></a></p>
-<p>Creates <a class="reference internal" href="pip_services3_components.config.IConfigReader.html#module-pip_services3_components.config.IConfigReader" title="pip_services3_components.config.IConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">IConfigReader</span></code></a> components by their descriptors.</p>
+<p>Creates <a class="reference internal" href="pip_services3_components.config.IConfigReader.html#pip_services3_components.config.IConfigReader.IConfigReader" title="pip_services3_components.config.IConfigReader.IConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">IConfigReader</span></code></a> components by their descriptors.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -311,7 +312,7 @@ like JSON, YAML or property files.</p>
 <dl class="py class">
 <dt id="pip_services3_components.config.IConfigReader">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.config.</code><code class="sig-name descname">IConfigReader</code><a class="headerlink" href="#pip_services3_components.config.IConfigReader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Interface for configuration readers that retrieve configuration from various sources
 and make it available for other components.</p>
 <p>Some IConfigReader implementations may support configuration parameterization.
@@ -385,7 +386,7 @@ The values may come from application command like arguments or environment varia
 <dl class="py class">
 <dt id="pip_services3_components.config.MemoryConfigReader">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.config.</code><code class="sig-name descname">MemoryConfigReader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.config.MemoryConfigReader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.config.IConfigReader.html#pip_services3_components.config.IConfigReader.IConfigReader" title="pip_services3_components.config.IConfigReader.IConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.config.IConfigReader.IConfigReader</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.config.IConfigReader.html#pip_services3_components.config.IConfigReader.IConfigReader" title="pip_services3_components.config.IConfigReader.IConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.config.IConfigReader.IConfigReader</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IReconfigurable.html#pip_services3_commons.config.IReconfigurable.IReconfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></a></p>
 <p>Config reader that stores configuration in memory.</p>
 <p>### Configuration parameters ###</p>
 <blockquote>

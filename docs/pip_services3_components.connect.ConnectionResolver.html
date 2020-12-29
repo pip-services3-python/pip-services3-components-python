@@ -29,6 +29,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -190,10 +191,10 @@
 <dl class="py class">
 <dt id="pip_services3_components.connect.ConnectionResolver.ConnectionResolver">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.connect.ConnectionResolver.</code><code class="sig-name descname">ConnectionResolver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">references</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.ConnectionResolver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IConfigurable.html#pip_services3_commons.config.IConfigurable.IConfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.refer.IReferenceable.html#pip_services3_commons.refer.IReferenceable.IReferenceable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></a></p>
 <p>Helper class to retrieve component connections.</p>
-<p>If connections are configured to be retrieved from <code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code>,
-it automatically locates <code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code> in component references
+<p>If connections are configured to be retrieved from <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a>,
+it automatically locates <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> in component references
 and retrieve connections from there using discovery_key parameter.</p>
 <dl class="simple">
 <dt>### Configuration parameters ###</dt><dd><ul class="simple">
@@ -285,7 +286,7 @@ This method can be used for dynamic service discovery.</p>
 <dt id="pip_services3_components.connect.ConnectionResolver.ConnectionResolver.resolve">
 <code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.ConnectionResolver.resolve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves a single component connection. If connections are configured to be retrieved
-from Discovery service it finds a <code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code> and resolves the connection there.</p>
+from Discovery service it finds a <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> and resolves the connection there.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p>
@@ -300,7 +301,7 @@ from Discovery service it finds a <code class="xref py py-class docutils literal
 <dt id="pip_services3_components.connect.ConnectionResolver.ConnectionResolver.resolve_all">
 <code class="sig-name descname">resolve_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.ConnectionResolver.resolve_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves all component connection. If connections are configured to be retrieved
-from Discovery service it finds a <code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code> and resolves the connection there.</p>
+from Discovery service it finds a <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> and resolves the connection there.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p>

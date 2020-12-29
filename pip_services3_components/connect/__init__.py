@@ -6,7 +6,7 @@
     Contains implementation of connection parameters, using various connection strings,
     which are stripped of all credentials. If we need to configure a service, the port,
     ip address, protocol, and other parameters – we use the ConnectionParams object, and
-    relevant helper classes (like :class:`ConnectionResolver`), for acquiring these parameters,
+    relevant helper classes (like :class:`ConnectionResolver <pip_services3_components.connect.ConnectionResolver.ConnectionResolver>`), for acquiring these parameters,
     and for discovery of objects, components (which store and retrieve connection parameters).
 
     ### Discovery ###

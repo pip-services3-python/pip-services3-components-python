@@ -12,7 +12,7 @@
 class Counter(object):
     """
     Data object to store measurement for a performance counter.
-    This object is used by :class:`CachedCounters` to store counters.
+    This object is used by :class:`CachedCounters <pip_services3_components.count.CachedCounters.CachedCounters>` to store counters.
     """
     name = None
     type = None

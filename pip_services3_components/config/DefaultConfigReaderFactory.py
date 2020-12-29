@@ -34,7 +34,7 @@ YamlConfigReaderDescriptor = Descriptor(
 
 class DefaultConfigReaderFactory(Factory):
     """
-    Creates :class:`IConfigReader` components by their descriptors.
+    Creates :class:`IConfigReader <pip_services3_components.config.IConfigReader.IConfigReader>` components by their descriptors.
     """
     def __init__(self):
         """
