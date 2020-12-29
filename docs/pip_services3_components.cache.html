@@ -29,6 +29,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -218,8 +219,8 @@ to cache and retrieve it object by its key, using various implementations.</p>
 <dl class="py class">
 <dt id="pip_services3_components.cache.CacheEntry">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.cache.</code><code class="sig-name descname">CacheEntry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.cache.CacheEntry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Data object to store cached values with their keys used by <a class="reference internal" href="pip_services3_components.cache.MemoryCache.html#module-pip_services3_components.cache.MemoryCache" title="pip_services3_components.cache.MemoryCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryCache</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Data object to store cached values with their keys used by <a class="reference internal" href="pip_services3_components.cache.MemoryCache.html#pip_services3_components.cache.MemoryCache.MemoryCache" title="pip_services3_components.cache.MemoryCache.MemoryCache"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryCache</span></code></a></p>
 <dl class="py attribute">
 <dt id="pip_services3_components.cache.CacheEntry.expiration">
 <code class="sig-name descname">expiration</code><em class="property"> = None</em><a class="headerlink" href="#pip_services3_components.cache.CacheEntry.expiration" title="Permalink to this definition">¶</a></dt>
@@ -266,13 +267,13 @@ to cache and retrieve it object by its key, using various implementations.</p>
 <dt id="pip_services3_components.cache.DefaultCacheFactory">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.cache.</code><code class="sig-name descname">DefaultCacheFactory</code><a class="headerlink" href="#pip_services3_components.cache.DefaultCacheFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.build.Factory.Factory</span></code></a></p>
-<p>Creates <a class="reference internal" href="pip_services3_components.cache.ICache.html#module-pip_services3_components.cache.ICache" title="pip_services3_components.cache.ICache"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICache</span></code></a> components by their descriptors.</p>
+<p>Creates <a class="reference internal" href="pip_services3_components.cache.ICache.html#pip_services3_components.cache.ICache.ICache" title="pip_services3_components.cache.ICache.ICache"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICache</span></code></a> components by their descriptors.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt id="pip_services3_components.cache.ICache">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.cache.</code><code class="sig-name descname">ICache</code><a class="headerlink" href="#pip_services3_components.cache.ICache" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Interface for caches that are used to cache values to improve performance.</p>
 <dl class="py method">
 <dt id="pip_services3_components.cache.ICache.remove">
@@ -330,7 +331,7 @@ If value is missing in the cache or expired it returns None.</p>
 <dl class="py class">
 <dt id="pip_services3_components.cache.MemoryCache">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.cache.</code><code class="sig-name descname">MemoryCache</code><a class="headerlink" href="#pip_services3_components.cache.MemoryCache" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.cache.ICache.html#pip_services3_components.cache.ICache.ICache" title="pip_services3_components.cache.ICache.ICache"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.cache.ICache.ICache</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.run.ICleanable.ICleanable</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.cache.ICache.html#pip_services3_components.cache.ICache.ICache" title="pip_services3_components.cache.ICache.ICache"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.cache.ICache.ICache</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IReconfigurable.html#pip_services3_commons.config.IReconfigurable.IReconfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.run.ICleanable.html#pip_services3_commons.run.ICleanable.ICleanable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.run.ICleanable.ICleanable</span></code></a></p>
 <p>Cache that stores values in the process memory.</p>
 <p>Remember: This implementation is not suitable for synchronization of distributed processes.</p>
 <p>### Configuration parameters ###

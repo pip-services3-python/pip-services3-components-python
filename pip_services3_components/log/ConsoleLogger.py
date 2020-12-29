@@ -30,7 +30,7 @@ class ConsoleLogger(Logger):
         - source:            source (context) name
 
     ### References ###
-        - *:context-info:*:*:1.0     (optional) :class:`ContextInfo` to detect the context id and specify counters source
+        - *:context-info:*:*:1.0     (optional) :class:`ContextInfo <pip_services3_components.info.ContextInfo.ContextInfo>` to detect the context id and specify counters source
 
     Example:
 

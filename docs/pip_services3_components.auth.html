@@ -29,6 +29,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -224,7 +225,7 @@ They need added security and protection, so they were separated.</p>
 <dl class="py class">
 <dt id="pip_services3_components.auth.CredentialParams">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.auth.</code><code class="sig-name descname">CredentialParams</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialParams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.ConfigParams.ConfigParams</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.ConfigParams.html#pip_services3_commons.config.ConfigParams.ConfigParams" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.ConfigParams.ConfigParams</span></code></a></p>
 <p>Contains credentials to authenticate against external services.</p>
 <p>They are used together with connection parameters,
 but usually stored in a separate store, protected from unauthorized access.</p>
@@ -337,7 +338,7 @@ The value can be stored in parameters “access_key”, “client_key” or “s
 <dl class="py method">
 <dt id="pip_services3_components.auth.CredentialParams.get_store_key">
 <code class="sig-name descname">get_store_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialParams.get_store_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the key to retrieve these credentials from <code class="xref py py-class docutils literal notranslate"><span class="pre">CredentialStore</span></code>.
+<dd><p>Gets the key to retrieve these credentials from <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a>.
 If this key is null, than all parameters are already present.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -409,7 +410,7 @@ than it returns a list with only one CredentialParams.</p>
 <dl class="py method">
 <dt id="pip_services3_components.auth.CredentialParams.set_store_key">
 <code class="sig-name descname">set_store_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialParams.set_store_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the key to retrieve these parameters from <code class="xref py py-class docutils literal notranslate"><span class="pre">CredentialStore</span></code>.</p>
+<dd><p>Sets the key to retrieve these parameters from <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>value</strong> – a new key to retrieve credentials.</p>
@@ -431,11 +432,11 @@ than it returns a list with only one CredentialParams.</p>
 <dl class="py method">
 <dt id="pip_services3_components.auth.CredentialParams.use_credential_store">
 <code class="sig-name descname">use_credential_store</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialParams.use_credential_store" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if these credential parameters shall be retrieved from <code class="xref py py-class docutils literal notranslate"><span class="pre">CredentialStore</span></code>.
-The credential parameters are redirected to <code class="xref py py-class docutils literal notranslate"><span class="pre">CredentialStore</span></code> when store_key parameter is set.</p>
+<dd><p>Checks if these credential parameters shall be retrieved from <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a>.
+The credential parameters are redirected to <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a> when store_key parameter is set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if credentials shall be retrieved from <code class="xref py py-class docutils literal notranslate"><span class="pre">CredentialStore</span></code></p>
+<dd class="field-odd"><p>true if credentials shall be retrieved from <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -445,16 +446,16 @@ The credential parameters are redirected to <code class="xref py py-class docuti
 <dl class="py class">
 <dt id="pip_services3_components.auth.CredentialResolver">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.auth.</code><code class="sig-name descname">CredentialResolver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">references</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialResolver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IConfigurable.html#pip_services3_commons.config.IConfigurable.IConfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.refer.IReferenceable.html#pip_services3_commons.refer.IReferenceable.IReferenceable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></a></p>
 <p>Helper class to retrieve component credentials.</p>
 <p>If credentials are configured to be retrieved from
-<a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#module-pip_services3_components.auth.ICredentialStore" title="pip_services3_components.auth.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a>, it automatically locates <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#module-pip_services3_components.auth.ICredentialStore" title="pip_services3_components.auth.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a>
+<a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a>, it automatically locates <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a>
 in component references and retrieve credentials from there using store_key parameter.</p>
 <p>### Configuration parameters ###
 credential:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>store_key:                   (optional) a key to retrieve the credentials from <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#module-pip_services3_components.auth.ICredentialStore" title="pip_services3_components.auth.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a></p></li>
+<li><p>store_key:                   (optional) a key to retrieve the credentials from <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a></p></li>
 <li><p>…                          other credential parameters</p></li>
 </ul>
 </div></blockquote>
@@ -521,7 +522,7 @@ If you need fully fleshed credential use <a class="reference internal" href="#pi
 <dt id="pip_services3_components.auth.CredentialResolver.lookup">
 <code class="sig-name descname">lookup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.CredentialResolver.lookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Looks up component credential parameters. If credentials are configured to be retrieved
-from Credential store it finds a <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#module-pip_services3_components.auth.ICredentialStore" title="pip_services3_components.auth.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a> and lookups credentials there.</p>
+from Credential store it finds a <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICredentialStore</span></code></a> and lookups credentials there.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p>
@@ -555,7 +556,7 @@ from Credential store it finds a <a class="reference internal" href="pip_service
 <dl class="py class">
 <dt id="pip_services3_components.auth.ICredentialStore">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.auth.</code><code class="sig-name descname">ICredentialStore</code><a class="headerlink" href="#pip_services3_components.auth.ICredentialStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Interface for credential stores which are used to store
 and lookup credentials to authenticate against external services.</p>
 <dl class="py method">
@@ -595,7 +596,7 @@ and lookup credentials to authenticate against external services.</p>
 <dl class="py class">
 <dt id="pip_services3_components.auth.MemoryCredentialStore">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.auth.</code><code class="sig-name descname">MemoryCredentialStore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">credentials</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.auth.MemoryCredentialStore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.auth.ICredentialStore.ICredentialStore</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.auth.ICredentialStore.html#pip_services3_components.auth.ICredentialStore.ICredentialStore" title="pip_services3_components.auth.ICredentialStore.ICredentialStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.auth.ICredentialStore.ICredentialStore</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IReconfigurable.html#pip_services3_commons.config.IReconfigurable.IReconfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></a></p>
 <p>Credential store that keeps credentials in memory.</p>
 <dl class="simple">
 <dt>### Configuration parameters ###</dt><dd><ul class="simple">

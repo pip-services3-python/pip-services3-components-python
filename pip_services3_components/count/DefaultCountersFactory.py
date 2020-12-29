@@ -34,7 +34,7 @@ CompositeCountersDescriptor = Descriptor(
 
 class DefaultCountersFactory(Factory):
     """
-    Creates :class:`ICounters` components by their descriptors.
+    Creates :class:`ICounters <pip_services3_components.count.ICounters.ICounters>` components by their descriptors.
     """
     def __init__(self):
         """

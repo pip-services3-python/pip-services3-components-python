@@ -29,6 +29,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -208,7 +209,7 @@
 <p>Contains implementation of connection parameters, using various connection strings,
 which are stripped of all credentials. If we need to configure a service, the port,
 ip address, protocol, and other parameters – we use the ConnectionParams object, and
-relevant helper classes (like <a class="reference internal" href="pip_services3_components.connect.ConnectionResolver.html#module-pip_services3_components.connect.ConnectionResolver" title="pip_services3_components.connect.ConnectionResolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionResolver</span></code></a>), for acquiring these parameters,
+relevant helper classes (like <a class="reference internal" href="pip_services3_components.connect.ConnectionResolver.html#pip_services3_components.connect.ConnectionResolver.ConnectionResolver" title="pip_services3_components.connect.ConnectionResolver.ConnectionResolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionResolver</span></code></a>), for acquiring these parameters,
 and for discovery of objects, components (which store and retrieve connection parameters).</p>
 <p>### Discovery ###</p>
 <p>Service that store a registry of various end-points (what services are where, and how to
@@ -244,7 +245,7 @@ heartbeats must be used – lots of problems and challenges. One service can hav
 <dl class="py class">
 <dt id="pip_services3_components.connect.ConnectionParams">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.connect.</code><code class="sig-name descname">ConnectionParams</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">map</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.ConfigParams.ConfigParams</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.ConfigParams.html#pip_services3_commons.config.ConfigParams.ConfigParams" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.ConfigParams.ConfigParams</span></code></a></p>
 <p>Contains connection parameters to connect to external services.</p>
 <p>They are used together with credential parameters, but usually stored
 separately from more protected sensitive values.</p>
@@ -319,7 +320,7 @@ Tuples parameters contain a sequence of key1, value1, key2, value2, … pairs.</
 <dl class="py method">
 <dt id="pip_services3_components.connect.ConnectionParams.get_discovery_key">
 <code class="sig-name descname">get_discovery_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.get_discovery_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the key to retrieve this connection from <code class="xref py py-class docutils literal notranslate"><span class="pre">DiscoveryService</span></code>.
+<dd><p>Gets the key to retrieve this connection from DiscoveryService.
 If this key is null, than all parameters are already present.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -394,7 +395,7 @@ than it returns a list with only one ConnectionParams.</p>
 <dl class="py method">
 <dt id="pip_services3_components.connect.ConnectionParams.set_discovery_key">
 <code class="sig-name descname">set_discovery_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.set_discovery_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the key to retrieve these parameters from <code class="xref py py-class docutils literal notranslate"><span class="pre">DiscoveryService</span></code>.</p>
+<dd><p>Sets the key to retrieve these parameters from DiscoveryService.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>value</strong> – a new key to retrieve connection.</p>
@@ -449,11 +450,11 @@ than it returns a list with only one ConnectionParams.</p>
 <dl class="py method">
 <dt id="pip_services3_components.connect.ConnectionParams.use_discovery">
 <code class="sig-name descname">use_discovery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionParams.use_discovery" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks if these connection parameters shall be retrieved from :class:DiscoveryService.
-The connection parameters are redirected to <code class="xref py py-class docutils literal notranslate"><span class="pre">DiscoveryService</span></code> when discovery_key parameter is set.</p>
+<dd><p>Checks if these connection parameters shall be retrieved from DiscoveryService.
+The connection parameters are redirected to DiscoveryService when discovery_key parameter is set.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if connection shall be retrieved from <code class="xref py py-class docutils literal notranslate"><span class="pre">DiscoveryService</span></code></p>
+<dd class="field-odd"><p>true if connection shall be retrieved from DiscoveryService</p>
 </dd>
 </dl>
 </dd></dl>
@@ -463,10 +464,10 @@ The connection parameters are redirected to <code class="xref py py-class docuti
 <dl class="py class">
 <dt id="pip_services3_components.connect.ConnectionResolver">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.connect.</code><code class="sig-name descname">ConnectionResolver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">references</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
+<dd><p>Bases: <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IConfigurable.html#pip_services3_commons.config.IConfigurable.IConfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IConfigurable.IConfigurable</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.refer.IReferenceable.html#pip_services3_commons.refer.IReferenceable.IReferenceable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></a></p>
 <p>Helper class to retrieve component connections.</p>
-<p>If connections are configured to be retrieved from <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#module-pip_services3_components.connect.IDiscovery" title="pip_services3_components.connect.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a>,
-it automatically locates <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#module-pip_services3_components.connect.IDiscovery" title="pip_services3_components.connect.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> in component references
+<p>If connections are configured to be retrieved from <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a>,
+it automatically locates <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> in component references
 and retrieve connections from there using discovery_key parameter.</p>
 <dl class="simple">
 <dt>### Configuration parameters ###</dt><dd><ul class="simple">
@@ -558,7 +559,7 @@ This method can be used for dynamic service discovery.</p>
 <dt id="pip_services3_components.connect.ConnectionResolver.resolve">
 <code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.resolve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves a single component connection. If connections are configured to be retrieved
-from Discovery service it finds a <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#module-pip_services3_components.connect.IDiscovery" title="pip_services3_components.connect.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> and resolves the connection there.</p>
+from Discovery service it finds a <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> and resolves the connection there.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p>
@@ -573,7 +574,7 @@ from Discovery service it finds a <a class="reference internal" href="pip_servic
 <dt id="pip_services3_components.connect.ConnectionResolver.resolve_all">
 <code class="sig-name descname">resolve_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.ConnectionResolver.resolve_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resolves all component connection. If connections are configured to be retrieved
-from Discovery service it finds a <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#module-pip_services3_components.connect.IDiscovery" title="pip_services3_components.connect.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> and resolves the connection there.</p>
+from Discovery service it finds a <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDiscovery</span></code></a> and resolves the connection there.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p>
@@ -607,7 +608,7 @@ from Discovery service it finds a <a class="reference internal" href="pip_servic
 <dl class="py class">
 <dt id="pip_services3_components.connect.IDiscovery">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.connect.</code><code class="sig-name descname">IDiscovery</code><a class="headerlink" href="#pip_services3_components.connect.IDiscovery" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Interface for discovery services which are used to store and resolve connection parameters to connect to external services.</p>
 <dl class="py method">
 <dt id="pip_services3_components.connect.IDiscovery.register">
@@ -663,7 +664,7 @@ from Discovery service it finds a <a class="reference internal" href="pip_servic
 <dl class="py class">
 <dt id="pip_services3_components.connect.MemoryDiscovery">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.connect.</code><code class="sig-name descname">MemoryDiscovery</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.connect.MemoryDiscovery" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.connect.IDiscovery.IDiscovery</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.connect.IDiscovery.html#pip_services3_components.connect.IDiscovery.IDiscovery" title="pip_services3_components.connect.IDiscovery.IDiscovery"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.connect.IDiscovery.IDiscovery</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IReconfigurable.html#pip_services3_commons.config.IReconfigurable.IReconfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></a></p>
 <p>Discovery service that keeps connections in memory.</p>
 <dl class="simple">
 <dt>### Configuration parameters ###</dt><dd><ul class="simple">

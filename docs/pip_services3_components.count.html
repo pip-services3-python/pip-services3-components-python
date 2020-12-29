@@ -29,6 +29,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -239,7 +240,7 @@ show how the code works in the system – how stable, fast, expandable it is.</p
 <dl class="py class">
 <dt id="pip_services3_components.count.CachedCounters">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">CachedCounters</code><a class="headerlink" href="#pip_services3_components.count.CachedCounters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.count.ICounters.html#pip_services3_components.count.ICounters.ICounters" title="pip_services3_components.count.ICounters.ICounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ICounters.ICounters</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code>, <a class="reference internal" href="pip_services3_components.count.ITimingCallback.html#pip_services3_components.count.ITimingCallback.ITimingCallback" title="pip_services3_components.count.ITimingCallback.ITimingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ITimingCallback.ITimingCallback</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.count.ICounters.html#pip_services3_components.count.ICounters.ICounters" title="pip_services3_components.count.ICounters.ICounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ICounters.ICounters</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IReconfigurable.html#pip_services3_commons.config.IReconfigurable.IReconfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></a>, <a class="reference internal" href="pip_services3_components.count.ITimingCallback.html#pip_services3_components.count.ITimingCallback.ITimingCallback" title="pip_services3_components.count.ITimingCallback.ITimingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ITimingCallback.ITimingCallback</span></code></a></p>
 <p>Abstract implementation of performance counters that measures and stores counters in memory.
 Child classes implement saving of the counters into various destinations.</p>
 <dl class="simple">
@@ -259,14 +260,14 @@ Child classes implement saving of the counters into various destinations.</p>
 <dt id="pip_services3_components.count.CachedCounters.begin_timing">
 <code class="sig-name descname">begin_timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CachedCounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#module-pip_services3_components.count.Timing" title="pip_services3_components.count.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
+It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
 <a class="reference internal" href="#pip_services3_components.count.Timing.end_timing" title="pip_services3_components.count.Timing.end_timing"><code class="xref py py-func docutils literal notranslate"><span class="pre">Timing.end_timing()</span></code></a> to end the measurement and update the counter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – a counter name of Interval type.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#module-pip_services3_components.count.Timing" title="pip_services3_components.count.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
+<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -433,7 +434,7 @@ Usually this method is used by metrics calculated externally.</p>
 <dl class="py class">
 <dt id="pip_services3_components.count.CompositeCounters">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">CompositeCounters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">references</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.count.ICounters.html#pip_services3_components.count.ICounters.ICounters" title="pip_services3_components.count.ICounters.ICounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ICounters.ICounters</span></code></a>, <a class="reference internal" href="pip_services3_components.count.ITimingCallback.html#pip_services3_components.count.ITimingCallback.ITimingCallback" title="pip_services3_components.count.ITimingCallback.ITimingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ITimingCallback.ITimingCallback</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.count.ICounters.html#pip_services3_components.count.ICounters.ICounters" title="pip_services3_components.count.ICounters.ICounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ICounters.ICounters</span></code></a>, <a class="reference internal" href="pip_services3_components.count.ITimingCallback.html#pip_services3_components.count.ITimingCallback.ITimingCallback" title="pip_services3_components.count.ITimingCallback.ITimingCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.ITimingCallback.ITimingCallback</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.refer.IReferenceable.html#pip_services3_commons.refer.IReferenceable.IReferenceable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></a></p>
 <p>Aggregates all counters from component references under a single component.</p>
 <p>It allows to capture metrics and conveniently send them to multiple destinations.</p>
 <dl class="simple">
@@ -461,14 +462,14 @@ Usually this method is used by metrics calculated externally.</p>
 <dt id="pip_services3_components.count.CompositeCounters.begin_timing">
 <code class="sig-name descname">begin_timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.CompositeCounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#module-pip_services3_components.count.Timing" title="pip_services3_components.count.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
+It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
 <a class="reference internal" href="#pip_services3_components.count.Timing.end_timing" title="pip_services3_components.count.Timing.end_timing"><code class="xref py py-func docutils literal notranslate"><span class="pre">Timing.end_timing()</span></code></a> to end the measurement and update the counter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – a counter name of Interval type.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#module-pip_services3_components.count.Timing" title="pip_services3_components.count.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
+<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -582,9 +583,9 @@ Usually this method is used by metrics calculated externally.</p>
 <dl class="py class">
 <dt id="pip_services3_components.count.Counter">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">Counter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">tipe</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.Counter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Data object to store measurement for a performance counter.
-This object is used by <a class="reference internal" href="pip_services3_components.count.CachedCounters.html#module-pip_services3_components.count.CachedCounters" title="pip_services3_components.count.CachedCounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedCounters</span></code></a> to store counters.</p>
+This object is used by <a class="reference internal" href="pip_services3_components.count.CachedCounters.html#pip_services3_components.count.CachedCounters.CachedCounters" title="pip_services3_components.count.CachedCounters.CachedCounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedCounters</span></code></a> to store counters.</p>
 <dl class="py attribute">
 <dt id="pip_services3_components.count.Counter.average">
 <code class="sig-name descname">average</code><em class="property"> = None</em><a class="headerlink" href="#pip_services3_components.count.Counter.average" title="Permalink to this definition">¶</a></dt>
@@ -630,7 +631,7 @@ This object is used by <a class="reference internal" href="pip_services3_compone
 <dl class="py class">
 <dt id="pip_services3_components.count.CounterType">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">CounterType</code><a class="headerlink" href="#pip_services3_components.count.CounterType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Types of counters that measure different types of metrics</p>
 <dl class="py attribute">
 <dt id="pip_services3_components.count.CounterType.Increment">
@@ -668,13 +669,13 @@ This object is used by <a class="reference internal" href="pip_services3_compone
 <dt id="pip_services3_components.count.DefaultCountersFactory">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">DefaultCountersFactory</code><a class="headerlink" href="#pip_services3_components.count.DefaultCountersFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.build.Factory.Factory</span></code></a></p>
-<p>Creates <a class="reference internal" href="pip_services3_components.count.ICounters.html#module-pip_services3_components.count.ICounters" title="pip_services3_components.count.ICounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICounters</span></code></a> components by their descriptors.</p>
+<p>Creates <a class="reference internal" href="pip_services3_components.count.ICounters.html#pip_services3_components.count.ICounters.ICounters" title="pip_services3_components.count.ICounters.ICounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICounters</span></code></a> components by their descriptors.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt id="pip_services3_components.count.ICounters">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">ICounters</code><a class="headerlink" href="#pip_services3_components.count.ICounters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Interface for performance counters that measure execution metrics.
 The performance counters measure how code is performing:
 how fast or slow, how many transactions performed, how many objects
@@ -684,14 +685,14 @@ are stored, what was the latest transaction time and so on.</p>
 <dt id="pip_services3_components.count.ICounters.begin_timing">
 <code class="sig-name descname">begin_timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.ICounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#module-pip_services3_components.count.Timing" title="pip_services3_components.count.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
+It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
 <a class="reference internal" href="#pip_services3_components.count.Timing.end_timing" title="pip_services3_components.count.Timing.end_timing"><code class="xref py py-func docutils literal notranslate"><span class="pre">Timing.end_timing()</span></code></a> to end the measurement and update the counter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – a counter name of Interval type.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#module-pip_services3_components.count.Timing" title="pip_services3_components.count.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
+<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -780,7 +781,7 @@ Usually this method is used by metrics calculated externally.</p>
 <dl class="py class">
 <dt id="pip_services3_components.count.ITimingCallback">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">ITimingCallback</code><a class="headerlink" href="#pip_services3_components.count.ITimingCallback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Interface for a callback to end measurement of execution elapsed time.</p>
 <dl class="py method">
 <dt id="pip_services3_components.count.ITimingCallback.end_timing">
@@ -801,7 +802,7 @@ Usually this method is used by metrics calculated externally.</p>
 <dl class="py class">
 <dt id="pip_services3_components.count.LogCounters">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">LogCounters</code><a class="headerlink" href="#pip_services3_components.count.LogCounters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="pip_services3_components.count.CachedCounters.html#pip_services3_components.count.CachedCounters.CachedCounters" title="pip_services3_components.count.CachedCounters.CachedCounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.CachedCounters.CachedCounters</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.count.CachedCounters.html#pip_services3_components.count.CachedCounters.CachedCounters" title="pip_services3_components.count.CachedCounters.CachedCounters"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.count.CachedCounters.CachedCounters</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.refer.IReferenceable.html#pip_services3_commons.refer.IReferenceable.IReferenceable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.refer.IReferenceable.IReferenceable</span></code></a></p>
 <p>Performance counters that periodically dumps counters measurements to logger.</p>
 <dl class="simple">
 <dt>### Configuration parameters ###</dt><dd><ul class="simple">
@@ -816,8 +817,8 @@ Usually this method is used by metrics calculated externally.</p>
 </ul>
 </dd>
 <dt>### References ###</dt><dd><ul class="simple">
-<li><p><em>:logger:</em>:<a href="#id3"><span class="problematic" id="id4">*</span></a>:1.0           <code class="xref py py-class docutils literal notranslate"><span class="pre">ILogger</span></code> components to dump the captured counters</p></li>
-<li><p><em>:context-info:</em>:<a href="#id5"><span class="problematic" id="id6">*</span></a>:1.0     (optional) <code class="xref py py-class docutils literal notranslate"><span class="pre">ContextInfo</span></code> to detect the context id and specify counters source</p></li>
+<li><p><em>:logger:</em>:<a href="#id3"><span class="problematic" id="id4">*</span></a>:1.0           <a class="reference internal" href="pip_services3_components.log.ILogger.html#pip_services3_components.log.ILogger.ILogger" title="pip_services3_components.log.ILogger.ILogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">ILogger</span></code></a> components to dump the captured counters</p></li>
+<li><p><em>:context-info:</em>:<a href="#id5"><span class="problematic" id="id6">*</span></a>:1.0     (optional) <a class="reference internal" href="pip_services3_components.info.ContextInfo.html#pip_services3_components.info.ContextInfo.ContextInfo" title="pip_services3_components.info.ContextInfo.ContextInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContextInfo</span></code></a> to detect the context id and specify counters source</p></li>
 </ul>
 </dd>
 </dl>
@@ -855,14 +856,14 @@ It can be used in testing or in situations when counters is required but shall b
 <dt id="pip_services3_components.count.NullCounters.begin_timing">
 <code class="sig-name descname">begin_timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.NullCounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#module-pip_services3_components.count.Timing" title="pip_services3_components.count.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
-<a class="reference internal" href="#pip_services3_components.count.Timing.end_timing" title="pip_services3_components.count.Timing.end_timing"><code class="xref py py-func docutils literal notranslate"><span class="pre">Timing.end_timing()</span></code></a> to end the measurement and update the counter.</p>
+It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
+<a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing.end_timing" title="pip_services3_components.count.Timing.Timing.end_timing"><code class="xref py py-func docutils literal notranslate"><span class="pre">end_timing</span></code></a> to end the measurement and update the counter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – a counter name of Interval type.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#module-pip_services3_components.count.Timing" title="pip_services3_components.count.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
+<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -951,8 +952,8 @@ Usually this method is used by metrics calculated externally.</p>
 <dl class="py class">
 <dt id="pip_services3_components.count.Timing">
 <em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.</code><code class="sig-name descname">Timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">counter</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">callback</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.Timing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Callback object returned by <a class="reference internal" href="#pip_services3_components.count.ICounters.begin_timing" title="pip_services3_components.count.ICounters.begin_timing"><code class="xref py py-func docutils literal notranslate"><span class="pre">ICounters.begin_timing()</span></code></a> to end timing
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Callback object returned by <a class="reference internal" href="pip_services3_components.count.ICounters.html#pip_services3_components.count.ICounters.ICounters.begin_timing" title="pip_services3_components.count.ICounters.ICounters.begin_timing"><code class="xref py py-func docutils literal notranslate"><span class="pre">pip_services3_components.count.ICounters.ICounters.begin_timing()</span></code></a> to end timing
 of execution block and update the associated counter.</p>
 <dl class="simple">
 <dt>Example:</dt><dd><p>timing = counters.begin_timing(“mymethod.exec_time”)
