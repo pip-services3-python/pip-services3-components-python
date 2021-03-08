@@ -103,7 +103,11 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
         :param kwargs: arguments to parameterize the message.
         """
         if not (message is None) and len(message) > 0 and (len(args) or len(kwargs)) > 0:
-            message = message.format(*args, **kwargs)
+            # filter None args
+            args = list(filter(lambda arg: arg is not None, args))
+            kwargs = list(filter(lambda kwarg: kwarg is not None, kwargs))
+
+            message = message % (*args, *kwargs)
         self._write(level, correlation_id, error, message)
 
     def log(self, level, correlation_id, error, message, *args, **kwargs):

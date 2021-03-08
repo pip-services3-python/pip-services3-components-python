@@ -16,15 +16,21 @@ Links
 from setuptools import setup
 from setuptools import find_packages
 
+try:
+    readme = open('README.md').read()
+except:
+    readme = __doc__
+
 setup(
     name='pip_services3_components',
-    version='3.2.1',
+    version='3.2.2',
     url='http://github.com/pip-services3-python/pip-services3-components-python',
     license='MIT',
     description='Component definitions for Pip.Services in Python',
     author='Conceptual Vision Consulting LLC',
     author_email='seroukhov@gmail.com',
-    # long_description=__doc__,
+    long_description=readme,
+    long_description_content_type="text/markdown",
     packages=find_packages(exclude=['config', 'data', 'test']),
     include_package_data=True,
     zip_safe=True,
