@@ -43,7 +43,7 @@ class ConnectionParams(ConfigParams):
         cluster = connection.get_as_nullable_string("cluster")     // Result: "mycluster"
     """
 
-    def __init__(self, map = None):
+    def __init__(self, map=None):
         """
         Creates a new connection parameters and fills it with values.
 
@@ -77,22 +77,23 @@ class ConnectionParams(ConfigParams):
         """
         self.put("discovery_key", value)
 
-    # def get_protocol(self):
-    #     """
-    #     Gets the connection protocol
-    #     Returns: the connection protocol
-    #     """
-    #     return self.get_as_nullable_string("protocol")
-
-    def get_protocol(self, default_value = None):
+    def get_protocol(self):
         """
         Gets the connection protocol.
+
+        :return: the connection protocol or the default value if it's not set.
+        """
+        return super().get_as_string('protocol')
+
+    def get_protocol_with_default(self, default_value=None):
+        """
+        Gets the connection protocol with default value.
 
         :param default_value: (optional) the default protocol
 
         :return: the connection protocol or the default value if it's not set.
         """
-        return self.get_as_string_with_default("protocol", default_value)
+        return super().get_as_string_with_default("protocol", default_value)
 
     def set_protocol(self, value):
         """
@@ -126,7 +127,16 @@ class ConnectionParams(ConfigParams):
 
         :return: the port number.
         """
-        return self.get_as_integer("port")
+        return super().get_as_integer("port")
+
+    def get_port_with_default(self, default_port):
+        """
+        Gets the port number with default value.
+
+        :param default_port:    a default port number.
+        :return:                the port number.
+        """
+        return super().get_as_integer_with_default("port", default_port)
 
     def set_port(self, value):
         """
