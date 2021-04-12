@@ -9,25 +9,25 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .MemoryCredentialStore import MemoryCredentialStore
-
 from pip_services3_commons.refer.Descriptor import Descriptor
+
+from .MemoryCredentialStore import MemoryCredentialStore
 from ..build.Factory import Factory
 
-DefaultCredentialStoreFactoryDescriptor = Descriptor(
-    "pip-services", "factory", "credential-store", "default", "1.0"
-)
-
-MemoryCredentialStoreDescriptor = Descriptor(
-    "pip-services", "credential-store", "memory", "*", "1.0"
-)
 
 class DefaultCredentialStoreFactory(Factory):
     """
-    Creates ICredentialStore components by their descriptors.
+    Creates :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`
+     components by their descriptors.
+
+    See :class:`IFactory <pip_services3_components.build.IFactory.IFactory>`,
+    :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`,
+    :class:`MemoryCredentialStore <pip_services3_components.auth.MemoryCredentialStore.MemoryCredentialStore>`,
     """
+    MemoryCredentialStoreDescriptor = Descriptor("pip-services", "credential-store", "memory", "*", "1.0")
+
     def __init__(self):
         """
         Create a new instance of the factory.
         """
-        self.register_as_type(MemoryCredentialStoreDescriptor, MemoryCredentialStore)
+        self.register_as_type(self.MemoryCredentialStoreDescriptor, MemoryCredentialStore)

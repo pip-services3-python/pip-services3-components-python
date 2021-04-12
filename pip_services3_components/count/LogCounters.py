@@ -9,11 +9,12 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .CachedCounters import CachedCounters
-from .CounterType import CounterType
-from ..log.CompositeLogger import CompositeLogger
 from pip_services3_commons.convert.StringConverter import StringConverter
 from pip_services3_commons.refer.IReferenceable import IReferenceable
+
+from .CachedCounters import CachedCounters
+from ..log.CompositeLogger import CompositeLogger
+
 
 class LogCounters(CachedCounters, IReferenceable):
     """
@@ -48,12 +49,12 @@ class LogCounters(CachedCounters, IReferenceable):
         Creates a new instance of the counters.
         """
         super(LogCounters, self).__init__()
-        self._logger = CompositeLogger() 
+        self._logger = CompositeLogger()
 
-    #
+        #
+
     # def get_descriptor(self):
     #     return LogCountersDescriptor
-
 
     def set_references(self, references):
         """
@@ -62,7 +63,6 @@ class LogCounters(CachedCounters, IReferenceable):
         :param references: references to locate the component dependencies.
         """
         self._logger.set_references(references)
-
 
     def _counter_to_string(self, counter):
         result = "Counter " + counter.name + " { "

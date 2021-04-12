@@ -10,7 +10,7 @@
 """
 
 from .ICounters import ICounters
-from .Timing import Timing
+from .CounterTiming import CounterTiming
 
 class NullCounters(ICounters):
     """
@@ -21,14 +21,14 @@ class NullCounters(ICounters):
     def begin_timing(self, name):
         """
         Begins measurement of execution time interval.
-        It returns :class:`Timing <pip_services3_components.count.Timing.Timing>` object which has to be called at
-        :func:`end_timing <pip_services3_components.count.Timing.Timing.end_timing>` to end the measurement and update the counter.
+        It returns :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` object which has to be called at
+        :func:`end_timing <pip_services3_components.count.CounterTiming.CounterTiming.end_timing>` to end the measurement and update the counter.
 
         :param name: a counter name of Interval type.
 
-        :return: a :class:`Timing <pip_services3_components.count.Timing.Timing>` callback object to end timing.
+        :return: a :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` callback object to end timing.
         """
-        return Timing()
+        return CounterTiming()
 
     def stats(self, name, value):
         """

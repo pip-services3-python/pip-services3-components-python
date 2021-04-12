@@ -9,31 +9,29 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .NullCache import NullCache
-from .MemoryCache import MemoryCache
-
 from pip_services3_commons.refer.Descriptor import Descriptor
+
+from .MemoryCache import MemoryCache
+from .NullCache import NullCache
 from ..build.Factory import Factory
 
-DefaultCacheFactoryDescriptor = Descriptor(
-    "pip-services", "factory", "cache", "default", "1.0"
-)
-
-NullCacheDescriptor = Descriptor(
-    "pip-services", "cache", "null", "*", "1.0"
-)
-
-MemoryCacheDescriptor = Descriptor(
-    "pip-services", "cache", "memory", "*", "1.0"
-)
 
 class DefaultCacheFactory(Factory):
     """
     Creates :class:`ICache <pip_services3_components.cache.ICache.ICache>` components by their descriptors.
+
+    See :class:`Factory <pip_services3_components.build.Factory.Factory>`,
+    :class:`ICache <pip_services3_components.cache.ICache.ICache>`,
+    :class:`MemoryCache <pip_services3_components.cache.MemoryCache.MemoryCache>`,
+    :class:`NullCache <pip_services3_components.cache.NullCache.NullCache>`
     """
+
+    NullCacheDescriptor = Descriptor("pip-services", "cache", "null", "*", "1.0")
+    MemoryCacheDescriptor = Descriptor("pip-services", "cache", "memory", "*", "1.0")
+
     def __init__(self):
         """
         Create a new instance of the factory.
         """
-        self.register_as_type(NullCacheDescriptor, NullCache)
-        self.register_as_type(MemoryCacheDescriptor, MemoryCache)
+        self.register_as_type(DefaultCacheFactory.NullCacheDescriptor, NullCache)
+        self.register_as_type(DefaultCacheFactory.MemoryCacheDescriptor, MemoryCache)

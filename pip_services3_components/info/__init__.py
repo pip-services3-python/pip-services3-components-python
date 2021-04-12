@@ -14,4 +14,4 @@
 __all__ = ['ContextInfo', 'DefaultInfoFactory']
 
 from .ContextInfo import ContextInfo
-from ._DefaultInfoFactory import DefaultInfoFactory
+from .DefaultInfoFactory import DefaultInfoFactory

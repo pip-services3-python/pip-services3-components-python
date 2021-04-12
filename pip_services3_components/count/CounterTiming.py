@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    pip_services3_components.counters.Timing
+    pip_services3_components.counters.CounterTiming
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    Timing implementation
+    CounterTiming implementation
     
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
@@ -11,7 +11,10 @@
 
 import time
 
-class Timing:
+from pip_services3_components.count import ICounterTimingCallback
+
+
+class CounterTiming:
     """
     Callback object returned by :func:`pip_services3_components.count.ICounters.ICounters.begin_timing` to end timing
     of execution block and update the associated counter.
@@ -23,15 +26,14 @@ class Timing:
     """
 
     _start = None
-    _callback = None
-    _counter = None
+    _callback: ICounterTimingCallback = None
+    _counter: str = None
 
-    def __init__(self, counter = None, callback = None):
+    def __init__(self, counter: str = None, callback: ICounterTimingCallback = None):
         """
         Creates a new instance of the timing callback object.
 
         :param counter: an associated counter name
-
         :param callback: a callback that shall be called when end_timing is called.
         """
 

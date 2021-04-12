@@ -12,17 +12,17 @@
 """
 
 __all__ = [
-    'CounterType', 'ITimingCallback', 'ICounters',
-    'Counter', 'Timing', 'CachedCounters', 
+    'CounterType', 'ICounterTimingCallback', 'ICounters',
+    'Counter', 'CounterTiming', 'CachedCounters',
     'NullCounters', 'CompositeCounters', 'LogCounters',
     'DefaultCountersFactory'
 ]
 
 from .CounterType import CounterType
-from .ITimingCallback import ITimingCallback
+from .ICounterTimingCallback import ICounterTimingCallback
 from .ICounters import ICounters
 from .Counter import Counter
-from .Timing import Timing
+from .CounterTiming import CounterTiming
 from .CachedCounters import CachedCounters
 from .NullCounters import NullCounters
 from .CompositeCounters import CompositeCounters

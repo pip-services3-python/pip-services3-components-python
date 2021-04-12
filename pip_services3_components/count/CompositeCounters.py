@@ -9,13 +9,15 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .ICounters import ICounters
-from .ITimingCallback import ITimingCallback
-from .Timing import Timing
 from pip_services3_commons.refer.Descriptor import Descriptor
 from pip_services3_commons.refer.IReferenceable import IReferenceable
 
-class CompositeCounters(ICounters, ITimingCallback, IReferenceable):
+from .CounterTiming import CounterTiming
+from .ICounterTimingCallback import ICounterTimingCallback
+from .ICounters import ICounters
+
+
+class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
     """
     Aggregates all counters from component references under a single component.
 
@@ -43,7 +45,7 @@ class CompositeCounters(ICounters, ITimingCallback, IReferenceable):
     """
     _counters = None
 
-    def __init__(self, references = None):
+    def __init__(self, references=None):
         """
         Creates a new instance of the counters.
 
@@ -53,7 +55,7 @@ class CompositeCounters(ICounters, ITimingCallback, IReferenceable):
 
         if not (references is None):
             self.set_references(references)
-            
+
     def set_references(self, references):
         """
         Sets references to dependent components.
@@ -69,25 +71,26 @@ class CompositeCounters(ICounters, ITimingCallback, IReferenceable):
     def begin_timing(self, name):
         """
         Begins measurement of execution time interval.
-        It returns :class:`Timing <pip_services3_components.count.Timing.Timing>` object which has to be called at
-        :func:`Timing.end_timing` to end the measurement and update the counter.
+        It returns :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` object which has to be called at
+        :func:`CounterTiming.end_timing` to end the measurement and update the counter.
 
         :param name: a counter name of Interval type.
 
-        :return: a :class:`Timing <pip_services3_components.count.Timing.Timing>` callback object to end timing.
+        :return: a :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` callback object to end timing.
         """
-        return Timing(name, self)
+        return CounterTiming(name, self)
 
     def end_timing(self, name, elapsed):
         """
         Ends measurement of execution elapsed time and updates specified counter.
 
         :param name: a counter name
-
         :param elapsed: execution elapsed time in milliseconds to update the counter.
+
+        See :func:`CounterTiming.end_timing`
         """
         for counter in self._counters:
-            if isinstance(counter, ITimingCallback):
+            if isinstance(counter, ICounterTimingCallback):
                 counter.end_timing(name, elapsed)
 
     def stats(self, name, value):

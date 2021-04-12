@@ -7,24 +7,23 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import pytest
-
-from pip_services3_components.log import ConsoleLogger
-from pip_services3_components.log import NullLogger
-from pip_services3_components.log import CompositeLogger
 from pip_services3_commons.refer.Descriptor import Descriptor
 from pip_services3_commons.refer.References import References
+
+from pip_services3_components.log import CompositeLogger
+from pip_services3_components.log import ConsoleLogger
+from pip_services3_components.log import NullLogger
 from .LoggerFixture import LoggerFixture
 
-class TestCompositeLogger:
 
+class TestCompositeLogger:
     log = None
     fixture = None
 
     def setup_method(self, method):
         refs = References.from_tuples(
-            Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), ConsoleLogger(), 
-            Descriptor('pip-services-commons', 'logger', 'null', 'default', '1.0'), NullLogger()
+            Descriptor("pip-services", "logger", "null", "default", "1.0"), NullLogger(),
+            Descriptor("pip-services", "logger", "console", "default", "1.0"), ConsoleLogger()
         )
 
         self.log = CompositeLogger(refs)

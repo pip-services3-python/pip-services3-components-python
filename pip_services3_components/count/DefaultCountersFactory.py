@@ -16,30 +16,25 @@ from .CompositeCounters import CompositeCounters
 from pip_services3_commons.refer.Descriptor import Descriptor
 from ..build.Factory import Factory
 
-DefaultCountersFactoryDescriptor = Descriptor(
-    "pip-services", "factory", "counters", "default", "1.0"
-)
-
-NullCountersDescriptor = Descriptor(
-    "pip-services", "counters", "null", "*", "1.0"
-)
-
-LogCountersDescriptor = Descriptor(
-    "pip-services", "counters", "log", "*", "1.0"
-)
-
-CompositeCountersDescriptor = Descriptor(
-    "pip-services", "counters", "composite", "*", "1.0"
-)
 
 class DefaultCountersFactory(Factory):
     """
     Creates :class:`ICounters <pip_services3_components.count.ICounters.ICounters>` components by their descriptors.
+
+    See :class:`Factory <pip_services3_components.build.Factory.Factory>`,
+    :class:`NullCounters <pip_services3_components.count.NullCounters.NullCounters>`,
+    :class:`LogCounters <pip_services3_components.count.LogCounters.LogCounters>`,
+    :class:`CompositeCounters <pip_services3_components.count.CompositeCounters.CompositeCounters>`
     """
+
+    NullCountersDescriptor = Descriptor("pip-services", "counters", "null", "*", "1.0")
+    LogCountersDescriptor = Descriptor("pip-services", "counters", "log", "*", "1.0")
+    CompositeCountersDescriptor = Descriptor("pip-services", "counters", "composite", "*", "1.0")
+
     def __init__(self):
         """
         Create a new instance of the factory.
         """
-        self.register_as_type(NullCountersDescriptor, NullCounters)
-        self.register_as_type(LogCountersDescriptor, LogCounters)
-        self.register_as_type(CompositeCountersDescriptor, CompositeCounters)
+        self.register_as_type(DefaultCountersFactory.NullCountersDescriptor, NullCounters)
+        self.register_as_type(DefaultCountersFactory.LogCountersDescriptor, LogCounters)
+        self.register_as_type(DefaultCountersFactory.CompositeCountersDescriptor, CompositeCounters)

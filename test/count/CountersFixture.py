@@ -11,8 +11,8 @@ import time
 
 from pip_services3_components.count import CounterType
 
+
 class CountersFixture:
-    
     _counters = None
 
     def __init__(self, counters):
@@ -23,29 +23,29 @@ class CountersFixture:
         self._counters.last("Test.LastValue", 123456)
 
         counter = self._counters.get("Test.LastValue", CounterType.LastValue)
-        assert counter != None
+        assert counter is not None
         assert abs(counter.last - 123456) < 0.001
 
         self._counters.increment_one("Test.Increment")
         self._counters.increment("Test.Increment", 3)
 
         counter = self._counters.get("Test.Increment", CounterType.Increment)
-        assert counter != None
+        assert counter is not None
         assert counter.count == 4
 
         self._counters.timestamp_now("Test.Timestamp")
         self._counters.timestamp_now("Test.Timestamp")
 
         counter = self._counters.get("Test.Timestamp", CounterType.Timestamp)
-        assert counter != None
-        assert counter.time != None
+        assert counter is not None
+        assert counter.time is not None
 
         self._counters.stats("Test.Statistics", 1)
         self._counters.stats("Test.Statistics", 2)
         self._counters.stats("Test.Statistics", 3)
 
         counter = self._counters.get("Test.Statistics", CounterType.Statistics)
-        assert counter != None
+        assert counter is not None
 
         assert abs(counter.average - 2) < 0.001
 
@@ -59,10 +59,9 @@ class CountersFixture:
             timing.end_timing()
 
         counter = self._counters.get("Test.Elapsed", CounterType.Interval)
-        assert counter != None
+        assert counter is not None
         # Something is wrong with timing
         assert counter.last > 50
         assert counter.last < 5000
 
         self._counters.dump()
-

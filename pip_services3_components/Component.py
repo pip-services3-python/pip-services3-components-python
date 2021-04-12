@@ -10,10 +10,13 @@
 """
 
 from pip_services3_commons.config import IConfigurable
-from .log.CompositeLogger import CompositeLogger
-from .count.CompositeCounters import CompositeCounters
-from pip_services3_commons.refer import IReferenceable
 from pip_services3_commons.refer import DependencyResolver
+from pip_services3_commons.refer import IReferenceable
+
+from .count.CompositeCounters import CompositeCounters
+from .log.CompositeLogger import CompositeLogger
+from .trace.CompositeTracer import CompositeTracer
+
 
 class Component(IConfigurable, IReferenceable):
     """
@@ -30,16 +33,19 @@ class Component(IConfigurable, IReferenceable):
     ### References ###
         - `*:counters:*:*:1.0`     (optional) :class:`ICounters <pip_services3_components.count.ICounters.ICounters>` components to pass collected measurements
         - `*:logger:*:*:1.0`       (optional) :class:`ILogger <pip_services3_components.log.ILogger.ILogger>` components to pass log messages
+        - `\*:tracer:\*:\*:1.0`       (optional) :class:`ITracer <pip_services3_components.trace.ITracer.ITracer>` components to record traces
         - `...`                                    References must match configured dependencies.
     """
     _logger = None
     _counters = None
     _dependency_resolver = None
+    _tracer = None
 
     def __init__(self):
         self._logger = CompositeLogger()
         self._counters = CompositeCounters()
         self._dependency_resolver = DependencyResolver()
+        self._tracer = CompositeTracer()
 
     def configure(self, config):
         """
@@ -59,3 +65,4 @@ class Component(IConfigurable, IReferenceable):
         self._dependency_resolver.set_references(references)
         self._logger.set_references(references)
         self._counters.set_references(references)
+        self._tracer.set_references(references)

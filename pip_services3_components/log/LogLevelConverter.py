@@ -11,16 +11,19 @@
 
 from .LogLevel import LogLevel
 
+
 class LogLevelConverter(object):
     """
     Helper class to convert log level values.
     """
+
     @staticmethod
-    def to_log_level(value):
+    def to_log_level(value, default_value=LogLevel.Info):
         """
         Converts numbers and strings to standard log level values.
 
         :param value: a value to be converted
+        :param default_value: a default value if conversion is not possible
 
         :return: converted log level
         """
@@ -43,7 +46,7 @@ class LogLevelConverter(object):
         elif ("6" == value) or ("TRACE" == value):
             return LogLevel.Trace
         else:
-            return LogLevel.Info
+            return default_value
 
     @staticmethod
     def to_string(level):
@@ -55,15 +58,15 @@ class LogLevelConverter(object):
         :return: log level name string.
         """
         if level == LogLevel.Fatal:
-            return "FATAL" 
+            return "FATAL"
         if level == LogLevel.Error:
-            return "ERROR" 
+            return "ERROR"
         if level == LogLevel.Warn:
-            return "WARN" 
+            return "WARN"
         if level == LogLevel.Info:
-            return "INFO" 
+            return "INFO"
         if level == LogLevel.Debug:
-            return "DEBUG" 
+            return "DEBUG"
         if level == LogLevel.Trace:
             return "TRACE"
         return "UNDEF"
@@ -78,16 +81,15 @@ class LogLevelConverter(object):
         :return: log level number value.
         """
         if level == LogLevel.Fatal:
-            return 1 
+            return 1
         if level == LogLevel.Error:
-            return 2 
+            return 2
         if level == LogLevel.Warn:
-            return 3 
+            return 3
         if level == LogLevel.Info:
-            return 4 
+            return 4
         if level == LogLevel.Debug:
-            return 5 
+            return 5
         if level == LogLevel.Trace:
             return 6
         return 0
-

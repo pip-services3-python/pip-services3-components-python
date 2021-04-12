@@ -7,13 +7,11 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import pytest
-
 from pip_services3_components.log import NullLogger
 from .LoggerFixture import LoggerFixture
 
-class TestNullLogger:
 
+class TestNullLogger:
     log = None
     fixture = None
 

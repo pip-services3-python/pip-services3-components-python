@@ -9,25 +9,25 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .MemoryDiscovery import MemoryDiscovery
-
 from pip_services3_commons.refer.Descriptor import Descriptor
+
+from .MemoryDiscovery import MemoryDiscovery
 from ..build.Factory import Factory
 
-DefaultDiscoveryFactoryDescriptor = Descriptor(
-    "pip-services", "factory", "discovery", "default", "1.0"
-)
-
-MemoryDiscoveryDescriptor = Descriptor(
-    "pip-services", "discovery", "memory", "*", "1.0"
-)
 
 class DefaultDiscoveryFactory(Factory):
     """
-    Creates IDiscovery components by their descriptors.
+    Creates :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` components by their descriptors.
+
+    See :class:`Factory <pip_services3_components.build.Factory.Factory>`,
+    :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>`,
+    :class:`MemoryDiscovery <pip_services3_components.connect.MemoryDiscovery.MemoryDiscovery>`,
     """
+
+    MemoryDiscoveryDescriptor = Descriptor("pip-services", "discovery", "memory", "*", "1.0")
+
     def __init__(self):
         """
         Create a new instance of the factory.
         """
-        self.register_as_type(MemoryDiscoveryDescriptor, MemoryDiscovery)
+        self.register_as_type(DefaultDiscoveryFactory.MemoryDiscoveryDescriptor, MemoryDiscovery)

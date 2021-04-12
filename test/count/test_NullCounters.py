@@ -7,12 +7,10 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import pytest
-
 from pip_services3_components.count import NullCounters
 
-class TestNullCounters:
 
+class TestNullCounters:
     counters = None
 
     def setup_method(self, method):

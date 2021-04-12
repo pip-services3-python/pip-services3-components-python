@@ -7,22 +7,23 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import pytest
-
 from pip_services3_commons.refer import Descriptor
 from pip_services3_commons.refer import References
-from pip_services3_components.log import ConsoleLogger
+
 from pip_services3_components.count import LogCounters
+from pip_services3_components.log import ConsoleLogger, NullLogger
 from .CountersFixture import CountersFixture
+
 
 class TestLogCounters:
 
-    counters = None
+    counters: LogCounters = None
     fixture = None
 
     def setup_method(self, method):
+        log = NullLogger()
         refs = References.from_tuples(
-            Descriptor('pip-services-commons', 'logger', 'console', 'default', '1.0'), ConsoleLogger()
+            Descriptor("pip-services", "logger", "null", "default", "1.0"), log
         )
 
         self.counters = LogCounters()

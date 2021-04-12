@@ -22,12 +22,12 @@ class ICounters:
     def begin_timing(self, name):
         """
         Begins measurement of execution time interval.
-        It returns :class:`Timing <pip_services3_components.count.Timing.Timing>` object which has to be called at
-        :func:`Timing.end_timing` to end the measurement and update the counter.
+        It returns :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` object which has to be called at
+        :func:`CounterTiming.end_timing` to end the measurement and update the counter.
 
         :param name: a counter name of Interval type.
 
-        :return: a :class:`Timing <pip_services3_components.count.Timing.Timing>` callback object to end timing.
+        :return: a :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` callback object to end timing.
         """
         raise NotImplementedError('Method from interface definition')
 
