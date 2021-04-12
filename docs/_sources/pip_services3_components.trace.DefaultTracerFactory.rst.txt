@@ -1,0 +1,7 @@
+pip\_services3\_components.trace.DefaultTracerFactory module
+============================================================
+
+.. automodule:: pip_services3_components.trace.DefaultTracerFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -7,8 +7,10 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
+   pip_services3_components.connect.CompositeConnectionResolver
    pip_services3_components.connect.ConnectionParams
    pip_services3_components.connect.ConnectionResolver
+   pip_services3_components.connect.ConnectionUtils
    pip_services3_components.connect.DefaultDiscoveryFactory
    pip_services3_components.connect.IDiscovery
    pip_services3_components.connect.MemoryDiscovery

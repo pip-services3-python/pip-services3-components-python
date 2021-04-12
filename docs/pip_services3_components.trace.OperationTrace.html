@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pip_services3_components.count.ITimingCallback module &mdash; pip-services3-components  documentation</title>
+  <title>pip_services3_components.trace.OperationTrace module &mdash; pip-services3-components  documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pip_services3_components.count.LogCounters module" href="pip_services3_components.count.LogCounters.html" />
-    <link rel="prev" title="pip_services3_components.count.ICounters module" href="pip_services3_components.count.ICounters.html" /> 
+    <link rel="next" title="pip_services3_components.trace.TraceTiming module" href="pip_services3_components.trace.TraceTiming.html" />
+    <link rel="prev" title="pip_services3_components.trace.NullTracer module" href="pip_services3_components.trace.NullTracer.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,11 +94,12 @@
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.cache.html">pip_services3_components.cache package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.config.html">pip_services3_components.config package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.connect.html">pip_services3_components.connect package</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="pip_services3_components.count.html">pip_services3_components.count package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.html">pip_services3_components.count package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.info.html">pip_services3_components.info package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.lock.html">pip_services3_components.lock package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.log.html">pip_services3_components.log package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.test.html">pip_services3_components.test package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="pip_services3_components.trace.html">pip_services3_components.trace package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.html#submodules">Submodules</a></li>
@@ -159,15 +160,15 @@
         
           <li><a href="pip_services3_components.html">pip_services3_components package</a> &raquo;</li>
         
-          <li><a href="pip_services3_components.count.html">pip_services3_components.count package</a> &raquo;</li>
+          <li><a href="pip_services3_components.trace.html">pip_services3_components.trace package</a> &raquo;</li>
         
-      <li>pip_services3_components.count.ITimingCallback module</li>
+      <li>pip_services3_components.trace.OperationTrace module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/pip_services3_components.count.ITimingCallback.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pip_services3_components.trace.OperationTrace.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,41 +181,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-pip_services3_components.count.ITimingCallback">
-<span id="pip-services3-components-count-itimingcallback-module"></span><h1>pip_services3_components.count.ITimingCallback module<a class="headerlink" href="#module-pip_services3_components.count.ITimingCallback" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="pip-services3-components-counters-itimingcallback">
-<h2>pip_services3_components.counters.ITimingCallback<a class="headerlink" href="#pip-services3-components-counters-itimingcallback" title="Permalink to this headline">¶</a></h2>
-<p>Interface for performance timing callbacks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">copyright</dt>
-<dd class="field-odd"><p>Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</p>
-</dd>
-<dt class="field-even">license</dt>
-<dd class="field-even"><p>MIT, see LICENSE for more details.</p>
-</dd>
-</dl>
+  <div class="section" id="module-pip_services3_components.trace.OperationTrace">
+<span id="pip-services3-components-trace-operationtrace-module"></span><h1>pip_services3_components.trace.OperationTrace module<a class="headerlink" href="#module-pip_services3_components.trace.OperationTrace" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="pip_services3_components.count.ITimingCallback.ITimingCallback">
-<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.count.ITimingCallback.</code><code class="sig-name descname">ITimingCallback</code><a class="headerlink" href="#pip_services3_components.count.ITimingCallback.ITimingCallback" title="Permalink to this definition">¶</a></dt>
+<dt id="pip_services3_components.trace.OperationTrace.OperationTrace">
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.trace.OperationTrace.</code><code class="sig-name descname">OperationTrace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.9)">datetime.datetime</a></span></em>, <em class="sig-param"><span class="n">source</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">component</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">operation</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></span></em>, <em class="sig-param"><span class="n">duration</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></span></em>, <em class="sig-param"><span class="n">error</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.errors.ErrorDescription.html#pip_services3_commons.errors.ErrorDescription.ErrorDescription" title="(in pip-services3-commons)">pip_services3_commons.errors.ErrorDescription.ErrorDescription</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.trace.OperationTrace.OperationTrace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Interface for a callback to end measurement of execution elapsed time.</p>
-<dl class="py method">
-<dt id="pip_services3_components.count.ITimingCallback.ITimingCallback.end_timing">
-<code class="sig-name descname">end_timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">elapsed</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.ITimingCallback.ITimingCallback.end_timing" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ends measurement of execution elapsed time and updates specified counter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – a counter name</p></li>
-<li><p><strong>elapsed</strong> – execution elapsed time in milliseconds to update the counter.</p></li>
-</ul>
-</dd>
-</dl>
+<p>Data object to store captured operation traces.
+This object is used by <a class="reference internal" href="pip_services3_components.trace.CachedTracer.html#pip_services3_components.trace.CachedTracer.CachedTracer" title="pip_services3_components.trace.CachedTracer.CachedTracer"><code class="xref py py-class docutils literal notranslate"><span class="pre">CachedTracer</span></code></a>.</p>
+<dl class="py attribute">
+<dt id="pip_services3_components.trace.OperationTrace.OperationTrace.duration">
+<code class="sig-name descname">duration</code><em class="property">: <a class="reference external" href="http://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)">int</a></em><a class="headerlink" href="#pip_services3_components.trace.OperationTrace.OperationTrace.duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>The description of the captured error</p>
+<p><a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.errors.ErrorDescription.html#pip_services3_commons.errors.ErrorDescription.ErrorDescription" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ErrorDescription</span></code></a>,
+<a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.errors.ApplicationException.html#pip_services3_commons.errors.ApplicationException.ApplicationException" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationException</span></code></a></p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
 </div>
 
 
@@ -223,8 +207,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="pip_services3_components.count.LogCounters.html" class="btn btn-neutral float-right" title="pip_services3_components.count.LogCounters module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="pip_services3_components.count.ICounters.html" class="btn btn-neutral float-left" title="pip_services3_components.count.ICounters module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pip_services3_components.trace.TraceTiming.html" class="btn btn-neutral float-right" title="pip_services3_components.trace.TraceTiming module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pip_services3_components.trace.NullTracer.html" class="btn btn-neutral float-left" title="pip_services3_components.trace.NullTracer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

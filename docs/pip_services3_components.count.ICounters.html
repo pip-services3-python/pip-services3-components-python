@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pip_services3_components.count.ITimingCallback module" href="pip_services3_components.count.ITimingCallback.html" />
-    <link rel="prev" title="pip_services3_components.count.DefaultCountersFactory module" href="pip_services3_components.count.DefaultCountersFactory.html" /> 
+    <link rel="next" title="pip_services3_components.count.LogCounters module" href="pip_services3_components.count.LogCounters.html" />
+    <link rel="prev" title="pip_services3_components.count.ICounterTimingCallback module" href="pip_services3_components.count.ICounterTimingCallback.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,6 +99,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.lock.html">pip_services3_components.lock package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.log.html">pip_services3_components.log package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.test.html">pip_services3_components.test package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.trace.html">pip_services3_components.trace package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.html#submodules">Submodules</a></li>
@@ -206,14 +207,14 @@ are stored, what was the latest transaction time and so on.</p>
 <dt id="pip_services3_components.count.ICounters.ICounters.begin_timing">
 <code class="sig-name descname">begin_timing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.count.ICounters.ICounters.begin_timing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begins measurement of execution time interval.
-It returns <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> object which has to be called at
-<code class="xref py py-func docutils literal notranslate"><span class="pre">Timing.end_timing()</span></code> to end the measurement and update the counter.</p>
+It returns <a class="reference internal" href="pip_services3_components.count.CounterTiming.html#pip_services3_components.count.CounterTiming.CounterTiming" title="pip_services3_components.count.CounterTiming.CounterTiming"><code class="xref py py-class docutils literal notranslate"><span class="pre">CounterTiming</span></code></a> object which has to be called at
+<code class="xref py py-func docutils literal notranslate"><span class="pre">CounterTiming.end_timing()</span></code> to end the measurement and update the counter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> – a counter name of Interval type.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.Timing.html#pip_services3_components.count.Timing.Timing" title="pip_services3_components.count.Timing.Timing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timing</span></code></a> callback object to end timing.</p>
+<dd class="field-even"><p>a <a class="reference internal" href="pip_services3_components.count.CounterTiming.html#pip_services3_components.count.CounterTiming.CounterTiming" title="pip_services3_components.count.CounterTiming.CounterTiming"><code class="xref py py-class docutils literal notranslate"><span class="pre">CounterTiming</span></code></a> callback object to end timing.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -308,8 +309,8 @@ Usually this method is used by metrics calculated externally.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="pip_services3_components.count.ITimingCallback.html" class="btn btn-neutral float-right" title="pip_services3_components.count.ITimingCallback module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="pip_services3_components.count.DefaultCountersFactory.html" class="btn btn-neutral float-left" title="pip_services3_components.count.DefaultCountersFactory module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pip_services3_components.count.LogCounters.html" class="btn btn-neutral float-right" title="pip_services3_components.count.LogCounters module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pip_services3_components.count.ICounterTimingCallback.html" class="btn btn-neutral float-left" title="pip_services3_components.count.ICounterTimingCallback module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

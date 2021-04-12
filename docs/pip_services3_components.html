@@ -99,6 +99,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.lock.html">pip_services3_components.lock package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.log.html">pip_services3_components.log package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.test.html">pip_services3_components.test package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.trace.html">pip_services3_components.trace package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a><ul>
@@ -314,6 +315,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pip_services3_components.connect.html">pip_services3_components.connect package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pip_services3_components.connect.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.connect.CompositeConnectionResolver.html">pip_services3_components.connect.CompositeConnectionResolver module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.connect.ConnectionParams.html">pip_services3_components.connect.ConnectionParams module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.connect.ConnectionParams.html#pip-services3-components-connect-connectionparams">pip_services3_components.connect.ConnectionParams</a></li>
 </ul>
@@ -322,6 +324,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.connect.ConnectionResolver.html#pip-services3-components-connect-connectionresolver">pip_services3_components.connect.ConnectionResolver</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.connect.ConnectionUtils.html">pip_services3_components.connect.ConnectionUtils module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.connect.DefaultDiscoveryFactory.html">pip_services3_components.connect.DefaultDiscoveryFactory module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.connect.DefaultDiscoveryFactory.html#pip-services3-components-connect-defaultdiscoveryfactory">pip_services3_components.connect.DefaultDiscoveryFactory</a></li>
 </ul>
@@ -356,6 +359,10 @@
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.Counter.html#pip-services3-components-counters-counter">pip_services3_components.counters.Counter</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.CounterTiming.html">pip_services3_components.count.CounterTiming module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.CounterTiming.html#pip-services3-components-counters-countertiming">pip_services3_components.counters.CounterTiming</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.CounterType.html">pip_services3_components.count.CounterType module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.CounterType.html#pip-services3-components-counters-countertype">pip_services3_components.counters.CounterType</a></li>
 </ul>
@@ -364,12 +371,12 @@
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.DefaultCountersFactory.html#pip-services3-components-count-defaultcountersfactory">pip_services3_components.count.DefaultCountersFactory</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.ICounters.html">pip_services3_components.count.ICounters module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.ICounters.html#pip-services3-components-counters-icounters">pip_services3_components.counters.ICounters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.ICounterTimingCallback.html">pip_services3_components.count.ICounterTimingCallback module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.ICounterTimingCallback.html#pip-services3-components-counters-icountertimingcallback">pip_services3_components.counters.ICounterTimingCallback</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.ITimingCallback.html">pip_services3_components.count.ITimingCallback module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.ITimingCallback.html#pip-services3-components-counters-itimingcallback">pip_services3_components.counters.ITimingCallback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.ICounters.html">pip_services3_components.count.ICounters module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.ICounters.html#pip-services3-components-counters-icounters">pip_services3_components.counters.ICounters</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.LogCounters.html">pip_services3_components.count.LogCounters module</a><ul>
@@ -378,10 +385,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.NullCounters.html">pip_services3_components.count.NullCounters module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.NullCounters.html#pip-services3-components-count-nullcounter">pip_services3_components.count.NullCounter</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.count.Timing.html">pip_services3_components.count.Timing module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.Timing.html#pip-services3-components-counters-timing">pip_services3_components.counters.Timing</a></li>
 </ul>
 </li>
 </ul>
@@ -396,6 +399,10 @@
 <li class="toctree-l2"><a class="reference internal" href="pip_services3_components.info.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.info.ContextInfo.html">pip_services3_components.info.ContextInfo module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.info.ContextInfo.html#pip-services3-components-info-contextinfo">pip_services3_components.info.ContextInfo</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.info.DefaultInfoFactory.html">pip_services3_components.info.DefaultInfoFactory module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.info.DefaultInfoFactory.html#pip-services3-components-info-defaultinfofactory">pip_services3_components.info.DefaultInfoFactory</a></li>
 </ul>
 </li>
 </ul>
@@ -479,6 +486,21 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pip_services3_components.test.html#module-pip_services3_components.test">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.trace.html">pip_services3_components.trace package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pip_services3_components.trace.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.trace.CachedTracer.html">pip_services3_components.trace.CachedTracer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.trace.CompositeTracer.html">pip_services3_components.trace.CompositeTracer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.trace.DefaultTracerFactory.html">pip_services3_components.trace.DefaultTracerFactory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.trace.ITracer.html">pip_services3_components.trace.ITracer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.trace.LogTracer.html">pip_services3_components.trace.LogTracer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.trace.NullTracer.html">pip_services3_components.trace.NullTracer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.trace.OperationTrace.html">pip_services3_components.trace.OperationTrace module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.trace.TraceTiming.html">pip_services3_components.trace.TraceTiming module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pip_services3_components.trace.html#module-pip_services3_components.trace">Module contents</a></li>
 </ul>
 </li>
 </ul>

@@ -10,13 +10,13 @@ Submodules
    pip_services3_components.count.CachedCounters
    pip_services3_components.count.CompositeCounters
    pip_services3_components.count.Counter
+   pip_services3_components.count.CounterTiming
    pip_services3_components.count.CounterType
    pip_services3_components.count.DefaultCountersFactory
+   pip_services3_components.count.ICounterTimingCallback
    pip_services3_components.count.ICounters
-   pip_services3_components.count.ITimingCallback
    pip_services3_components.count.LogCounters
    pip_services3_components.count.NullCounters
-   pip_services3_components.count.Timing
 
 Module contents
 ---------------

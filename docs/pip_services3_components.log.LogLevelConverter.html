@@ -99,6 +99,7 @@
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.lock.html">pip_services3_components.lock package</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="pip_services3_components.log.html">pip_services3_components.log package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pip_services3_components.test.html">pip_services3_components.test package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.trace.html">pip_services3_components.trace package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pip_services3_components.html#submodules">Submodules</a></li>
@@ -214,11 +215,14 @@
 
 <dl class="py method">
 <dt id="pip_services3_components.log.LogLevelConverter.LogLevelConverter.to_log_level">
-<em class="property">static </em><code class="sig-name descname">to_log_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.log.LogLevelConverter.LogLevelConverter.to_log_level" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">to_log_level</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">default_value</span><span class="o">=</span><span class="default_value">4</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.log.LogLevelConverter.LogLevelConverter.to_log_level" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts numbers and strings to standard log level values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>value</strong> – a value to be converted</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – a value to be converted</p></li>
+<li><p><strong>default_value</strong> – a default value if conversion is not possible</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>converted log level</p>

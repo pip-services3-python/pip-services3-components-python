@@ -1,0 +1,7 @@
+pip\_services3\_components.trace.CompositeTracer module
+=======================================================
+
+.. automodule:: pip_services3_components.trace.CompositeTracer
+   :members:
+   :undoc-members:
+   :show-inheritance:
