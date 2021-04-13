@@ -65,7 +65,7 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
         if context_info is not None and self._source is None:
             self._source = context_info.name
 
-    def _write(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: int):
+    def _write(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: float):
         """
         Writes a log message to the logger destination.
 
@@ -90,7 +90,7 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
 
         self._update()
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: int) -> None:
+    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
         """
         Records an operation trace with its name and duration
 
@@ -102,7 +102,7 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
         self._write(correlation_id, component, operation, None, duration)
 
     def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None],
-                duration: int) -> None:
+                duration: float) -> None:
         """
         Records an operation failure with its name, duration and error
 

@@ -13,7 +13,7 @@ class NullTracer(ITracer):
     See :class:`ITracer <pip_services3_components.trace.ITracer.ITracer>`
     """
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: int) -> None:
+    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
         """
         Records an operation trace with its name and duration
 
@@ -26,7 +26,7 @@ class NullTracer(ITracer):
         # Do nothing...
 
     def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None],
-                duration: int) -> None:
+                duration: float) -> None:
         """
         Records an operation failure with its name, duration and error
 

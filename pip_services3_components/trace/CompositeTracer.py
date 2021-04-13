@@ -56,7 +56,7 @@ class CompositeTracer(ITracer, IReferenceable):
             if tracer != self:
                 self._TRACERS.append(tracer)
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: int) -> None:
+    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
         """
         Records an operation trace with its name and duration
 
@@ -68,7 +68,7 @@ class CompositeTracer(ITracer, IReferenceable):
         for tracer in self._TRACERS:
             tracer.trace(correlation_id, component, operation, duration)
 
-    def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: int) -> None:
+    def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: float) -> None:
         """
         Records an operation failure with its name, duration and error
 

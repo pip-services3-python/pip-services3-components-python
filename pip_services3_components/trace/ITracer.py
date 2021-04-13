@@ -10,7 +10,7 @@ class ITracer(ABC):
     Interface for tracer components that capture operation traces.
     """
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: int) -> None:
+    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
         """
         Records an operation trace with its name and duration
 
@@ -20,7 +20,7 @@ class ITracer(ABC):
         :param duration: execution duration in milliseconds.
         """
 
-    def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: int) -> None:
+    def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: float) -> None:
         """
         Records an operation failure with its name, duration and error
 

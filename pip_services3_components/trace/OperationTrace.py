@@ -11,7 +11,7 @@ class OperationTrace:
     """
 
     def __init__(self, time: datetime, source: str, component: str,
-                 operation: str, correlation_id: str, duration: int, error: ErrorDescription):
+                 operation: str, correlation_id: str, duration: float, error: ErrorDescription):
 
         # The time when operation was executed
         self.time: datetime = time
@@ -24,7 +24,7 @@ class OperationTrace:
         # The transaction id to trace execution through call chain.
         self.correlation_id: str = correlation_id
         # The duration of the operation in milliseconds
-        self.duration: int = duration
+        self.duration: float = duration
 
         """
         The description of the captured error

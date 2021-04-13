@@ -63,7 +63,7 @@ class LogTracer(IConfigurable, IReferenceable, ITracer):
         """
         self.__LOGGER.set_references(references)
 
-    def __log_trace(self, correlation_id, component: str, operation: str, error: [Exception, None], duration: int):
+    def __log_trace(self, correlation_id, component: str, operation: str, error: [Exception, None], duration: float):
         builder = ''
 
         if error is not None:
@@ -83,7 +83,7 @@ class LogTracer(IConfigurable, IReferenceable, ITracer):
         else:
             self.__LOGGER.log(self.__log_level, correlation_id, None, builder)
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: int) -> None:
+    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
         """
         Records an operation trace with its name and duration
 
