@@ -8,14 +8,18 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import List, Optional
 
-from .CredentialParams import CredentialParams
-from pip_services3_commons.refer.Descriptor import Descriptor
-from .ICredentialStore import ICredentialStore
+from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.config.IConfigurable import IConfigurable
+from pip_services3_commons.refer import IReferences
+from pip_services3_commons.refer.Descriptor import Descriptor
 from pip_services3_commons.refer.IReferenceable import IReferenceable
 from pip_services3_commons.refer.ReferenceException import ReferenceException
-from pip_services3_commons.errors.ApplicationException import ApplicationException
+
+from .CredentialParams import CredentialParams
+from .ICredentialStore import ICredentialStore
+
 
 class CredentialResolver(IConfigurable, IReferenceable):
     """
@@ -52,10 +56,8 @@ class CredentialResolver(IConfigurable, IReferenceable):
           credentialResolver.lookup("123")
 
     """
-    _credentials = None
-    _references = None
 
-    def __init__(self, config = None, references = None):
+    def __init__(self, config: ConfigParams = None, references: IReferences = None):
         """
         Creates a new instance of credentials resolver.
 
@@ -63,21 +65,22 @@ class CredentialResolver(IConfigurable, IReferenceable):
 
         :param references: (optional) component references
         """
-        self._credentials = []
+        self.__credentials: List[CredentialParams] = []
+        self.__references: IReferences = None
         if not (config is None):
             self.configure(config)
         if not (references is None):
             self.set_references(references)
 
-    def set_references(self, references):
+    def set_references(self, references: IReferences):
         """
         Sets references to dependent components.
 
         :param references: references to locate the component dependencies.
         """
-        self._references = references
+        self.__references = references
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -85,9 +88,9 @@ class CredentialResolver(IConfigurable, IReferenceable):
         """
         credentials = CredentialParams.many_from_config(config)
         for credential in credentials:
-            self._credentials.append(credential)
+            self.__credentials.append(credential)
 
-    def get_all(self):
+    def get_all(self) -> List[CredentialParams]:
         """
         Gets all credentials configured in component configuration.
 
@@ -96,28 +99,28 @@ class CredentialResolver(IConfigurable, IReferenceable):
 
         :return: a list with credential parameters
         """
-        return list(self._credentials)
+        return list(self.__credentials)
 
-    def add(self, connection):
+    def add(self, connection: CredentialParams):
         """
         Adds a new credential to component credentials
 
         :param connection: new credential parameters to be added
         """
-        self._credentials.append(connection)
+        self.__credentials.append(connection)
 
-    def _lookup_in_stores(self, correlation_id, credential):
-        if credential.use_credential_store() == False: return None
-        
+    def __lookup_in_stores(self, correlation_id: Optional[str], credential: CredentialParams):
+        if credential.use_credential_store() is False: return None
+
         key = credential.get_store_key()
-        if self._references is None:
+        if self.__references is None:
             return None
-        
+
         descriptor = Descriptor("*", "credential_store", "*", "*", "*")
-        components = self._references.get_optional(descriptor)
+        components = self.__references.get_optional(descriptor)
         if len(components) == 0:
             raise ReferenceException(correlation_id, "Credential store wasn't found to make lookup")
-        
+
         # TODO: create assync 
         for component in components:
             if isinstance(component, ICredentialStore):
@@ -127,7 +130,7 @@ class CredentialResolver(IConfigurable, IReferenceable):
 
         return None
 
-    def lookup(self, correlation_id):
+    def lookup(self, correlation_id: Optional[str]) -> Optional[CredentialParams]:
         """
         Looks up component credential parameters. If credentials are configured to be retrieved
         from Credential store it finds a :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>` and lookups credentials there.
@@ -136,19 +139,18 @@ class CredentialResolver(IConfigurable, IReferenceable):
 
         :return: resolved credential parameters or None if nothing was found.
         """
-        if len(self._credentials) == 0: return None
-        
+        if len(self.__credentials) == 0: return None
+
         # Return connection that doesn't require discovery
-        for credential in self._credentials:
+        for credential in self.__credentials:
             if not credential.use_credential_store():
                 return credential
-        
+
         # Return connection that require discovery
-        for credential in self._credentials:
+        for credential in self.__credentials:
             if credential.use_credential_store():
-                resolved_connection = self._lookup_in_stores(correlation_id, credential)
+                resolved_connection = self.__lookup_in_stores(correlation_id, credential)
                 if not (resolved_connection is None):
                     return resolved_connection
-        
-        return None
 
+        return None

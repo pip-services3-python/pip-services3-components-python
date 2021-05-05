@@ -30,4 +30,5 @@ class DefaultDiscoveryFactory(Factory):
         """
         Create a new instance of the factory.
         """
+        super().__init__()
         self.register_as_type(DefaultDiscoveryFactory.MemoryDiscoveryDescriptor, MemoryDiscovery)

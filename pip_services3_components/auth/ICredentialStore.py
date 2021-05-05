@@ -8,15 +8,19 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from abc import ABC
+from typing import Optional
 
 from .CredentialParams import CredentialParams
 
-class ICredentialStore:
+
+class ICredentialStore(ABC):
     """
     Interface for credential stores which are used to store
     and lookup credentials to authenticate against external services.
     """
-    def store(self, correlation_id, key, credential):
+
+    def store(self, correlation_id: Optional[str], key: str, credential: CredentialParams):
         """
         Stores credential parameters into the store.
 
@@ -28,7 +32,7 @@ class ICredentialStore:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def lookup(self, correlation_id, key):
+    def lookup(self, correlation_id: Optional[str], key: str) -> CredentialParams:
         """
         Lookups credential parameters by its key.
 

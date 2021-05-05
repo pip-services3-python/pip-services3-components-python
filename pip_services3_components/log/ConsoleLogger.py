@@ -9,12 +9,11 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import sys
 import datetime
-import traceback
+import sys
+from typing import Optional
 
 from .LogLevel import LogLevel
-from .ILogger import ILogger
 from .LogLevelConverter import LogLevelConverter
 from .Logger import Logger
 
@@ -43,10 +42,7 @@ class ConsoleLogger(Logger):
         logger.debug("123", "Everything is OK.")
     """
 
-    def __init__(self):
-        super().__init__()
-
-    def _write(self, level, correlation_id, error, message):
+    def _write(self, level: LogLevel, correlation_id: Optional[str], error: Optional[Exception], message: Optional[str]):
         """
         Writes a log message to the logger destination.
 

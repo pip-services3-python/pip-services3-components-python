@@ -35,6 +35,7 @@ class DefaultConfigReaderFactory(Factory):
         """
         Create a new instance of the factory.
         """
+        super().__init__()
         self.register_as_type(DefaultConfigReaderFactory.MemoryConfigReaderDescriptor, MemoryConfigReader)
         self.register_as_type(DefaultConfigReaderFactory.JsonConfigReaderDescriptor, JsonConfigReader)
         self.register_as_type(DefaultConfigReaderFactory.YamlConfigReaderDescriptor, YamlConfigReader)

@@ -8,8 +8,11 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import List, Any
+
 from .CreateException import CreateException
 from .IFactory import IFactory
+
 
 class CompositeFactory(IFactory):
     """
@@ -31,20 +34,18 @@ class CompositeFactory(IFactory):
         factory.can_create(loggerLocator)  # Result: Descriptor("pip-service", "logger", "null", "default", "1.0")
         factory.create(loggerLocator)      # Result: created NullLogger
     """
-    _factories = None
 
-    def __init__(self, *factories):
+    def __init__(self, *factories: IFactory):
         """
         Creates a new instance of the factory.
 
         :param factories: a list of factories to embed into this factory.
         """
-        self._factories = []
+        self.__factories: List[IFactory] = []
         for factory in factories:
-            self._factories.append(factory)
+            self.__factories.append(factory)
 
-
-    def add(self, factory):
+    def add(self, factory: IFactory):
         """
         Adds a factory into the list of embedded factories.
 
@@ -52,20 +53,18 @@ class CompositeFactory(IFactory):
         """
         if factory is None:
             raise Exception("Factory cannot be null")
-        
-        self._factories.append(factory)
 
+        self.__factories.append(factory)
 
-    def remove(self, factory):
+    def remove(self, factory: IFactory):
         """
         Removes a factory from the list of embedded factories.
 
         :param factory: the factory to remove.
         """
-        self._factories.remove(factory)
+        self.__factories.remove(factory)
 
-
-    def can_create(self, locator):
+    def can_create(self, locator: Any) -> Any:
         """
         Checks if this factory is able to create component by given locator.
 
@@ -79,16 +78,16 @@ class CompositeFactory(IFactory):
         """
         if locator is None:
             raise Exception("Locator cannot be null")
-        
+
         # Iterate from the latest factories
-        for factory in reversed(self._factories):
+        for factory in reversed(self.__factories):
             locator = factory.can_create(locator)
             if not (locator is None):
                 return locator
-        
+
         return None
 
-    def create(self, locator):
+    def create(self, locator: Any) -> Any:
         """
         Creates a component identified by given locator.
 
@@ -100,8 +99,8 @@ class CompositeFactory(IFactory):
             raise Exception("Locator cannot be null")
 
         # Iterate from the latest factories
-        for factory in reversed(self._factories):
+        for factory in reversed(self.__factories):
             if factory.can_create(locator):
                 return factory.create(locator)
-        
+
         raise CreateException(None, "Cannot find factory for component " + locator)

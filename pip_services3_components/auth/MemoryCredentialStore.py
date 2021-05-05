@@ -8,12 +8,15 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import Optional
 
 from pip_services3_commons.config.ConfigParams import ConfigParams
 from pip_services3_commons.config.IReconfigurable import IReconfigurable
 from pip_services3_commons.data.StringValueMap import StringValueMap
-from .ICredentialStore import ICredentialStore
+
 from .CredentialParams import CredentialParams
+from .ICredentialStore import ICredentialStore
+
 
 class MemoryCredentialStore(ICredentialStore, IReconfigurable):
     """
@@ -39,19 +42,18 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
         credentialStore.read_credentials(config)
         credentialStore.lookup("123", "key1")
     """
-    _items = None
 
-    def __init__(self, credentials = None):
+    def __init__(self, config: ConfigParams = None):
         """
         Creates a new instance of the credential store.
 
-        :param credentials: (optional) configuration with credential parameters.
+        :param config: (optional) configuration with credential parameters.
         """
-        self._items = StringValueMap()
-        if not (credentials is None):
-            self.configure(credentials)
+        self.__items: StringValueMap = StringValueMap()
+        if not (config is None):
+            self.configure(config)
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -59,19 +61,19 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
         """
         self.read_credentials(config)
 
-    def read_credentials(self, credentials):
+    def read_credentials(self, config: ConfigParams):
         """
         Reads credentials from configuration parameters.
         Each section represents an individual CredentialParams
 
-        :param credentials: configuration parameters to be read
+        :param config: configuration parameters to be read
         """
-        self._items.clear()
-        for key in credentials.get_key_names():
-            value = credentials.get_as_nullable_string(key)
-            self._items.append(CredentialParams.from_tuples([key, value]))
+        self.__items.clear()
+        for key in config.get_keys():
+            value = config.get_as_nullable_string(key)
+            self.__items.append(CredentialParams.from_tuples([key, value]))
 
-    def store(self, correlation_id, key, credential):
+    def store(self, correlation_id: Optional[str], key: str, credential: CredentialParams):
         """
         Stores credential parameters into the store.
 
@@ -82,11 +84,11 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
         :param credential: a credential parameters to be stored.
         """
         if not (credential is None):
-            self._items.put(key, credential)
+            self.__items.put(key, credential)
         else:
-            self._items.remove(key)
+            self.__items.remove(key)
 
-    def lookup(self, correlation_id, key):
+    def lookup(self, correlation_id: Optional[str], key: str) -> CredentialParams:
         """
         Lookups credential parameters by its key.
 
@@ -96,4 +98,4 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
 
         :return: found credential parameters or None if nothing was found
         """
-        credential = self._items.get_as_object(key)
+        return self.__items.get_as_object(key)

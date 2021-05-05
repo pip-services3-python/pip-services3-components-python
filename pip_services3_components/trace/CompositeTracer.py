@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from typing import Optional, List
 
 from pip_services3_commons.refer import IReferenceable, IReferences, Descriptor
 
@@ -37,9 +38,14 @@ class CompositeTracer(ITracer, IReferenceable):
                     timing.end_failure(err)
 
     """
-    _TRACERS = []
+    _TRACERS: List[ITracer] = []
 
-    def __init__(self, references: [IReferences, None] = None):
+    def __init__(self, references: IReferences = None):
+        """
+        Creates a new instance of the tracer.
+
+        :param references: references to locate the component dependencies.
+        """
         if references is not None:
             self.set_references(references)
 
@@ -56,7 +62,7 @@ class CompositeTracer(ITracer, IReferenceable):
             if tracer != self:
                 self._TRACERS.append(tracer)
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
+    def trace(self, correlation_id: Optional[str], component: str, operation: str, duration: float) -> None:
         """
         Records an operation trace with its name and duration
 
@@ -68,7 +74,7 @@ class CompositeTracer(ITracer, IReferenceable):
         for tracer in self._TRACERS:
             tracer.trace(correlation_id, component, operation, duration)
 
-    def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: float) -> None:
+    def failure(self, correlation_id: Optional[str], component: str, operation: str, error: Exception, duration: float):
         """
         Records an operation failure with its name, duration and error
 
@@ -79,9 +85,9 @@ class CompositeTracer(ITracer, IReferenceable):
         :param duration: execution duration in milliseconds.
         """
         for tracer in self._TRACERS:
-            tracer.failure(correlation_id, component, operation, duration)
+            tracer.failure(correlation_id, component, operation, error, duration)
 
-    def begin_trace(self, correlation_id: str, component: str, operation: str) -> TraceTiming:
+    def begin_trace(self, correlation_id: Optional[str], component: str, operation: str) -> TraceTiming:
         """
         Begings recording an operation trace
 

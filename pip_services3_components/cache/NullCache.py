@@ -8,8 +8,10 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import Any, Optional
 
 from .ICache import ICache
+
 
 class NullCache(ICache):
     """
@@ -18,7 +20,7 @@ class NullCache(ICache):
     It can be used in testing or in situations when cache is required but shall be disabled.
     """
 
-    def retrieve(self, correlation_id, key):
+    def retrieve(self, correlation_id: Optional[str], key: str) -> Any:
         """
         Retrieves cached value from the cache using its key.
         If value is missing in the cache or expired it returns None.
@@ -31,7 +33,7 @@ class NullCache(ICache):
         """
         return None
 
-    def store(self, correlation_id, key, value, timeout):
+    def store(self, correlation_id: Optional[str], key: str, value: Any, timeout: int) -> Any:
         """
         Stores value in the cache with expiration time.
 
@@ -46,8 +48,8 @@ class NullCache(ICache):
         :return: a cached value stored in the cache.
         """
         return value
-    
-    def remove(self, correlation_id, key):
+
+    def remove(self, correlation_id: Optional[str], key: str):
         """
         Removes a value from the cache by its key.
 

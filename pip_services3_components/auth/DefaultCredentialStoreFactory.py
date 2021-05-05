@@ -30,4 +30,5 @@ class DefaultCredentialStoreFactory(Factory):
         """
         Create a new instance of the factory.
         """
+        super().__init__()
         self.register_as_type(self.MemoryCredentialStoreDescriptor, MemoryCredentialStore)

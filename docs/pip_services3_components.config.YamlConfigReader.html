@@ -216,12 +216,12 @@ key2: &quot;{{KEY2_VALUE}}&quot;
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">configReader</span> <span class="o">=</span> <span class="n">YamlConfigReader</span><span class="p">(</span><span class="s2">&quot;config.yml&quot;</span><span class="p">)</span>
 <span class="n">parameters</span> <span class="o">=</span> <span class="n">ConfigParams</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span><span class="s2">&quot;KEY1_VALUE&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="s2">&quot;KEY2_VALUE&quot;</span><span class="p">,</span> <span class="s2">&quot;ABC&quot;</span><span class="p">)</span>
-<span class="n">configReader</span><span class="o">.</span><span class="n">read_config</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="n">configReader</span><span class="o">.</span><span class="n">_read_config</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="pip_services3_components.config.YamlConfigReader.YamlConfigReader.read_config">
-<em class="property">static </em><code class="sig-name descname">read_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">parameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.config.YamlConfigReader.YamlConfigReader.read_config" title="Permalink to this definition">¶</a></dt>
+<dt id="pip_services3_components.config.YamlConfigReader.YamlConfigReader._read_config">
+<em class="property">static </em><code class="sig-name descname">_read_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span></em>, <em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">parameters</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.config.YamlConfigReader.YamlConfigReader._read_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads configuration from a file, parameterize it with given values and returns a new ConfigParams object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

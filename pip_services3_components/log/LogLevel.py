@@ -9,7 +9,8 @@
     :license: MIT, see LICENSE for more details.
 """
 
-class LogLevel(object):
+
+class LogLevel:
     """
     Standard log levels.
 

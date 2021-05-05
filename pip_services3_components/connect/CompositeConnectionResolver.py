@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from typing import List
+from typing import List, Optional
 
 from pip_services3_commons.config import IConfigurable, ConfigParams
 from pip_services3_commons.errors import ConfigException
-from pip_services3_commons.refer import IReferenceable
+from pip_services3_commons.refer import IReferenceable, IReferences
 
 from pip_services3_components.auth import CredentialResolver, CredentialParams
 from pip_services3_components.connect import ConnectionResolver, ConnectionParams
@@ -48,13 +48,13 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
         self._cluster_supported = True
 
         # The default protocol
-        self._default_protocol = None
+        self._default_protocol: str = None
 
         # The default port number
-        self._default_port = 0
+        self._default_port: int = 0
 
         # The list of supported protocols
-        self._supported_protocols = []
+        self._supported_protocols: List[str] = []
 
     def configure(self, config: ConfigParams):
         """
@@ -66,7 +66,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
         self._credential_resolver.configure(config)
         self._options = config.get_section('options')
 
-    def set_references(self, references):
+    def set_references(self, references: IReferences):
         """
         Sets references to dependent components.
 
@@ -75,7 +75,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
         self._connection_resolver.set_references(references)
         self._credential_resolver.set_references(references)
 
-    def resolve(self, correlation_id):
+    def resolve(self, correlation_id: Optional[str]) -> ConfigParams:
         """
         Resolves connection options from connection and credential parameters.
 
@@ -104,8 +104,8 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
 
         return options
 
-    def compose(self, correlation_id, connections: List[ConnectionParams], credential: CredentialParams,
-                parameters: ConfigParams):
+    def compose(self, correlation_id: Optional[str], connections: List[ConnectionParams], credential: CredentialParams,
+                parameters: ConfigParams) -> ConfigParams:
         """
         Composes Composite connection options from connection and credential parameters.
 
@@ -126,7 +126,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
 
         return options
 
-    def _validate_connection(self, correlation_id, connection: ConnectionParams):
+    def _validate_connection(self, correlation_id: Optional[str], connection: ConnectionParams):
         """
         Validates connection parameters.
         This method can be overriden in child classes.
@@ -161,7 +161,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
 
         return None
 
-    def _validate_credential(self, correlation_id, credential: CredentialParams):
+    def _validate_credential(self, correlation_id: Optional[str], credential: CredentialParams):
         """
         Validates credential parameters.
         This method can be overriden in child classes.
@@ -173,7 +173,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
         return None
 
     def _compose_options(self, connections: List[ConnectionParams], credential: CredentialParams,
-                         parameters: ConfigParams):
+                         parameters: ConfigParams) -> ConfigParams:
         # Connection options
         options = ConfigParams()
 
@@ -192,7 +192,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
 
         return options
 
-    def _merge_connection(self, options: ConfigParams, connection: ConnectionParams):
+    def _merge_connection(self, options: ConfigParams, connection: ConnectionParams) -> ConfigParams:
         """
         Merges connection options with connection parameters
         This method can be overriden in child classes.
@@ -204,7 +204,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
         merged_options = options.set_defaults(connection)
         return merged_options
 
-    def _merge_credential(self, options: ConfigParams, credential: CredentialParams):
+    def _merge_credential(self, options: ConfigParams, credential: CredentialParams) -> ConfigParams:
         """
         Merges connection options with credential parameters
         This method can be overriden in child classes.
@@ -216,7 +216,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
         merged_options = options.override(credential)
         return merged_options
 
-    def _merge_optional(self, options: ConfigParams, parameters: ConfigParams):
+    def _merge_optional(self, options: ConfigParams, parameters: ConfigParams) -> ConfigParams:
         """
         Merges connection options with optional parameters
         This method can be overriden in child classes.
@@ -228,7 +228,7 @@ class CompositeConnectionResolver(IReferenceable, IConfigurable):
         merged_options = options.override(parameters)
         return merged_options
 
-    def _finalize_options(self, options: ConfigParams):
+    def _finalize_options(self, options: ConfigParams) -> ConfigParams:
         """
         Finalize merged options
         This method can be overriden in child classes.

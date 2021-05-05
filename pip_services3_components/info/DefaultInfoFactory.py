@@ -30,5 +30,6 @@ class DefaultInfoFactory(Factory):
         """
         Create a new instance of the factory.
         """
+        super().__init__()
         self.register_as_type(DefaultInfoFactory.ContextInfoDescriptor, ContextInfo)
         self.register_as_type(DefaultInfoFactory.ContainerInfoDescriptor, ContextInfo)

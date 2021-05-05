@@ -33,6 +33,7 @@ class TestConnectionResolver:
     def test_register(self):
         connection_params = ConnectionParams()
         connection_resolver = ConnectionResolver(RestConfig)
+
         connection_resolver.register("correlation_id", connection_params)
         config_list = connection_resolver.get_all()
         assert 1 == len(config_list)

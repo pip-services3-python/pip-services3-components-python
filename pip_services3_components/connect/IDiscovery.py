@@ -8,14 +8,18 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from abc import ABC
+from typing import Optional, List
 
-from .ConnectionParams import ConnectionParams
+from pip_services3_components.connect import ConnectionParams
 
-class IDiscovery:
+
+class IDiscovery(ABC):
     """
     Interface for discovery services which are used to store and resolve connection parameters to connect to external services.
     """
-    def register(self, correlation_id, key, connection):
+
+    def register(self, correlation_id: Optional[str], key: str, connection: ConnectionParams) -> ConnectionParams:
         """
         Registers connection parameters into the discovery service.
 
@@ -24,10 +28,12 @@ class IDiscovery:
         :param key: a key to uniquely identify the connection parameters.
 
         :param connection: a connection to be registered.
+
+        :returns: the registered connection parameters.
         """
         raise NotImplementedError('Method from interface definition')
 
-    def resolve_one(self, correlation_id, key):
+    def resolve_one(self, correlation_id: Optional[str], key: str) -> ConnectionParams:
         """
         Resolves a single connection parameters by its key.
 
@@ -39,7 +45,7 @@ class IDiscovery:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def resolve_all(self, correlation_id, key):
+    def resolve_all(self, correlation_id: Optional[str], key: str) -> List[ConnectionParams]:
         """
         Resolves all connection parameters by their key.
 

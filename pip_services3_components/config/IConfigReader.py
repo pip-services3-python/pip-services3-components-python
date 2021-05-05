@@ -8,8 +8,13 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from abc import ABC, abstractmethod
+from typing import Optional
 
-class IConfigReader:
+from pip_services3_commons.config import ConfigParams
+
+
+class IConfigReader(ABC):
     """
     Interface for configuration readers that retrieve configuration from various sources
     and make it available for other components.
@@ -18,7 +23,8 @@ class IConfigReader:
     The parameterization allows to use configuration as a template and inject there dynamic values.
     The values may come from application command like arguments or environment variables.
     """
-    def _read_config(self, correlation_id, parameters):
+
+    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 

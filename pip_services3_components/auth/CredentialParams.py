@@ -8,6 +8,7 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import List, Any
 
 from pip_services3_commons.config.ConfigParams import ConfigParams
 from pip_services3_commons.data import StringValueMap
@@ -47,7 +48,7 @@ class CredentialParams(ConfigParams):
         pin = credential.get_as_nullable_string("pin") # Result: 321
     """
 
-    def __init__(self, values = None):
+    def __init__(self, values: Any = None):
         """
         Creates a new credential parameters and fills it with values.
 
@@ -55,7 +56,7 @@ class CredentialParams(ConfigParams):
         """
         super(CredentialParams, self).__init__(values)
 
-    def use_credential_store(self):
+    def use_credential_store(self) -> bool:
         """
         Checks if these credential parameters shall be retrieved from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`.
         The credential parameters are redirected to :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>` when store_key parameter is set.
@@ -64,7 +65,7 @@ class CredentialParams(ConfigParams):
         """
         return "store_key" in self
 
-    def get_store_key(self):
+    def get_store_key(self) -> str:
         """
         Gets the key to retrieve these credentials from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`.
         If this key is null, than all parameters are already present.
@@ -73,7 +74,7 @@ class CredentialParams(ConfigParams):
         """
         return self.get_as_nullable_string("store_key")
 
-    def set_store_key(self, value):
+    def set_store_key(self, value: str):
         """
         Sets the key to retrieve these parameters from :class:`ICredentialStore <pip_services3_components.auth.ICredentialStore.ICredentialStore>`.
 
@@ -81,7 +82,7 @@ class CredentialParams(ConfigParams):
         """
         self.put("store_key", value)
 
-    def get_username(self):
+    def get_username(self) -> str:
         """
         Gets the user name. The value can be stored in parameters "username" or "user".
 
@@ -91,7 +92,7 @@ class CredentialParams(ConfigParams):
         username = username if not (username is None) else self.get_as_nullable_string("user")
         return username
 
-    def set_username(self, value):
+    def set_username(self, value: str):
         """
         Sets the user name.
 
@@ -99,7 +100,7 @@ class CredentialParams(ConfigParams):
         """
         self.put("username", value)
 
-    def get_password(self):
+    def get_password(self) -> str:
         """
         Get the user password. The value can be stored in parameters "password" or "pass".
 
@@ -109,7 +110,7 @@ class CredentialParams(ConfigParams):
         password = password if not (password is None) else self.get_as_nullable_string("pass")
         return password
 
-    def set_password(self, password):
+    def set_password(self, password: str):
         """
         Sets the user password.
 
@@ -117,7 +118,7 @@ class CredentialParams(ConfigParams):
         """
         self.put("password", password)
 
-    def get_access_id(self):
+    def get_access_id(self) -> str:
         """
         Gets the application access id. The value can be stored in parameters "access_id" pr "client_id"
 
@@ -127,7 +128,7 @@ class CredentialParams(ConfigParams):
         access_id = access_id if not (access_id is None) else self.get_as_nullable_string("client_id")
         return access_id
 
-    def set_access_id(self, value):
+    def set_access_id(self, value: str):
         """
         Sets the application access id.
 
@@ -135,7 +136,7 @@ class CredentialParams(ConfigParams):
         """
         self.put("access_id", value)
 
-    def get_access_key(self):
+    def get_access_key(self) -> str:
         """
         Gets the application secret key.
         The value can be stored in parameters "access_key", "client_key" or "secret_key".
@@ -146,7 +147,7 @@ class CredentialParams(ConfigParams):
         access_key = access_key if not (access_key is None) else self.get_as_nullable_string("access_key")
         return access_key
 
-    def set_access_key(self, value):
+    def set_access_key(self, value: str):
         """
         Sets the application secret key.
 
@@ -155,7 +156,7 @@ class CredentialParams(ConfigParams):
         self.put("access_key", value)
 
     @staticmethod
-    def from_string(line):
+    def from_string(line: str) -> 'CredentialParams':
         """
         Creates a new CredentialParams object filled with key-value pairs serialized as a string.
 
@@ -168,7 +169,7 @@ class CredentialParams(ConfigParams):
         return CredentialParams(map)
 
     @staticmethod
-    def from_tuples(*tuples):
+    def from_tuples(*tuples: Any) -> 'CredentialParams':
         """
         Creates a new CredentialParams object filled with provided key-value pairs called tuples.
         Tuples parameters contain a sequence of key1, value1, key2, value2, ... pairs.
@@ -181,7 +182,7 @@ class CredentialParams(ConfigParams):
         return CredentialParams(map)
 
     @staticmethod
-    def many_from_config(config):
+    def many_from_config(config: ConfigParams) -> List['CredentialParams']:
         """
         Retrieves all CredentialParams from configuration parameters
         from "credentials" section. If "credential" section is present instead,
@@ -208,7 +209,7 @@ class CredentialParams(ConfigParams):
         return result
 
     @staticmethod
-    def from_config(config):
+    def from_config(config: ConfigParams) -> 'CredentialParams':
         """
         Retrieves a single CredentialParams from configuration parameters
         from "credential" section. If "credentials" section is present instead,

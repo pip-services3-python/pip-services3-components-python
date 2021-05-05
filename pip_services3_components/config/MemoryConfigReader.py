@@ -8,10 +8,14 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import Optional
 
 from pip_services3_commons.config.ConfigParams import ConfigParams
-from .IConfigReader import IConfigReader
 from pip_services3_commons.config.IReconfigurable import IReconfigurable
+from pip_services3_expressions.mustache.MustacheTemplate import MustacheTemplate
+
+from .IConfigReader import IConfigReader
+
 
 class MemoryConfigReader(IConfigReader, IReconfigurable):
     """
@@ -34,17 +38,16 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
         parameters = ConfigParams.fromValue(os.get_env())
         configReader.readConfig("123", parameters)
     """
-    _config = None
 
-    def __init__(self, config = None):
+    def __init__(self, config: ConfigParams = None):
         """
         Creates a new instance of config reader.
 
         :param config: (optional) component configuration parameters
         """
-        self._config = config
-        
-    def configure(self, config):
+        self._config: ConfigParams = config
+
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -52,8 +55,7 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
         """
         self._config = config
 
-    #todo
-    def read_config(self, correlation_id, parameters):
+    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 
@@ -63,8 +65,14 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
 
         :return: ConfigParams configuration.
         """
-        return ConfigParams(self._config)
+        if parameters is not None:
+            config = ConfigParams(self._config).to_string()
+            template = MustacheTemplate(config)
+            config = template.evaluate_with_variables(parameters)
+            return ConfigParams.from_string(config)
+        else:
+            return ConfigParams(self._config)
 
     def read_config_section(self, section):
-        config = self._config.get_section(section) if self._not (config is None) else None
+        config = self._config.get_section(section) if self._not(config is None) else None
         return config

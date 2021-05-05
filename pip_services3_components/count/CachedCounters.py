@@ -12,14 +12,17 @@
 import datetime
 import threading
 import time
+from abc import abstractmethod
+from typing import List
 
+from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.config.IReconfigurable import IReconfigurable
 
 from .Counter import Counter
-from .CounterType import CounterType
-from .ICounters import ICounters
-from .ICounterTimingCallback import ICounterTimingCallback
 from .CounterTiming import CounterTiming
+from .CounterType import CounterType
+from .ICounterTimingCallback import ICounterTimingCallback
+from .ICounters import ICounters
 
 
 class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
@@ -34,11 +37,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
     """
     _default_interval = 300000
 
-    _cache = None
-    _updated = None
-    _last_dump_time = None
-    _interval = None
-    _lock = None
+    __lock = None
 
     def __init__(self):
         """
@@ -48,9 +47,26 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         self._updated = False
         self._last_dump_time = time.perf_counter()
         self._interval = self._default_interval
-        self._lock = threading.Lock()
+        self.__lock = threading.Lock()
 
-    def _save(self, counters):
+    def get_interval(self) -> float:
+        """
+        Gets the counters dump/save interval.
+
+        :return: the interval in milliseconds.
+        """
+        return self._interval
+
+    def set_interval(self, value: float):
+        """
+        Sets the counters dump/save interval.
+
+        :param value: a new interval in milliseconds.
+        """
+        self._interval = value
+
+    @abstractmethod
+    def _save(self, counters: List[Counter]):
         """
         Saves the current counters measurements.
 
@@ -58,36 +74,37 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         """
         raise NotImplementedError('Method from abstract implementation')
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
         :param config: configuration parameters to be set.
         """
         self._interval = config.get_as_float_with_default("interval", self._interval)
+        self._interval = config.get_as_long_with_default("options.interval", self._interval)
 
-    def clear(self, name):
+    def clear(self, name: str):
         """
         Clears (resets) a counter specified by its name.
 
         :param name: a counter name to clear.
         """
-        self._lock.acquire()
+        self.__lock.acquire()
         try:
             del self._cache[name]
         finally:
-            self._lock.release()
+            self.__lock.release()
 
     def clear_all(self):
         """
         Clears (resets) all counters.
         """
-        self._lock.acquire()
+        self.__lock.acquire()
         try:
             self._cache = {}
             self._updated = False
         finally:
-            self._lock.release()
+            self.__lock.release()
 
     def dump(self):
         """
@@ -97,13 +114,13 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
             messages = self.get_all()
             self._save(messages)
 
-            self._lock.acquire()
+            self.__lock.acquire()
             try:
                 self._updated = False
                 current_time = time.perf_counter() * 1000
                 self._last_dump_time = current_time
             finally:
-                self._lock.release()
+                self.__lock.release()
 
     def _update(self):
         """
@@ -119,19 +136,19 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
                 # Todo: decide what to do
                 pass
 
-    def get_all(self):
+    def get_all(self) -> List[Counter]:
         """
         Gets all captured counters.
 
         :return: a list with counters.
         """
-        self._lock.acquire()
+        self.__lock.acquire()
         try:
             return list(self._cache.values())
         finally:
-            self._lock.release()
+            self.__lock.release()
 
-    def get(self, name, typ):
+    def get(self, name: str, typ: CounterType) -> Counter:
         """
         Gets a counter specified by its name.
         It counter does not exist or its type doesn't match the specified type
@@ -146,7 +163,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         if name is None or len(name) == 0:
             raise Exception("Counter name was not set")
 
-        self._lock.acquire()
+        self.__lock.acquire()
         try:
             counter = self._cache[name] if name in self._cache else None
 
@@ -156,9 +173,9 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
 
             return counter
         finally:
-            self._lock.release()
+            self.__lock.release()
 
-    def _calculate_stats(self, counter, value):
+    def __calculate_stats(self, counter: Counter, value: float):
         if counter is None:
             raise Exception("Missing counter")
 
@@ -169,7 +186,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         counter.average = (float(counter.average * (counter.count - 1)) + value) / counter.count \
             if not (counter.average is None) and counter.count > 0 else value
 
-    def begin_timing(self, name):
+    def begin_timing(self, name: str) -> CounterTiming:
         """
         Begins measurement of execution time interval.
         It returns :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` object which has to be called at
@@ -181,7 +198,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         """
         return CounterTiming(name, self)
 
-    def end_timing(self, name, elapsed):
+    def end_timing(self, name: str, elapsed: float):
         """
         Ends measurement of execution elapsed time and updates specified counter.
 
@@ -190,10 +207,10 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         :param elapsed: execution elapsed time in milliseconds to update the counter.
         """
         counter = self.get(name, CounterType.Interval)
-        self._calculate_stats(counter, elapsed)
+        self.__calculate_stats(counter, elapsed)
         self._update()
 
-    def stats(self, name, value):
+    def stats(self, name: str, value: float):
         """
         Calculates min/average/max statistics based on the current and previous values.
 
@@ -202,10 +219,10 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         :param value: a value to update statistics
         """
         counter = self.get(name, CounterType.Statistics)
-        self._calculate_stats(counter, value)
+        self.__calculate_stats(counter, value)
         self._update()
 
-    def last(self, name, value):
+    def last(self, name: str, value: float):
         """
         Records the last calculated measurement value.
         Usually this method is used by metrics calculated externally.
@@ -218,7 +235,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         counter.last = value
         self._update()
 
-    def timestamp_now(self, name):
+    def timestamp_now(self, name: str):
         """
         Records the current time as a timestamp.
 
@@ -226,7 +243,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         """
         self.timestamp(name, datetime.datetime.utcnow())
 
-    def timestamp(self, name, value):
+    def timestamp(self, name: str, value: datetime.datetime):
         """
         Records the given timestamp.
 
@@ -238,7 +255,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         counter.time = value if not (value is None) else datetime.datetime.utcnow()
         self._update()
 
-    def increment_one(self, name):
+    def increment_one(self, name: str):
         """
         Increments counter by 1.
 
@@ -246,7 +263,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         """
         self.increment(name, 1)
 
-    def increment(self, name, value):
+    def increment(self, name: str, value: float):
         """
         Increments counter by given value.
 

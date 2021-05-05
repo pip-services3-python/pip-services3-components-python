@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from abc import ABC
+from typing import Optional
 
-from pip_services3_components.trace.TraceTiming import TraceTiming
+from pip_services3_components.trace import TraceTiming
 
 
 class ITracer(ABC):
@@ -10,7 +11,7 @@ class ITracer(ABC):
     Interface for tracer components that capture operation traces.
     """
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
+    def trace(self, correlation_id: Optional[str], component: str, operation: str, duration: float):
         """
         Records an operation trace with its name and duration
 
@@ -20,7 +21,7 @@ class ITracer(ABC):
         :param duration: execution duration in milliseconds.
         """
 
-    def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: float) -> None:
+    def failure(self, correlation_id: Optional[str], component: str, operation: str, error: Exception, duration: float):
         """
         Records an operation failure with its name, duration and error
 
@@ -31,7 +32,7 @@ class ITracer(ABC):
         :param duration: execution duration in milliseconds.
         """
 
-    def begin_trace(self, correlation_id: str, component: str, operation: str) -> TraceTiming:
+    def begin_trace(self, correlation_id: Optional[str], component: str, operation: str) -> 'TraceTiming.TraceTiming':
         """
         Begings recording an operation trace
 

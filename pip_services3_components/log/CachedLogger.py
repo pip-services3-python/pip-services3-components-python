@@ -9,15 +9,20 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import time
-import threading
 import socket
+import threading
+import time
+from abc import abstractmethod
+from typing import List, Optional
 
-from .ILogger import ILogger
-from .Logger import Logger
-from .LogMessage import LogMessage
-from pip_services3_commons.errors.ErrorDescriptionFactory import ErrorDescriptionFactory
+from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.config.IReconfigurable import IReconfigurable
+from pip_services3_commons.errors.ErrorDescriptionFactory import ErrorDescriptionFactory
+
+from pip_services3_components.log import LogLevel
+from .LogMessage import LogMessage
+from .Logger import Logger
+
 
 class CachedLogger(Logger, IReconfigurable):
     """
@@ -34,24 +39,22 @@ class CachedLogger(Logger, IReconfigurable):
     ### References ###
         - `*:context-info:*:*:1.0`     (optional) :class:`ContextInfo <pip_services3_components.info.ContextInfo.ContextInfo>` to detect the context id and specify counters source
     """
-    _cache = None
-    _updated = None
-    _last_dump_time = None
-    _interval = 60000
-    _lock = None
 
+    __lock = None
 
     def __init__(self):
         """
         Creates a new instance of the logger.
         """
-        self._cache = []
+        super().__init__()
+        self._cache: List[LogMessage] = []
         self._updated = False
+        self._interval = 10000
         self._last_dump_time = time.perf_counter() * 1000
-        self._lock = threading.Lock()
+        self._max_cache_size = 100
+        self.__lock = threading.Lock()
 
-
-    def _write(self, level, correlation_id, ex, message):
+    def _write(self, level: LogLevel, correlation_id: Optional[str], ex: Exception, message: str):
         """
         Writes a log message to the logger destination.
 
@@ -64,19 +67,19 @@ class CachedLogger(Logger, IReconfigurable):
         :param message: a human-readable message to log.
         """
         error = ErrorDescriptionFactory.create(ex) if not (ex is None) else None
-        source = socket.gethostname() # Todo: add process/module name
+        source = self._source  # socket.gethostname()
         log_message = LogMessage(level, source, correlation_id, error, message)
-        
-        self._lock.acquire()
+
+        self.__lock.acquire()
         try:
             self._cache.append(log_message)
         finally:
-            self._lock.release()
+            self.__lock.release()
 
         self._update()
 
-
-    def _save(self, messages):
+    @abstractmethod
+    def _save(self, messages: List[LogMessage]):
         """
         Saves log messages from the cache.
 
@@ -84,55 +87,58 @@ class CachedLogger(Logger, IReconfigurable):
         """
         raise NotImplementedError('Method from abstract implementation')
 
-
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
         :param config: configuration parameters to be set.
         """
         self._interval = config.get_as_float_with_default("interval", self._interval)
-
+        self._max_cache_size = config.get_as_integer_with_default("options.max_cache_size", self._max_cache_size)
 
     def clear(self):
         """
         Clears (removes) all cached log messages.
         """
-        self._lock.acquire()
+        self.__lock.acquire()
         try:
             self._cache = []
             self._updated = False
         finally:
-            self._lock.release()
-
+            self.__lock.release()
 
     def dump(self):
         """
         Dumps (writes) the currently cached log messages.
         """
         if self._updated:
-            self._lock.acquire()
+            self.__lock.acquire()
             try:
                 if not self._updated:
                     return
-                
+
                 messages = self._cache
                 self._cache = []
-                
+
                 self._save(messages)
+
+                # Truncate cache
+                self._cache = messages
+                delete_count = len(self._cache) - self._max_cache_size
+                if delete_count > 0:
+                    self._cache = self._cache[0:delete_count]
 
                 self._updated = False
                 self._last_dump_time = time.perf_counter() * 1000
             finally:
-                self._lock.release()
-
+                self.__lock.release()
 
     def _update(self):
         """
         Makes message cache as updated and dumps it when timeout expires.
         """
         self._updated = True
-        
+
         if time.perf_counter() * 1000 > self._last_dump_time + self._interval:
             try:
                 self.dump()

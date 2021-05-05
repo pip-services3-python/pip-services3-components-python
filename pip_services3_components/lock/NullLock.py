@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+from typing import Optional
 
 from .ILock import ILock
+
 
 class NullLock(ILock):
     """
@@ -10,7 +12,7 @@ class NullLock(ILock):
     but shall be disabled.
     """
 
-    def try_acquire_lock(self, correlation_id, key, ttl):
+    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float) -> bool:
         """
         Makes a single attempt to acquire a lock by its key.
         It returns immediately a positive or negative result.
@@ -22,7 +24,7 @@ class NullLock(ILock):
         """
         return True
 
-    def acquire_lock(self, correlation_id, key, ttl, timeout):
+    def acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float, timeout: float):
         """
         Releases prevously acquired lock by its key.
 
@@ -34,7 +36,7 @@ class NullLock(ILock):
         """
         return
 
-    def release_lock(self, correlation_id, key):
+    def release_lock(self, correlation_id: Optional[str], key: str):
         """
         :param correlation_id:  (optional) transaction id to trace execution through call chain.
         :param key:             a unique lock key to acquire.

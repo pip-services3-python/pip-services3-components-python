@@ -9,13 +9,16 @@
     :license: MIT, see LICENSE for more details.
 """
 
+import json
 import os.path
-import json 
+from typing import Optional, Any
 
-from pip_services3_commons.errors.FileException import FileException
-from pip_services3_commons.errors.ConfigException import ConfigException
 from pip_services3_commons.config.ConfigParams import ConfigParams
+from pip_services3_commons.errors.ConfigException import ConfigException
+from pip_services3_commons.errors.FileException import FileException
+
 from .FileConfigReader import FileConfigReader
+
 
 class JsonConfigReader(FileConfigReader):
     """
@@ -41,9 +44,10 @@ class JsonConfigReader(FileConfigReader):
     
         configReader = JsonConfigReader("config.json")
         parameters = ConfigParams.from_tuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC")
-        configReader.read_config("123", parameters)
+        configReader._read_config("123", parameters)
     """
-    def __init__(self, path):
+
+    def __init__(self, path: str = None):
         """
         Creates a new instance of the config reader.
 
@@ -51,7 +55,7 @@ class JsonConfigReader(FileConfigReader):
         """
         super(JsonConfigReader, self).__init__(path)
 
-    def _read_object(self, correlation_id, parameters):
+    def _read_object(self, correlation_id: Optional[str], parameters: ConfigParams) -> Any:
         """
         Reads configuration file, parameterizes its content and converts it into JSON object.
 
@@ -64,10 +68,10 @@ class JsonConfigReader(FileConfigReader):
         path = self.get_path()
         if path is None:
             raise ConfigException(correlation_id, "NO_PATH", "Missing config file path")
-        
+
         if not os.path.isfile(path):
             raise FileException(correlation_id, 'FILE_NOT_FOUND', 'Config file was not found at ' + path)
-        
+
         try:
             with open(path, 'r') as file:
                 config = file.read()
@@ -80,7 +84,7 @@ class JsonConfigReader(FileConfigReader):
                 "Failed reading configuration " + path + ": " + str(ex)
             ).with_details("path", path).with_cause(ex)
 
-    def _read_config(self, correlation_id, parameters):
+    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 
@@ -94,7 +98,7 @@ class JsonConfigReader(FileConfigReader):
         return ConfigParams.from_value(value)
 
     @staticmethod
-    def read_object(correlation_id, path, parameters):
+    def read_object(correlation_id: Optional[str], path: str, parameters: ConfigParams) -> Any:
         """
         Reads configuration file, parameterizes its content and converts it into JSON object.
 
@@ -109,7 +113,7 @@ class JsonConfigReader(FileConfigReader):
         return JsonConfigReader(path)._read_object(correlation_id, parameters)
 
     @staticmethod
-    def read_config(correlation_id, path, parameters):
+    def read_config(correlation_id: Optional[str], path: str, parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration from a file, parameterize it with given values and returns a new ConfigParams object.
 

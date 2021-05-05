@@ -8,11 +8,13 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from abc import abstractmethod
+from typing import Optional
 
+from pip_services3_commons.config import ConfigParams
+from pip_services3_commons.config import IConfigurable
 from pybars import Compiler
 
-from pip_services3_commons.config import IConfigurable
-from pip_services3_commons.config import ConfigParams
 from .IConfigReader import IConfigReader
 
 
@@ -24,15 +26,14 @@ class ConfigReader(IConfigReader, IConfigurable):
     parameters:            this entire section is used as template parameters
         - ...
     """
-    _parameters = None
 
     def __init__(self):
         """
         Creates a new instance of the config reader.
         """
-        self._parameters = ConfigParams()
+        self.__parameters: ConfigParams = ConfigParams()
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -40,9 +41,10 @@ class ConfigReader(IConfigReader, IConfigurable):
         """
         parameters = config.get_section("parameters")
         if len(parameters) > 0:
-            self._parameters = parameters
+            self.__parameters = parameters
 
-    def _read_config(self, correlation_id, parameters):
+    @abstractmethod
+    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 
@@ -54,8 +56,7 @@ class ConfigReader(IConfigReader, IConfigurable):
         """
         raise NotImplementedError('Method is abstract and must be overriden')
 
-    # @staticmethod
-    def _parameterize(self, config, parameters):
+    def _parameterize(self, config: str, parameters: ConfigParams) -> str:
         """
         Parameterized configuration template given as string with dynamic parameters.
 
@@ -65,7 +66,7 @@ class ConfigReader(IConfigReader, IConfigurable):
 
         :return: a parameterized configuration string.
         """
-        parameters = self._parameters.override(parameters)
+        parameters = self.__parameters.override(parameters)
         compiler = Compiler().compile(config)
 
         return compiler(parameters)

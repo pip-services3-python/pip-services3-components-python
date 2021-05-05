@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from typing import Optional
+
 from pip_services3_components.trace.ITracer import ITracer
 from pip_services3_components.trace.TraceTiming import TraceTiming
 
@@ -13,7 +15,7 @@ class NullTracer(ITracer):
     See :class:`ITracer <pip_services3_components.trace.ITracer.ITracer>`
     """
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
+    def trace(self, correlation_id: Optional[str], component: str, operation: str, duration: float):
         """
         Records an operation trace with its name and duration
 
@@ -25,8 +27,8 @@ class NullTracer(ITracer):
         """
         # Do nothing...
 
-    def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None],
-                duration: float) -> None:
+    def failure(self, correlation_id: Optional[str], component: str, operation: str, error: Exception,
+                duration: float):
         """
         Records an operation failure with its name, duration and error
 
@@ -38,7 +40,7 @@ class NullTracer(ITracer):
         """
         # Do nothing...
 
-    def begin_trace(self, correlation_id: str, component: str, operation: str) -> TraceTiming:
+    def begin_trace(self, correlation_id: Optional[str], component: str, operation: str) -> TraceTiming:
         """
         Begings recording an operation traceBegings recording an operation trace
 

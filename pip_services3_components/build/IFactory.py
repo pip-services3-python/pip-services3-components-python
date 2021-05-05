@@ -8,6 +8,8 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import Any
+
 
 class IFactory:
     """
@@ -19,7 +21,8 @@ class IFactory:
     They can be of any type like strings or integers. However Pip.Services toolkit
     most often uses Descriptor objects as component locators.
     """
-    def can_create(self, locator):
+
+    def can_create(self, locator: Any) -> Any:
         """
         Checks if this factory is able to create component by given locator.
 
@@ -33,7 +36,7 @@ class IFactory:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def create(self, locator):
+    def create(self, locator: Any) -> Any:
         """
         Creates a component identified by given locator.
 

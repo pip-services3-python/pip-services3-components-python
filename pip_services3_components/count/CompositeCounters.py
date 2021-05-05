@@ -8,7 +8,10 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+import datetime
+from typing import List
 
+from pip_services3_commons.refer import IReferences
 from pip_services3_commons.refer.Descriptor import Descriptor
 from pip_services3_commons.refer.IReferenceable import IReferenceable
 
@@ -43,20 +46,19 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
 
             timing.end_timing()
     """
-    _counters = None
+    _counters: List[ICounters] = []
 
-    def __init__(self, references=None):
+    def __init__(self, references: IReferences = None):
         """
         Creates a new instance of the counters.
 
         :param references: references to locate the component dependencies.
         """
-        self._counters = []
 
         if not (references is None):
             self.set_references(references)
 
-    def set_references(self, references):
+    def set_references(self, references: IReferences):
         """
         Sets references to dependent components.
 
@@ -68,7 +70,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
             if isinstance(counter, ICounters):
                 self._counters.append(counter)
 
-    def begin_timing(self, name):
+    def begin_timing(self, name: str) -> CounterTiming:
         """
         Begins measurement of execution time interval.
         It returns :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` object which has to be called at
@@ -80,7 +82,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
         """
         return CounterTiming(name, self)
 
-    def end_timing(self, name, elapsed):
+    def end_timing(self, name: str, elapsed: float):
         """
         Ends measurement of execution elapsed time and updates specified counter.
 
@@ -93,7 +95,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
             if isinstance(counter, ICounterTimingCallback):
                 counter.end_timing(name, elapsed)
 
-    def stats(self, name, value):
+    def stats(self, name: str, value: float):
         """
         Calculates min/average/max statistics based on the current and previous values.
 
@@ -104,7 +106,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
         for counter in self._counters:
             counter.stats(name, value)
 
-    def last(self, name, value):
+    def last(self, name: str, value: float):
         """
         Records the last calculated measurement value.
         Usually this method is used by metrics calculated externally.
@@ -116,7 +118,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
         for counter in self._counters:
             counter.last(name, value)
 
-    def timestamp_now(self, name):
+    def timestamp_now(self, name: str):
         """
         Records the current time as a timestamp.
 
@@ -125,7 +127,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
         for counter in self._counters:
             counter.timestamp_now(name)
 
-    def timestamp(self, name, value):
+    def timestamp(self, name: str, value: float):
         """
         Records the given timestamp.
 
@@ -136,7 +138,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
         for counter in self._counters:
             counter.timestamp(name, value)
 
-    def increment_one(self, name):
+    def increment_one(self, name: str):
         """
         Increments counter by 1.
 
@@ -145,7 +147,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
         for counter in self._counters:
             counter.increment_one(name)
 
-    def increment(self, name, value):
+    def increment(self, name: str, value: float):
         """
         Increments counter by given value.
 

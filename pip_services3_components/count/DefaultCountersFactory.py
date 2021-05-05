@@ -35,6 +35,7 @@ class DefaultCountersFactory(Factory):
         """
         Create a new instance of the factory.
         """
+        super().__init__()
         self.register_as_type(DefaultCountersFactory.NullCountersDescriptor, NullCounters)
         self.register_as_type(DefaultCountersFactory.LogCountersDescriptor, LogCounters)
         self.register_as_type(DefaultCountersFactory.CompositeCountersDescriptor, CompositeCounters)

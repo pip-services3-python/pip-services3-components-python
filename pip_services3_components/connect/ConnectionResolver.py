@@ -8,14 +8,18 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import List, Optional
+
 from pip_services3_commons.config import ConfigParams
+from pip_services3_commons.config.IConfigurable import IConfigurable
+from pip_services3_commons.errors.ConfigException import ConfigException
+from pip_services3_commons.refer import IReferences
+from pip_services3_commons.refer.Descriptor import Descriptor
+from pip_services3_commons.refer.IReferenceable import IReferenceable
 
 from .ConnectionParams import ConnectionParams
 from .IDiscovery import IDiscovery
-from pip_services3_commons.config.IConfigurable import IConfigurable
-from pip_services3_commons.refer.IReferenceable import IReferenceable
-from pip_services3_commons.refer.Descriptor import Descriptor
-from pip_services3_commons.errors.ConfigException import ConfigException
+
 
 class ConnectionResolver(IConfigurable, IReferenceable):
     """
@@ -46,13 +50,12 @@ class ConnectionResolver(IConfigurable, IReferenceable):
 
         connectionResolver = ConnectionResolver()
         connectionResolver.configure(config)
-        connectionResolver.setReferences(references)
+        connectionResolver.set_references(references)
         connectionResolver.resolve("123")
     """
-    _connections = None
-    _references = None
+    __connections: List[ConnectionParams] = []
 
-    def __init__(self, config = None, references = None):
+    def __init__(self, config: ConfigParams = None, references: IReferences = None):
         """
         Creates a new instance of connection resolver.
 
@@ -60,21 +63,23 @@ class ConnectionResolver(IConfigurable, IReferenceable):
 
         :param references: (optional) component references
         """
-        self._connections = []
+        self.__references: IReferences = None
+        self.__connections = []
+
         if not (config is None):
             self.configure(config)
         if not (references is None):
             self.set_references(references)
 
-    def set_references(self, references):
+    def set_references(self, references: IReferences):
         """
         Sets references to dependent components.
 
         :param references: references to locate the component dependencies.
         """
-        self._references = references
+        self.__references = references
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -82,9 +87,9 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         """
         connections = ConnectionParams.many_from_config(config)
         for connection in connections:
-            self._connections.append(connection)
+            self.__connections.append(connection)
 
-    def get_all(self):
+    def get_all(self) -> List[ConnectionParams]:
         """
         Gets all connections configured in component configuration.
         Redirect to Discovery services is not done at this point.
@@ -92,35 +97,35 @@ class ConnectionResolver(IConfigurable, IReferenceable):
 
         :return: a list with connection parameters
         """
-        return self._connections
+        return self.__connections
 
-    def add(self, connection):
+    def add(self, connection: ConnectionParams):
         """
         Adds a new connection to component connections
 
         :param connection: new connection parameters to be added
         """
-        self._connections.append(connection)
+        self.__connections.append(connection)
 
-    def _register_in_discovery(self, correlation_id, connection):
-        if connection.use_discovery() == False: return False
-        
+    def __register_in_discovery(self, correlation_id: Optional[str], connection: ConnectionParams) -> bool:
+        if connection.use_discovery() is False: return False
+
         key = connection.get_discovery_key()
-        if self._references is None:
+        if self.__references is None:
             return False
-        
+
         descriptor = Descriptor("*", "discovery", "*", "*", "*")
-        components = self._references.get_optional(descriptor)
+        components = self.__references.get_optional(descriptor)
         if components is None:
             return False
-        
+
         for component in components:
             if isinstance(component, IDiscovery):
                 component.register(correlation_id, key, connection)
-        
+
         return True
 
-    def register(self, correlation_id, connection):
+    def register(self, correlation_id: Optional[str], connection: ConnectionParams):
         """
         Registers the given connection in all referenced discovery services.
         This method can be used for dynamic service discovery.
@@ -129,17 +134,18 @@ class ConnectionResolver(IConfigurable, IReferenceable):
 
         :param connection: a connection to register.
         """
-        result = self._register_in_discovery(correlation_id, connection)
-        
-        if result:
-            self._connections.append(connection)
+        result = self.__register_in_discovery(correlation_id, connection)
 
-    def _resolve_in_discovery(self, correlation_id, connection):
-        if connection.use_discovery() == False: return None
-        
+        if result:
+            self.__connections.append(connection)
+
+    def __resolve_in_discovery(self, correlation_id: Optional[str], connection: ConnectionParams) -> Optional[
+        ConnectionParams]:
+        if connection.use_discovery() is False: return None
+
         key = connection.get_discovery_key()
         descriptor = Descriptor("*", "discovery", "*", "*", "*")
-        components = self._references.get_optional(descriptor)
+        components = self.__references.get_optional(descriptor)
         if len(components) == 0:
             raise ConfigException(correlation_id, "CANNOT_RESOLVE", "Discovery wasn't found to make resolution")
 
@@ -148,10 +154,10 @@ class ConnectionResolver(IConfigurable, IReferenceable):
                 resolved_connection = component.resolve_one(correlation_id, key)
                 if not (resolved_connection is None):
                     return resolved_connection
-        
+
         return None
 
-    def resolve(self, correlation_id):
+    def resolve(self, correlation_id: Optional[str]) -> Optional[ConnectionParams]:
         """
         Resolves a single component connection. If connections are configured to be retrieved
         from Discovery service it finds a :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` and resolves the connection there.
@@ -160,32 +166,33 @@ class ConnectionResolver(IConfigurable, IReferenceable):
 
         :return: resolved connection parameters or null if nothing was found.
         """
-        if len(self._connections) == 0: return None
-        
+        if len(self.__connections) == 0: return None
+
         # Return connection that doesn't require discovery
-        for connection in self._connections:
+        for connection in self.__connections:
             if not connection.use_discovery():
                 return connection
-        
+
         # Return connection that require discovery
-        for connection in self._connections:
+        for connection in self.__connections:
             if connection.use_discovery():
-                resolved_connection = self._resolve_in_discovery(correlation_id, connection)
+                resolved_connection = self.__resolve_in_discovery(correlation_id, connection)
                 if not (resolved_connection is None):
                     # Merge configured and new parameters
                     resolved_connection = ConnectionParams(ConfigParams.merge_configs(connection, resolved_connection))
                     return resolved_connection
-        
+
         return None
 
-    def _resolve_all_in_discovery(self, correlation_id, connection):
+    def __resolve_all_in_discovery(self, correlation_id: Optional[str], connection: ConnectionParams) -> List[
+        ConnectionParams]:
         result = []
-        
-        if connection.use_discovery() == False: return result
-        
+
+        if connection.use_discovery() is False: return result
+
         key = connection.get_discovery_key()
         descriptor = Descriptor("*", "discovery", "*", "*", "*")
-        components = self._references.get_optional(descriptor)
+        components = self.__references.get_optional(descriptor)
         if len(components) == 0:
             raise ConfigException(correlation_id, "CANNOT_RESOLVE", "Discovery wasn't found to make resolution")
 
@@ -195,10 +202,10 @@ class ConnectionResolver(IConfigurable, IReferenceable):
                 if not (resolved_connections is None):
                     for connection in resolved_connections:
                         result.append(connection)
-        
+
         return result
 
-    def resolve_all(self, correlation_id):
+    def resolve_all(self, correlation_id: Optional[str]) -> List[ConnectionParams]:
         """
         Resolves all component connection. If connections are configured to be retrieved
         from Discovery service it finds a :class:`IDiscovery <pip_services3_components.connect.IDiscovery.IDiscovery>` and resolves the connection there.
@@ -211,19 +218,19 @@ class ConnectionResolver(IConfigurable, IReferenceable):
         to_resolve = []
 
         # Sort connections
-        for connection in self._connections:
+        for connection in self.__connections:
             if connection.use_discovery():
                 to_resolve.append(connection)
             else:
                 resolved.append(connection)
-        
+
         # Resolve addresses that require that
         if len(to_resolve) > 0:
             for connection in to_resolve:
-                resolved_connections = self._resolve_all_in_discovery(correlation_id, connection)
+                resolved_connections = self.__resolve_all_in_discovery(correlation_id, connection)
                 for resolved_connection in resolved_connections:
                     # Merge configured and new parameters
                     resolved_connection = ConnectionParams(ConfigParams.merge_configs(connection, resolved_connection))
                     resolved.append(resolved_connection)
-        
+
         return resolved

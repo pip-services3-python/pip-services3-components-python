@@ -10,11 +10,13 @@
 """
 
 import os.path
-import yaml
+from typing import Any, Optional
 
-from pip_services3_commons.errors.FileException import FileException
-from pip_services3_commons.errors.ConfigException import ConfigException
+import yaml
 from pip_services3_commons.config.ConfigParams import ConfigParams
+from pip_services3_commons.errors.ConfigException import ConfigException
+from pip_services3_commons.errors.FileException import FileException
+
 from .FileConfigReader import FileConfigReader
 
 
@@ -41,10 +43,10 @@ class YamlConfigReader(FileConfigReader):
     
         configReader = YamlConfigReader("config.yml")
         parameters = ConfigParams.from_tuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC")
-        configReader.read_config("123", parameters)
+        configReader._read_config("123", parameters)
     """
 
-    def __init__(self, path):
+    def __init__(self, path: str = None):
         """
         Creates a new instance of the config reader.
 
@@ -52,15 +54,15 @@ class YamlConfigReader(FileConfigReader):
         """
         super(YamlConfigReader, self).__init__(path)
 
-    def _read_object(self, correlation_id, parameters):
+    def _read_object(self, correlation_id: Optional[str], parameters: ConfigParams) -> Any:
         """
-        Reads configuration file, parameterizes its content and converts it into JSON object.
+        Reads configuration file, parameterizes its content and converts it into YAML object.
 
         :param correlation_id: (optional) transaction id to trace execution through call chain.
 
         :param parameters: values to parameters the configuration.
 
-        :return: a JSON object with configuration.
+        :return: a YAML object with configuration.
         """
         path = self.get_path()
 
@@ -82,7 +84,7 @@ class YamlConfigReader(FileConfigReader):
                 "Failed reading configuration " + path + ": " + str(ex)
             ).with_details("path", path).with_cause(ex)
 
-    def _read_config(self, correlation_id, parameters):
+    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 
@@ -96,9 +98,9 @@ class YamlConfigReader(FileConfigReader):
         return ConfigParams.from_value(value)
 
     @staticmethod
-    def read_object(correlation_id, path, parameters):
+    def read_object(correlation_id: Optional[str], path: str, parameters: ConfigParams) -> Any:
         """
-        Reads configuration file, parameterizes its content and converts it into JSON object.
+        Reads configuration file, parameterizes its content and converts it into YAML object.
 
         :param correlation_id: (optional) transaction id to trace execution through call chain.
 
@@ -106,12 +108,12 @@ class YamlConfigReader(FileConfigReader):
 
         :param parameters: values to parameters the configuration.
 
-        :return: a JSON object with configuration.
+        :return: a YAML object with configuration.
         """
         return YamlConfigReader(path)._read_object(correlation_id, parameters)
 
     @staticmethod
-    def read_config(correlation_id, path, parameters):
+    def read_config(correlation_id: Optional[str], path: str, parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration from a file, parameterize it with given values and returns a new ConfigParams object.
 

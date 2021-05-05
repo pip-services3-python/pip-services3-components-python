@@ -8,22 +8,19 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+import datetime
+from typing import Optional
 
-class Counter(object):
+from pip_services3_components.count import CounterType
+
+
+class Counter:
     """
     Data object to store measurement for a performance counter.
     This object is used by :class:`CachedCounters <pip_services3_components.count.CachedCounters.CachedCounters>` to store counters.
     """
-    name = None
-    type = None
-    last = None
-    count = None
-    min = None
-    max = None
-    average = None
-    time = None
 
-    def __init__(self, name= None, tipe = None):
+    def __init__(self, name: str = None, tipe: CounterType = None):
         """
         Creates a instance of the data obejct
 
@@ -31,5 +28,19 @@ class Counter(object):
 
         :param tipe: a counter type.
         """
-        self.name = name
-        self.type = tipe
+        # The last recorded value
+        self.last: Optional[float] = None
+        # The total count
+        self.count: Optional[int] = None
+        # The minimum value
+        self.min: Optional[float] = None
+        # The maximum value
+        self.max: Optional[float] = None
+        # The average value
+        self.average: Optional[float] = None
+        # The recorded timestamp
+        self.time: Optional[datetime.datetime] = None
+        # The counter unique name
+        self.name: str = name
+        # The counter type that defines measurement algorithm
+        self.type: CounterType = tipe

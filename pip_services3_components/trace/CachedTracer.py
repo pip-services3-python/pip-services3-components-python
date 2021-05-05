@@ -3,7 +3,7 @@
 import datetime
 from abc import ABC, abstractmethod
 from copy import deepcopy
-from typing import List
+from typing import List, Optional
 
 from pip_services3_commons.config import IReconfigurable, ConfigParams
 from pip_services3_commons.errors import ErrorDescriptionFactory
@@ -32,11 +32,11 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
     See :class:`ITracer <pip_services3_components.trace.ITracer.ITracer>`, :class:`OperationTrace <pip_services3_components.trace.OperationTrace.OperationTrace>`
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         """
         Creates a new instance of the logger.
         """
-        super().__init__(*args, **kwargs)
+        super().__init__()
 
         self._source: str = None
         self._cache: List[OperationTrace] = []
@@ -65,7 +65,8 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
         if context_info is not None and self._source is None:
             self._source = context_info.name
 
-    def _write(self, correlation_id: str, component: str, operation: str, error: [Exception, None], duration: float):
+    def _write(self, correlation_id: Optional[str], component: str, operation: str, error: Optional[Exception],
+               duration: float):
         """
         Writes a log message to the logger destination.
 
@@ -90,7 +91,7 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
 
         self._update()
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
+    def trace(self, correlation_id: Optional[str], component: str, operation: str, duration: float):
         """
         Records an operation trace with its name and duration
 
@@ -101,8 +102,8 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
         """
         self._write(correlation_id, component, operation, None, duration)
 
-    def failure(self, correlation_id: str, component: str, operation: str, error: [Exception, None],
-                duration: float) -> None:
+    def failure(self, correlation_id: Optional[str], component: str, operation: str, error: Exception,
+                duration: float):
         """
         Records an operation failure with its name, duration and error
 
@@ -114,7 +115,7 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
         """
         self._write(correlation_id, component, operation, error, duration)
 
-    def begin_trace(self, correlation_id: str, component: str, operation: str) -> TraceTiming:
+    def begin_trace(self, correlation_id: Optional[str], component: str, operation: str) -> TraceTiming:
         """
         Begings recording an operation trace
 

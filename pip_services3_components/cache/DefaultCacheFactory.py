@@ -33,5 +33,6 @@ class DefaultCacheFactory(Factory):
         """
         Create a new instance of the factory.
         """
+        super().__init__()
         self.register_as_type(DefaultCacheFactory.NullCacheDescriptor, NullCache)
         self.register_as_type(DefaultCacheFactory.MemoryCacheDescriptor, MemoryCache)

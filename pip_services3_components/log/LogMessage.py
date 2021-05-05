@@ -10,19 +10,20 @@
 """
 
 import datetime
+from typing import Optional
 
-class LogMessage(object):
+from pip_services3_commons.errors import ErrorDescription
+
+from pip_services3_components.log import LogLevel
+
+
+class LogMessage:
     """
     Data object to store captured log messages. This object is used by :class:`CachedLogger <pip_services3_components.log.CachedLogger.CachedLogger>`.
     """
-    time = None
-    source = None
-    level = None
-    correlation_id = None
-    error = None
-    message = None
 
-    def __init__(self, level = None, source = None, correlation_id = None, error = None, message = None):
+    def __init__(self, level: LogLevel = None, source: str = None, correlation_id: Optional[str] = None,
+                 error: ErrorDescription = None, message: str = None):
         """
         Creates log message
 
@@ -36,9 +37,15 @@ class LogMessage(object):
 
         :param message: a human-readable message to log.
         """
-        self.time = datetime.datetime.utcnow()
-        self.level = level
-        self.source = source
-        self.correlation_id = correlation_id
-        self.error = error
-        self.message = message
+        # The time then message was generated
+        self.time: datetime.datetime = datetime.datetime.utcnow()
+        # This log level
+        self.level: LogLevel = level
+        # The source (context name)
+        self.source: str = source
+        # The transaction id to trace execution through call chain.
+        self.correlation_id: Optional[str] = correlation_id
+        # The description of the captured error
+        self.error: ErrorDescription = error
+        # The human-readable message
+        self.message: str = message

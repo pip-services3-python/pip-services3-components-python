@@ -8,16 +8,19 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import Optional, Any
 
-from .LogLevel import LogLevel
 from .ILogger import ILogger
+from .LogLevel import LogLevel
+
 
 class NullLogger(ILogger):
     """
     Dummy implementation of logger that doesn't do anything.
     It can be used in testing or in situations when logger is required but shall be disabled.
     """
-    def get_level(self):
+
+    def get_level(self) -> LogLevel:
         """
         Gets the maximum log level. Messages with higher log level are filtered out.
 
@@ -25,7 +28,7 @@ class NullLogger(ILogger):
         """
         return LogLevel.Nothing
 
-    def set_level(self, level):
+    def set_level(self, level: LogLevel):
         """
         Set the maximum log level.
 
@@ -33,7 +36,9 @@ class NullLogger(ILogger):
         """
         pass
 
-    def log(self, level, correlation_id, error, message, *args, **kwargs):
+    def log(self, level: LogLevel, correlation_id: Optional[str], error: Optional[Exception], message: Optional[str],
+            *args: Any,
+            **kwargs: Any):
         """
         Logs a message at specified log level.
 
@@ -51,7 +56,7 @@ class NullLogger(ILogger):
         """
         pass
 
-    def fatal(self, correlation_id, error, message, *args, **kwargs):
+    def fatal(self, correlation_id: Optional[str], error: Exception, message: str, *args: Any, **kwargs: Any):
         """
         Logs fatal (unrecoverable) message that caused the process to crash.
 
@@ -67,7 +72,7 @@ class NullLogger(ILogger):
         """
         pass
 
-    def error(self, correlation_id, error, message, *args, **kwargs):
+    def error(self, correlation_id: Optional[str], error: Exception, message: str, *args: Any, **kwargs: Any):
         """
         Logs recoverable application error.
 
@@ -83,7 +88,7 @@ class NullLogger(ILogger):
         """
         pass
 
-    def warn(self, correlation_id, message, *args, **kwargs):
+    def warn(self, correlation_id: Optional[str], message: str, *args: Any, **kwargs: Any):
         """
         Logs a warning that may or may not have a negative impact.
 
@@ -97,7 +102,7 @@ class NullLogger(ILogger):
         """
         pass
 
-    def info(self, correlation_id, message, *args, **kwargs):
+    def info(self, correlation_id: Optional[str], message: str, *args: Any, **kwargs: Any):
         """
         Logs an important information message
 
@@ -111,7 +116,7 @@ class NullLogger(ILogger):
         """
         pass
 
-    def debug(self, correlation_id, message, *args, **kwargs):
+    def debug(self, correlation_id: Optional[str], message: str, *args: Any, **kwargs: Any):
         """
         Logs a high-level debug information for troubleshooting.
 
@@ -125,7 +130,7 @@ class NullLogger(ILogger):
         """
         pass
 
-    def trace(self, correlation_id, message, *args, **kwargs):
+    def trace(self, correlation_id: Optional[str], message: str, *args: Any, **kwargs: Any):
         """
         Logs a low-level debug information for troubleshooting.
 
@@ -138,4 +143,3 @@ class NullLogger(ILogger):
         :param kwargs: arguments to parameterize the message.
         """
         pass
-

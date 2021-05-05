@@ -8,11 +8,16 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import Optional
 
-from .ILogger import ILogger
-from .Logger import Logger
+from pip_services3_commons.refer import IReferences
 from pip_services3_commons.refer.Descriptor import Descriptor
 from pip_services3_commons.refer.IReferenceable import IReferenceable
+
+from pip_services3_components.log import LogLevel
+from .ILogger import ILogger
+from .Logger import Logger
+
 
 class CompositeLogger(Logger, IReferenceable):
     """
@@ -28,32 +33,33 @@ class CompositeLogger(Logger, IReferenceable):
     .. code-block:: python
 
         class MyComponent(IConfigurable, IReferenceable):
-            _logger = CompositeLogger()
+            __logger = CompositeLogger()
 
             def configure(self, config):
-                self._logger.configure(config)
+                self.__logger.configure(config)
 
             def set_references(self, references):
-                self._logger.set_references(references)
+                self.__logger.set_references(references)
 
             def my_method(self, correlation_id):
-                self._logger.debug(correlationId, "Called method mycomponent.mymethod")
+                self.__logger.debug(correlation_id, "Called method mycomponent.mymethod")
 
     """
-    _loggers = None
+    __loggers = None
 
-    def __init__(self, references = None):
+    def __init__(self, references: IReferences = None):
         """
         Creates a new instance of the logger.
 
         :param references: references to locate the component dependencies.
         """
-        self._loggers = []
+        super().__init__()
+        self.__loggers = []
 
         if not (references is None):
             self.set_references(references)
-            
-    def set_references(self, references):
+
+    def set_references(self, references: IReferences):
         """
         Sets references to dependent components.
 
@@ -64,9 +70,10 @@ class CompositeLogger(Logger, IReferenceable):
         loggers = references.get_optional(Descriptor(None, "logger", None, None, None))
         for logger in loggers:
             if isinstance(logger, ILogger):
-                self._loggers.append(logger)
+                self.__loggers.append(logger)
 
-    def _write(self, level, correlation_id, error, message):
+    def _write(self, level: LogLevel, correlation_id: Optional[str], error: Optional[Exception],
+               message: Optional[str]):
         """
         Writes a log message to the logger destination.
 
@@ -78,6 +85,5 @@ class CompositeLogger(Logger, IReferenceable):
 
         :param message: a human-readable message to log.
         """
-        for logger in self._loggers:
+        for logger in self.__loggers:
             logger.log(level, correlation_id, error, message)
-

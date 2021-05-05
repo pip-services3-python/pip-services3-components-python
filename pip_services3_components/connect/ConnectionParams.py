@@ -8,6 +8,7 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import Any, List
 
 from pip_services3_commons.config.ConfigParams import ConfigParams
 from pip_services3_commons.data import StringValueMap
@@ -38,12 +39,12 @@ class ConnectionParams(ConfigParams):
                                                   "port", "8080",
                                                   "cluster", "mycluster")
 
-        host = connection.get_host()                             // Result: "10.1.1.100"
-        port = connection.get_port()                             // Result: 8080
-        cluster = connection.get_as_nullable_string("cluster")     // Result: "mycluster"
+        host = connection.get_host()                              # Result: "10.1.1.100"
+        port = connection.get_port()                              # Result: 8080
+        cluster = connection.get_as_nullable_string("cluster")    # Result: "mycluster"
     """
 
-    def __init__(self, map=None):
+    def __init__(self, map: Any = None):
         """
         Creates a new connection parameters and fills it with values.
 
@@ -51,7 +52,7 @@ class ConnectionParams(ConfigParams):
         """
         super(ConnectionParams, self).__init__(map)
 
-    def use_discovery(self):
+    def use_discovery(self) -> bool:
         """
         Checks if these connection parameters shall be retrieved from DiscoveryService.
         The connection parameters are redirected to DiscoveryService when discovery_key parameter is set.
@@ -60,7 +61,7 @@ class ConnectionParams(ConfigParams):
         """
         return "discovery_key" in self
 
-    def get_discovery_key(self):
+    def get_discovery_key(self) -> str:
         """
         Gets the key to retrieve this connection from DiscoveryService.
         If this key is null, than all parameters are already present.
@@ -69,7 +70,7 @@ class ConnectionParams(ConfigParams):
         """
         return self.get_as_nullable_string("discovery_key")
 
-    def set_discovery_key(self, value):
+    def set_discovery_key(self, value: str):
         """
         Sets the key to retrieve these parameters from DiscoveryService.
 
@@ -77,7 +78,7 @@ class ConnectionParams(ConfigParams):
         """
         self.put("discovery_key", value)
 
-    def get_protocol(self):
+    def get_protocol(self) -> str:
         """
         Gets the connection protocol.
 
@@ -85,7 +86,7 @@ class ConnectionParams(ConfigParams):
         """
         return super().get_as_string('protocol')
 
-    def get_protocol_with_default(self, default_value=None):
+    def get_protocol_with_default(self, default_value: str = None) -> str:
         """
         Gets the connection protocol with default value.
 
@@ -95,7 +96,7 @@ class ConnectionParams(ConfigParams):
         """
         return super().get_as_string_with_default("protocol", default_value)
 
-    def set_protocol(self, value):
+    def set_protocol(self, value: str):
         """
         Sets the connection protocol.
 
@@ -103,7 +104,7 @@ class ConnectionParams(ConfigParams):
         """
         self.put("protocol", value)
 
-    def get_host(self):
+    def get_host(self) -> str:
         """
         Gets the host name or IP address.
 
@@ -113,7 +114,7 @@ class ConnectionParams(ConfigParams):
         host = host if not (host is None) else self.get_as_nullable_string("ip")
         return host
 
-    def set_host(self, value):
+    def set_host(self, value: str):
         """
         Sets the host name or IP address.
 
@@ -121,7 +122,7 @@ class ConnectionParams(ConfigParams):
         """
         self.put("host", value)
 
-    def get_port(self):
+    def get_port(self) -> int:
         """
         Gets the port number.
 
@@ -129,7 +130,7 @@ class ConnectionParams(ConfigParams):
         """
         return super().get_as_integer("port")
 
-    def get_port_with_default(self, default_port):
+    def get_port_with_default(self, default_port: int) -> int:
         """
         Gets the port number with default value.
 
@@ -138,7 +139,7 @@ class ConnectionParams(ConfigParams):
         """
         return super().get_as_integer_with_default("port", default_port)
 
-    def set_port(self, value):
+    def set_port(self, value: int):
         """
         Sets the port number.
 
@@ -146,7 +147,7 @@ class ConnectionParams(ConfigParams):
         """
         self.set_as_object("port", value)
 
-    def get_uri(self):
+    def get_uri(self) -> str:
         """
         Gets the resource URI or connection string. Usually it includes all connection parameters in it.
 
@@ -154,7 +155,7 @@ class ConnectionParams(ConfigParams):
         """
         return self.get_as_string("uri")
 
-    def set_uri(self, value):
+    def set_uri(self, value: str):
         """
         Sets the resource URI or connection string.
 
@@ -163,7 +164,7 @@ class ConnectionParams(ConfigParams):
         self.set_as_object("uri", value)
 
     @staticmethod
-    def from_string(line):
+    def from_string(line: str) -> 'ConnectionParams':
         """
         Creates a new ConnectionParams object filled with key-value pairs serialized as a string.
 
@@ -176,7 +177,7 @@ class ConnectionParams(ConfigParams):
         return ConnectionParams(map)
 
     @staticmethod
-    def from_tuples(*tuples):
+    def from_tuples(*tuples: Any) -> 'ConnectionParams':
         """
         Creates a new ConnectionParams object filled with provided key-value pairs called tuples.
         Tuples parameters contain a sequence of key1, value1, key2, value2, ... pairs.
@@ -189,7 +190,7 @@ class ConnectionParams(ConfigParams):
         return ConnectionParams(map)
 
     @staticmethod
-    def many_from_config(config):
+    def many_from_config(config: ConfigParams) -> List['ConnectionParams']:
         """
         Retrieves all ConnectionParams from configuration parameters
         from "connections" section. If "connection" section is present instead,
@@ -216,7 +217,7 @@ class ConnectionParams(ConfigParams):
         return result
 
     @staticmethod
-    def from_config(config):
+    def from_config(config: ConfigParams) -> 'ConnectionParams':
         """
         Retrieves a single ConnectionParams from configuration parameters
         from "connection" section. If "connections" section is present instead,

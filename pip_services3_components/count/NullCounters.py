@@ -9,8 +9,9 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .ICounters import ICounters
 from .CounterTiming import CounterTiming
+from .ICounters import ICounters
+
 
 class NullCounters(ICounters):
     """
@@ -18,7 +19,7 @@ class NullCounters(ICounters):
     It can be used in testing or in situations when counters is required but shall be disabled.
     """
 
-    def begin_timing(self, name):
+    def begin_timing(self, name: str) -> CounterTiming:
         """
         Begins measurement of execution time interval.
         It returns :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` object which has to be called at
@@ -30,7 +31,7 @@ class NullCounters(ICounters):
         """
         return CounterTiming()
 
-    def stats(self, name, value):
+    def stats(self, name: str, value: float):
         """
         Calculates min/average/max statistics based on the current and previous values.
 
@@ -40,7 +41,7 @@ class NullCounters(ICounters):
         """
         pass
 
-    def last(self, name, value):
+    def last(self, name: str, value: float):
         """
         Records the last calculated measurement value.
         Usually this method is used by metrics calculated externally.
@@ -51,7 +52,7 @@ class NullCounters(ICounters):
         """
         pass
 
-    def timestamp_now(self, name):
+    def timestamp_now(self, name: str):
         """
         Records the current time as a timestamp.
 
@@ -59,7 +60,7 @@ class NullCounters(ICounters):
         """
         pass
 
-    def timestamp(self, name, value):
+    def timestamp(self, name: str, value: float):
         """
         Records the given timestamp.
 
@@ -69,7 +70,7 @@ class NullCounters(ICounters):
         """
         pass
 
-    def increment_one(self, name):
+    def increment_one(self, name: str):
         """
         Increments counter by 1.
 
@@ -77,7 +78,7 @@ class NullCounters(ICounters):
         """
         pass
 
-    def increment(self, name, value):
+    def increment(self, name: str, value: float):
         """
         Increments counter by given value.
 

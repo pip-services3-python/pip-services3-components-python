@@ -12,6 +12,17 @@ class OperationTrace:
 
     def __init__(self, time: datetime, source: str, component: str,
                  operation: str, correlation_id: str, duration: float, error: ErrorDescription):
+        """
+        Create new instance of OperationTrace
+
+        :param time: The time when operation was executed
+        :param source: The source (context name)
+        :param component: The name of component
+        :param operation: The name of the executed operation
+        :param correlation_id: The transaction id to trace execution through call chain.
+        :param duration: The duration of the operation in milliseconds
+        :param error: The description of the captured error
+        """
 
         # The time when operation was executed
         self.time: datetime = time

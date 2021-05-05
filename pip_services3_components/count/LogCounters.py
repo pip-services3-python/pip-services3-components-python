@@ -8,10 +8,13 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import List
 
 from pip_services3_commons.convert.StringConverter import StringConverter
+from pip_services3_commons.refer import IReferences
 from pip_services3_commons.refer.IReferenceable import IReferenceable
 
+from pip_services3_components.count import Counter
 from .CachedCounters import CachedCounters
 from ..log.CompositeLogger import CompositeLogger
 
@@ -42,29 +45,22 @@ class LogCounters(CachedCounters, IReferenceable):
         # do something
         timing.end_timing()
     """
-    _logger = None
+    __logger: CompositeLogger = CompositeLogger()
 
-    def __init__(self):
-        """
-        Creates a new instance of the counters.
-        """
-        super(LogCounters, self).__init__()
-        self._logger = CompositeLogger()
-
-        #
+    #
 
     # def get_descriptor(self):
     #     return LogCountersDescriptor
 
-    def set_references(self, references):
+    def set_references(self, references: IReferences):
         """
         Sets references to dependent components.
 
         :param references: references to locate the component dependencies.
         """
-        self._logger.set_references(references)
+        self.__logger.set_references(references)
 
-    def _counter_to_string(self, counter):
+    def __counter_to_string(self, counter: Counter) -> str:
         result = "Counter " + counter.name + " { "
         result += "\"type\": " + str(counter.type)
         if not (counter.last is None):
@@ -83,16 +79,16 @@ class LogCounters(CachedCounters, IReferenceable):
         return result
 
     @staticmethod
-    def _get_counter_name(counter):
+    def _get_counter_name(counter: Counter) -> str:
         return counter.name
 
-    def _save(self, counters):
+    def _save(self, counters: List[Counter]):
         """
         Saves the current counters measurements.
 
         :param counters: current counters measurements to be saves.
         """
-        if self._logger is None:
+        if self.__logger is None:
             return
         if len(counters) == 0:
             return
@@ -101,4 +97,4 @@ class LogCounters(CachedCounters, IReferenceable):
         counters = sorted(counters, key=LogCounters._get_counter_name)
 
         for counter in counters:
-            self._logger.info("counters", self._counter_to_string(counter))
+            self.__logger.info("counters", self.__counter_to_string(counter))

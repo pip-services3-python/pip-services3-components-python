@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import urllib.parse
+from typing import Optional
 
 from pip_services3_commons.config import ConfigParams
 
@@ -10,7 +11,7 @@ class ConnectionUtils:
     """
 
     @staticmethod
-    def concat(options1: ConfigParams, options2: ConfigParams, *keys: str):
+    def concat(options1: ConfigParams, options2: ConfigParams, *keys: str) -> ConfigParams:
         """
         Concatinates two options by combining duplicated properties into comma-separated list
 
@@ -20,7 +21,7 @@ class ConnectionUtils:
         """
 
         options = ConfigParams.from_value(options1)
-        for key in options2.get_key_names():
+        for key in options2.get_keys():
             value1 = options1.get_as_string(key) or ''
             value2 = options2.get_as_string(key) or ''
 
@@ -36,13 +37,13 @@ class ConnectionUtils:
         return options
 
     @staticmethod
-    def __concat_values(value1: [str, None], value2: [str, None]):
+    def __concat_values(value1: Optional[str], value2: Optional[str]) -> str:
         if value1 is None or value1 == '': return value2
         if value2 is None or value2 == '': return value1
         return value1 + ',' + value2
 
     @staticmethod
-    def parse_uri(uri, default_protocol, default_port):
+    def parse_uri(uri: str, default_protocol: str, default_port: str) -> ConfigParams:
         """
         Parses URI into config parameters.
         The URI shall be in the following form:
@@ -118,7 +119,7 @@ class ConnectionUtils:
         return options
 
     @staticmethod
-    def compose_uri(options: ConfigParams, default_protocol: [str, None], default_port: [int, None]):
+    def compose_uri(options: ConfigParams, default_protocol: str, default_port: int) -> str:
         """
         Composes URI from config parameters.
         The result URI will be in the following form:
@@ -163,7 +164,7 @@ class ConnectionUtils:
 
         params = ''
         reserved_keys = ["protocol", "host", "port", "username", "password", "servers"]
-        for key in options.get_key_names():
+        for key in options.get_keys():
             if key in reserved_keys:
                 continue
 
@@ -182,7 +183,7 @@ class ConnectionUtils:
         return str(builder)
 
     @staticmethod
-    def include(options: ConfigParams, *keys: str):
+    def include(options: ConfigParams, *keys: str) -> ConfigParams:
         """
         Includes specified keys from the config parameters.
 
@@ -195,14 +196,21 @@ class ConnectionUtils:
 
         result = ConfigParams()
 
-        for key in options.get_key_names():
+        for key in options.get_keys():
             if key in keys:
                 result.set_as_object(key, options.get_as_string(key))
 
         return result
 
     @staticmethod
-    def exclude(options: ConfigParams, *keys: str):
+    def exclude(options: ConfigParams, *keys: str) -> ConfigParams:
+        """
+        Excludes specified keys from the config parameters.
+
+        :param options: configuration parameters to be processed.
+        :param keys: a list of keys to be excluded.
+        :return: a processed config parameters.
+        """
         if keys is None or len(keys) == 0: return options
 
         result = options.clone()

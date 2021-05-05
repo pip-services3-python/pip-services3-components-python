@@ -1,5 +1,23 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Component definitions for Python Changelog
 
+## <a name="3.4.0"></a> 3.4.0 (2021-05-05)
+
+### Bug fixes
+* fixed names of private, protected and public properties and methods
+* fixed interfaces method names
+
+### Features
+* added type hints
+* CacheEntry added methods:
+    - get_key
+    - get_value
+    - get_expiration
+* fixed initialization of default factories and child classes
+* Logger added get_source, set_source methods
+* CacheCounter added get_interval, set_interval methods
+* CachedLogger add max_cache_size param
+
+
 ## <a name="3.3.0"></a> 3.3.0 (2021-04-12)
 
 ### Features
@@ -27,7 +45,7 @@ added **Test** module
 added **Lock** module
 
 ### Breaking changes
-* **ConfigReader** rename read_config methods to _read_config
+* **ConfigReader** rename _read_config methods to _read_config
 
 ### Bug Fixes
 * fixed Logger output args

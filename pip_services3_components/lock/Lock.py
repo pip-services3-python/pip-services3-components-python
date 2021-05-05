@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from concurrent import futures
 import threading
 import time
-from abc import ABC, abstractmethod
+from abc import abstractmethod
+from concurrent import futures
+from typing import Optional
 
 from pip_services3_commons.config import ConfigParams, IReconfigurable
 from pip_services3_commons.errors import ConflictException
@@ -12,18 +13,18 @@ from .ILock import ILock
 
 
 class Lock(ILock, IReconfigurable):
-    _retry_timeout = 100
+    __retry_timeout = 100
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
         :param config: configuration parameters to be set.
         """
-        self._retry_timeout = config.get_as_string_with_default("options.retry_timeout", self._retry_timeout)
+        self.__retry_timeout = config.get_as_integer_with_default("options.retry_timeout", self.__retry_timeout)
 
     @abstractmethod
-    def try_acquire_lock(self, correlation_id, key, ttl):
+    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float) -> bool:
         """
         Makes a single attempt to acquire a lock by its key.
         It returns immediately a positive or negative result.
@@ -35,7 +36,7 @@ class Lock(ILock, IReconfigurable):
         """
 
     @abstractmethod
-    def release_lock(self, correlation_id, key):
+    def release_lock(self, correlation_id: Optional[str], key: str):
         """
         Releases prevously acquired lock by its key.
 
@@ -44,7 +45,15 @@ class Lock(ILock, IReconfigurable):
         :return:                  receive null for success.
         """
 
-    def acquire_lock(self, correlation_id, key, ttl, timeout):
+    def acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float, timeout: float):
+        """
+        Makes multiple attempts to acquire a lock by its key within give time interval.
+
+        :param correlation_id: (optional) transaction id to trace execution through call chain.
+        :param key: a unique lock key to acquire.
+        :param ttl: a lock timeout (time to live) in milliseconds.
+        :param timeout: a lock acquisition timeout.
+        """
         retry_time = int(round(time.time() * 1000)) + timeout
 
         # Try to get lock first
@@ -70,7 +79,7 @@ class Lock(ILock, IReconfigurable):
                 return
 
         e = threading.Event()
-        while not e.wait(self._retry_timeout / 1000):
+        while not e.wait(self.__retry_timeout / 1000):
             with futures.ThreadPoolExecutor() as executor:
                 future = executor.submit(inner_async, e.set)
                 value = future.result()

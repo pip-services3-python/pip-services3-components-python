@@ -8,16 +8,17 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from abc import ABC
 
 
-class ICounterTimingCallback:
+class ICounterTimingCallback(ABC):
     """
     Interface for a callback to end measurement of execution elapsed time.
 
     See :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>`
     """
 
-    def end_timing(self, name, elapsed):
+    def end_timing(self, name: str, elapsed: float):
         """
         Ends measurement of execution elapsed time and updates specified counter.
 

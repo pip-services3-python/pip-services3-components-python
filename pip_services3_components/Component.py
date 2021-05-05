@@ -9,8 +9,8 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from pip_services3_commons.config import IConfigurable
-from pip_services3_commons.refer import DependencyResolver
+from pip_services3_commons.config import IConfigurable, ConfigParams
+from pip_services3_commons.refer import DependencyResolver, IReferences
 from pip_services3_commons.refer import IReferenceable
 
 from .count.CompositeCounters import CompositeCounters
@@ -36,18 +36,14 @@ class Component(IConfigurable, IReferenceable):
         - `\*:tracer:\*:\*:1.0`       (optional) :class:`ITracer <pip_services3_components.trace.ITracer.ITracer>` components to record traces
         - `...`                                    References must match configured dependencies.
     """
-    _logger = None
-    _counters = None
-    _dependency_resolver = None
-    _tracer = None
 
     def __init__(self):
-        self._logger = CompositeLogger()
-        self._counters = CompositeCounters()
-        self._dependency_resolver = DependencyResolver()
-        self._tracer = CompositeTracer()
+        self._logger: CompositeLogger = CompositeLogger()
+        self._counters: CompositeCounters = CompositeCounters()
+        self._dependency_resolver: DependencyResolver = DependencyResolver()
+        self._tracer: CompositeTracer = CompositeTracer()
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -56,7 +52,7 @@ class Component(IConfigurable, IReferenceable):
         self._dependency_resolver.configure(config)
         self._logger.configure(config)
 
-    def set_references(self, references):
+    def set_references(self, references: IReferences):
         """
         Sets references to dependent components.
 

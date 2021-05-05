@@ -8,8 +8,12 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from abc import ABC
 
-class ICounters:
+from pip_services3_components.count import CounterTiming
+
+
+class ICounters(ABC):
     """
     Interface for performance counters that measure execution metrics.
     The performance counters measure how code is performing:
@@ -19,7 +23,7 @@ class ICounters:
     They are critical to monitor and improve performance, scalability and reliability of code in production.
     """
 
-    def begin_timing(self, name):
+    def begin_timing(self, name: str) -> CounterTiming:
         """
         Begins measurement of execution time interval.
         It returns :class:`CounterTiming <pip_services3_components.count.CounterTiming.CounterTiming>` object which has to be called at
@@ -31,7 +35,7 @@ class ICounters:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def stats(self, name, value):
+    def stats(self, name: str, value: float):
         """
         Calculates min/average/max statistics based on the current and previous values.
 
@@ -41,7 +45,7 @@ class ICounters:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def last(self, name, value):
+    def last(self, name: str, value: float):
         """
         Records the last calculated measurement value.
         Usually this method is used by metrics calculated externally.
@@ -52,7 +56,7 @@ class ICounters:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def timestamp_now(self, name):
+    def timestamp_now(self, name: str):
         """
         Records the current time as a timestamp.
 
@@ -60,7 +64,7 @@ class ICounters:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def timestamp(self, name, value):
+    def timestamp(self, name: str, value: float):
         """
         Records the given timestamp.
 
@@ -70,7 +74,7 @@ class ICounters:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def increment_one(self, name):
+    def increment_one(self, name: str):
         """
         Increments counter by 1.
 
@@ -78,7 +82,7 @@ class ICounters:
         """
         raise NotImplementedError('Method from interface definition')
 
-    def increment(self, name, value):
+    def increment(self, name: str, value: float):
         """
         Increments counter by given value.
 

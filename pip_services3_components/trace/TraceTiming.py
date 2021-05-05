@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import datetime
+from typing import Optional
+
+from pip_services3_components.trace import ITracer
 
 
 class TraceTiming:
@@ -20,7 +23,7 @@ class TraceTiming:
 
     """
 
-    def __init__(self, correlation_id: str, component: str, operation: str, tracer=None):
+    def __init__(self, correlation_id: Optional[str], component: str, operation: str, tracer: 'ITracer.ITracer' = None):
         self.__correlation_id = correlation_id
         self.__component = component
         self.__operation = operation
@@ -36,7 +39,7 @@ class TraceTiming:
             elapsed = (datetime.datetime.now().timestamp() * 1000) - self.__start
             self.__tracer.trace(self.__correlation_id, self.__component, self.__operation, round(elapsed))
 
-    def end_failure(self, error):
+    def end_failure(self, error: Exception):
         """
         Ends timing of a failed block, calculates elapsed time
         and records the associated trace.

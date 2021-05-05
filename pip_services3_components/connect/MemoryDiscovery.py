@@ -8,18 +8,22 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import List, Optional
 
-from pip_services3_commons.config.ConfigParams import ConfigParams
+from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.config.IReconfigurable import IReconfigurable
-from .IDiscovery import IDiscovery
+
 from .ConnectionParams import ConnectionParams
+from .IDiscovery import IDiscovery
+
 
 class DiscoveryItem:
     """
     Used to store key-identifiable information about connections.
     """
-    key = None
-    connection = None
+    key: str = None
+    connection: ConnectionParams = None
+
 
 class MemoryDiscovery(IDiscovery, IReconfigurable):
     """
@@ -46,19 +50,18 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
 
         discovery.resolve("123", "key1")
     """
-    _items = None
 
-    def __init__(self, config = None):
+    def __init__(self, config: ConfigParams = None):
         """
         Creates a new instance of discovery service.
 
         :param config: (optional) configuration with connection parameters.
         """
-        self._items = []
+        self.__items: List[DiscoveryItem] = []
         if not (config is None):
             self.configure(config)
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -66,22 +69,22 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
         """
         self.read_connections(config)
 
-    def read_connections(self, connections):
+    def read_connections(self, connections: ConfigParams):
         """
         Reads connections from configuration parameters.
-        Each section represents an individual Connectionparams
+        Each section represents an individual Connection params
 
         :param connections: configuration parameters to be read
         """
-        del self._items[:]
-        for key in connections.get_key_names():
+        del self.__items[:]
+        for key in connections.get_keys():
             item = DiscoveryItem()
             item.key = key
             value = connections.get_as_nullable_string(key)
             item.connection = ConnectionParams.from_string(value)
-            self._items.append(item)
+            self.__items.append(item)
 
-    def register(self, correlation_id, key, connection):
+    def register(self, correlation_id: Optional[str], key: str, connection: ConnectionParams) -> ConnectionParams:
         """
         Registers connection parameters into the discovery service.
 
@@ -90,13 +93,16 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
         :param key: a key to uniquely identify the connection parameters.
 
         :param connection: a connection to be registered.
+
+        :returns: the registered connection parameters.
         """
         item = DiscoveryItem()
         item.key = key
         item.connection = connection
-        self._items.append(item)
+        self.__items.append(item)
+        return connection
 
-    def resolve_one(self, correlation_id, key):
+    def resolve_one(self, correlation_id: Optional[str], key: str) -> ConnectionParams:
         """
         Resolves a single connection parameters by its key.
 
@@ -107,13 +113,13 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
         :return: a resolved connection.
         """
         connection = None
-        for item in self._items:
+        for item in self.__items:
             if item.key == key and not (item.connection is None):
                 connection = item.connection
                 break
         return connection
 
-    def resolve_all(self, correlationId, key):
+    def resolve_all(self, correlation_id: Optional[str], key: str) -> List[ConnectionParams]:
         """
         Resolves all connection parameters by their key.
 
@@ -124,7 +130,7 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
         :return: a list with resolved connections.
         """
         connections = []
-        for item in self._items:
+        for item in self.__items:
             if item.key == key and not (item.connection is None):
                 connections.append(item.connection)
         return connections

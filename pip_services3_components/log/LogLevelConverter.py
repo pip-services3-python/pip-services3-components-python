@@ -8,6 +8,7 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import Any
 
 from .LogLevel import LogLevel
 
@@ -18,7 +19,7 @@ class LogLevelConverter(object):
     """
 
     @staticmethod
-    def to_log_level(value, default_value=LogLevel.Info):
+    def to_log_level(value: Any, default_value: LogLevel = LogLevel.Info) -> LogLevel:
         """
         Converts numbers and strings to standard log level values.
 
@@ -49,7 +50,7 @@ class LogLevelConverter(object):
             return default_value
 
     @staticmethod
-    def to_string(level):
+    def to_string(level: LogLevel) -> str:
         """
         Converts log level to a string.
 
@@ -72,7 +73,7 @@ class LogLevelConverter(object):
         return "UNDEF"
 
     @staticmethod
-    def to_integer(level):
+    def to_integer(level: LogLevel) -> int:
         """
         Converts log level to a number.
 

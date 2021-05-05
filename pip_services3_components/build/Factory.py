@@ -8,9 +8,11 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+from typing import List, Any
 
-from .IFactory import IFactory
 from .CreateException import CreateException
+from .IFactory import IFactory
+
 
 class Registration:
     def __init__(self, locator, factory):
@@ -35,9 +37,11 @@ class Factory(IFactory):
 
         factory.create(Descriptor("mygroup", "mycomponent1", "default", "name1", "1.0"))
     """
-    _registrations = []
 
-    def register(self, locator, factory):
+    def __init__(self):
+        self.__registrations: List[Registration] = []
+
+    def register(self, locator: Any, factory: Any):
         """
         Registers a component using a factory method.
 
@@ -50,9 +54,9 @@ class Factory(IFactory):
         if factory is None:
             raise Exception("Factory cannot be null")
 
-        self._registrations.append(Registration(locator, factory))
+        self.__registrations.append(Registration(locator, factory))
 
-    def register_as_type(self, locator, object_factory):
+    def register_as_type(self, locator: Any, object_factory: Any):
         """
         Registers a component using its type (a constructor function).
 
@@ -68,9 +72,9 @@ class Factory(IFactory):
         def factory(locator):
             return object_factory()
 
-        self._registrations.append(Registration(locator, factory))
+        self.__registrations.append(Registration(locator, factory))
 
-    def can_create(self, locator):
+    def can_create(self, locator: Any) -> Any:
         """
         Checks if this factory is able to create component by given locator.
 
@@ -82,13 +86,13 @@ class Factory(IFactory):
 
         :return: a locator for a component that the factory is able to create.
         """
-        for registration in self._registrations:
+        for registration in self.__registrations:
             this_locator = registration.locator
             if this_locator == locator:
                 return this_locator
         return None
 
-    def create(self, locator):
+    def create(self, locator: Any) -> Any:
         """
         Creates a component identified by given locator.
 
@@ -96,7 +100,7 @@ class Factory(IFactory):
 
         :return: the created component.
         """
-        for registration in self._registrations:
+        for registration in self.__registrations:
             this_locator = registration.locator
 
             if this_locator == locator:
@@ -105,7 +109,7 @@ class Factory(IFactory):
                 except Exception as ex:
                     if isinstance(ex, CreateException):
                         raise ex
-                    
+
                     raise CreateException(
                         None,
                         "Failed to create object for " + str(locator)

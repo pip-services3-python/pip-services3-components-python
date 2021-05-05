@@ -9,11 +9,11 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .NullLogger import NullLogger
-from .ConsoleLogger import ConsoleLogger
-from .CompositeLogger import CompositeLogger
-
 from pip_services3_commons.refer.Descriptor import Descriptor
+
+from .CompositeLogger import CompositeLogger
+from .ConsoleLogger import ConsoleLogger
+from .NullLogger import NullLogger
 from ..build.Factory import Factory
 
 
@@ -35,6 +35,7 @@ class DefaultLoggerFactory(Factory):
         """
         Create a new instance of the factory.
         """
+        super().__init__()
         self.register_as_type(DefaultLoggerFactory.NullLoggerDescriptor, NullLogger)
         self.register_as_type(DefaultLoggerFactory.ConsoleLoggerDescriptor, ConsoleLogger)
         self.register_as_type(DefaultLoggerFactory.CompositeLoggerDescriptor, CompositeLogger)

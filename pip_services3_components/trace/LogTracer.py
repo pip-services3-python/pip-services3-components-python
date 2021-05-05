@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+from typing import Optional
 
-from pip_services3_commons.config import IConfigurable
-from pip_services3_commons.refer import IReferenceable
+from pip_services3_commons.config import IConfigurable, ConfigParams
+from pip_services3_commons.refer import IReferenceable, IReferences
 
 from pip_services3_components.log import CompositeLogger, LogLevel, LogLevelConverter
 from pip_services3_components.trace.ITracer import ITracer
@@ -39,14 +40,14 @@ class LogTracer(IConfigurable, IReferenceable, ITracer):
     """
 
     __LOGGER = CompositeLogger()
-    __log_level = LogLevel.Debug
 
     def __init__(self):
         """
         Creates a new instance of the tracer.
         """
+        self.__log_level = LogLevel.Debug
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -55,7 +56,7 @@ class LogTracer(IConfigurable, IReferenceable, ITracer):
         self.__log_level = LogLevelConverter.to_log_level(config.get_as_object('options.log_level'),
                                                           self.__log_level)
 
-    def set_references(self, references):
+    def set_references(self, references: IReferences):
         """
         Sets references to dependent components.
 
@@ -63,7 +64,7 @@ class LogTracer(IConfigurable, IReferenceable, ITracer):
         """
         self.__LOGGER.set_references(references)
 
-    def __log_trace(self, correlation_id, component: str, operation: str, error: [Exception, None], duration: float):
+    def __log_trace(self, correlation_id: Optional[str], component: str, operation: str, error: Optional[Exception], duration: float):
         builder = ''
 
         if error is not None:
@@ -83,7 +84,7 @@ class LogTracer(IConfigurable, IReferenceable, ITracer):
         else:
             self.__LOGGER.log(self.__log_level, correlation_id, None, builder)
 
-    def trace(self, correlation_id: str, component: str, operation: str, duration: float) -> None:
+    def trace(self, correlation_id: Optional[str], component: str, operation: str, duration: float):
         """
         Records an operation trace with its name and duration
 
@@ -94,7 +95,7 @@ class LogTracer(IConfigurable, IReferenceable, ITracer):
         """
         self.__log_trace(correlation_id, component, operation, None, duration)
 
-    def begin_trace(self, correlation_id: str, component: str, operation: str) -> TraceTiming:
+    def begin_trace(self, correlation_id: Optional[str], component: str, operation: str) -> TraceTiming:
         """
         Begings recording an operation trace
 

@@ -25,10 +25,6 @@ class CounterTiming:
         timing.end_timing()
     """
 
-    _start = None
-    _callback: ICounterTimingCallback = None
-    _counter: str = None
-
     def __init__(self, counter: str = None, callback: ICounterTimingCallback = None):
         """
         Creates a new instance of the timing callback object.
@@ -37,15 +33,15 @@ class CounterTiming:
         :param callback: a callback that shall be called when end_timing is called.
         """
 
-        self._counter = counter
-        self._callback = callback
-        self._start = time.perf_counter() * 1000
+        self.__counter: str = counter
+        self.__callback: ICounterTimingCallback = callback
+        self.__start: float = time.perf_counter() * 1000
 
     def end_timing(self):
         """
         Ends timing of an execution block, calculates elapsed time and updates the associated counter.
         """
 
-        if not (self._callback is None):
-            elapsed = time.perf_counter() * 1000 - self._start
-            self._callback.end_timing(self._counter, elapsed)
+        if not (self.__callback is None):
+            elapsed = time.perf_counter() * 1000 - self.__start
+            self.__callback.end_timing(self.__counter, elapsed)

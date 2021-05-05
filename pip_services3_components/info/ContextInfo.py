@@ -11,9 +11,13 @@
 
 import datetime
 import socket
-from pytz import timezone
+from typing import Any
 
+from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.config.IReconfigurable import IReconfigurable
+from pip_services3_commons.data import StringValueMap
+
+from pip_services3_components.info import ContextInfo
 
 
 class ContextInfo(IReconfigurable):
@@ -44,14 +48,8 @@ class ContextInfo(IReconfigurable):
         context.startTime		# Possible result: 2018-01-01:22:12:23.45Z
         context.uptime			# Possible result: 3454345
     """
-    __name = "unknown"
-    __properties = None
-    __description = None
-    __context_id = socket.gethostname()
-    __start_time = datetime.datetime.now()
-    __uptime = 0
 
-    def __init__(self, name=None, description=None):
+    def __init__(self, name: str = None, description: str = None):
         """
         Creates a new instance of this context info.
 
@@ -59,10 +57,14 @@ class ContextInfo(IReconfigurable):
 
         :param description: (optional) a human-readable description of the context.
         """
-        self.__name = name or "unknown"
-        self.__description = description
+        self.__name: str = name or "unknown"
+        self.__description: str = description
+        self.__properties: StringValueMap = StringValueMap()
+        self.__context_id = socket.gethostname()
+        self.__start_time: datetime.datetime = datetime.datetime.now()
+        self.__uptime: float = 0
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
@@ -77,7 +79,7 @@ class ContextInfo(IReconfigurable):
         self.__properties = config.get_section("properties")
 
     @property
-    def name(self):
+    def name(self) -> str:
         """
         Gets the context name.
 
@@ -86,7 +88,7 @@ class ContextInfo(IReconfigurable):
         return self.__name
 
     @name.setter
-    def name(self, name):
+    def name(self, name: str):
         """
         Sets the context name.
 
@@ -95,7 +97,7 @@ class ContextInfo(IReconfigurable):
         self.__name = name if name is not None else "unknown"
 
     @property
-    def description(self):
+    def description(self) -> str:
         """
         Gets the human-readable description of the context.
 
@@ -104,7 +106,7 @@ class ContextInfo(IReconfigurable):
         return self.__description
 
     @description.setter
-    def description(self, description):
+    def description(self, description: str):
         """
         Sets the human-readable description of the context.
 
@@ -113,7 +115,7 @@ class ContextInfo(IReconfigurable):
         self.__description = description
 
     @property
-    def context_id(self):
+    def context_id(self) -> str:
         """
         Gets the unique context id. Usually it is the current host name.
 
@@ -122,7 +124,7 @@ class ContextInfo(IReconfigurable):
         return self.__context_id
 
     @context_id.setter
-    def context_id(self, context_id):
+    def context_id(self, context_id: str):
         """
         Sets the unique context id.
 
@@ -131,7 +133,7 @@ class ContextInfo(IReconfigurable):
         self.__context_id = context_id
 
     @property
-    def start_time(self):
+    def start_time(self) -> datetime.datetime:
         """
         Gets the context start time.
 
@@ -140,7 +142,7 @@ class ContextInfo(IReconfigurable):
         return self.__start_time
 
     @start_time.setter
-    def start_time(self, start_time):
+    def start_time(self, start_time: datetime.datetime):
         """
         Sets the context start time.
 
@@ -149,7 +151,7 @@ class ContextInfo(IReconfigurable):
         self.__start_time = start_time
 
     @property
-    def uptime(self):
+    def uptime(self) -> float:
         """
         Calculates the context uptime as from the start time.
 
@@ -162,7 +164,7 @@ class ContextInfo(IReconfigurable):
         self.__uptime = uptime
 
     @property
-    def properties(self):
+    def properties(self) -> Any:
         """
         Gets context additional parameters.
 
@@ -171,7 +173,7 @@ class ContextInfo(IReconfigurable):
         return self.__properties
 
     @properties.setter
-    def properties(self, properties):
+    def properties(self, properties: Any):
         """
         Sets context additional parameters.
 
@@ -180,7 +182,7 @@ class ContextInfo(IReconfigurable):
         self.__properties = properties
 
     @staticmethod
-    def from_config(config):
+    def from_config(config: ConfigParams) -> ContextInfo:
         """
         Creates a new ContextInfo and sets its configuration parameters.
 

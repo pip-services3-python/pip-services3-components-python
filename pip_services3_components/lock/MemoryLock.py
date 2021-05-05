@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import time
+from typing import Optional
 
 from .Lock import Lock
 
@@ -26,7 +27,7 @@ class MemoryLock(Lock):
     """
     __locks = {}
 
-    def try_acquire_lock(self, correlation_id, key, ttl):
+    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float):
         """
         Makes a single attempt to acquire a lock by its key.
 
@@ -46,7 +47,7 @@ class MemoryLock(Lock):
         else:
             return False
 
-    def release_lock(self, correlation_id, key):
+    def release_lock(self, correlation_id: Optional[str], key: str):
         """
         Releases the lock with the given key.
 
@@ -54,4 +55,3 @@ class MemoryLock(Lock):
         :param key: the key of the lock that is to be released.
         """
         del self.__locks[key]
-

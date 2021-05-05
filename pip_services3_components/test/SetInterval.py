@@ -6,7 +6,9 @@ import time
 
 class SetInterval(threading.Thread):
     def __init__(self, callback, interval):
-        """Helper class that run and stop the callback function after interval milliseconds
+        """
+        Helper class that run and stop the callback function after interval milliseconds.
+        Realization only for Python.
 
         Example:
 

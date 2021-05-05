@@ -10,7 +10,9 @@
 """
 
 from pip_services3_commons.config.ConfigParams import ConfigParams
+
 from .ConfigReader import ConfigReader
+
 
 class FileConfigReader(ConfigReader):
     """
@@ -23,38 +25,37 @@ class FileConfigReader(ConfigReader):
         - parameters:    this entire section is used as template parameters
         - ...
     """
-    _path = None
 
-    def __init__(self, path = None):
+    def __init__(self, path: str = None):
         """
         Creates a new instance of the config reader.
 
         :param path: (optional) a path to configuration file.
         """
         super(FileConfigReader, self).__init__()
-        self._path = path
-        
-    def get_path(self):
+        self.__path: str = path
+
+    def get_path(self) -> str:
         """
         Get the path to configuration file.
 
         :return: the path to configuration file.
         """
-        return self._path
+        return self.__path
 
-    def set_path(self, path):
+    def set_path(self, path: str):
         """
         Set the path to configuration file.
 
         :param path: a new path to configuration file.
         """
-        self._path = path
+        self.__path = path
 
-    def configure(self, config):
+    def configure(self, config: ConfigParams):
         """
         Configures component by passing configuration parameters.
 
         :param config: configuration parameters to be set.
         """
         super(FileConfigReader, self).configure(config)
-        self._path = config.get_as_string_with_default("path", self._path)
+        self.__path = config.get_as_string_with_default("path", self.__path)
