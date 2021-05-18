@@ -9,6 +9,7 @@
     :license: MIT, see LICENSE for more details.
 """
 from abc import ABC
+import datetime
 
 from pip_services3_components.count import CounterTiming
 
@@ -64,7 +65,7 @@ class ICounters(ABC):
         """
         raise NotImplementedError('Method from interface definition')
 
-    def timestamp(self, name: str, value: float):
+    def timestamp(self, name: str, value: datetime.datetime):
         """
         Records the given timestamp.
 

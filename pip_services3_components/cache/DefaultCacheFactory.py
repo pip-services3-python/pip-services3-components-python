@@ -25,9 +25,10 @@ class DefaultCacheFactory(Factory):
     :class:`MemoryCache <pip_services3_components.cache.MemoryCache.MemoryCache>`,
     :class:`NullCache <pip_services3_components.cache.NullCache.NullCache>`
     """
-
+    
     NullCacheDescriptor = Descriptor("pip-services", "cache", "null", "*", "1.0")
     MemoryCacheDescriptor = Descriptor("pip-services", "cache", "memory", "*", "1.0")
+    descriptor = Descriptor("pip-services", "factory", "cache", "default", "1.0")
 
     def __init__(self):
         """

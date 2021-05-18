@@ -8,6 +8,7 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
+import datetime
 
 from .CounterTiming import CounterTiming
 from .ICounters import ICounters
@@ -60,7 +61,7 @@ class NullCounters(ICounters):
         """
         pass
 
-    def timestamp(self, name: str, value: float):
+    def timestamp(self, name: str, value: datetime.datetime):
         """
         Records the given timestamp.
 

@@ -127,7 +127,7 @@ class CompositeCounters(ICounters, ICounterTimingCallback, IReferenceable):
         for counter in self._counters:
             counter.timestamp_now(name)
 
-    def timestamp(self, name: str, value: float):
+    def timestamp(self, name: str, value: datetime.datetime):
         """
         Records the given timestamp.
 
