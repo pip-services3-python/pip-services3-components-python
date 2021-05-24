@@ -5,6 +5,7 @@
 ### Bug fixes
 * fixed names of private, protected and public properties and methods
 * fixed interfaces method names
+* fixed CompositeFactory.can_create
 
 ### Features
 * added type hints

@@ -29,8 +29,10 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
 
     .. code-block:: python
     
-        config = ConfigParams.from_tuples("connection.host", "{{SERVICE_HOST}}",
-                                         "connection.port", "{{SERVICE_PORT}}{{^SERVICE_PORT}}8080{{/SERVICE_PORT}}")
+        config = ConfigParams.from_tuples(
+	                "connection.host", "localhost",
+	                "connection.port", "8080"
+                )
 
         configReader = MemoryConfigReader()
         configReader.configure(config)

@@ -81,9 +81,9 @@ class CompositeFactory(IFactory):
 
         # Iterate from the latest factories
         for factory in reversed(self.__factories):
-            locator = factory.can_create(locator)
-            if not (locator is None):
-                return locator
+            _locator = factory.can_create(locator)
+            if not (_locator is None):
+                return _locator
 
         return None
 
