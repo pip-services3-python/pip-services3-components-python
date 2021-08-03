@@ -272,5 +272,5 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         :param value: a value to add to the counter.
         """
         counter = self.get(name, CounterType.Increment)
-        counter.count = counter.count + value if not (counter.count is None) else value
+        counter.count = value if counter.count is None else counter.count + value
         self._update()

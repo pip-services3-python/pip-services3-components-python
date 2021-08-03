@@ -45,7 +45,6 @@ class CompositeLogger(Logger, IReferenceable):
                 self.__logger.debug(correlation_id, "Called method mycomponent.mymethod")
 
     """
-    __loggers = None
 
     def __init__(self, references: IReferences = None):
         """

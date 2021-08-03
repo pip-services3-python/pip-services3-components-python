@@ -257,7 +257,7 @@ class Logger(ILogger, IReconfigurable, IReferenceable, ABC):
             builder += str(app_error.cause)
 
         if hasattr(error, 'stack_trace'):
-            builder += ' Stack trace '
+            builder += ' Stack trace: '
             builder += error.stack_trace
 
         return builder
