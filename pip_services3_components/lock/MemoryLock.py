@@ -27,7 +27,7 @@ class MemoryLock(Lock):
     """
     __locks = {}
 
-    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float):
+    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: int):
         """
         Makes a single attempt to acquire a lock by its key.
 

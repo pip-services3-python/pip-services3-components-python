@@ -10,7 +10,7 @@ class ILock(ABC):
     The lock allows to manage multiple locks identified by unique keys.
     """
 
-    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float) -> bool:
+    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: int) -> bool:
         """
         Makes a single attempt to acquire a lock by its key.
         It returns immediately a positive or negative result.
@@ -21,7 +21,7 @@ class ILock(ABC):
         :return:                lock result
         """
 
-    def acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float, timeout: float):
+    def acquire_lock(self, correlation_id: Optional[str], key: str, ttl: int, timeout: int):
         """
         Releases prevously acquired lock by its key.
 

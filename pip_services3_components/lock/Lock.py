@@ -24,7 +24,7 @@ class Lock(ILock, IReconfigurable):
         self.__retry_timeout = config.get_as_integer_with_default("options.retry_timeout", self.__retry_timeout)
 
     @abstractmethod
-    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float) -> bool:
+    def try_acquire_lock(self, correlation_id: Optional[str], key: str, ttl: int) -> bool:
         """
         Makes a single attempt to acquire a lock by its key.
         It returns immediately a positive or negative result.
@@ -45,7 +45,7 @@ class Lock(ILock, IReconfigurable):
         :return:                  receive null for success.
         """
 
-    def acquire_lock(self, correlation_id: Optional[str], key: str, ttl: float, timeout: float):
+    def acquire_lock(self, correlation_id: Optional[str], key: str, ttl: int, timeout: int):
         """
         Makes multiple attempts to acquire a lock by its key within give time interval.
 
