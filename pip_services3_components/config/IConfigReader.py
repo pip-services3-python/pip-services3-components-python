@@ -24,7 +24,7 @@ class IConfigReader(ABC):
     The values may come from application command like arguments or environment variables.
     """
 
-    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
+    def read_config_(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 

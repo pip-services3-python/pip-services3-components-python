@@ -1,5 +1,11 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Component definitions for Python Changelog
 
+## <a name="3.4.3"></a> 3.4.3 (2021-09-05)
+
+### Bug fixes
+* Fixed protected methods for **config** module
+
+
 ## <a name="3.4.2"></a> 3.4.2 (2021-08-03)
 
 ### Bug fixes

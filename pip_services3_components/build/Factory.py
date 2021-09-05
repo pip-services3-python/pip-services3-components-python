@@ -56,21 +56,21 @@ class Factory(IFactory):
 
         self.__registrations.append(Registration(locator, factory))
 
-    def register_as_type(self, locator: Any, object_factory: Any):
+    def register_as_type(self, locator: Any, component_type: Any):
         """
         Registers a component using its type (a constructor function).
 
         :param locator: a locator to identify component to be created.
 
-        :param object_factory: a component type.
+        :param component_type: a component type.
         """
         if locator is None:
             raise Exception("Locator cannot be null")
-        if object_factory is None:
+        if component_type is None:
             raise Exception("Factory cannot be null")
 
         def factory(locator):
-            return object_factory()
+            return component_type()
 
         self.__registrations.append(Registration(locator, factory))
 

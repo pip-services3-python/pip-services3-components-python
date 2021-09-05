@@ -44,7 +44,7 @@ class JsonConfigReader(FileConfigReader):
     
         configReader = JsonConfigReader("config.json")
         parameters = ConfigParams.from_tuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC")
-        configReader._read_config("123", parameters)
+        configReader.read_config_("123", parameters)
     """
 
     def __init__(self, path: str = None):
@@ -55,7 +55,7 @@ class JsonConfigReader(FileConfigReader):
         """
         super(JsonConfigReader, self).__init__(path)
 
-    def _read_object(self, correlation_id: Optional[str], parameters: ConfigParams) -> Any:
+    def read_object_(self, correlation_id: Optional[str], parameters: ConfigParams) -> Any:
         """
         Reads configuration file, parameterizes its content and converts it into JSON object.
 
@@ -84,7 +84,7 @@ class JsonConfigReader(FileConfigReader):
                 "Failed reading configuration " + path + ": " + str(ex)
             ).with_details("path", path).with_cause(ex)
 
-    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
+    def read_config_(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 
@@ -94,7 +94,7 @@ class JsonConfigReader(FileConfigReader):
 
         :return: ConfigParams configuration.
         """
-        value = self._read_object(correlation_id, parameters)
+        value = self.read_object_(correlation_id, parameters)
         return ConfigParams.from_value(value)
 
     @staticmethod
@@ -110,7 +110,7 @@ class JsonConfigReader(FileConfigReader):
 
         :return: a JSON object with configuration.
         """
-        return JsonConfigReader(path)._read_object(correlation_id, parameters)
+        return JsonConfigReader(path).read_object_(correlation_id, parameters)
 
     @staticmethod
     def read_config(correlation_id: Optional[str], path: str, parameters: ConfigParams) -> ConfigParams:
@@ -125,5 +125,5 @@ class JsonConfigReader(FileConfigReader):
 
         :return: ConfigParams configuration.
         """
-        value = JsonConfigReader(path)._read_object(correlation_id, parameters)
+        value = JsonConfigReader(path).read_object_(correlation_id, parameters)
         return ConfigParams.from_value(value)

@@ -44,7 +44,7 @@ class ConfigReader(IConfigReader, IConfigurable):
             self.__parameters = parameters
 
     @abstractmethod
-    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
+    def read_config_(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 

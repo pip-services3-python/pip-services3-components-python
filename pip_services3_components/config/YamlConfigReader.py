@@ -43,7 +43,7 @@ class YamlConfigReader(FileConfigReader):
     
         configReader = YamlConfigReader("config.yml")
         parameters = ConfigParams.from_tuples("KEY1_VALUE", 123, "KEY2_VALUE", "ABC")
-        configReader._read_config("123", parameters)
+        configReader.read_config_("123", parameters)
     """
 
     def __init__(self, path: str = None):
@@ -84,7 +84,7 @@ class YamlConfigReader(FileConfigReader):
                 "Failed reading configuration " + path + ": " + str(ex)
             ).with_details("path", path).with_cause(ex)
 
-    def _read_config(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
+    def read_config_(self, correlation_id: Optional[str], parameters: ConfigParams) -> ConfigParams:
         """
         Reads configuration and parameterize it with given values.
 
