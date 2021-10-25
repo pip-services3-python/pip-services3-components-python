@@ -1,5 +1,19 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Component definitions for Python Changelog
 
+## <a name="3.5.0"></a> 3.5.0 (2021-10-25)
+
+Added state management components
+
+### Bug fixes
+* Specify versions for requirements
+
+### Features
+* Update imports
+* **state** Added IStateStore interface and StateValue class
+* **state** Added NullStateStore class
+* **trace** Added MemoryStateStore class
+* **trace** Added DefaultStateStoreFactory class
+
 ## <a name="3.4.3"></a> 3.4.3 (2021-09-05)
 
 ### Bug fixes

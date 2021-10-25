@@ -23,7 +23,7 @@ except:
 
 setup(
     name='pip_services3_components',
-    version='3.4.3',
+    version='3.5.0',
     url='http://github.com/pip-services3-python/pip-services3-components-python',
     license='MIT',
     description='Component definitions for Pip.Services in Python',
