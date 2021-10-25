@@ -16,6 +16,7 @@ Subpackages
    pip_services3_components.info
    pip_services3_components.lock
    pip_services3_components.log
+   pip_services3_components.state
    pip_services3_components.test
    pip_services3_components.trace
 

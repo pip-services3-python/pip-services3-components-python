@@ -1,0 +1,7 @@
+pip\_services3\_components.state.StateEntry module
+==================================================
+
+.. automodule:: pip_services3_components.state.StateEntry
+   :members:
+   :undoc-members:
+   :show-inheritance:

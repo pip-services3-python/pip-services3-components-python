@@ -1,0 +1,7 @@
+pip\_services3\_components.state.IStateStore module
+===================================================
+
+.. automodule:: pip_services3_components.state.IStateStore
+   :members:
+   :undoc-members:
+   :show-inheritance:

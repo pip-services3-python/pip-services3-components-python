@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pip_services3_components.state package &mdash; pip-services3-components  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pip_services3_components.state.DefaultStateStoreFactory module" href="pip_services3_components.state.DefaultStateStoreFactory.html" />
+    <link rel="prev" title="pip_services3_components.log.NullLogger module" href="pip_services3_components.log.NullLogger.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pip-services3-components
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pip_services3_components</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pip_services3_components.html">pip_services3_components package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pip_services3_components.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.auth.html">pip_services3_components.auth package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.build.html">pip_services3_components.build package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.cache.html">pip_services3_components.cache package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.config.html">pip_services3_components.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.connect.html">pip_services3_components.connect package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.count.html">pip_services3_components.count package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.info.html">pip_services3_components.info package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.lock.html">pip_services3_components.lock package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.log.html">pip_services3_components.log package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pip_services3_components.state package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.test.html">pip_services3_components.test package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pip_services3_components.trace.html">pip_services3_components.trace package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pip_services3_components.html#module-pip_services3_components">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pip-services3-components</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">pip_services3_components</a> &raquo;</li>
+          <li><a href="pip_services3_components.html">pip_services3_components package</a> &raquo;</li>
+      <li>pip_services3_components.state package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pip_services3_components.state.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pip-services3-components-state-package">
+<h1>pip_services3_components.state package<a class="headerlink" href="#pip-services3-components-state-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.state.DefaultStateStoreFactory.html">pip_services3_components.state.DefaultStateStoreFactory module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.state.IStateStore.html">pip_services3_components.state.IStateStore module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.state.MemoryStateStore.html">pip_services3_components.state.MemoryStateStore module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.state.NullStateStore.html">pip_services3_components.state.NullStateStore module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.state.StateEntry.html">pip_services3_components.state.StateEntry module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pip_services3_components.state.StateValue.html">pip_services3_components.state.StateValue module</a></li>
+</ul>
+</div>
+</section>
+<section id="module-pip_services3_components.state">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pip_services3_components.state" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt id="pip_services3_components.state.DefaultStateStoreFactory">
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.state.</code><code class="sig-name descname">DefaultStateStoreFactory</code><a class="headerlink" href="#pip_services3_components.state.DefaultStateStoreFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.build.Factory.Factory</span></code></a></p>
+<p>Creates <a class="reference internal" href="pip_services3_components.state.IStateStore.html#pip_services3_components.state.IStateStore.IStateStore" title="pip_services3_components.state.IStateStore.IStateStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IStateStore</span></code></a> components by their descriptors.</p>
+<p>See: <a class="reference internal" href="pip_services3_components.build.Factory.html#pip_services3_components.build.Factory.Factory" title="pip_services3_components.build.Factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Factory</span></code></a>,
+<a class="reference internal" href="pip_services3_components.state.IStateStore.html#pip_services3_components.state.IStateStore.IStateStore" title="pip_services3_components.state.IStateStore.IStateStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">IStateStore</span></code></a>,
+<a class="reference internal" href="pip_services3_components.state.MemoryStateStore.html#pip_services3_components.state.MemoryStateStore.MemoryStateStore" title="pip_services3_components.state.MemoryStateStore.MemoryStateStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryStateStore</span></code></a>,
+<a class="reference internal" href="pip_services3_components.state.NullStateStore.html#pip_services3_components.state.NullStateStore.NullStateStore" title="pip_services3_components.state.NullStateStore.NullStateStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">NullStateStore</span></code></a></p>
+<dl class="py attribute">
+<dt id="pip_services3_components.state.DefaultStateStoreFactory.MemoryStateStoreDescriptor">
+<code class="sig-name descname">MemoryStateStoreDescriptor</code><em class="property"> = &lt;pip_services3_commons.refer.Descriptor.Descriptor object&gt;</em><a class="headerlink" href="#pip_services3_components.state.DefaultStateStoreFactory.MemoryStateStoreDescriptor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pip_services3_components.state.DefaultStateStoreFactory.NullStateStoreDescriptor">
+<code class="sig-name descname">NullStateStoreDescriptor</code><em class="property"> = &lt;pip_services3_commons.refer.Descriptor.Descriptor object&gt;</em><a class="headerlink" href="#pip_services3_components.state.DefaultStateStoreFactory.NullStateStoreDescriptor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pip_services3_components.state.DefaultStateStoreFactory.descriptor">
+<code class="sig-name descname">descriptor</code><em class="property"> = &lt;pip_services3_commons.refer.Descriptor.Descriptor object&gt;</em><a class="headerlink" href="#pip_services3_components.state.DefaultStateStoreFactory.descriptor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pip_services3_components.state.IStateStore">
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.state.</code><code class="sig-name descname">IStateStore</code><a class="headerlink" href="#pip_services3_components.state.IStateStore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Interface for state storages that are used to store and retrieve transaction states.</p>
+<dl class="py method">
+<dt id="pip_services3_components.state.IStateStore.delete">
+<em class="property">abstract </em><code class="sig-name descname">delete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.IStateStore.delete" title="Permalink to this definition"></a></dt>
+<dd><p>Deletes a state from the store by its key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>key</strong> – a unique value key.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>deleted item</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.IStateStore.load">
+<em class="property">abstract </em><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.IStateStore.load" title="Permalink to this definition"></a></dt>
+<dd><p>Loads state from the store using its key.
+If value is missing in the store it returns None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>key</strong> – a unique state key.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the state value or <cite>None</cite> if value wasn’t found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.IStateStore.load_bulk">
+<em class="property">abstract </em><code class="sig-name descname">load_bulk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">keys</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="pip_services3_components.state.StateValue.html#pip_services3_components.state.StateValue.StateValue" title="pip_services3_components.state.StateValue.StateValue">pip_services3_components.state.StateValue.StateValue</a><span class="p">]</span><a class="headerlink" href="#pip_services3_components.state.IStateStore.load_bulk" title="Permalink to this definition"></a></dt>
+<dd><p>Loads an array of states from the store using their keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>keys</strong> – unique state keys.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an array with state values and their corresponding keys.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.IStateStore.save">
+<em class="property">abstract </em><code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.IStateStore.save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves state into the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>key</strong> – a unique state key.</p></li>
+<li><p><strong>value</strong> – a state value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The state that was stored in the store.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pip_services3_components.state.MemoryStateStore">
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.state.</code><code class="sig-name descname">MemoryStateStore</code><a class="headerlink" href="#pip_services3_components.state.MemoryStateStore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.state.IStateStore.html#pip_services3_components.state.IStateStore.IStateStore" title="pip_services3_components.state.IStateStore.IStateStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.state.IStateStore.IStateStore</span></code></a>, <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.IReconfigurable.html#pip_services3_commons.config.IReconfigurable.IReconfigurable" title="(in pip-services3-commons)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_commons.config.IReconfigurable.IReconfigurable</span></code></a></p>
+<p>State store that keeps states in the process memory.</p>
+<p>Remember: This implementation is not suitable for synchronization of distributed processes.</p>
+<p>### Configuration parameters ###</p>
+<blockquote>
+<div><p>__options:__
+- timeout: default caching timeout in milliseconds (default: disabled)</p>
+</div></blockquote>
+<p>See: <a class="reference internal" href="pip_services3_components.cache.ICache.html#pip_services3_components.cache.ICache.ICache" title="pip_services3_components.cache.ICache.ICache"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICache</span></code></a></p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">MemoryStateStore</span><span class="p">()</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="s2">&quot;key1&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">store</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;ABC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pip_services3_components.state.MemoryStateStore.configure">
+<code class="sig-name descname">configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.ConfigParams.html#pip_services3_commons.config.ConfigParams.ConfigParams" title="(in pip-services3-commons)">pip_services3_commons.config.ConfigParams.ConfigParams</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.state.MemoryStateStore.configure" title="Permalink to this definition"></a></dt>
+<dd><p>Configures component by passing configuration parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – configuration parameters to be set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.MemoryStateStore.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.MemoryStateStore.delete" title="Permalink to this definition"></a></dt>
+<dd><p>Deletes a state from the store by its key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>key</strong> – a unique state key.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>deleted item</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.MemoryStateStore.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.MemoryStateStore.load" title="Permalink to this definition"></a></dt>
+<dd><p>Loads stored value from the store using its key.
+If value is missing in the store it returns None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>key</strong> – a unique state key.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the state value or <cite>None</cite> if value wasn’t found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.MemoryStateStore.load_bulk">
+<code class="sig-name descname">load_bulk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">keys</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="pip_services3_components.state.StateValue.html#pip_services3_components.state.StateValue.StateValue" title="pip_services3_components.state.StateValue.StateValue">pip_services3_components.state.StateValue.StateValue</a><span class="p">]</span><a class="headerlink" href="#pip_services3_components.state.MemoryStateStore.load_bulk" title="Permalink to this definition"></a></dt>
+<dd><p>Loads an array of states from the store using their keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>keys</strong> – unique state keys.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an array with state values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.MemoryStateStore.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.MemoryStateStore.save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves state into the store</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>key</strong> – a unique state key.</p></li>
+<li><p><strong>value</strong> – a state value to store.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value that was stored in the cache.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pip_services3_components.state.NullStateStore">
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.state.</code><code class="sig-name descname">NullStateStore</code><a class="headerlink" href="#pip_services3_components.state.NullStateStore" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.state.IStateStore.html#pip_services3_components.state.IStateStore.IStateStore" title="pip_services3_components.state.IStateStore.IStateStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.state.IStateStore.IStateStore</span></code></a></p>
+<p>Dummy state store implementation that doesn’t do anything.</p>
+<p>It can be used in testing or in situations when state management is not required
+but shall be disabled.</p>
+<p>See: <a class="reference internal" href="pip_services3_components.cache.ICache.html#pip_services3_components.cache.ICache.ICache" title="pip_services3_components.cache.ICache.ICache"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICache</span></code></a></p>
+<dl class="py method">
+<dt id="pip_services3_components.state.NullStateStore.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.NullStateStore.delete" title="Permalink to this definition"></a></dt>
+<dd><p>Deletes a state from the store by its key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>key</strong> – a unique value key.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>deleted item</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.NullStateStore.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.NullStateStore.load" title="Permalink to this definition"></a></dt>
+<dd><p>Loads state from the store using its key.
+If value is missing in the stored it returns None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>key</strong> – a unique state key.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the state value or <cite>None</cite> if value wasn’t found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.NullStateStore.load_bulk">
+<code class="sig-name descname">load_bulk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">keys</span><span class="p">:</span> <span class="n">List<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="pip_services3_components.state.StateValue.html#pip_services3_components.state.StateValue.StateValue" title="pip_services3_components.state.StateValue.StateValue">pip_services3_components.state.StateValue.StateValue</a><span class="p">]</span><a class="headerlink" href="#pip_services3_components.state.NullStateStore.load_bulk" title="Permalink to this definition"></a></dt>
+<dd><p>Loads an array of states from the store using their keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>keys</strong> – unique state keys.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an array with state values and their corresponding keys.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.NullStateStore.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">, </span><a class="reference external" href="http://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)">None</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.state.NullStateStore.save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves state into the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution throug</p></li>
+<li><p><strong>key</strong> – a unique state key.</p></li>
+<li><p><strong>value</strong> – a state value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The state that was stored in the store.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pip_services3_components.state.StateEntry">
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.state.</code><code class="sig-name descname">StateEntry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.state.StateEntry" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Data object to store state values with their keys used by <a class="reference internal" href="pip_services3_components.state.MemoryStateStore.html#pip_services3_components.state.MemoryStateStore.MemoryStateStore" title="pip_services3_components.state.MemoryStateStore.MemoryStateStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryStateStore</span></code></a></p>
+<dl class="py method">
+<dt id="pip_services3_components.state.StateEntry.get_key">
+<code class="sig-name descname">get_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><a class="headerlink" href="#pip_services3_components.state.StateEntry.get_key" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the key to locate the state value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the value key.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.StateEntry.get_last_update_time">
+<code class="sig-name descname">get_last_update_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="http://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)">int</a><a class="headerlink" href="#pip_services3_components.state.StateEntry.get_last_update_time" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the last update time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the timestamp when the value ware stored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.StateEntry.get_value">
+<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.state.StateEntry.get_value" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the sstate value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the value object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.state.StateEntry.set_value">
+<code class="sig-name descname">set_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.state.StateEntry.set_value" title="Permalink to this definition"></a></dt>
+<dd><p>Sets a new state value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – a new cached value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pip_services3_components.state.StateValue">
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.state.</code><code class="sig-name descname">StateValue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.state.StateValue" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pip_services3_components.log.NullLogger.html" class="btn btn-neutral float-left" title="pip_services3_components.log.NullLogger module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pip_services3_components.state.DefaultStateStoreFactory.html" class="btn btn-neutral float-right" title="pip_services3_components.state.DefaultStateStoreFactory module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Sergey Seroukhov.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+pip\_services3\_components.state package
+========================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pip_services3_components.state.DefaultStateStoreFactory
+   pip_services3_components.state.IStateStore
+   pip_services3_components.state.MemoryStateStore
+   pip_services3_components.state.NullStateStore
+   pip_services3_components.state.StateEntry
+   pip_services3_components.state.StateValue
+
+Module contents
+---------------
+
+.. automodule:: pip_services3_components.state
+   :members:
+   :undoc-members:
+   :show-inheritance:

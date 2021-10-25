@@ -1,0 +1,7 @@
+pip\_services3\_components.state.DefaultStateStoreFactory module
+================================================================
+
+.. automodule:: pip_services3_components.state.DefaultStateStoreFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:
