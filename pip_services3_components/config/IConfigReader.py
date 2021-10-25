@@ -8,7 +8,7 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Optional
 
 from pip_services3_commons.config import ConfigParams

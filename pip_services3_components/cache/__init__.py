@@ -15,8 +15,8 @@ __all__ = [
     'MemoryCache', 'DefaultCacheFactory'
 ]
 
-from .ICache import ICache
 from .CacheEntry import CacheEntry
-from .NullCache import NullCache
-from .MemoryCache import MemoryCache
 from .DefaultCacheFactory import DefaultCacheFactory
+from .ICache import ICache
+from .MemoryCache import MemoryCache
+from .NullCache import NullCache

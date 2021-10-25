@@ -20,11 +20,10 @@
 """
 
 __all__ = ['CredentialParams', 'ICredentialStore', 'CredentialResolver',
-    'MemoryCredentialStore', 'DefaultCredentialStoreFactory']
+           'MemoryCredentialStore', 'DefaultCredentialStoreFactory']
 
 from .CredentialParams import CredentialParams
-from .ICredentialStore import ICredentialStore
 from .CredentialResolver import CredentialResolver
-from .MemoryCredentialStore import MemoryCredentialStore
 from .DefaultCredentialStoreFactory import DefaultCredentialStoreFactory
-
+from .ICredentialStore import ICredentialStore
+from .MemoryCredentialStore import MemoryCredentialStore

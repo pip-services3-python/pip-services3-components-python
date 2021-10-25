@@ -10,7 +10,7 @@
 """
 from typing import Any, List
 
-from pip_services3_commons.config.ConfigParams import ConfigParams
+from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.data import StringValueMap
 
 

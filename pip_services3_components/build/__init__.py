@@ -12,7 +12,7 @@
 
 __all__ = ['IFactory', 'CreateException', 'CompositeFactory', 'Factory']
 
-from .IFactory import IFactory
-from .CreateException import CreateException
 from .CompositeFactory import CompositeFactory
+from .CreateException import CreateException
 from .Factory import Factory
+from .IFactory import IFactory

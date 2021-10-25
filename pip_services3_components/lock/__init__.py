@@ -10,4 +10,10 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__all__ = []
+__all__ = ['DefaultLockFactory', 'ILock', 'Lock', 'MemoryLock', 'NullLock']
+
+from .DefaultLockFactory import DefaultLockFactory
+from .ILock import ILock
+from .Lock import Lock
+from .MemoryLock import MemoryLock
+from .NullLock import NullLock

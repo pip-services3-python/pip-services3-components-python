@@ -18,13 +18,13 @@ __all__ = [
     'DefaultCountersFactory'
 ]
 
-from .CounterType import CounterType
-from .ICounterTimingCallback import ICounterTimingCallback
-from .ICounters import ICounters
+from .CachedCounters import CachedCounters
+from .CompositeCounters import CompositeCounters
 from .Counter import Counter
 from .CounterTiming import CounterTiming
-from .CachedCounters import CachedCounters
-from .NullCounters import NullCounters
-from .CompositeCounters import CompositeCounters
-from .LogCounters import LogCounters
+from .CounterType import CounterType
 from .DefaultCountersFactory import DefaultCountersFactory
+from .ICounterTimingCallback import ICounterTimingCallback
+from .ICounters import ICounters
+from .LogCounters import LogCounters
+from .NullCounters import NullCounters

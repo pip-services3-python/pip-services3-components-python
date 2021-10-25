@@ -7,21 +7,20 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import pytest
+from pip_services3_commons.refer import Descriptor
 
 from pip_services3_components.log import DefaultLoggerFactory
 from pip_services3_components.log import LogLevel
-from pip_services3_commons.refer import Descriptor
+
 
 class TestFactory:
 
     def test_can_create(self):
         factory = DefaultLoggerFactory()
-        assert None == factory.can_create(111)
+        assert None is factory.can_create(111)
 
         descriptor = Descriptor('*', 'logger', 'console', '*', '*')
         assert descriptor == factory.can_create(descriptor)
-
 
     def test_create(self):
         factory = DefaultLoggerFactory()

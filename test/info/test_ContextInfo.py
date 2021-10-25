@@ -9,11 +9,9 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import pytest
 import datetime
 
 from pip_services3_commons.config import ConfigParams
-from pytz import timezone
 
 from pip_services3_components.info.ContextInfo import ContextInfo
 

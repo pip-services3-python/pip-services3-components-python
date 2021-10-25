@@ -9,11 +9,11 @@
     :license: MIT, see LICENSE for more details.
 """
 
-from .NullCounters import NullCounters
-from .LogCounters import LogCounters
-from .CompositeCounters import CompositeCounters
-
 from pip_services3_commons.refer.Descriptor import Descriptor
+
+from .CompositeCounters import CompositeCounters
+from .LogCounters import LogCounters
+from .NullCounters import NullCounters
 from ..build.Factory import Factory
 
 

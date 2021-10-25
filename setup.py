@@ -36,7 +36,7 @@ setup(
     zip_safe=True,
     platforms='any',
     install_requires=[
-        'iso8601', 'PyYAML', 'pybars3', 'wheel', 'pytz', 'pystache', 'pytest', 'pip_services3_commons'
+        'pybars3', 'pip_services3_commons >= 3.3.9, <=4.0', 'pip_services3_expressions >= 3.3.4, <=4.0'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

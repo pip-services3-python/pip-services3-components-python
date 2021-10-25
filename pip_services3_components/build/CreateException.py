@@ -8,7 +8,7 @@
     :copyright: Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
-from typing import Optional, Any
+from typing import Optional
 
 from pip_services3_commons.errors.InternalException import InternalException
 

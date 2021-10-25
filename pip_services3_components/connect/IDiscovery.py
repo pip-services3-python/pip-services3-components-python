@@ -11,7 +11,7 @@
 from abc import ABC
 from typing import Optional, List
 
-from pip_services3_components.connect import ConnectionParams
+from .ConnectionParams import ConnectionParams
 
 
 class IDiscovery(ABC):

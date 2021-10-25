@@ -7,13 +7,11 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import pytest
-
 from pip_services3_commons.config import ConfigParams
-from pip_services3_components.auth import CredentialParams
+from pip_services3_commons.refer import References
+
 from pip_services3_components.connect import ConnectionParams
 from pip_services3_components.connect import ConnectionResolver
-from pip_services3_commons.refer import References
 
 RestConfig = ConfigParams.from_tuples(
     "connection.protocol", "http",

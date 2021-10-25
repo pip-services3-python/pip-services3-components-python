@@ -35,12 +35,14 @@
     :license: MIT, see LICENSE for more details.
 """
 
-__all__ = [ 'ConnectionParams', 'IDiscovery', 'ConnectionResolver',
-    'MemoryDiscovery', 'DefaultDiscoveryFactory' ]
+__all__ = ['CompositeConnectionResolver', 'ConnectionParams',
+           'IDiscovery', 'ConnectionResolver',
+           'ConnectionUtils', 'MemoryDiscovery', 'DefaultDiscoveryFactory']
 
+from .CompositeConnectionResolver import CompositeConnectionResolver
 from .ConnectionParams import ConnectionParams
-from .IDiscovery import IDiscovery
 from .ConnectionResolver import ConnectionResolver
-from .MemoryDiscovery import MemoryDiscovery
+from .ConnectionUtils import ConnectionUtils
 from .DefaultDiscoveryFactory import DefaultDiscoveryFactory
-
+from .IDiscovery import IDiscovery
+from .MemoryDiscovery import MemoryDiscovery

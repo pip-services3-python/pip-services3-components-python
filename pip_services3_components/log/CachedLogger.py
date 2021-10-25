@@ -9,7 +9,6 @@
     :license: MIT, see LICENSE for more details.
 """
 
-import socket
 import threading
 import time
 from abc import abstractmethod

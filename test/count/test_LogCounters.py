@@ -11,7 +11,7 @@ from pip_services3_commons.refer import Descriptor
 from pip_services3_commons.refer import References
 
 from pip_services3_components.count import LogCounters
-from pip_services3_components.log import ConsoleLogger, NullLogger
+from pip_services3_components.log import NullLogger
 from .CountersFixture import CountersFixture
 
 

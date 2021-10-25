@@ -20,10 +20,10 @@ __all__ = [
     'DefaultConfigReaderFactory'
 ]
 
-from .IConfigReader import IConfigReader
 from .ConfigReader import ConfigReader
-from .MemoryConfigReader import MemoryConfigReader
-from .FileConfigReader import FileConfigReader
-from .JsonConfigReader import JsonConfigReader
-from .YamlConfigReader import YamlConfigReader
 from .DefaultConfigReaderFactory import DefaultConfigReaderFactory
+from .FileConfigReader import FileConfigReader
+from .IConfigReader import IConfigReader
+from .JsonConfigReader import JsonConfigReader
+from .MemoryConfigReader import MemoryConfigReader
+from .YamlConfigReader import YamlConfigReader

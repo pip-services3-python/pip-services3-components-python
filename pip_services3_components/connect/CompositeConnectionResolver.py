@@ -7,7 +7,8 @@ from pip_services3_commons.errors import ConfigException
 from pip_services3_commons.refer import IReferenceable, IReferences
 
 from pip_services3_components.auth import CredentialResolver, CredentialParams
-from pip_services3_components.connect import ConnectionResolver, ConnectionParams
+from .ConnectionResolver import ConnectionResolver
+from .ConnectionParams import ConnectionParams
 
 
 class CompositeConnectionResolver(IReferenceable, IConfigurable):
