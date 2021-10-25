@@ -12,6 +12,7 @@ from abc import ABC
 from typing import Optional
 
 from pip_services3_commons.config import ConfigParams
+from pip_services3_commons.run import INotifiable
 
 
 class IConfigReader(ABC):
@@ -33,5 +34,21 @@ class IConfigReader(ABC):
         :param parameters: values to parameters the configuration or null to skip parameterization.
 
         :return: ConfigParams configuration.
+        """
+        raise NotImplementedError('Method from interface definition')
+
+    def add_change_listener(self, listener: INotifiable):
+        """
+        Adds a listener that will be notified when configuration is changed
+
+        :param listener: a listener to be added.
+        """
+        raise NotImplementedError('Method from interface definition')
+
+    def remove_change_listener(self, listener: INotifiable):
+        """
+        Remove a previously added change listener.
+
+        :param listener: a listener to be removed.
         """
         raise NotImplementedError('Method from interface definition')

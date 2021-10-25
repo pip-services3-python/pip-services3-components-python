@@ -12,6 +12,7 @@ from typing import Optional
 
 from pip_services3_commons.config.ConfigParams import ConfigParams
 from pip_services3_commons.config.IReconfigurable import IReconfigurable
+from pip_services3_commons.run import INotifiable
 from pip_services3_expressions.mustache.MustacheTemplate import MustacheTemplate
 
 from .IConfigReader import IConfigReader
@@ -38,7 +39,7 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
         configReader.configure(config)
 
         parameters = ConfigParams.fromValue(os.get_env())
-        configReader.readConfig("123", parameters)
+        configReader.read_config_("123", parameters)
     """
 
     def __init__(self, config: ConfigParams = None):
@@ -47,7 +48,7 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
 
         :param config: (optional) component configuration parameters
         """
-        self._config: ConfigParams = config
+        self._config: ConfigParams = config or ConfigParams()
 
     def configure(self, config: ConfigParams):
         """
@@ -75,6 +76,18 @@ class MemoryConfigReader(IConfigReader, IReconfigurable):
         else:
             return ConfigParams(self._config)
 
-    def read_config_section(self, section):
-        config = self._config.get_section(section) if self._not(config is None) else None
-        return config
+    def add_change_listener(self, listener: INotifiable):
+        """
+        Adds a listener that will be notified when configuration is changed
+
+        :param listener: a listener to be added.
+        """
+        # Do nothing...
+
+    def remove_change_listener(self, listener: INotifiable):
+        """
+        Remove a previously added change listener.
+
+        :param listener: a listener to be removed.
+        """
+        # Do nothing...

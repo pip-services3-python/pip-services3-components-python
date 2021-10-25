@@ -13,6 +13,7 @@ from typing import Optional
 
 from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.config import IConfigurable
+from pip_services3_commons.run import INotifiable
 from pybars import Compiler
 
 from .IConfigReader import IConfigReader
@@ -70,3 +71,19 @@ class ConfigReader(IConfigReader, IConfigurable):
         compiler = Compiler().compile(config)
 
         return compiler(parameters)
+
+    def add_change_listener(self, listener: INotifiable):
+        """
+        Adds a listener that will be notified when configuration is changed
+
+        :param listener: a listener to be added.
+        """
+        # Do nothing...
+
+    def remove_change_listener(self, listener: INotifiable):
+        """
+        Remove a previously added change listener.
+
+        :param listener: a listener to be removed.
+        """
+        # Do nothing...
