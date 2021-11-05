@@ -89,44 +89,37 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
 
         :param name: a counter name to clear.
         """
-        self.__lock.acquire()
-        try:
+        with self.__lock:
             del self._cache[name]
-        finally:
-            self.__lock.release()
 
     def clear_all(self):
         """
         Clears (resets) all counters.
         """
-        self.__lock.acquire()
-        try:
+        with self.__lock:
             self._cache = {}
             self._updated = False
-        finally:
-            self.__lock.release()
 
     def dump(self):
         """
         Dumps (saves) the current values of counters.
         """
+
         if self._updated:
             messages = self.get_all()
             self._save(messages)
 
-            self.__lock.acquire()
-            try:
+            with self.__lock:
                 self._updated = False
                 current_time = time.perf_counter() * 1000
                 self._last_dump_time = current_time
-            finally:
-                self.__lock.release()
 
     def _update(self):
         """
         Makes counter measurements as updated and dumps them when timeout expires.
         """
-        self._updated = True
+        with self.__lock:
+            self._updated = True
 
         current_time = time.perf_counter() * 1000
         if current_time > self._last_dump_time + self._interval:
@@ -142,11 +135,8 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
 
         :return: a list with counters.
         """
-        self.__lock.acquire()
-        try:
+        with self.__lock:
             return list(self._cache.values())
-        finally:
-            self.__lock.release()
 
     def get(self, name: str, typ: CounterType) -> Counter:
         """
@@ -163,8 +153,7 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
         if name is None or len(name) == 0:
             raise Exception("Counter name was not set")
 
-        self.__lock.acquire()
-        try:
+        with self.__lock:
             counter = self._cache[name] if name in self._cache else None
 
             if counter is None or counter.type != typ:
@@ -172,8 +161,6 @@ class CachedCounters(ICounters, IReconfigurable, ICounterTimingCallback):
                 self._cache[name] = counter
 
             return counter
-        finally:
-            self.__lock.release()
 
     def __calculate_stats(self, counter: Counter, value: float):
         if counter is None:

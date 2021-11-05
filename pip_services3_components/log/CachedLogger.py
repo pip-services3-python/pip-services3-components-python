@@ -69,11 +69,8 @@ class CachedLogger(Logger, IReconfigurable):
         source = self._source  # socket.gethostname()
         log_message = LogMessage(level, source, correlation_id, error, message)
 
-        self.__lock.acquire()
-        try:
+        with self.__lock:
             self._cache.append(log_message)
-        finally:
-            self.__lock.release()
 
         self._update()
 
@@ -99,20 +96,16 @@ class CachedLogger(Logger, IReconfigurable):
         """
         Clears (removes) all cached log messages.
         """
-        self.__lock.acquire()
-        try:
+        with self.__lock:
             self._cache = []
             self._updated = False
-        finally:
-            self.__lock.release()
 
     def dump(self):
         """
         Dumps (writes) the currently cached log messages.
         """
-        if self._updated:
-            self.__lock.acquire()
-            try:
+        with self.__lock:
+            if self._updated:
                 if not self._updated:
                     return
 
@@ -128,15 +121,14 @@ class CachedLogger(Logger, IReconfigurable):
                     self._cache = self._cache[0:delete_count]
 
                 self._updated = False
-                self._last_dump_time = time.perf_counter() * 1000
-            finally:
-                self.__lock.release()
+                self._last_dump_time = time.perf_counter() * 100
 
     def _update(self):
         """
         Makes message cache as updated and dumps it when timeout expires.
         """
-        self._updated = True
+        with self.__lock:
+            self._updated = True
 
         if time.perf_counter() * 1000 > self._last_dump_time + self._interval:
             try:

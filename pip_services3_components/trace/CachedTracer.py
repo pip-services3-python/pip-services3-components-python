@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import datetime
+import threading
 from abc import ABC, abstractmethod
 from copy import deepcopy
 from typing import List, Optional
@@ -44,6 +45,7 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
         self._last_dump_time: float = datetime.datetime.now().timestamp()
         self._max_cache_size = 100
         self._interval = 10000
+        self.__lock = threading.Lock()
 
     def configure(self, config: ConfigParams):
         """
@@ -87,7 +89,8 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
             error_desc
         )
 
-        self._cache.append(trace)
+        with self.__lock:
+            self._cache.append(trace)
 
         self._update()
 
@@ -149,25 +152,26 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
 
         See :func:`_write <pip_services3_components.trace.CachedTracer.CachedTracer._write>`
         """
-        if self._updated:
-            if not self._updated:
-                return
-            traces = self._cache
-            self._cache = []
+        with self.__lock:
+            if self._updated:
+                if not self._updated:
+                    return
+                traces = self._cache
+                self._cache = []
 
-            try:
-                self._save(traces)
-            except Exception as err:
-                # Adds traces back to the cache
-                traces += deepcopy(self._cache)
+                try:
+                    self._save(traces)
+                except Exception as err:
+                    # Adds traces back to the cache
+                    traces += deepcopy(self._cache)
 
-                # Truncate cache
-                delete_count = len(self._cache) - self._max_cache_size
-                if delete_count > 0:
-                    self._cache = self._cache[delete_count:]
+                    # Truncate cache
+                    delete_count = len(self._cache) - self._max_cache_size
+                    if delete_count > 0:
+                        self._cache = self._cache[delete_count:]
 
-            self._updated = False
-            self._last_dump_time = datetime.datetime.now().timestamp() * 1000
+                self._updated = False
+                self._last_dump_time = datetime.datetime.now().timestamp() * 1000
 
     def _update(self):
         """
@@ -176,7 +180,8 @@ class CachedTracer(ITracer, IReconfigurable, IReferenceable, ABC):
 
         See :func:`dump <pip_services3_components.trace.CachedTracer.CachedTracer.dump>`
         """
-        self._updated = True
+        with self.__lock:
+            self._updated = True
         now = datetime.datetime.now().timestamp() * 1000
         if now > self._last_dump_time + self._interval:
             try:
