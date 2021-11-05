@@ -25,17 +25,16 @@ class SetInterval(threading.Thread):
         :param callback:  callback function to invoke
         :param interval: time in seconds after which are required to fire the callback
         """
-        self.stop_event = False
         self.callback = callback
         self.event = threading.Event()
         self.interval = interval / 1000
         super(SetInterval, self).__init__()
 
     def run(self):
-        while not self.event.wait(self.interval) and not self.stop_event:
+        while not self.event.wait(self.interval) and not self.event.is_set():
             self.callback()
 
     def stop(self, interval=0):
         if interval != 0:
             time.sleep(interval / 1000)
-        self.stop_event = True
+        self.event.set()
