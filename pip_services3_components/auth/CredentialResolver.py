@@ -116,7 +116,7 @@ class CredentialResolver(IConfigurable, IReferenceable):
         if self.__references is None:
             return None
 
-        descriptor = Descriptor("*", "credential_store", "*", "*", "*")
+        descriptor = Descriptor("*", "credential-store", "*", "*", "*")
         components = self.__references.get_optional(descriptor)
         if len(components) == 0:
             raise ReferenceException(correlation_id, "Credential store wasn't found to make lookup")
