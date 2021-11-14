@@ -69,9 +69,9 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
         :param config: configuration parameters to be read
         """
         self.__items.clear()
-        for key in config.get_keys():
-            value = config.get_as_nullable_string(key)
-            self.__items.append(CredentialParams.from_tuples([key, value]))
+        for section in config.get_section_names():
+            value = config.get_section(section)
+            self.__items.append(CredentialParams.from_tuples(section, value))
 
     def store(self, correlation_id: Optional[str], key: str, credential: CredentialParams):
         """
