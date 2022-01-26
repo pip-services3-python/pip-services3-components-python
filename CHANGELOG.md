@@ -1,10 +1,13 @@
 # <img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Component definitions for Python Changelog
 
-## <a name="3.5.5"></a> 3.5.5 (2022-01-26)
+## <a name="3.5.5-3.5.6"></a> 3.5.5-3.5.6 (2022-01-26)
 
 ### Features
 * Removed pybars3 dependency. Added pip_services3_expressions instead.
 * Updated dependencies. 
+
+### Bug fixes
+* Fixed YAML dependency
 
 ## <a name="3.5.3-3.5.4"></a> 3.5.3-3.5.4 (2021-11-15)
 

@@ -1,4 +1,4 @@
 pytest
-
+PyYAML >= 6.0, < 7.0
 pip_services3_commons >= 3.3.11, < 4.0
-pip_services3_expressions >= 3.3.4, < 4.0
+pip_services3_expressions >= 3.3.5, < 4.0
