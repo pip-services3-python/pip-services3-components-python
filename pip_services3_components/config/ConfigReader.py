@@ -14,7 +14,8 @@ from typing import Optional
 from pip_services3_commons.config import ConfigParams
 from pip_services3_commons.config import IConfigurable
 from pip_services3_commons.run import INotifiable
-from pybars import Compiler
+
+from pip_services3_expressions.mustache import MustacheTemplate
 
 from .IConfigReader import IConfigReader
 
@@ -68,9 +69,9 @@ class ConfigReader(IConfigReader, IConfigurable):
         :return: a parameterized configuration string.
         """
         parameters = self.__parameters.override(parameters)
-        compiler = Compiler().compile(config)
+        template = MustacheTemplate(config)
 
-        return compiler(parameters)
+        return template.evaluate_with_variables(parameters)
 
     def add_change_listener(self, listener: INotifiable):
         """

@@ -6,15 +6,15 @@
     :copyright: (c) Conceptual Vision Consulting LLC 2015-2016, see AUTHORS for more details.
     :license: MIT, see LICENSE for more details.
 """
-from pybars import Compiler
+from pip_services3_expressions.mustache import MustacheTemplate
 
 
 class TestConfigReader:
     def test_process_templates(self):
         config = "{{#if A}}{{B}}{{/if}}"
-        values = {"A": "true", "B": "XYZ"}
+        params = {"A": "true", "B": "XYZ"}
 
-        compiler = Compiler()
-        template = compiler.compile(config)
+        template = MustacheTemplate(config)
+        result = template.evaluate_with_variables(params)
 
-        assert "XYZ" == template(values)
+        assert "XYZ" == result
