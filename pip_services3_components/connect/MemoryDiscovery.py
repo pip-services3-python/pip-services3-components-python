@@ -40,15 +40,17 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
     .. code-block:: python
     
         config = ConfigParams.from_tuples(
-        "key1.host", "10.1.1.100",
-        "key1.port", "8080",
-        "key2.host", "10.1.1.100",
-        "key2.port", "8082")
+            "connections.key1.host", "10.1.1.100",
+            "connections.key1.port", "8080",
+            "connections.key2.host", "10.1.1.100",
+            "connections.key2.port", "8082"
+        )
 
         discovery = MemoryDiscovery()
-        discovery.read_connections(config)
+        discovery.configure(config)
 
-        discovery.resolve("123", "key1")
+        connection = discovery.resolve_one("123", "key1")
+        # Result: host=10.1.1.100;port=8080
     """
 
     def __init__(self, config: ConfigParams = None):
@@ -76,13 +78,19 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
 
         :param connections: configuration parameters to be read
         """
-        del self.__items[:]
-        for key in connections.get_keys():
-            item = DiscoveryItem()
-            item.key = key
-            value = connections.get_as_nullable_string(key)
-            item.connection = ConnectionParams.from_string(value)
-            self.__items.append(item)
+        self.__items = []
+
+        connects = connections.get_section('connections')
+
+        if len(connects) > 0:
+            connection_sections = connects.get_section_names()
+            for key in connection_sections:
+                value = connects.get_section(key)
+
+                item = DiscoveryItem()
+                item.key = key
+                item.connection = ConnectionParams(value)
+                self.__items.append(item)
 
     def register(self, correlation_id: Optional[str], key: str, connection: ConnectionParams) -> ConnectionParams:
         """

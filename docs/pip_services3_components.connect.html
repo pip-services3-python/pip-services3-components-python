@@ -819,15 +819,17 @@ The URI shall be in the following form:
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParams</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span>
-<span class="s2">&quot;key1.host&quot;</span><span class="p">,</span> <span class="s2">&quot;10.1.1.100&quot;</span><span class="p">,</span>
-<span class="s2">&quot;key1.port&quot;</span><span class="p">,</span> <span class="s2">&quot;8080&quot;</span><span class="p">,</span>
-<span class="s2">&quot;key2.host&quot;</span><span class="p">,</span> <span class="s2">&quot;10.1.1.100&quot;</span><span class="p">,</span>
-<span class="s2">&quot;key2.port&quot;</span><span class="p">,</span> <span class="s2">&quot;8082&quot;</span><span class="p">)</span>
+    <span class="s2">&quot;connections.key1.host&quot;</span><span class="p">,</span> <span class="s2">&quot;10.1.1.100&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;connections.key1.port&quot;</span><span class="p">,</span> <span class="s2">&quot;8080&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;connections.key2.host&quot;</span><span class="p">,</span> <span class="s2">&quot;10.1.1.100&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;connections.key2.port&quot;</span><span class="p">,</span> <span class="s2">&quot;8082&quot;</span>
+<span class="p">)</span>
 
 <span class="n">discovery</span> <span class="o">=</span> <span class="n">MemoryDiscovery</span><span class="p">()</span>
-<span class="n">discovery</span><span class="o">.</span><span class="n">read_connections</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="n">discovery</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 
-<span class="n">discovery</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="s2">&quot;key1&quot;</span><span class="p">)</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">discovery</span><span class="o">.</span><span class="n">resolve_one</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="s2">&quot;key1&quot;</span><span class="p">)</span>
+<span class="c1"># Result: host=10.1.1.100;port=8080</span>
 </pre></div>
 </div>
 <dl class="py method">

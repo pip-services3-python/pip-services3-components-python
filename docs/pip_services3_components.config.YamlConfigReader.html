@@ -89,8 +89,100 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pip-services3-components-config-yamlconfigreader-module">
-<h1>pip_services3_components.config.YamlConfigReader module<a class="headerlink" href="#pip-services3-components-config-yamlconfigreader-module" title="Permalink to this headline"></a></h1>
+  <section id="module-pip_services3_components.config.YamlConfigReader">
+<span id="pip-services3-components-config-yamlconfigreader-module"></span><h1>pip_services3_components.config.YamlConfigReader module<a class="headerlink" href="#module-pip_services3_components.config.YamlConfigReader" title="Permalink to this headline"></a></h1>
+<section id="pip-services3-components-config-yamlconfigreader">
+<h2>pip_services3_components.config.YamlConfigReader<a class="headerlink" href="#pip-services3-components-config-yamlconfigreader" title="Permalink to this headline"></a></h2>
+<p>YAML config reader implementation</p>
+<dl class="field-list simple">
+<dt class="field-odd">copyright</dt>
+<dd class="field-odd"><p>Conceptual Vision Consulting LLC 2018-2019, see AUTHORS for more details.</p>
+</dd>
+<dt class="field-even">license</dt>
+<dd class="field-even"><p>MIT, see LICENSE for more details.</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt id="pip_services3_components.config.YamlConfigReader.YamlConfigReader">
+<em class="property">class </em><code class="sig-prename descclassname">pip_services3_components.config.YamlConfigReader.</code><code class="sig-name descname">YamlConfigReader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pip_services3_components.config.YamlConfigReader.YamlConfigReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pip_services3_components.config.FileConfigReader.html#pip_services3_components.config.FileConfigReader.FileConfigReader" title="pip_services3_components.config.FileConfigReader.FileConfigReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">pip_services3_components.config.FileConfigReader.FileConfigReader</span></code></a></p>
+<p>Config reader that reads configuration from YAML file.</p>
+<p>### Configuration parameters ###</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>path:          path to configuration file</p></li>
+<li><p>parameters:    this entire section is used as template parameters</p></li>
+<li><p>…</p></li>
+</ul>
+</div></blockquote>
+<p>Example:</p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>======== config.yml ======
+key1: &quot;{{KEY1_VALUE}}&quot;
+key2: &quot;{{KEY2_VALUE}}&quot;
+===========================
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">configReader</span> <span class="o">=</span> <span class="n">YamlConfigReader</span><span class="p">(</span><span class="s2">&quot;config.yml&quot;</span><span class="p">)</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="n">ConfigParams</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span><span class="s2">&quot;KEY1_VALUE&quot;</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="s2">&quot;KEY2_VALUE&quot;</span><span class="p">,</span> <span class="s2">&quot;ABC&quot;</span><span class="p">)</span>
+<span class="n">configReader</span><span class="o">.</span><span class="n">read_config_</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="pip_services3_components.config.YamlConfigReader.YamlConfigReader.read_config">
+<em class="property">static </em><code class="sig-name descname">read_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.ConfigParams.html#pip_services3_commons.config.ConfigParams.ConfigParams" title="(in pip-services3-commons)">pip_services3_commons.config.ConfigParams.ConfigParams</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.ConfigParams.html#pip_services3_commons.config.ConfigParams.ConfigParams" title="(in pip-services3-commons)">pip_services3_commons.config.ConfigParams.ConfigParams</a><a class="headerlink" href="#pip_services3_components.config.YamlConfigReader.YamlConfigReader.read_config" title="Permalink to this definition"></a></dt>
+<dd><p>Reads configuration from a file, parameterize it with given values and returns a new ConfigParams object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>path</strong> – a path to configuration file.</p></li>
+<li><p><strong>parameters</strong> – values to parameters the configuration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ConfigParams configuration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.config.YamlConfigReader.YamlConfigReader.read_config_">
+<code class="sig-name descname">read_config_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.ConfigParams.html#pip_services3_commons.config.ConfigParams.ConfigParams" title="(in pip-services3-commons)">pip_services3_commons.config.ConfigParams.ConfigParams</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.ConfigParams.html#pip_services3_commons.config.ConfigParams.ConfigParams" title="(in pip-services3-commons)">pip_services3_commons.config.ConfigParams.ConfigParams</a><a class="headerlink" href="#pip_services3_components.config.YamlConfigReader.YamlConfigReader.read_config_" title="Permalink to this definition"></a></dt>
+<dd><p>Reads configuration and parameterize it with given values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>parameters</strong> – values to parameters the configuration or null to skip parameterization.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ConfigParams configuration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pip_services3_components.config.YamlConfigReader.YamlConfigReader.read_object">
+<em class="property">static </em><code class="sig-name descname">read_object</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">correlation_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n"><a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></span></em>, <em class="sig-param"><span class="n">parameters</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://pip-services3-python.github.io/pip-services3-commons-python/pip_services3_commons.config.ConfigParams.html#pip_services3_commons.config.ConfigParams.ConfigParams" title="(in pip-services3-commons)">pip_services3_commons.config.ConfigParams.ConfigParams</a></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#pip_services3_components.config.YamlConfigReader.YamlConfigReader.read_object" title="Permalink to this definition"></a></dt>
+<dd><p>Reads configuration file, parameterizes its content and converts it into YAML object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>correlation_id</strong> – (optional) transaction id to trace execution through call chain.</p></li>
+<li><p><strong>path</strong> – a path to configuration file.</p></li>
+<li><p><strong>parameters</strong> – values to parameters the configuration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a YAML object with configuration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 </section>
 
 
