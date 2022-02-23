@@ -98,4 +98,4 @@ class MemoryCredentialStore(ICredentialStore, IReconfigurable):
 
         :return: found credential parameters or None if nothing was found
         """
-        return self.__items.get_as_object(key)
+        return CredentialParams.from_string(self.__items.get(key))
