@@ -219,3 +219,26 @@ class ConnectionUtils:
             result.remove(key)
 
         return result
+
+    @staticmethod
+    def rename(options: ConfigParams, from_name: str, to_name: str) -> Optional[ConfigParams]:
+        """
+        Renames property if the target name is not used.
+
+        :param options: configuration options
+        :param from_name: original property name.
+        :param to_name: property name to rename to.
+        :return: updated configuration options
+        """
+        from_value = options.get_as_object(from_name)
+        if from_value is None:
+            return options
+
+        to_value = options.get_as_object(to_name)
+        if to_value is not None:
+            return options
+
+        options = ConfigParams.from_value(options)
+        options.set_as_object(to_name, from_value)
+        options.remove(from_name)
+        return options

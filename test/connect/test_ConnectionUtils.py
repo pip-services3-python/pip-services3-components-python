@@ -116,3 +116,17 @@ class TestConnectionUtils:
 
         uri = ConnectionUtils.compose_uri(options, None, None)
         assert uri == "user:pass123@broker1,broker2:8082?param1=ABC&param2=XYZ&param3"
+
+    def test_rename(self):
+        options = ConfigParams.from_tuples(
+            "username", "user",
+            "password", "pass123",
+            "param1", "broker1,broker2",
+            "param2", ",8082",
+        )
+
+        options = ConnectionUtils.rename(options, 'param1', 'host')
+        options = ConnectionUtils.rename(options, 'param2', 'port')
+
+        uri = ConnectionUtils.compose_uri(options, None, None)
+        assert uri == "user:pass123@broker1,broker2:8082"
