@@ -1,5 +1,5 @@
 {
-    "name":  "pip_services3_components",
+    "name":  "pip-services3-components",
     "type": "module",
     "language": "python",
     "version": "3.5.9",
