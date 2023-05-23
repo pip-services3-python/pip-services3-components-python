@@ -40,10 +40,10 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
     .. code-block:: python
     
         config = ConfigParams.from_tuples(
-            "connections.key1.host", "10.1.1.100",
-            "connections.key1.port", "8080",
-            "connections.key2.host", "10.1.1.100",
-            "connections.key2.port", "8082"
+            "key1.host", "10.1.1.100",
+            "key1.port", "8080",
+            "key2.host", "10.1.1.100",
+            "key2.port", "8082"
         )
 
         discovery = MemoryDiscovery()
@@ -80,12 +80,10 @@ class MemoryDiscovery(IDiscovery, IReconfigurable):
         """
         self.__items = []
 
-        connects = connections.get_section('connections')
-
-        if len(connects) > 0:
-            connection_sections = connects.get_section_names()
+        if len(connections) > 0:
+            connection_sections = connections.get_section_names()
             for key in connection_sections:
-                value = connects.get_section(key)
+                value = connections.get_section(key)
 
                 item = DiscoveryItem()
                 item.key = key
